@@ -113,6 +113,82 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1618173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1618176}
+  - component: {fileID: 1618175}
+  - component: {fileID: 1618174}
+  m_Layer: 0
+  m_Name: Music Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1618174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1618173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1913711003, guid: aa81bbec85a3f423193272a7c6154986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncPlayDelay: 1
+  pitch: 1
+  loop: 1
+  autoPlayOnAwake: 1
+  musicLayers:
+  - name: 
+    koreography: {fileID: 11400000, guid: 6fb34d972b82e468d99e48d2c34e08f7, type: 2}
+    audioClip: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 
+    koreography: {fileID: 0}
+    audioClip: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 
+    koreography: {fileID: 0}
+    audioClip: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 
+    koreography: {fileID: 0}
+    audioClip: {fileID: 0}
+    audioSource: {fileID: 0}
+  targetKoreographer: {fileID: 0}
+--- !u!114 &1618175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1618173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 316907577, guid: aa81bbec85a3f423193272a7c6154986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadedKoreography: []
+  eventDelayInSeconds: 0
+--- !u!4 &1618176
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1618173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &80829775
 Prefab:
   m_ObjectHideFlags: 0
@@ -342,6 +418,103 @@ Transform:
   m_PrefabParentObject: {fileID: 4480561547123258, guid: 5cfd37f3f6f3f45459be2e3700ca4e7a,
     type: 2}
   m_PrefabInternal: {fileID: 263851132}
+--- !u!1 &349574370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 349574371}
+  - component: {fileID: 349574375}
+  - component: {fileID: 349574374}
+  - component: {fileID: 349574373}
+  - component: {fileID: 349574372}
+  m_Layer: 0
+  m_Name: Spikes3
+  m_TagString: Trap
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &349574371
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 349574370}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.48, y: 0.05, z: 1.5}
+  m_LocalScale: {x: 1, y: 0.099999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 884031502}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &349574372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 349574370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872477a31823649e6ba8717d3d00224f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBehaviour: 3
+--- !u!23 &349574373
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 349574370}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: d2ff88ed003828a4794f7bbc11cae71f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &349574374
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 349574370}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &349574375
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 349574370}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &432083631
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +798,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d07029869545f8d428bddd9776409453, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &877876575 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1616563145205504, guid: 2f8ff57cbd9bfd34c81270525863d823,
+    type: 2}
+  m_PrefabInternal: {fileID: 1304034071}
+--- !u!114 &877876579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877876575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872477a31823649e6ba8717d3d00224f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBehaviour: 1
 --- !u!1 &884031501
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +842,7 @@ Transform:
   m_Children:
   - {fileID: 1374369907}
   - {fileID: 1634394991}
+  - {fileID: 349574371}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1102,6 +1293,7 @@ GameObject:
   - component: {fileID: 1281281523}
   - component: {fileID: 1281281522}
   - component: {fileID: 1281281521}
+  - component: {fileID: 1281281525}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1176,6 +1368,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1281281525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1281281520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd47f4cb0a1b484e987a095e79ef4db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1304034071
 Prefab:
   m_ObjectHideFlags: 0
@@ -1215,6 +1418,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1616563145205504, guid: 2f8ff57cbd9bfd34c81270525863d823, type: 2}
+      propertyPath: m_Name
+      value: Spikes1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f8ff57cbd9bfd34c81270525863d823, type: 2}
   m_IsPrefabParent: 0
@@ -1229,7 +1436,6 @@ GameObject:
   - component: {fileID: 1322004560}
   - component: {fileID: 1322004559}
   - component: {fileID: 1322004558}
-  - component: {fileID: 1322004557}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -1237,13 +1443,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1322004557
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1322004556}
-  m_Enabled: 1
 --- !u!124 &1322004558
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1581,8 +1780,9 @@ GameObject:
   - component: {fileID: 1634394994}
   - component: {fileID: 1634394993}
   - component: {fileID: 1634394992}
+  - component: {fileID: 1634394995}
   m_Layer: 0
-  m_Name: Spikes (1)
+  m_Name: Spikes2
   m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1654,6 +1854,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634394990}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1634394995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1634394990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872477a31823649e6ba8717d3d00224f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBehaviour: 2
 --- !u!1 &1709559540
 GameObject:
   m_ObjectHideFlags: 0
