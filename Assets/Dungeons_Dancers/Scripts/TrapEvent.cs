@@ -30,7 +30,7 @@ public class TrapEvent : MonoBehaviour {
 	
     void ChangeColor(KoreographyEvent kTrapEvent)
     {
-        Debug.Log("trapworking");
+        //Debug.Log("trapworking");
 
         if (mat.color == Color.black) mat.color = Color.white;
         else mat.color = Color.black;
