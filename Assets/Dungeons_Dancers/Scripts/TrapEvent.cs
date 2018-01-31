@@ -37,11 +37,11 @@ public class TrapEvent : MonoBehaviour {
 	
     void TrapBehaviour(KoreographyEvent kTrapEvent)
     {
-        //Debug.Log("trapworking");
         if (!activeTrapEvent)
         {
             activeTrapEvent = true;
             mat.color = Color.white;
+            this.gameObject.tag = "Trap";
             this.transform.position = new Vector3(this.transform.position.x, trapHeight, this.transform.position.z);
             StartCoroutine(ReturnIdle(timeIdle));
         }
@@ -49,6 +49,7 @@ public class TrapEvent : MonoBehaviour {
         {
             activeTrapEvent = false;
             mat.color = Color.black;
+            this.gameObject.tag = "Untagged";
             this.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
 
         }
@@ -57,8 +58,9 @@ public class TrapEvent : MonoBehaviour {
     private IEnumerator ReturnIdle(float time)
     {
         yield return new WaitForSeconds(time);
-        Debug.Log("idle trap!");
+        //Debug.Log("idle trap!");
         mat.color = Color.black;
+        this.gameObject.tag = "Untagged";
         this.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
 
         StopCoroutine("ReturnIdle");
