@@ -6,53 +6,65 @@ using SonicBloom.Koreo;
 public class PlayerEvent : MonoBehaviour
 {
     private Material mat;
-
-    private bool correct;
+    private bool activePlayerEvent;
+    [Header("Choose Idle Return Time")]
+    [SerializeField]
+    private float timeIdle = 0.25f;
 
     // Use this for initialization
     void Start()
     {
-        correct = false;
+        //correct = false;
         Koreographer.Instance.RegisterForEventsWithTime("PlayerEvent", PlayerBehaviour);
 
         mat = this.GetComponent<MeshRenderer>().material;
     }
 
-    //public delegate void KoreographyEventCallbackWithTime(KoreographyEvent kEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice);
+    void Update()
+    {
+        PlayerInput();
+    }
+
 
     void PlayerBehaviour(KoreographyEvent kEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
-    {
+    {                  
         //Debug.Log("playerworking");
         if (sampleTime < kEvent.EndSample)
         {
-            Debug.Log("correct");
-            CorrectInput();
-            //correct = true;
+            activePlayerEvent = true;
         }
-        else{
-            Debug.Log("incorrect");
-            IncorrectInput();
-            //correct = false;
+        else
+        {
+            activePlayerEvent = false;
         } 
 
     }
 
-    void CorrectInput()
+    void PlayerInput()
     {
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("perfect! :D");
-            mat.color = Color.green;
+            if (activePlayerEvent)
+            {
+                Debug.Log("perfect!");
+                mat.color = Color.green;
+                StartCoroutine(ReturnIdle(timeIdle));
+
+            }
+            else
+            {
+                Debug.Log("incorrect!");
+                mat.color = Color.red;
+                StartCoroutine(ReturnIdle(timeIdle));
+            }
         }
     }
 
-    void IncorrectInput()
+    private IEnumerator ReturnIdle(float time)
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            Debug.Log("incorrect! :(");
-            mat.color = Color.red;
-        }
+        yield return new WaitForSeconds(time);
+        Debug.Log("idle player!");
+        mat.color = Color.white;
+        StopCoroutine("ReturnIdle");
     }
-
 }
