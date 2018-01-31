@@ -5,25 +5,54 @@ using SonicBloom.Koreo;
 
 public class PlayerEvent : MonoBehaviour
 {
-    private Vector3 playerTransform;
+    private Material mat;
+
+    private bool correct;
 
     // Use this for initialization
     void Start()
     {
-        Koreographer.Instance.RegisterForEvents("PlayerEvent", ChangeSize);
+        correct = false;
+        Koreographer.Instance.RegisterForEventsWithTime("PlayerEvent", PlayerBehaviour);
 
-        playerTransform = new Vector3(1, 1, 1);
+        mat = this.GetComponent<MeshRenderer>().material;
     }
 
-    void ChangeSize(KoreographyEvent kPlayerEvent)
+    //public delegate void KoreographyEventCallbackWithTime(KoreographyEvent kEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice);
+
+    void PlayerBehaviour(KoreographyEvent kEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
     {
-        Debug.Log("playerworking");
-
-        if (this.transform.localScale == playerTransform)
+        //Debug.Log("playerworking");
+        if (sampleTime < kEvent.EndSample)
         {
-            this.transform.localScale = new Vector3(1.2f, 1, 1);
+            Debug.Log("correct");
+            CorrectInput();
+            //correct = true;
         }
-        else this.transform.localScale = playerTransform;
+        else{
+            Debug.Log("incorrect");
+            IncorrectInput();
+            //correct = false;
+        } 
 
     }
+
+    void CorrectInput()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("perfect! :D");
+            mat.color = Color.green;
+        }
+    }
+
+    void IncorrectInput()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("incorrect! :(");
+            mat.color = Color.red;
+        }
+    }
+
 }
