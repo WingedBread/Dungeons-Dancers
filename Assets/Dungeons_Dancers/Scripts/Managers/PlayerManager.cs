@@ -4,45 +4,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using SonicBloom.Koreo;
 
-public class PlayerBehaviour : MonoBehaviour
+[RequireComponent(typeof(RaycastCollisions))]
+public class PlayerManager : MonoBehaviour
 {
+    [Header("Game Manager")]
+    private GameManager gameManager;
+    private RaycastCollisions rayCollision;
+
     private Material mat;
     private bool activePlayerInputEvent;
     private bool activePlayerBeatEvent;
+
     [Header("Choose Idle Return Time")]
     [SerializeField]
     private float timeIdle = 0.25f;
-
-    private GameObject[] spawnList;
-    private GameObject[] exitList;
 
     [Header("Choose Player Speed")]
     [SerializeField]
     private float speed = 1f;
 
-    [Header("UI")]
-    [SerializeField]
-    private GameObject WinUI;
-    [SerializeField]
-    private Text pointsText;
-    private int points;
+    [Header("Flags")]
+    private bool inputFlag = false;
 
-    private bool inputFlag = true;
-
-    //Raycasts
-    private RaycastHit rayHit;
-    private Ray ray;
-    [Header("Ray Lenght")]
-    [SerializeField]
-    private float rayLenght = 0.5f;
+    private int accuracy = 0;
+    private float duration;
+    private float segmentDuration;
+    private float segment3, segment2, segment1;
 
 
     // Use this for initialization
     void Start()
     {
-        pointsText.text = points.ToString();
-        spawnList = GameObject.FindGameObjectsWithTag("Spawn");
-        exitList = GameObject.FindGameObjectsWithTag("Exit");
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        rayCollision = GetComponent<RaycastCollisions>();
 
         Koreographer.Instance.RegisterForEventsWithTime("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.RegisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
@@ -51,12 +45,17 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (inputFlag) PlayerInput();
+        PlayerInput();
     }
 
     #region Player Behaviours
     void PlayerInputBehaviour(KoreographyEvent kInputEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
     {
+        CalculateTiming(sampleTime, kInputEvent);
+
+        if (sampleTime < segment1) accuracy = 0;
+        else if (sampleTime < segment2) accuracy = 1;
+        else if (sampleTime < segment3) accuracy = 2;
 
         if (sampleTime < kInputEvent.EndSample)
         {
@@ -65,7 +64,6 @@ public class PlayerBehaviour : MonoBehaviour
         else
         {
             activePlayerInputEvent = false;
-            //inputFlag = true;
         }
 
     }
@@ -83,6 +81,16 @@ public class PlayerBehaviour : MonoBehaviour
             //this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
     }
+
+    void CalculateTiming(int currentTime, KoreographyEvent kCalcEvent)
+    {
+        
+        duration = kCalcEvent.StartSample - kCalcEvent.EndSample;
+        segmentDuration = duration / 3;
+        segment3 = kCalcEvent.EndSample - segmentDuration;
+        segment2 = segment3 - segmentDuration;
+        segment1 = segment2 - segmentDuration;
+    }
     #endregion
 
     #region Player Input
@@ -91,8 +99,7 @@ public class PlayerBehaviour : MonoBehaviour
         //LEFT
         if (Equals(Input.GetAxisRaw("Horizontal"), -1f))
         {
-            
-            if (!LeftCollision())
+            if (!rayCollision.LeftCollision() && inputFlag)
             {
                 this.transform.Translate(-speed, 0, 0);
                 inputFlag = false;
@@ -100,13 +107,13 @@ public class PlayerBehaviour : MonoBehaviour
                 if (activePlayerInputEvent)
                 {
                     mat.color = Color.green;
-                    AddPoint();
+                    gameManager.AddPoint();
                     StartCoroutine(ReturnIdle(timeIdle));
                 }
                 else
                 {
                     mat.color = Color.red;
-                    RemovePoint();
+                    gameManager.RemovePoint();
                     StartCoroutine(ReturnIdle(timeIdle));
                 }
             }
@@ -115,8 +122,7 @@ public class PlayerBehaviour : MonoBehaviour
         //RIGHT
         else if (Equals(Input.GetAxisRaw("Horizontal"), 1f))
         {
-            
-            if (!RightCollision())
+            if (!rayCollision.RightCollision() && inputFlag)
             {
                 this.transform.Translate(speed, 0, 0);
                 inputFlag = false;
@@ -124,13 +130,13 @@ public class PlayerBehaviour : MonoBehaviour
                 if (activePlayerInputEvent)
                 {
                     mat.color = Color.green;
-                    AddPoint();
+                    gameManager.AddPoint();
                     StartCoroutine(ReturnIdle(timeIdle));
                 }
                 else
                 {
                     mat.color = Color.red;
-                    RemovePoint();
+                    gameManager.RemovePoint();
                     StartCoroutine(ReturnIdle(timeIdle));
                 }
             }
@@ -139,21 +145,21 @@ public class PlayerBehaviour : MonoBehaviour
         //DOWN
         else if (Equals(Input.GetAxisRaw("Vertical"), -1f))
         {
-            inputFlag = false;
-            if (!DownCollision())
+            if (!rayCollision.DownCollision() && inputFlag)
             {
                 this.transform.Translate(0, 0, -speed);
+                inputFlag = false;
 
                 if (activePlayerInputEvent)
                 {
                     mat.color = Color.green;
-                    AddPoint();
+                    gameManager.AddPoint();
                     StartCoroutine(ReturnIdle(timeIdle));
                 }
                 else
                 {
                     mat.color = Color.red;
-                    RemovePoint();
+                    gameManager.RemovePoint();
                     StartCoroutine(ReturnIdle(timeIdle));
                 }
             }
@@ -162,25 +168,26 @@ public class PlayerBehaviour : MonoBehaviour
         //UP
         else if (Equals(Input.GetAxisRaw("Vertical"), 1f))
         {
-            inputFlag = false;
-            if (!UpCollision())
+            if (!rayCollision.UpCollision())
             {
                 this.transform.Translate(0, 0, speed);
+                inputFlag = false;
 
                 if (activePlayerInputEvent)
                 {
                     mat.color = Color.green;
-                    AddPoint();
+                    gameManager.AddPoint();
                     StartCoroutine(ReturnIdle(timeIdle));
                 }
                 else
                 {
                     mat.color = Color.red;
-                    RemovePoint();
+                    gameManager.RemovePoint();
                     StartCoroutine(ReturnIdle(timeIdle));
                 }
             }
         }
+        else inputFlag = true;
 
     }
     #endregion
@@ -189,7 +196,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         mat.color = Color.white;
-        inputFlag = true;
         StopCoroutine("ReturnIdle");
     }
 
@@ -197,84 +203,13 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (col.gameObject.tag == "Trap")
         {
-            this.transform.position = new Vector3(spawnList[0].transform.position.x, spawnList[0].transform.position.y + 0.85f, spawnList[0].transform.position.z);
+            gameManager.Respawn();
         }
 
         else if (col.gameObject.tag == "Exit")
         {
-            WinUI.SetActive(true);
+            gameManager.Win();
 
         }
-    }
-
-    #region Raycast Collisions
-
-    private bool RightCollision()
-    {
-        Vector3 colliderCenter = new Vector3(this.GetComponent<Collider>().bounds.center.x, this.GetComponent<Collider>().bounds.center.y - 0.5f, this.GetComponent<Collider>().bounds.center.z);
-        ray = new Ray(colliderCenter, Vector3.right);
-
-        if (Physics.Raycast(ray, out rayHit, rayLenght))
-        {
-            Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
-            if (rayHit.collider.gameObject.tag == "Obstacle") return true;
-
-        }
-        return false;
-    }
-
-    private bool LeftCollision()
-    {
-        Vector3 colliderCenter = new Vector3(this.GetComponent<Collider>().bounds.center.x, this.GetComponent<Collider>().bounds.center.y - 0.5f, this.GetComponent<Collider>().bounds.center.z);
-        ray = new Ray(colliderCenter, Vector3.right * -1);
-
-        if (Physics.Raycast(ray, out rayHit, rayLenght))
-        {
-            Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
-            if (rayHit.collider.gameObject.tag == "Obstacle") return true;
-        }
-        return false;
-    }
-
-    private bool DownCollision()
-    {
-        Vector3 colliderCenter = new Vector3(this.GetComponent<Collider>().bounds.center.x, this.GetComponent<Collider>().bounds.center.y - 0.5f, this.GetComponent<Collider>().bounds.center.z);
-        ray = new Ray(colliderCenter, Vector3.forward * -1);
-
-        if (Physics.Raycast(ray, out rayHit, rayLenght))
-        {
-            Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
-            if (rayHit.collider.gameObject.tag == "Obstacle") return true;
-        }
-        return false;
-    }
-
-    private bool UpCollision()
-    {
-        Vector3 colliderCenter = new Vector3(this.GetComponent<Collider>().bounds.center.x, this.GetComponent<Collider>().bounds.center.y - 0.5f, this.GetComponent<Collider>().bounds.center.z);
-        ray = new Ray(colliderCenter, Vector3.forward);
-
-        if (Physics.Raycast(ray, out rayHit, rayLenght))
-        {
-            Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
-            if (rayHit.collider.gameObject.tag == "Obstacle") return true;
-        }
-        return false;
-    }
-
-    #endregion
-
-    private int AddPoint()
-    {
-        points++;
-        pointsText.text = points.ToString();
-        return points;
-    }
-
-    private int RemovePoint(){
-        points--;
-        pointsText.text = points.ToString();
-        return points;
-        
     }
 }
