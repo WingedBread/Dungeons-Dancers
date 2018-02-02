@@ -302,6 +302,80 @@ Transform:
   m_PrefabParentObject: {fileID: 4158871042982822, guid: d07029869545f8d428bddd9776409453,
     type: 2}
   m_PrefabInternal: {fileID: 680167817}
+--- !u!1 &168198714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 168198715}
+  - component: {fileID: 168198717}
+  - component: {fileID: 168198716}
+  m_Layer: 5
+  m_Name: AccuracyText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &168198715
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 168198714}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.40754658, y: 0.40754703, z: 0.40754703}
+  m_Children: []
+  m_Father: {fileID: 486574872}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -106, y: -2.62179}
+  m_SizeDelta: {x: 300, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &168198716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 168198714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.80689657, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 34
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 44
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &168198717
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 168198714}
 --- !u!1001 &172582889
 Prefab:
   m_ObjectHideFlags: 0
@@ -810,6 +884,7 @@ RectTransform:
   - {fileID: 1302619520}
   - {fileID: 2014316930}
   - {fileID: 970897208}
+  - {fileID: 168198715}
   - {fileID: 1063951960}
   m_Father: {fileID: 1441248626}
   m_RootOrder: 3
@@ -1569,7 +1644,7 @@ RectTransform:
   - {fileID: 1017637424}
   - {fileID: 1777689625}
   m_Father: {fileID: 486574872}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1878,6 +1953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeIdle: 0.25
   speed: 1
+  inputFlag: 0
 --- !u!54 &1281281526
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2934,6 +3010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1922221056}
   - component: {fileID: 1922221055}
+  - component: {fileID: 1922221058}
   - component: {fileID: 1922221057}
   m_Layer: 0
   m_Name: GameManager
@@ -2954,8 +3031,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godMode: 0
-  points: 5
-  resetTime: 0.2
+  initPoints: 5
+  resetTime: 0.5
 --- !u!4 &1922221056
 Transform:
   m_ObjectHideFlags: 0
@@ -2985,7 +3062,29 @@ MonoBehaviour:
   DeadGo: {fileID: 1492569296}
   pointsSlider: {fileID: 486574873}
   sliderText: {fileID: 970897209}
+  sliderAccuracyText: {fileID: 168198716}
+  sliderFirst: Begginner...
+  sliderSecond: Halfway!
+  sliderThird: Almost there!!!
+  sliderFourth: FEEEEVEEER!!!
+  accuracySoon: Too soon :(
+  accuracyPerfect: Perfect :D
+  accuracyLate: Too late :(
   sliderTextTime: 1
+  sliderAccuracyTextTime: 0.2
+--- !u!114 &1922221058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1922221054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab936884a9985431d8eb7730fb57b5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activePlayerInputEvent: 0
+  activePlayerBeatEvent: 0
 --- !u!1 &2014316929
 GameObject:
   m_ObjectHideFlags: 0

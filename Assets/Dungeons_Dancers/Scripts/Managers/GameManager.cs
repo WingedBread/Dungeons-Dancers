@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(RythmManager))]
 [RequireComponent(typeof(UIManager))]
 public class GameManager : MonoBehaviour {
     
     [Header("Managers")]
-    private PlayerManager playerBehavior;
+    private PlayerManager playerManager;
     private UIManager uiManager;
+    private RythmManager rythmManager;
 
     [Header("God Mode (?)")]
     [SerializeField]
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour {
 
     [Header("Choose Initial Points")]
     [SerializeField]
+    private int initPoints = 5;
     private int points = 5;
 
     [Header("Lists")]
@@ -29,16 +32,33 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
-        playerBehavior = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         uiManager = GetComponent<UIManager>();
+        rythmManager = GetComponent<RythmManager>();
         spawnList = GameObject.FindGameObjectsWithTag("Spawn");
         exitList = GameObject.FindGameObjectsWithTag("Exit");
 	}
 
     public int AddPoint()
     {
-        points++;
+        switch (rythmManager.GetAccuracy())
+        {
+            case 0:
+                points++;
+                break;
+            case 1:
+                points = points + 2;
+                break;
+            case 2:
+                points++;
+                break;
+        }
         uiManager.AddPointUI();
+        return points;
+    }
+
+    public int AddMultiplePoints(int Points){
+        points = points + Points;
         return points;
     }
 
@@ -69,7 +89,7 @@ public class GameManager : MonoBehaviour {
 
     public void Respawn()
     {
-        if(!godMode) playerBehavior.gameObject.transform.position = new Vector3(spawnList[0].transform.position.x, spawnList[0].transform.position.y + 0.85f, spawnList[0].transform.position.z);
+        if(!godMode) playerManager.gameObject.transform.position = new Vector3(spawnList[0].transform.position.x, spawnList[0].transform.position.y + 0.85f, spawnList[0].transform.position.z);
     }
 
     private IEnumerator Reset(float time)
@@ -77,9 +97,9 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(time);
 
         //Block PlayerInput(?)
-        points = 0;
+        points = initPoints;
         uiManager.ResetUI();
-        playerBehavior.gameObject.transform.position = new Vector3(spawnList[0].transform.position.x, spawnList[0].transform.position.y + 0.85f, spawnList[0].transform.position.z);
+        playerManager.gameObject.transform.position = new Vector3(spawnList[0].transform.position.x, spawnList[0].transform.position.y + 0.85f, spawnList[0].transform.position.z);
         StopCoroutine("Reset");
     }
 

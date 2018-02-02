@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
+    [Header("Managers")]
     private GameManager gameManager;
+    private RythmManager rythmManager;
 
     [Header("UI")]
     public Text pointsText;
@@ -18,13 +20,37 @@ public class UIManager : MonoBehaviour {
     public Slider pointsSlider;
     [SerializeField]
     private Text sliderText;
+    [SerializeField]
+    private Text sliderAccuracyText;
+
+    #region Editor Text
+    [Header("Slider Texts")]
+    [TextArea]
+    [SerializeField]
+    private string sliderFirst;
+    [TextArea]
+    [SerializeField]
+    private string sliderSecond, sliderThird, sliderFourth;
+    [Header("Accuracy Texts")]
+    [TextArea]
+    [SerializeField]
+    private string accuracySoon;
+    [TextArea]
+    [SerializeField]
+    private string accuracyPerfect, accuracyLate;
+    #endregion
+
     [Header("Choose Slider Text Time")]
     [SerializeField]
-    private int sliderTextTime;
+    private float sliderTextTime;
+    [Header("Choose Accuracy Text Time")]
+    [SerializeField]
+    private float sliderAccuracyTextTime;
 
 	// Use this for initialization
 	void Start () {
         gameManager = GetComponent<GameManager>();
+        rythmManager = GetComponent<RythmManager>();
         pointsSlider.value = gameManager.GetPoints();
         pointsText.text = gameManager.GetPoints().ToString();
 	}
@@ -47,22 +73,17 @@ public class UIManager : MonoBehaviour {
     }
 
     public void RemovePointUI(){
+        AccuracySliderCheck();
         pointsText.text = gameManager.GetPoints().ToString();
         pointsSlider.value = gameManager.GetPoints();
         PointsSliderChecker();
     }
 
     public void AddPointUI(){
+        AccuracySliderCheck();
         pointsText.text = gameManager.GetPoints().ToString();
         pointsSlider.value = gameManager.GetPoints();
         PointsSliderChecker();
-    }
-
-    private IEnumerator DeactivatorUI(Text text, int time)
-    {
-        yield return new WaitForSeconds(time);
-        text.gameObject.SetActive(false);
-        StopCoroutine("DeactivatorUI");
     }
 
     private void PointsSliderChecker()
@@ -70,25 +91,54 @@ public class UIManager : MonoBehaviour {
         switch (gameManager.GetPoints())
         {
             case 5:
-                sliderText.text = "Begginner...";
+                sliderText.text = sliderFirst;
                 sliderText.gameObject.SetActive(true);
                 StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
                 break;
             case 10:
-                sliderText.text = "Halfway!";
+                sliderText.text = sliderSecond;
                 sliderText.gameObject.SetActive(true);
                 StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
                 break;
             case 15:
-                sliderText.text = "Almost there!!!";
+                sliderText.text = sliderThird;
                 sliderText.gameObject.SetActive(true);
                 StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
                 break;
             case 20:
-                sliderText.text = "FEEEEVEEER!!!";
+                sliderText.text = sliderFourth;
                 sliderText.gameObject.SetActive(true);
                 StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
                 break;
         }
+    }
+
+    private void AccuracySliderCheck()
+    {
+        switch(rythmManager.GetAccuracy())
+        {
+            case 0:
+                sliderAccuracyText.text = accuracySoon;
+                sliderAccuracyText.gameObject.SetActive(true);
+                StartCoroutine(DeactivatorUI(sliderAccuracyText, sliderAccuracyTextTime));
+                break;
+            case 1:
+                sliderAccuracyText.text = accuracyPerfect;
+                sliderAccuracyText.gameObject.SetActive(true);
+                StartCoroutine(DeactivatorUI(sliderAccuracyText, sliderAccuracyTextTime));
+                break;
+            case 2:
+                sliderAccuracyText.text = accuracyLate;
+                sliderAccuracyText.gameObject.SetActive(true);
+                StartCoroutine(DeactivatorUI(sliderAccuracyText, sliderAccuracyTextTime));
+                break;
+        }
+    }
+
+    private IEnumerator DeactivatorUI(Text text, float time)
+    {
+        yield return new WaitForSeconds(time);
+        text.gameObject.SetActive(false);
+        StopCoroutine("DeactivatorUI");
     }
 }

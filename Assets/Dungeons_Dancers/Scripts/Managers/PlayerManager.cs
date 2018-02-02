@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using SonicBloom.Koreo;
 
 [RequireComponent(typeof(RaycastCollisions))]
 public class PlayerManager : MonoBehaviour
@@ -10,10 +9,11 @@ public class PlayerManager : MonoBehaviour
     [Header("Game Manager")]
     private GameManager gameManager;
     private RaycastCollisions rayCollision;
+    private RythmManager rythmManager;
+
+    private int playerAccuracy;
 
     private Material mat;
-    private bool activePlayerInputEvent;
-    private bool activePlayerBeatEvent;
 
     [Header("Choose Idle Return Time")]
     [SerializeField]
@@ -24,22 +24,14 @@ public class PlayerManager : MonoBehaviour
     private float speed = 1f;
 
     [Header("Flags")]
-    private bool inputFlag = false;
-
-    private int accuracy = 0;
-    private float duration;
-    private float segmentDuration;
-    private float segment3, segment2, segment1;
-
+    public bool inputFlag = false;
 
     // Use this for initialization
     void Start()
     {
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         rayCollision = GetComponent<RaycastCollisions>();
-
-        Koreographer.Instance.RegisterForEventsWithTime("PlayerInputEvent", PlayerInputBehaviour);
-        Koreographer.Instance.RegisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
+        rythmManager = GameObject.FindWithTag("GameManager").GetComponent<RythmManager>();
         mat = this.GetComponent<MeshRenderer>().material;
     }
 
@@ -47,51 +39,6 @@ public class PlayerManager : MonoBehaviour
     {
         PlayerInput();
     }
-
-    #region Player Behaviours
-    void PlayerInputBehaviour(KoreographyEvent kInputEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
-    {
-        CalculateTiming(sampleTime, kInputEvent);
-
-        if (sampleTime < segment1) accuracy = 0;
-        else if (sampleTime < segment2) accuracy = 1;
-        else if (sampleTime < segment3) accuracy = 2;
-
-        if (sampleTime < kInputEvent.EndSample)
-        {
-            activePlayerInputEvent = true;
-        }
-        else
-        {
-            activePlayerInputEvent = false;
-        }
-
-    }
-
-    void PlayerBeatBehaviour(KoreographyEvent kBeatEvent)
-    {
-        if (!activePlayerBeatEvent)
-        {
-            activePlayerBeatEvent = true;
-            //this.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
-        }
-        else
-        {
-            activePlayerBeatEvent = false;
-            //this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        }
-    }
-
-    void CalculateTiming(int currentTime, KoreographyEvent kCalcEvent)
-    {
-        
-        duration = kCalcEvent.StartSample - kCalcEvent.EndSample;
-        segmentDuration = duration / 3;
-        segment3 = kCalcEvent.EndSample - segmentDuration;
-        segment2 = segment3 - segmentDuration;
-        segment1 = segment2 - segmentDuration;
-    }
-    #endregion
 
     #region Player Input
     void PlayerInput()
@@ -104,7 +51,7 @@ public class PlayerManager : MonoBehaviour
                 this.transform.Translate(-speed, 0, 0);
                 inputFlag = false;
 
-                if (activePlayerInputEvent)
+                if (rythmManager.activePlayerInputEvent)
                 {
                     mat.color = Color.green;
                     gameManager.AddPoint();
@@ -127,7 +74,7 @@ public class PlayerManager : MonoBehaviour
                 this.transform.Translate(speed, 0, 0);
                 inputFlag = false;
 
-                if (activePlayerInputEvent)
+                if (rythmManager.activePlayerInputEvent)
                 {
                     mat.color = Color.green;
                     gameManager.AddPoint();
@@ -150,7 +97,7 @@ public class PlayerManager : MonoBehaviour
                 this.transform.Translate(0, 0, -speed);
                 inputFlag = false;
 
-                if (activePlayerInputEvent)
+                if (rythmManager.activePlayerInputEvent)
                 {
                     mat.color = Color.green;
                     gameManager.AddPoint();
@@ -173,7 +120,7 @@ public class PlayerManager : MonoBehaviour
                 this.transform.Translate(0, 0, speed);
                 inputFlag = false;
 
-                if (activePlayerInputEvent)
+                if (rythmManager.activePlayerInputEvent)
                 {
                     mat.color = Color.green;
                     gameManager.AddPoint();
