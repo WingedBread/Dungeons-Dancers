@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour {
     private GameManager gameManager;
     private RythmManager rythmManager;
 
+    [Header("Dungeon Timer Text")]
+    [SerializeField]
+    private Text dungeonTimerText;
+
     [Header("UI")]
     public Text pointsText;
     [SerializeField]
@@ -40,10 +44,10 @@ public class UIManager : MonoBehaviour {
     private string accuracyPerfect, accuracyLate;
     #endregion
 
-    [Header("Choose Slider Text Time")]
+    [Header("Slider Text Time")]
     [SerializeField]
     private float sliderTextTime;
-    [Header("Choose Accuracy Text Time")]
+    [Header("Accuracy Text Time")]
     [SerializeField]
     private float sliderAccuracyTextTime;
 
@@ -54,7 +58,9 @@ public class UIManager : MonoBehaviour {
         pointsSlider.value = gameManager.GetPoints();
         pointsText.text = gameManager.GetPoints().ToString();
 	}
-	
+    void Update(){
+        dungeonTimerText.text = gameManager.dungeonTimer.ToString("00");
+    }
     public void ResetUI()
     {
         pointsText.text = gameManager.GetPoints().ToString();
@@ -73,7 +79,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void RemovePointUI(){
-        AccuracySliderCheck();
+        //AccuracySliderCheck();
         pointsText.text = gameManager.GetPoints().ToString();
         pointsSlider.value = gameManager.GetPoints();
         PointsSliderChecker();

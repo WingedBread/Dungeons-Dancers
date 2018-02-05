@@ -69,11 +69,6 @@ public class RythmManager : MonoBehaviour
         if (sampleTime < segment2) accuracy = 0;
         else if (sampleTime < segment3) accuracy = 1;
         else if (sampleTime < kCalcEvent.EndSample) accuracy = 2;
-        Debug.Log("Accuracy" + accuracy);
-        //Debug.Log("Segment 1 " + segment1);
-        //Debug.Log("Segment 2 " + segment2);
-        //Debug.Log("Segment 3 " + segment3);
-        //flagAccuracy = false;
     }
 
     public int GetAccuracy()

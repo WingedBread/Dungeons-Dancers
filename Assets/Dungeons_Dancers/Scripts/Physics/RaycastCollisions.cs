@@ -18,7 +18,7 @@ public class RaycastCollisions : MonoBehaviour
 
         if (Physics.Raycast(ray, out rayHit, rayLenght))
         {
-            Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
+            //Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
             if (rayHit.collider.gameObject.tag == "Obstacle") return true;
 
         }
@@ -32,7 +32,7 @@ public class RaycastCollisions : MonoBehaviour
 
         if (Physics.Raycast(ray, out rayHit, rayLenght))
         {
-            Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
+            //Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
             if (rayHit.collider.gameObject.tag == "Obstacle") return true;
         }
         return false;
@@ -45,7 +45,7 @@ public class RaycastCollisions : MonoBehaviour
 
         if (Physics.Raycast(ray, out rayHit, rayLenght))
         {
-            Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
+            //Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
             if (rayHit.collider.gameObject.tag == "Obstacle") return true;
         }
         return false;
@@ -58,7 +58,7 @@ public class RaycastCollisions : MonoBehaviour
 
         if (Physics.Raycast(ray, out rayHit, rayLenght))
         {
-            Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
+            //Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
             if (rayHit.collider.gameObject.tag == "Obstacle") return true;
         }
         return false;
