@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    [Header("Managers")]
+    [Header("Game Manager")]
     private GameManager gameManager;
-    private RythmManager rythmManager;
 
     [Header("Dungeon Timer Text")]
     [SerializeField]
@@ -54,12 +53,11 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gameManager = GetComponent<GameManager>();
-        rythmManager = GetComponent<RythmManager>();
         pointsSlider.value = gameManager.GetPoints();
         pointsText.text = gameManager.GetPoints().ToString();
 	}
     void Update(){
-        dungeonTimerText.text = gameManager.dungeonTimer.ToString("00");
+        dungeonTimerText.text = gameManager.GetDungeonTime().ToString("00");
     }
     public void ResetUI()
     {
@@ -121,7 +119,7 @@ public class UIManager : MonoBehaviour {
 
     private void AccuracySliderCheck()
     {
-        switch(rythmManager.GetAccuracy())
+        switch(gameManager.GetRythmAccuracy())
         {
             case 0:
                 sliderAccuracyText.text = accuracySoon;

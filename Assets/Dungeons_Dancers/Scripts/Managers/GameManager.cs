@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(LevelManager))]
+[RequireComponent(typeof(InitializeLevel))]
+[RequireComponent (typeof(AudioManager))]
 [RequireComponent(typeof(RythmManager))]
 [RequireComponent(typeof(UIManager))]
-public class GameManager : MonoBehaviour {
-    
+public class GameManager : MonoBehaviour
+{
+
     [Header("Managers")]
     private PlayerManager playerManager;
     private UIManager uiManager;
     private RythmManager rythmManager;
+    private InitializeLevel initLevel;
+    private AudioManager auManager;
 
     [Header("God Mode (?)")]
     [SerializeField]
@@ -20,8 +24,7 @@ public class GameManager : MonoBehaviour {
     [Header("Time Section")]
     [Header("Dungeon Timer in Seconds")]
     private float initdungeonTimer = 60f;
-    [HideInInspector]
-    public float dungeonTimer;
+    private float dungeonTimer;
     [Header("Player Reset Time")]
     [SerializeField]
     private float resetTime = 1f;
@@ -57,26 +60,35 @@ public class GameManager : MonoBehaviour {
 
     private Vector3 playerInitPosition;
 
-	// Use this for initialization
-	void Start () {
-        points = initPoints;
-        feverPoints = initFeverPoints;
+    // Use this for initialization
+    void Start()
+    {
         DontDestroyOnLoad(this.gameObject);
         playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
-        playerInitPosition = playerManager.gameObject.transform.transform.position;
+        initLevel = GetComponent<InitializeLevel>();
         uiManager = GetComponent<UIManager>();
         rythmManager = GetComponent<RythmManager>();
+        auManager = GetComponent<AudioManager>();
+        playerInitPosition = playerManager.gameObject.transform.transform.position;
+        points = initPoints;
+        feverPoints = initFeverPoints;
         spawnList = GameObject.FindGameObjectsWithTag("Spawn");
         exitList = GameObject.FindGameObjectsWithTag("Exit");
-	}
+    }
 
-    void Update(){
-        dungeonTimer -= Time.deltaTime;
-        if (dungeonTimer <= 0)
+    void Update()
+    {
+        if (initLevel.GameStart())
         {
-            Dead();
-            dungeonTimer = initdungeonTimer;
+            if (playerManager.GetBlock() == true) playerManager.SetBlock(false);
+            dungeonTimer -= Time.deltaTime;
+            if (dungeonTimer <= 0)
+            {
+                Dead();
+                dungeonTimer = initdungeonTimer;
+            }
         }
+        else playerManager.SetBlock(true);
     }
 
     public int AddPoint()
@@ -101,6 +113,7 @@ public class GameManager : MonoBehaviour {
             }
             if (points >= maxPoints) points = maxPoints;
             uiManager.AddPointUI();
+            auManager.PointsSnapshotCheck();
         }
         return points;
     }
@@ -116,13 +129,15 @@ public class GameManager : MonoBehaviour {
         {
             points = points - removePoints;
             uiManager.RemovePointUI();
+            auManager.PointsSnapshotCheck();
             if (points <= 0) Dead();
         }
         return points;
     }
 
-    private void FeverState(){
-        if(feverPoints<= 0)
+    private void FeverState()
+    {
+        if (feverPoints <= 0)
         {
             points--;
             feverPoints = initFeverPoints;
@@ -139,7 +154,7 @@ public class GameManager : MonoBehaviour {
     {
         if (!godMode)
         {
-            playerManager.setBlock(true);
+            playerManager.SetBlock(true);
             uiManager.DeadUI();
             StartCoroutine(Reset(resetTime));
         }
@@ -149,27 +164,55 @@ public class GameManager : MonoBehaviour {
     {
         if (!godMode)
         {
-            playerManager.setBlock(true);
+            playerManager.SetBlock(true);
             StartCoroutine(Reset(resetTime));
         }
     }
 
     private IEnumerator Reset(float time)
     {
-        
+
         yield return new WaitForSeconds(time);
         //Block PlayerInput(?)
         points = initPoints;
         feverPoints = 0;
         uiManager.ResetUI();
         playerManager.gameObject.transform.transform.position = playerInitPosition;
-        playerManager.setBlock(false);
+        playerManager.SetBlock(false);
         StopCoroutine("Reset");
     }
 
+    #region Setters&Getters
     public int GetPoints()
     {
         return points;
     }
+
+    public bool GetPlayerBlock()
+    {
+        return playerManager.GetBlock();
+    }
+
+    public bool GetRythmActiveInput()
+    {
+        return rythmManager.activePlayerInputEvent;
+    }
+
+    public int GetRythmAccuracy(){
+        return rythmManager.GetAccuracy();
+    }
+
+    public bool GetGameStatus(){
+        return initLevel.GameStart();
+    }
+
+    public bool GetPlayerInputFlag(){
+        return playerManager.inputFlag;
+    }
+
+    public float GetDungeonTime(){
+        return dungeonTimer;  
+    }
+    #endregion
 
 }

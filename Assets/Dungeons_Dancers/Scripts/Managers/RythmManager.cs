@@ -5,7 +5,8 @@ using SonicBloom.Koreo;
 
 public class RythmManager : MonoBehaviour
 {
-    private PlayerManager playerManager;
+    [Header("Game Manager")]
+    private GameManager gameManager;
 
     [Header("Accuracy Calculation")]
     private float duration;
@@ -22,14 +23,14 @@ public class RythmManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+        gameManager = GetComponent<GameManager>();
         Koreographer.Instance.RegisterForEventsWithTime("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.RegisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
     }
 
     void PlayerInputBehaviour(KoreographyEvent kInputEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
     {
-        if(playerManager.inputFlag) CalculateTiming(sampleTime, kInputEvent);
+        if(gameManager.GetPlayerInputFlag()) CalculateTiming(sampleTime, kInputEvent);
 
         if (sampleTime < kInputEvent.EndSample)
         {

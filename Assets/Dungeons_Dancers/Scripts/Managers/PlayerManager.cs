@@ -8,10 +8,10 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("Game Manager")]
     private GameManager gameManager;
-    private RaycastCollisions rayCollision;
-    private RythmManager rythmManager;
 
-    private int playerAccuracy;
+    [Header("Raycast Collisons")]
+    private RaycastCollisions rayCollision;
+
     private Material mat;
 
     [Header("Idle Return Time")]
@@ -36,118 +36,113 @@ public class PlayerManager : MonoBehaviour
         playerChild = this.transform.GetChild(0).transform;
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         rayCollision = GetComponent<RaycastCollisions>();
-        rythmManager = GameObject.FindWithTag("GameManager").GetComponent<RythmManager>();
         mat = playerChild.GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
     }
 
     void Update()
     {
-        PlayerInput();
+        if(!blockPlayer) PlayerInput();
     }
 
     #region Player Input
     void PlayerInput()
     {
-        if (!blockPlayer)
+        //LEFT
+        if (Equals(Input.GetAxisRaw("Horizontal"), -1f))
         {
-            //LEFT
-            if (Equals(Input.GetAxisRaw("Horizontal"), -1f))
+            if (!rayCollision.LeftCollision() && inputFlag)
             {
-                if (!rayCollision.LeftCollision() && inputFlag)
-                {
-                    this.transform.Translate(-speed, 0, 0);
-                    playerChild.rotation = Quaternion.Euler(0, -90, -65);
-                    inputFlag = false;
+                this.transform.Translate(-speed, 0, 0);
+                playerChild.rotation = Quaternion.Euler(0, -90, -65);
+                inputFlag = false;
 
-                    if (rythmManager.activePlayerInputEvent)
-                    {
-                        mat.color = Color.green;
-                        gameManager.AddPoint();
-                        StartCoroutine(ReturnIdle(timeIdle));
-                    }
-                    else
-                    {
-                        mat.color = Color.red;
-                        gameManager.RemovePoint();
-                        StartCoroutine(ReturnIdle(timeIdle));
-                    }
+                if (gameManager.GetRythmActiveInput())
+                {
+                    mat.color = Color.green;
+                    gameManager.AddPoint();
+                    StartCoroutine(ReturnIdle(timeIdle));
+                }
+                else
+                {
+                    mat.color = Color.red;
+                    gameManager.RemovePoint();
+                    StartCoroutine(ReturnIdle(timeIdle));
                 }
             }
-
-            //RIGHT
-            else if (Equals(Input.GetAxisRaw("Horizontal"), 1f))
-            {
-                if (!rayCollision.RightCollision() && inputFlag)
-                {
-                    this.transform.Translate(speed, 0, 0);
-                    playerChild.rotation = Quaternion.Euler(0, 90, 65);
-                    inputFlag = false;
-
-                    if (rythmManager.activePlayerInputEvent)
-                    {
-                        mat.color = Color.green;
-                        gameManager.AddPoint();
-                        StartCoroutine(ReturnIdle(timeIdle));
-                    }
-                    else
-                    {
-                        mat.color = Color.red;
-                        gameManager.RemovePoint();
-                        StartCoroutine(ReturnIdle(timeIdle));
-                    }
-                }
-            }
-
-            //DOWN
-            else if (Equals(Input.GetAxisRaw("Vertical"), -1f))
-            {
-                if (!rayCollision.DownCollision() && inputFlag)
-                {
-                    this.transform.Translate(0, 0, -speed);
-                    playerChild.rotation = Quaternion.Euler(-65, 180, 0);
-                    inputFlag = false;
-
-                    if (rythmManager.activePlayerInputEvent)
-                    {
-                        mat.color = Color.green;
-                        gameManager.AddPoint();
-                        StartCoroutine(ReturnIdle(timeIdle));
-                    }
-                    else
-                    {
-                        mat.color = Color.red;
-                        gameManager.RemovePoint();
-                        StartCoroutine(ReturnIdle(timeIdle));
-                    }
-                }
-            }
-
-            //UP
-            else if (Equals(Input.GetAxisRaw("Vertical"), 1f))
-            {
-                if (!rayCollision.UpCollision() && inputFlag)
-                {
-                    this.transform.Translate(0, 0, speed);
-                    playerChild.rotation = Quaternion.Euler(65, 0, 0);
-                    inputFlag = false;
-
-                    if (rythmManager.activePlayerInputEvent)
-                    {
-                        mat.color = Color.green;
-                        gameManager.AddPoint();
-                        StartCoroutine(ReturnIdle(timeIdle));
-                    }
-                    else
-                    {
-                        mat.color = Color.red;
-                        gameManager.RemovePoint();
-                        StartCoroutine(ReturnIdle(timeIdle));
-                    }
-                }
-            }
-            else inputFlag = true;
         }
 
+        //RIGHT
+        else if (Equals(Input.GetAxisRaw("Horizontal"), 1f))
+        {
+            if (!rayCollision.RightCollision() && inputFlag)
+            {
+                this.transform.Translate(speed, 0, 0);
+                playerChild.rotation = Quaternion.Euler(0, 90, 65);
+                inputFlag = false;
+
+                if (gameManager.GetRythmActiveInput())
+                {
+                    mat.color = Color.green;
+                    gameManager.AddPoint();
+                    StartCoroutine(ReturnIdle(timeIdle));
+                }
+                else
+                {
+                    mat.color = Color.red;
+                    gameManager.RemovePoint();
+                    StartCoroutine(ReturnIdle(timeIdle));
+                }
+            }
+        }
+
+        //DOWN
+        else if (Equals(Input.GetAxisRaw("Vertical"), -1f))
+        {
+            if (!rayCollision.DownCollision() && inputFlag)
+            {
+                this.transform.Translate(0, 0, -speed);
+                playerChild.rotation = Quaternion.Euler(-65, 180, 0);
+                inputFlag = false;
+
+                if (gameManager.GetRythmActiveInput())
+                {
+                    mat.color = Color.green;
+                    gameManager.AddPoint();
+                    StartCoroutine(ReturnIdle(timeIdle));
+                }
+                else
+                {
+                    mat.color = Color.red;
+                    gameManager.RemovePoint();
+                    StartCoroutine(ReturnIdle(timeIdle));
+                }
+            }
+        }
+
+        //UP
+        else if (Equals(Input.GetAxisRaw("Vertical"), 1f))
+        {
+            if (!rayCollision.UpCollision() && inputFlag)
+            {
+                this.transform.Translate(0, 0, speed);
+                playerChild.rotation = Quaternion.Euler(65, 0, 0);
+                inputFlag = false;
+
+                if (gameManager.GetRythmActiveInput())
+                {
+                    mat.color = Color.green;
+                    gameManager.AddPoint();
+                    StartCoroutine(ReturnIdle(timeIdle));
+                }
+                else
+                {
+                    mat.color = Color.red;
+                    gameManager.RemovePoint();
+                    StartCoroutine(ReturnIdle(timeIdle));
+                }
+            }
+        }
+        else inputFlag = true;
     }
     #endregion
 
@@ -160,21 +155,20 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Trap")
-        {
-            gameManager.Respawn();
-            Debug.Log("hola");
-        }
-
-        else if (col.gameObject.tag == "Exit")
+        if (col.gameObject.tag == "Exit")
         {
             gameManager.Win();
 
         }
     }
 
-    public void setBlock(bool Block)
+    public void SetBlock(bool Block)
     {
         blockPlayer = Block;
+    }
+
+    public bool GetBlock()
+    {
+        return blockPlayer;
     }
 }
