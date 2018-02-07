@@ -71,9 +71,11 @@ public class UIManager : MonoBehaviour {
     void Update(){
         dungeonTimerText.text = gameManager.GetDungeonTime().ToString("00");
     }
+
     public void ResetUI()
     {
         pointsText.text = gameManager.GetPoints().ToString();
+        pointsSlider.value = gameManager.GetPoints();
         WinGo.SetActive(false);
         DeadGo.SetActive(false);
     }

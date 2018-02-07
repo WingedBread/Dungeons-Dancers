@@ -49,7 +49,7 @@ public class TrapBehaviour : MonoBehaviour {
             {
                 activeTrapEvent = true;
                 mat.color = Color.white;
-                this.gameObject.GetComponent<Collider>().enabled = activeTrapEvent;
+                this.gameObject.GetComponent<Collider>().enabled = true;
                 this.transform.position = new Vector3(this.transform.position.x, trapHeight, this.transform.position.z);
                 StartCoroutine(ReturnIdle(timeIdle));
             }
@@ -57,7 +57,7 @@ public class TrapBehaviour : MonoBehaviour {
             {
                 activeTrapEvent = false;
                 mat.color = Color.black;
-                this.gameObject.GetComponent<Collider>().enabled = activeTrapEvent;
+                this.gameObject.GetComponent<Collider>().enabled = false;
                 this.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
 
             }
@@ -68,7 +68,7 @@ public class TrapBehaviour : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            gameManager.Dead();
+            gameManager.Respawn();
         }
     }
 
@@ -76,9 +76,9 @@ public class TrapBehaviour : MonoBehaviour {
     private IEnumerator ReturnIdle(float time)
     {
         yield return new WaitForSeconds(time);
+        this.gameObject.GetComponent<Collider>().enabled = false;
         //Debug.Log("idle trap!");
         mat.color = Color.black;
-        this.gameObject.tag = "Untagged";
         this.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
 
         StopCoroutine("ReturnIdle");

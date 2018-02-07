@@ -179,12 +179,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Respawn()
+    {
+        if (!godMode) playerManager.SetStartDirection(1);
+    }
+
     private IEnumerator Reset(float time)
     {
 
         yield return new WaitForSeconds(time);
         points = initPoints;
-        feverPoints = 0;
+        dungeonTimer = initdungeonTimer;
+        feverPoints = initFeverPoints;
         uiManager.ResetUI();
         playerManager.SetStartDirection(1);
         StartCoroutine(IntroCoroutine());
