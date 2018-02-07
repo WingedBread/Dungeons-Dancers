@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(InitializeLevel))]
 [RequireComponent (typeof(AudioManager))]
 [RequireComponent(typeof(RythmManager))]
 [RequireComponent(typeof(UIManager))]
@@ -14,12 +13,16 @@ public class GameManager : MonoBehaviour
     private PlayerManager playerManager;
     private UIManager uiManager;
     private RythmManager rythmManager;
-    private InitializeLevel initLevel;
     private AudioManager auManager;
 
     [Header("God Mode (?)")]
     [SerializeField]
     private bool godMode = false;
+
+    private bool gameStart = false;
+    [Header("Intro Time")]
+    [SerializeField]
+    private float introTime = 4f;
 
     [Header("Time Section")]
     [Header("Dungeon Timer in Seconds")]
@@ -58,27 +61,25 @@ public class GameManager : MonoBehaviour
     private GameObject[] spawnList;
     private GameObject[] exitList;
 
-    private Vector3 playerInitPosition;
-
     // Use this for initialization
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
-        initLevel = GetComponent<InitializeLevel>();
         uiManager = GetComponent<UIManager>();
         rythmManager = GetComponent<RythmManager>();
         auManager = GetComponent<AudioManager>();
-        playerInitPosition = playerManager.gameObject.transform.transform.position;
         points = initPoints;
+        dungeonTimer = initdungeonTimer;
         feverPoints = initFeverPoints;
         spawnList = GameObject.FindGameObjectsWithTag("Spawn");
         exitList = GameObject.FindGameObjectsWithTag("Exit");
+        StartCoroutine(IntroCoroutine());
     }
 
     void Update()
     {
-        if (initLevel.GameStart())
+        if (gameStart)
         {
             if (playerManager.GetBlock() == true) playerManager.SetBlock(false);
             dungeonTimer -= Time.deltaTime;
@@ -89,6 +90,21 @@ public class GameManager : MonoBehaviour
             }
         }
         else playerManager.SetBlock(true);
+    }
+
+    private IEnumerator IntroCoroutine()
+    {
+        yield return new WaitForSeconds(introTime / 4);
+        uiManager.IntroUICheck(3);
+        yield return new WaitForSeconds(introTime / 4);
+        uiManager.IntroUICheck(2);
+        yield return new WaitForSeconds(introTime / 4);
+        uiManager.IntroUICheck(1);
+        yield return new WaitForSeconds(introTime / 4);
+        uiManager.IntroUICheck(0);
+        gameStart = true;
+        rythmManager.SetRythm(true);
+        StopCoroutine("IntroCoroutine");
     }
 
     public int AddPoint()
@@ -146,6 +162,8 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        gameStart = false;
+        rythmManager.SetRythm(false);
         uiManager.WinUI();
         StartCoroutine(Reset(resetTime));
     }
@@ -154,17 +172,9 @@ public class GameManager : MonoBehaviour
     {
         if (!godMode)
         {
-            playerManager.SetBlock(true);
+            gameStart = false;
+            rythmManager.SetRythm(false);
             uiManager.DeadUI();
-            StartCoroutine(Reset(resetTime));
-        }
-    }
-
-    public void Respawn()
-    {
-        if (!godMode)
-        {
-            playerManager.SetBlock(true);
             StartCoroutine(Reset(resetTime));
         }
     }
@@ -173,16 +183,15 @@ public class GameManager : MonoBehaviour
     {
 
         yield return new WaitForSeconds(time);
-        //Block PlayerInput(?)
         points = initPoints;
         feverPoints = 0;
         uiManager.ResetUI();
-        playerManager.gameObject.transform.transform.position = playerInitPosition;
-        playerManager.SetBlock(false);
+        playerManager.SetStartDirection(1);
+        StartCoroutine(IntroCoroutine());
         StopCoroutine("Reset");
     }
 
-    #region Setters&Getters
+    #region Getters & Setters
     public int GetPoints()
     {
         return points;
@@ -203,7 +212,7 @@ public class GameManager : MonoBehaviour
     }
 
     public bool GetGameStatus(){
-        return initLevel.GameStart();
+        return gameStart;
     }
 
     public bool GetPlayerInputFlag(){
@@ -213,6 +222,9 @@ public class GameManager : MonoBehaviour
     public float GetDungeonTime(){
         return dungeonTimer;  
     }
-    #endregion
 
+    public void SetPlayerBlock(bool block){
+        playerManager.SetBlock(block);
+    }
+    #endregion
 }

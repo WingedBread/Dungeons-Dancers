@@ -8,12 +8,17 @@ public class UIManager : MonoBehaviour {
     [Header("Game Manager")]
     private GameManager gameManager;
 
-    [Header("Dungeon Timer Text")]
+    [Header("Dungeon Timer")]
     [SerializeField]
     private Text dungeonTimerText;
+    [Header("Intro")]
+    [SerializeField]
+    private Text introText;
 
-    [Header("UI")]
+    [Header("Points")]
     public Text pointsText;
+
+    [Header("Win/Dead")]
     [SerializeField]
     private GameObject WinGo;
     [SerializeField]
@@ -27,6 +32,10 @@ public class UIManager : MonoBehaviour {
     private Text sliderAccuracyText;
 
     #region Editor Text
+    [Header("Intro Text")]
+    [TextArea]
+    [SerializeField]
+    private string finalIntro;
     [Header("Slider Texts")]
     [TextArea]
     [SerializeField]
@@ -43,6 +52,9 @@ public class UIManager : MonoBehaviour {
     private string accuracyPerfect, accuracyLate;
     #endregion
 
+    [Header("Intro Text Time")]
+    [SerializeField]
+    private float introTextTime;
     [Header("Slider Text Time")]
     [SerializeField]
     private float sliderTextTime;
@@ -77,7 +89,6 @@ public class UIManager : MonoBehaviour {
     }
 
     public void RemovePointUI(){
-        //AccuracySliderCheck();
         pointsText.text = gameManager.GetPoints().ToString();
         pointsSlider.value = gameManager.GetPoints();
         PointsSliderChecker();
@@ -136,6 +147,17 @@ public class UIManager : MonoBehaviour {
                 sliderAccuracyText.gameObject.SetActive(true);
                 StartCoroutine(DeactivatorUI(sliderAccuracyText, sliderAccuracyTextTime));
                 break;
+        }
+    }
+
+    public void IntroUICheck(int intro)
+    {
+        introText.gameObject.SetActive(true);
+        if (intro != 0) introText.text = intro.ToString();
+        else 
+        { 
+            introText.text = finalIntro;
+            StartCoroutine(DeactivatorUI(introText, introTextTime));
         }
     }
 

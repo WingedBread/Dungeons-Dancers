@@ -28,12 +28,16 @@ public class PlayerManager : MonoBehaviour
 
     private Transform playerChild;
 
+    [HideInInspector]
+    public Vector3 playerInitPos;
+
     private bool blockPlayer = false;
 
     // Use this for initialization
     void Start()
     {
         playerChild = this.transform.GetChild(0).transform;
+        playerInitPos = this.transform.position;
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         rayCollision = GetComponent<RaycastCollisions>();
         mat = playerChild.GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
@@ -41,11 +45,12 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if(!blockPlayer) PlayerInput();
+        if (!blockPlayer) PlayerMoveInput();
+        else PlayerResetInput();
     }
 
     #region Player Input
-    void PlayerInput()
+    void PlayerMoveInput()
     {
         //LEFT
         if (Equals(Input.GetAxisRaw("Horizontal"), -1f))
@@ -144,6 +149,14 @@ public class PlayerManager : MonoBehaviour
         }
         else inputFlag = true;
     }
+
+    void PlayerResetInput()
+    {
+        if(Input.GetButtonDown("Jump"))
+        {
+            
+        }
+    }
     #endregion
 
     private IEnumerator ReturnIdle(float time)
@@ -170,5 +183,24 @@ public class PlayerManager : MonoBehaviour
     public bool GetBlock()
     {
         return blockPlayer;
+    }
+
+    public void SetStartDirection(int direction){
+        switch(direction)
+        {
+            case 0: //LEFT
+                playerChild.rotation = Quaternion.Euler(0, -90, -65);
+                break;
+            case 1: //RIGHT
+                playerChild.rotation = Quaternion.Euler(0, 90, 65);
+                break;
+            case 2: //DOWN
+                playerChild.rotation = Quaternion.Euler(-65, 180, 0);
+                break;
+            case 3: //UP
+                playerChild.rotation = Quaternion.Euler(65, 0, 0);
+                break;
+        }
+        this.transform.position = playerInitPos;
     }
 }

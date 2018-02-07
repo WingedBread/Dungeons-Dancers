@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SonicBloom.Koreo;
+using SonicBloom.Koreo.Players;
 
 public class RythmManager : MonoBehaviour
 {
@@ -19,13 +20,30 @@ public class RythmManager : MonoBehaviour
     [HideInInspector]
     public bool activePlayerBeatEvent;
 
+    private MultiMusicPlayer multiMusic;
+
     private bool flagAccuracy;
     // Use this for initialization
     void Start()
     {
         gameManager = GetComponent<GameManager>();
+        multiMusic = GameObject.FindWithTag("MusicPlayer").GetComponent<MultiMusicPlayer>();
+
+    }
+
+    private void StartRythm()
+    {
+        multiMusic.Play();
         Koreographer.Instance.RegisterForEventsWithTime("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.RegisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
+    }
+
+    private void StopRythm()
+    {
+      
+        multiMusic.Stop();
+        Koreographer.Instance.UnregisterForAllEvents("PlayerInputEvent");
+        Koreographer.Instance.UnregisterForAllEvents("PlayerBeatEvent");
     }
 
     void PlayerInputBehaviour(KoreographyEvent kInputEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
@@ -75,5 +93,11 @@ public class RythmManager : MonoBehaviour
     public int GetAccuracy()
     {
         return accuracy;
+    }
+
+    public void SetRythm(bool rythm)
+    {
+        if (rythm) StartRythm();
+        else StopRythm();
     }
 }

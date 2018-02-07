@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 1618174}
   m_Layer: 0
   m_Name: Music Player
-  m_TagString: Untagged
+  m_TagString: MusicPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,10 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: -1913711003, guid: aa81bbec85a3f423193272a7c6154986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncPlayDelay: 1
+  syncPlayDelay: 0
   pitch: 1
   loop: 1
-  autoPlayOnAwake: 1
+  autoPlayOnAwake: 0
   musicLayers:
   - name: 
     koreography: {fileID: 11400000, guid: 6fb34d972b82e468d99e48d2c34e08f7, type: 2}
@@ -162,7 +162,7 @@ MonoBehaviour:
     koreography: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 6b8fb8ce3c9f94ccfa4f021736164ff8, type: 3}
     audioSource: {fileID: 384227069}
-  targetKoreographer: {fileID: 0}
+  targetKoreographer: {fileID: 1618175}
 --- !u!114 &1618175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ Transform:
   - {fileID: 1616283320}
   - {fileID: 384227070}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &9933458
 Prefab:
@@ -882,7 +882,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
 --- !u!1001 &239408605
 Prefab:
@@ -961,8 +961,6 @@ GameObject:
   m_Component:
   - component: {fileID: 382200973}
   - component: {fileID: 382200972}
-  - component: {fileID: 382200971}
-  - component: {fileID: 382200970}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -970,20 +968,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!124 &382200970
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 382200969}
-  m_Enabled: 1
---- !u!92 &382200971
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 382200969}
-  m_Enabled: 1
 --- !u!20 &382200972
 Camera:
   m_ObjectHideFlags: 0
@@ -1921,7 +1905,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &763652870
 Prefab:
@@ -2171,7 +2155,7 @@ GameObject:
   - component: {fileID: 889832187}
   - component: {fileID: 889832186}
   m_Layer: 5
-  m_Name: 321Text
+  m_Name: IntroText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2207,7 +2191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.753, g: 0, b: 0.6000004, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2297,7 +2281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 44.482002, y: 0, z: 0}
 --- !u!1001 &924025890
 Prefab:
@@ -2385,7 +2369,7 @@ Transform:
   m_Children:
   - {fileID: 2055590928}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &933711271
 CapsuleCollider:
@@ -2429,6 +2413,7 @@ MonoBehaviour:
   timeIdle: 0.25
   speed: 1
   inputFlag: 0
+  playerInitPos: {x: 0, y: 0, z: 0}
 --- !u!114 &933711274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3555,7 +3540,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1322004561}
   - component: {fileID: 1322004560}
-  - component: {fileID: 1322004559}
   - component: {fileID: 1322004558}
   - component: {fileID: 1322004557}
   m_Layer: 0
@@ -3573,13 +3557,6 @@ AudioListener:
   m_GameObject: {fileID: 1322004556}
   m_Enabled: 1
 --- !u!124 &1322004558
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1322004556}
-  m_Enabled: 1
---- !u!92 &1322004559
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -3634,7 +3611,7 @@ Transform:
   m_Children:
   - {fileID: 382200973}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 73.27, y: 0, z: 0}
 --- !u!1 &1335296798
 GameObject:
@@ -4678,7 +4655,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1922221056}
-  - component: {fileID: 1922221059}
   - component: {fileID: 1922221055}
   - component: {fileID: 1922221060}
   - component: {fileID: 1922221058}
@@ -4702,6 +4678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godMode: 0
+  introTime: 4
   resetTime: 0.5
   initPoints: 5
   maxPoints: 20
@@ -4735,12 +4712,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeonTimerText: {fileID: 1006359848}
+  introText: {fileID: 889832186}
   pointsText: {fileID: 1399828096}
   WinGo: {fileID: 481439467}
   DeadGo: {fileID: 1492569296}
   pointsSlider: {fileID: 486574873}
   sliderText: {fileID: 970897209}
   sliderAccuracyText: {fileID: 168198716}
+  finalIntro: GO!!
   sliderFirst: Begginner...
   sliderSecond: Halfway!
   sliderThird: Almost there!!!
@@ -4748,6 +4727,7 @@ MonoBehaviour:
   accuracySoon: Too soon :(
   accuracyPerfect: Perfect :D
   accuracyLate: Too late :(
+  introTextTime: 0.2
   sliderTextTime: 1
   sliderAccuracyTextTime: 0.2
 --- !u!114 &1922221058
@@ -4763,19 +4743,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activePlayerInputEvent: 0
   activePlayerBeatEvent: 0
---- !u!114 &1922221059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1922221054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e1ced72fcac47e19fbba4e4f222a71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameStart: 0
-  introTime: 4
 --- !u!114 &1922221060
 MonoBehaviour:
   m_ObjectHideFlags: 0

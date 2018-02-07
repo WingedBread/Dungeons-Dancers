@@ -68,7 +68,7 @@ public class TrapBehaviour : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            gameManager.Respawn();
+            gameManager.Dead();
         }
     }
 
