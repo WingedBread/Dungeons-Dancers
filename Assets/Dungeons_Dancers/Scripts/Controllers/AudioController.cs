@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour {
+public class AudioController : MonoBehaviour {
     
     [Header("Game Manager")]
     private GameManager gameManager;

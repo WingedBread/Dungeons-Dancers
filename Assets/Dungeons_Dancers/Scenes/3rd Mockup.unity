@@ -2381,8 +2381,8 @@ GameObject:
   m_Component:
   - component: {fileID: 933711270}
   - component: {fileID: 933711271}
-  - component: {fileID: 933711274}
   - component: {fileID: 933711273}
+  - component: {fileID: 933711274}
   - component: {fileID: 933711272}
   m_Layer: 8
   m_Name: PlayerFather
@@ -2446,7 +2446,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeIdle: 0.25
   speed: 1
-  inputFlag: 0
   playerInitPos: {x: 0, y: 0, z: 0}
 --- !u!114 &933711274
 MonoBehaviour:
@@ -4711,7 +4710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88cbf28bd2db4619af9c2aa0a7e381e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godMode: 1
+  godMode: 0
   introTime: 4
   resetTime: 0.5
   initPoints: 5
@@ -4728,7 +4727,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1922221054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1950645, y: 6.5939064, z: -1.2143946}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4775,8 +4774,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab936884a9985431d8eb7730fb57b5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activePlayerInputEvent: 0
-  activePlayerBeatEvent: 0
 --- !u!114 &1922221060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5278,6 +5275,10 @@ Prefab:
     - target: {fileID: 400050, guid: 272ec112bddec644a8af6599107e74f7, type: 2}
       propertyPath: m_LocalScale.y
       value: 1.7104189
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 272ec112bddec644a8af6599107e74f7, type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 272ec112bddec644a8af6599107e74f7, type: 2}

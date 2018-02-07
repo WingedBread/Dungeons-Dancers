@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SonicBloom.Koreo;
 
-public class TrapBehaviour : MonoBehaviour {
+public class StaticTrapBehaviour : MonoBehaviour {
     
     [Header("Game Manager")]
     private GameManager gameManager;

@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent (typeof(AudioManager))]
-[RequireComponent(typeof(RythmManager))]
-[RequireComponent(typeof(UIManager))]
+[RequireComponent (typeof(AudioController))]
+[RequireComponent(typeof(RythmController))]
+[RequireComponent(typeof(UIController))]
 public class GameManager : MonoBehaviour
 {
 
     [Header("Managers")]
     private PlayerManager playerManager;
-    private UIManager uiManager;
-    private RythmManager rythmManager;
-    private AudioManager auManager;
+    private UIController uiManager;
+    private RythmController rythmManager;
+    private AudioController auManager;
 
     [Header("God Mode (?)")]
     [SerializeField]
@@ -66,9 +66,9 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
-        uiManager = GetComponent<UIManager>();
-        rythmManager = GetComponent<RythmManager>();
-        auManager = GetComponent<AudioManager>();
+        uiManager = GetComponent<UIController>();
+        rythmManager = GetComponent<RythmController>();
+        auManager = GetComponent<AudioController>();
         points = initPoints;
         dungeonTimer = initdungeonTimer;
         feverPoints = initFeverPoints;
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         StopCoroutine("IntroCoroutine");
     }
 
-    public int AddPoint()
+    public void AddPoint()
     {
         if (points >= maxPoints)
         {
@@ -131,10 +131,9 @@ public class GameManager : MonoBehaviour
             uiManager.AddPointUI();
             auManager.PointsSnapshotCheck();
         }
-        return points;
     }
 
-    public int RemovePoint()
+    public void RemovePoint()
     {
         if (points >= maxPoints)
         {
@@ -148,7 +147,6 @@ public class GameManager : MonoBehaviour
             auManager.PointsSnapshotCheck();
             if (points <= 0) Dead();
         }
-        return points;
     }
 
     private void FeverState()
@@ -210,7 +208,11 @@ public class GameManager : MonoBehaviour
 
     public bool GetRythmActiveInput()
     {
-        return rythmManager.activePlayerInputEvent;
+        return rythmManager.ActivePlayerInputEvent();
+    }
+    public bool GetRythmActiveBeat()
+    {
+        return rythmManager.ActivePlayerBeatEvent();
     }
 
     public int GetRythmAccuracy(){
@@ -222,7 +224,7 @@ public class GameManager : MonoBehaviour
     }
 
     public bool GetPlayerInputFlag(){
-        return playerManager.inputFlag;
+        return playerManager.GetInputFlag();
     }
 
     public float GetDungeonTime(){

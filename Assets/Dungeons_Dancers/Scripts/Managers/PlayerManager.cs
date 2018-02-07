@@ -14,6 +14,9 @@ public class PlayerManager : MonoBehaviour
 
     private Material mat;
 
+    [Header("Animator")]
+    private Animator animator;
+
     [Header("Idle Return Time")]
     [SerializeField]
     private float timeIdle = 0.25f;
@@ -23,20 +26,21 @@ public class PlayerManager : MonoBehaviour
     private float speed = 1f;
 
     [Header("Flags")]
-    [HideInInspector]
-    public bool inputFlag = false;
+    private bool inputFlag = false;
+    private bool beatFlag = false;
 
     private Transform playerChild;
 
     [HideInInspector]
     public Vector3 playerInitPos;
 
-    private bool blockPlayer = false;
+    private bool blockPlayer = true;
 
     // Use this for initialization
     void Start()
     {
         playerChild = this.transform.GetChild(0).transform;
+        animator = this.transform.GetChild(0).GetComponent<Animator>();
         playerInitPos = this.transform.position;
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         rayCollision = GetComponent<RaycastCollisions>();
@@ -46,7 +50,8 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         if (!blockPlayer) PlayerMoveInput();
-        else PlayerResetInput();
+
+        PlayerBeatAnimatorCheck();
     }
 
     #region Player Input
@@ -149,15 +154,23 @@ public class PlayerManager : MonoBehaviour
         }
         else inputFlag = true;
     }
+    #endregion
 
-    void PlayerResetInput()
+    void PlayerBeatAnimatorCheck()
     {
-        if(Input.GetButtonDown("Jump"))
+        if (gameManager.GetRythmActiveBeat())
         {
-            
+            animator.SetBool("onBeat", true);
+            beatFlag = true;
+            Debug.Log("hi");
+        }
+        else if(!gameManager.GetRythmActiveBeat() && beatFlag)
+        {
+            animator.SetBool("onBeat", false);
+            beatFlag = false;
+
         }
     }
-    #endregion
 
     private IEnumerator ReturnIdle(float time)
     {
@@ -183,6 +196,11 @@ public class PlayerManager : MonoBehaviour
     public bool GetBlock()
     {
         return blockPlayer;
+    }
+
+    public bool GetInputFlag()
+    {
+        return inputFlag;
     }
 
     public void SetStartDirection(int direction){
