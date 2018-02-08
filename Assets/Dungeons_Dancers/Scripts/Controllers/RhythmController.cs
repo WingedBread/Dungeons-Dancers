@@ -4,7 +4,7 @@ using UnityEngine;
 using SonicBloom.Koreo;
 using SonicBloom.Koreo.Players;
 
-public class RythmController : MonoBehaviour
+public class RhythmController : MonoBehaviour
 {
     [Header("Game Manager")]
     private GameManager gameManager;
@@ -29,14 +29,14 @@ public class RythmController : MonoBehaviour
 
     }
 
-    private void StartRythm()
+    private void StartRhythm()
     {
         multiMusic.Play();
         Koreographer.Instance.RegisterForEventsWithTime("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.RegisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
     }
 
-    private void StopRythm()
+    private void StopRhythm()
     {
       
         multiMusic.Stop();
@@ -93,10 +93,10 @@ public class RythmController : MonoBehaviour
         return accuracy;
     }
 
-    public void SetRythm(bool rythm)
+    public void SetRhythm(bool rhythm)
     {
-        if (rythm) StartRythm();
-        else StopRythm();
+        if (rhythm) StartRhythm();
+        else StopRhythm();
     }
 
     public bool ActivePlayerInputEvent(){

@@ -132,7 +132,7 @@ public class UIController: MonoBehaviour {
 
     private void AccuracySliderCheck()
     {
-        switch(gameManager.GetRythmAccuracy())
+        switch(gameManager.GetRhythmAccuracy())
         {
             case 0:
                 sliderAccuracyText.text = accuracySoon;
