@@ -61,8 +61,4 @@ public class StaticTrapBehaviour : MonoBehaviour {
     public bool GetActiveTrapEvent(){
         return activeTrapEvent;
     }
-
-    public int GetTrapType(){
-        return 0;
-    }
 }

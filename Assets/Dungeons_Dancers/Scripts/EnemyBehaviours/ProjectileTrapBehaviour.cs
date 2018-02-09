@@ -15,19 +15,52 @@ public class ProjectileTrapBehaviour : MonoBehaviour {
     [SerializeField]
     private float timeIdle = 0.25f;
 
+    [Header("Choose Instantiate Prefab")]
+    [SerializeField]
+    private GameObject projectile;
+    private GameObject activeProjectile;
+
+    [Header("Choose Max Position")]
+    [SerializeField]
+    private float maxPosition;
+    private float minPosition;
+    [Header("Set Direction")]
+    [SerializeField]
+    private int direction = 1;
+    [Header("Moves Horizontally?")]
+    [SerializeField]
+    private bool xAxis;
+
     private bool activeTrapEvent;
 
     void Start()
     {
         enemiesManager = this.transform.parent.GetComponent<EnemyManager>();
-        mat = this.GetComponent<MeshRenderer>().material;
+        InstantiateProjectile();
+        mat = this.transform.GetChild(0).GetComponent<MeshRenderer>().material;
     }
 
     public void ActiveTrap()
     {
         activeTrapEvent = true;
         mat.color = Color.white;
-        this.gameObject.GetComponent<Collider>().enabled = true;
+
+        if (Mathf.Approximately(activeProjectile.transform.position.x, maxPosition))
+        {
+            Destroy(activeProjectile);
+            InstantiateProjectile();
+        }
+
+        if (xAxis)
+        {
+            activeProjectile.transform.position = new Vector3(activeProjectile.transform.position.x + (direction), activeProjectile.transform.position.y, activeProjectile.transform.position.z);
+        }
+        else
+        {
+            activeProjectile.transform.position = new Vector3(activeProjectile.transform.position.x, activeProjectile.transform.position.y, activeProjectile.transform.position.z + (direction));
+        }
+
+
         StartCoroutine(ReturnIdle(timeIdle));
     }
 
@@ -35,15 +68,18 @@ public class ProjectileTrapBehaviour : MonoBehaviour {
     {
         activeTrapEvent = false;
         mat.color = Color.black;
-        this.gameObject.GetComponent<Collider>().enabled = false;
     }
 
     private IEnumerator ReturnIdle(float time)
     {
         yield return new WaitForSeconds(time);
-        this.gameObject.GetComponent<Collider>().enabled = false;
         mat.color = Color.black;
         StopCoroutine("ReturnIdle");
+    }
+
+    void InstantiateProjectile()
+    {
+        activeProjectile = Instantiate(projectile,this.transform, true);
     }
 
     public int GetTrapBehaviour()
@@ -54,10 +90,5 @@ public class ProjectileTrapBehaviour : MonoBehaviour {
     public bool GetActiveTrapEvent()
     {
         return activeTrapEvent;
-    }
-
-    public int GetTrapType()
-    {
-        return 1;
     }
 }

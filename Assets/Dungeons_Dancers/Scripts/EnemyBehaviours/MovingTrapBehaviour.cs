@@ -15,6 +15,16 @@ public class MovingTrapBehaviour : MonoBehaviour {
     [SerializeField]
     private float timeIdle = 0.25f;
 
+    [Header ("Choose Max-Min Position")]
+    [SerializeField]
+    private float maxPosition;
+    [SerializeField]
+    private float minPosition;
+    [Header("Moves Horizontally?")]
+    [SerializeField]
+    private bool xAxis;
+
+    private int direction = 1;
     private bool activeTrapEvent;
 
     void Start()
@@ -27,7 +37,29 @@ public class MovingTrapBehaviour : MonoBehaviour {
     {
         activeTrapEvent = true;
         mat.color = Color.white;
-        this.gameObject.GetComponent<Collider>().enabled = true;
+        if (Mathf.Approximately(this.transform.position.x, maxPosition))
+        {
+            direction *= -1;
+            if(xAxis)this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, 0, 90);
+            else this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, 90, 90);
+        } 
+        else if (Mathf.Approximately(this.transform.position.x, minPosition))
+        {
+            direction *= -1;
+            if(xAxis)this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, 180, 90);
+            else this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, -90, 90);
+        }
+
+        if (xAxis)
+        {
+            this.transform.position = new Vector3(this.transform.position.x + (direction), this.transform.position.y, this.transform.position.z);
+        }
+        else
+        {
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + (direction));
+        }
+
+
         StartCoroutine(ReturnIdle(timeIdle));
     }
 
@@ -35,13 +67,11 @@ public class MovingTrapBehaviour : MonoBehaviour {
     {
         activeTrapEvent = false;
         mat.color = Color.black;
-        this.gameObject.GetComponent<Collider>().enabled = false;
     }
 
     private IEnumerator ReturnIdle(float time)
     {
         yield return new WaitForSeconds(time);
-        this.gameObject.GetComponent<Collider>().enabled = false;
         mat.color = Color.black;
         StopCoroutine("ReturnIdle");
     }
@@ -54,11 +84,6 @@ public class MovingTrapBehaviour : MonoBehaviour {
     public bool GetActiveTrapEvent()
     {
         return activeTrapEvent;
-    }
-
-    public int GetTrapType()
-    {
-        return 2;
     }
 }
 
