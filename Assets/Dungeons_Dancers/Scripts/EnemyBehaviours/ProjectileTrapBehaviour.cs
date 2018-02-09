@@ -10,7 +10,7 @@ public class ProjectileTrapBehaviour : MonoBehaviour {
 
     [Header("Choose Trap Behaviour from 1-3")]
     [SerializeField]
-    public int trapBehaviour;
+    private int trapBehaviour;
     [Header("Choose Idle Return Time")]
     [SerializeField]
     private float timeIdle = 0.25f;

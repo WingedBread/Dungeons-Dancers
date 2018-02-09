@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float resetTime = 1f;
 
+    public int introCounter = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -48,7 +50,8 @@ public class GameManager : MonoBehaviour
         satisController = GetComponent<SatisfactionController>();
         eventController = GetComponent<EventController>();
         dungeonTimer = initdungeonTimer;
-        StartCoroutine(IntroCoroutine());
+        introCounter = 0;
+        IntroBeatCountdown();
     }
 
     void Update()
@@ -64,23 +67,44 @@ public class GameManager : MonoBehaviour
             }
         }
         else playerManager.SetBlock(true);
+
+        if (introCounter < 6) IntroBeatCountdown();
     }
 
-    private IEnumerator IntroCoroutine()
+    private void IntroBeatCountdown()
     {
-        yield return new WaitForSeconds(introTime / 4);
-        uiController.IntroUICheck(3);
-        yield return new WaitForSeconds(introTime / 4);
-        uiController.IntroUICheck(2);
-        yield return new WaitForSeconds(introTime / 4);
-        uiController.IntroUICheck(1);
-        yield return new WaitForSeconds(introTime / 4);
-        uiController.IntroUICheck(0);
-        gameStart = true;
-        rhythmController.SetRhythm(true);
-        StopCoroutine("IntroCoroutine");
+        switch (introCounter)
+        {
+            case 0:
+                rhythmController.SetIntroRhythm(true);
+                uiController.IntroUICheck(3);
+                rhythmController.SetIntroFlagRhythm(true);
+                break;
+            case 1:
+                uiController.IntroUICheck(2); 
+                rhythmController.SetIntroFlagRhythm(true);
+                break;
+            case 2:
+                uiController.IntroUICheck(3); 
+                rhythmController.SetIntroFlagRhythm(true);
+                break;
+            case 3:
+                uiController.IntroUICheck(2); 
+                rhythmController.SetIntroFlagRhythm(true);
+                break;
+            case 4:
+                uiController.IntroUICheck(1); 
+                rhythmController.SetIntroFlagRhythm(true);
+                break;
+            case 5:
+                uiController.IntroUICheck(0);
+                introCounter++;
+                gameStart = true;
+                rhythmController.SetIntroRhythm(false);
+                rhythmController.SetRhythm(true);
+                break;
+        }
     }
-
 
     public void Win()
     {
@@ -114,7 +138,8 @@ public class GameManager : MonoBehaviour
         satisController.ResetSatisfaction();
         uiController.ResetUI();
         playerManager.SetPlayerStartDirection(1);
-        StartCoroutine(IntroCoroutine());
+        introCounter = 0;
+        IntroBeatCountdown();
         StopCoroutine("Reset");
     }
 

@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: -1913711003, guid: aa81bbec85a3f423193272a7c6154986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncPlayDelay: 0
+  syncPlayDelay: 2
   pitch: 1
   loop: 1
   autoPlayOnAwake: 0
@@ -1650,7 +1650,7 @@ GameObject:
   - component: {fileID: 622553703}
   m_Layer: 0
   m_Name: Enemies
-  m_TagString: Untagged
+  m_TagString: EnemyManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1674,15 +1674,6 @@ MonoBehaviour:
   - {fileID: 467702385}
   movingTraps:
   - {fileID: 1940367685}
-  event1StaticTrap: []
-  event2StaticTrap: []
-  event3StaticTrap: []
-  event1ProjectileTrap: []
-  event2ProjectileTrap: []
-  event3ProjectileTrap: []
-  event1MovingTrap: []
-  event2MovingTrap: []
-  event3MovingTrap: []
 --- !u!4 &622553704
 Transform:
   m_ObjectHideFlags: 0
@@ -4827,6 +4818,7 @@ MonoBehaviour:
   godMode: 0
   introTime: 4
   resetTime: 0.5
+  introCounter: 0
 --- !u!4 &1922221056
 Transform:
   m_ObjectHideFlags: 0
