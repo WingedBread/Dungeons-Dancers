@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadedKoreography: []
-  eventDelayInSeconds: 1
+  eventDelayInSeconds: 0
 --- !u!4 &1618176
 Transform:
   m_ObjectHideFlags: 0
@@ -2641,6 +2641,11 @@ Prefab:
     - target: {fileID: 4517241465033128, guid: 271f768843ec243f49bd4e8ccca78e28, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114036915586620222, guid: 271f768843ec243f49bd4e8ccca78e28,
+        type: 2}
+      propertyPath: trapBehaviour
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 271f768843ec243f49bd4e8ccca78e28, type: 2}
