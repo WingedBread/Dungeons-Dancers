@@ -18,9 +18,18 @@ public class AudioController : MonoBehaviour {
 	
     public void PointsSnapshotCheck()
     {
-        if(gameManager.GetPoints() < 5) auMixSnaps[0].TransitionTo(transitionTime);
-        else if(gameManager.GetPoints() < 10) auMixSnaps[1].TransitionTo(transitionTime);
-        else if (gameManager.GetPoints() < 15) auMixSnaps[2].TransitionTo(transitionTime);
-        else if (gameManager.GetPoints() < 20) auMixSnaps[3].TransitionTo(transitionTime);
+        if(gameManager.GetPoints() < 5) auMixSnaps[1].TransitionTo(transitionTime);
+        else if(gameManager.GetPoints() < 10) auMixSnaps[2].TransitionTo(transitionTime);
+        else if (gameManager.GetPoints() < 15) auMixSnaps[3].TransitionTo(transitionTime);
+        else if (gameManager.GetPoints() < 20) auMixSnaps[4].TransitionTo(transitionTime);
     }
+
+    public void MuteSound(){
+        auMixSnaps[0].TransitionTo(0);
+    }
+    public void UnmuteSound()
+    {
+        auMixSnaps[1].TransitionTo(0);
+    }
+
 }

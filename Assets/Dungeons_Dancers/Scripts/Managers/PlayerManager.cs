@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        PlayerBeatAnimatorCheck();
+        if(gameManager.GetGameStatus()) PlayerBeatAnimatorCheck();
     }
 
     void PlayerBeatAnimatorCheck()

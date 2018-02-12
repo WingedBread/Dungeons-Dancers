@@ -22,13 +22,13 @@ public class RhythmController : MonoBehaviour
     private MultiMusicPlayer multiMusic;
 
     private bool flagAccuracy;
-    private bool flagIntro;
+    private bool audioFlag = true;
     // Use this for initialization
     void Start()
     {
+        multiMusic = GameObject.FindWithTag("MusicPlayer").GetComponent<MultiMusicPlayer>();
         gameManager = GetComponent<GameManager>();
         enemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<EnemyManager>();
-        multiMusic = GameObject.FindWithTag("MusicPlayer").GetComponent<MultiMusicPlayer>();
         multiMusic.Play();
     }
     private void StartIntroRhythm()
@@ -37,7 +37,7 @@ public class RhythmController : MonoBehaviour
     }
     private void StopIntroRhythm()
     {
-        Koreographer.Instance.UnregisterForAllEvents("IntroEvent");
+        Koreographer.Instance.UnregisterForEvents("IntroEvent", IntroBehaviour);
     }
     private void StartRhythm()
     {
@@ -51,21 +51,17 @@ public class RhythmController : MonoBehaviour
     private void StopRhythm()
     {
         multiMusic.Stop();
-        Koreographer.Instance.UnregisterForAllEvents("PlayerInputEvent");
-        Koreographer.Instance.UnregisterForAllEvents("PlayerBeatEvent");
-        Koreographer.Instance.UnregisterForAllEvents("Trap1Event");
-        Koreographer.Instance.UnregisterForAllEvents("Trap2Event");
-        Koreographer.Instance.UnregisterForAllEvents("Trap3Event");
+        Koreographer.Instance.UnregisterForEvents("PlayerInputEvent", PlayerInputBehaviour);
+        Koreographer.Instance.UnregisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
+        Koreographer.Instance.UnregisterForEvents("Trap1Event", StaticTrap1BeatBehaviour);
+        Koreographer.Instance.UnregisterForEvents("Trap2Event", StaticTrap2BeatBehaviour);
+        Koreographer.Instance.UnregisterForEvents("Trap3Event", StaticTrap3BeatBehaviour);
+        multiMusic.Play();
     }
 
     void IntroBehaviour(KoreographyEvent kIntroEvent)
     {
-        if (flagIntro)
-        {
-            Debug.Log("hu");
-            gameManager.introCounter++;
-            flagIntro = false;
-        }
+        gameManager.SetIntroCounter(gameManager.GetIntroCounter()+1);
     }
 
     void PlayerInputBehaviour(KoreographyEvent kInputEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
@@ -111,7 +107,6 @@ public class RhythmController : MonoBehaviour
 
     void CalculateTiming(int sampleTime, KoreographyEvent kCalcEvent)
     {
-
         duration = kCalcEvent.EndSample - kCalcEvent.StartSample;
         segmentDuration = duration / 3;
         segment3 = kCalcEvent.EndSample - segmentDuration;
@@ -134,18 +129,10 @@ public class RhythmController : MonoBehaviour
         else StopRhythm();
     }
 
-    public void SetIntroRhythm(bool intro)
+    public void SetIntroRhythm(bool introbool)
     {
-        if (intro) StartIntroRhythm();
+        if (introbool) StartIntroRhythm();
         else StopIntroRhythm();
-    }
-
-    public bool GetIntroRhythm(){
-        return flagIntro;
-    }
-
-    public void SetIntroFlagRhythm(bool boo){
-        flagIntro = boo;
     }
 
     public bool ActivePlayerInputEvent(){

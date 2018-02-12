@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(SatisfactionController))]
+[RequireComponent(typeof(IntroController))]
 [RequireComponent (typeof(AudioController))]
 [RequireComponent(typeof(RhythmController))]
 [RequireComponent(typeof(UIController))]
@@ -19,25 +20,22 @@ public class GameManager : MonoBehaviour
     private AudioController auController;
     private SatisfactionController satisController;
     private EventController eventController;
+    private IntroController introController;
 
     [Header("God Mode (?)")]
     [SerializeField]
     private bool godMode = false;
 
     private bool gameStart = false;
-    [Header("Intro Time")]
-    [SerializeField]
-    private float introTime = 4f;
 
     [Header("Time Section")]
     [Header("Dungeon Timer in Seconds")]
-    private float initdungeonTimer = 60f;
+    [SerializeField]
+    private float initDungeonTimer = 60f;
     private float dungeonTimer;
     [Header("Player Reset Time")]
     [SerializeField]
     private float resetTime = 1f;
-
-    public int introCounter = 0;
 
     // Use this for initialization
     void Start()
@@ -49,13 +47,17 @@ public class GameManager : MonoBehaviour
         auController = GetComponent<AudioController>();
         satisController = GetComponent<SatisfactionController>();
         eventController = GetComponent<EventController>();
-        dungeonTimer = initdungeonTimer;
-        introCounter = 0;
-        IntroBeatCountdown();
+        introController = GetComponent<IntroController>();
+        dungeonTimer = initDungeonTimer;
+        auController.MuteSound();
+        SetIntroCounter(0);
+        rhythmController.SetIntroRhythm(true);
     }
 
     void Update()
     {
+        Pause();
+
         if (gameStart)
         {
             if (playerManager.GetBlock() == true) playerManager.SetBlock(false);
@@ -63,46 +65,40 @@ public class GameManager : MonoBehaviour
             if (dungeonTimer <= 0)
             {
                 Dead();
-                dungeonTimer = initdungeonTimer;
+                dungeonTimer = initDungeonTimer;
             }
         }
         else playerManager.SetBlock(true);
-
-        if (introCounter < 6) IntroBeatCountdown();
     }
 
-    private void IntroBeatCountdown()
+    public void IntroBehaviour(int intro){
+        uiController.IntroUICheck(intro);
+        if(GetIntroCounter() == 5){
+            gameStart = true;
+            auController.UnmuteSound();
+            rhythmController.SetIntroRhythm(false);
+            rhythmController.SetRhythm(true);
+        }
+    }
+
+    private void Pause()
     {
-        switch (introCounter)
+        if (Input.GetButtonDown("Cancel"))
         {
-            case 0:
-                rhythmController.SetIntroRhythm(true);
-                uiController.IntroUICheck(3);
-                rhythmController.SetIntroFlagRhythm(true);
-                break;
-            case 1:
-                uiController.IntroUICheck(2); 
-                rhythmController.SetIntroFlagRhythm(true);
-                break;
-            case 2:
-                uiController.IntroUICheck(3); 
-                rhythmController.SetIntroFlagRhythm(true);
-                break;
-            case 3:
-                uiController.IntroUICheck(2); 
-                rhythmController.SetIntroFlagRhythm(true);
-                break;
-            case 4:
-                uiController.IntroUICheck(1); 
-                rhythmController.SetIntroFlagRhythm(true);
-                break;
-            case 5:
-                uiController.IntroUICheck(0);
-                introCounter++;
+            if (Time.timeScale > 0)
+            {
+                Time.timeScale = 0;
+                auController.MuteSound();
+                uiController.PauseUI();
+                gameStart = false;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                auController.UnmuteSound();
+                uiController.ResetUI();
                 gameStart = true;
-                rhythmController.SetIntroRhythm(false);
-                rhythmController.SetRhythm(true);
-                break;
+            }
         }
     }
 
@@ -111,6 +107,7 @@ public class GameManager : MonoBehaviour
         gameStart = false;
         rhythmController.SetRhythm(false);
         uiController.WinUI();
+        auController.MuteSound();
         StartCoroutine(Reset(resetTime));
     }
 
@@ -121,6 +118,7 @@ public class GameManager : MonoBehaviour
             gameStart = false;
             rhythmController.SetRhythm(false);
             uiController.DeadUI();
+            auController.MuteSound();
             StartCoroutine(Reset(resetTime));
         }
     }
@@ -134,12 +132,12 @@ public class GameManager : MonoBehaviour
     {
 
         yield return new WaitForSeconds(time);
-        dungeonTimer = initdungeonTimer;
+        dungeonTimer = initDungeonTimer;
         satisController.ResetSatisfaction();
         uiController.ResetUI();
         playerManager.SetPlayerStartDirection(1);
-        introCounter = 0;
-        IntroBeatCountdown();
+        SetIntroCounter(0);
+        rhythmController.SetIntroRhythm(true);
         StopCoroutine("Reset");
     }
 
@@ -167,6 +165,10 @@ public class GameManager : MonoBehaviour
         return playerManager.GetBlock();
     }
 
+    public int GetIntroCounter(){
+        return introController.GetCounter();
+    }
+
     public bool GetRhythmActiveInput()
     {
         return rhythmController.ActivePlayerInputEvent();
@@ -190,6 +192,11 @@ public class GameManager : MonoBehaviour
 
     public float GetDungeonTime(){
         return dungeonTimer;  
+    }
+
+    public void SetIntroCounter(int setintro)
+    {
+        introController.SetCounter(setintro);
     }
 
     public void SetPlayerBlock(bool block){

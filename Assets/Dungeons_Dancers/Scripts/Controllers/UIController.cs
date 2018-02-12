@@ -18,11 +18,13 @@ public class UIController: MonoBehaviour {
     [Header("Points")]
     public Text pointsText;
 
-    [Header("Win/Dead")]
+    [Header("Win/Dead/Pause")]
     [SerializeField]
     private GameObject WinGo;
     [SerializeField]
     private GameObject DeadGo;
+    [SerializeField]
+    private GameObject PauseGo;
 
     [Header("Slider")]
     public Slider pointsSlider;
@@ -78,6 +80,7 @@ public class UIController: MonoBehaviour {
         pointsSlider.value = gameManager.GetPoints();
         WinGo.SetActive(false);
         DeadGo.SetActive(false);
+        PauseGo.SetActive(false);
     }
 
     public void WinUI()
@@ -88,6 +91,10 @@ public class UIController: MonoBehaviour {
     public void DeadUI()
     {
         DeadGo.SetActive(true);
+    }
+
+    public void PauseUI(){
+        PauseGo.SetActive(true);
     }
 
     public void RemovePointUI(){
