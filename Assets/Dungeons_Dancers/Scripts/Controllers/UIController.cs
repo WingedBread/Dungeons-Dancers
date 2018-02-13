@@ -16,7 +16,14 @@ public class UIController: MonoBehaviour {
     private Text introText;
 
     [Header("Points")]
-    public Text pointsText;
+    [SerializeField]
+    private Text pointsText;
+    [Header("Coins")]
+    [SerializeField]
+    private Text coinsText;
+    [Header("Keys")]
+    [SerializeField]
+    private Image[] keysImages;
 
     [Header("Win/Dead/Pause")]
     [SerializeField]
@@ -158,7 +165,6 @@ public class UIController: MonoBehaviour {
                 break;
         }
     }
-
     public void IntroUICheck(int intro)
     {
         introText.gameObject.SetActive(true);
@@ -168,6 +174,10 @@ public class UIController: MonoBehaviour {
             introText.text = finalIntro;
             StartCoroutine(DeactivatorUI(introText, introTextTime));
         }
+    }
+
+    public void CoinsUI(int coins){
+        coinsText.text = coins.ToString();
     }
 
     private IEnumerator DeactivatorUI(Text text, float time)

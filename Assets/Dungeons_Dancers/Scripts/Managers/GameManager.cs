@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
         dungeonTimer = initDungeonTimer;
         auController.MuteSound();
         SetIntroCounter(0);
-        rhythmController.SetIntroRhythm(true);
     }
 
     void Update()
@@ -155,6 +154,10 @@ public class GameManager : MonoBehaviour
         auController.PointsSnapshotCheck();
     }
 
+    public void AddCoin(){
+        
+    }
+
     #region Getters & Setters
     public int GetPoints()
     {
@@ -201,6 +204,11 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayerBlock(bool block){
         playerManager.SetBlock(block);
+    }
+
+    public void GetCoinsUI(int coins){
+        uiController.CoinsUI(coins*10);
+
     }
     #endregion
 }

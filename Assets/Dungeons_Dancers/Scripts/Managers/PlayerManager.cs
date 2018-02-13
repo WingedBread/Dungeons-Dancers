@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent (typeof(CollectiblesController))]
 [RequireComponent(typeof(InputController))]
 public class PlayerManager : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Controllers")]
     private InputController inputController;
+    private CollectiblesController collectiblesController;
 
-    [HideInInspector]
     private Material mat;
 
     [Header("Animator")]
@@ -28,6 +29,7 @@ public class PlayerManager : MonoBehaviour
     {
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         inputController = GetComponent<InputController>();
+        collectiblesController = GetComponent<CollectiblesController>();
 
         animator = this.transform.GetChild(0).GetComponent<Animator>();
         mat = this.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
@@ -74,6 +76,19 @@ public class PlayerManager : MonoBehaviour
                 break;
             case "Trap":
                 gameManager.Respawn();
+                break;
+            case "Coin":
+                collectiblesController.AddCoin();
+                Debug.Log(collectiblesController.GetCoins());
+                col.gameObject.SetActive(false);
+                gameManager.GetCoinsUI(collectiblesController.GetCoins());
+                break;
+            case "Key":
+                collectiblesController.AddKey(int.Parse(col.gameObject.name.Substring(0,2)));
+                col.gameObject.SetActive(false);
+                break;
+            case "Door":
+                collectiblesController.RemoveKey(int.Parse(col.gameObject.name.Substring(0, 2)),col);
                 break;
                 
         }

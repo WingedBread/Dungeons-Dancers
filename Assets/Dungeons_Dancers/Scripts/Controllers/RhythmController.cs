@@ -9,6 +9,9 @@ public class RhythmController : MonoBehaviour
     [Header("Managers")]
     private GameManager gameManager;
     private EnemyManager enemyManager;
+    [Header("Intro Delay Time")]
+    [SerializeField]
+    private int introTime;
 
     [Header("Accuracy Calculation")]
     private float duration;
@@ -22,14 +25,19 @@ public class RhythmController : MonoBehaviour
     private MultiMusicPlayer multiMusic;
 
     private bool flagAccuracy;
-    private bool audioFlag = true;
     // Use this for initialization
     void Start()
     {
         multiMusic = GameObject.FindWithTag("MusicPlayer").GetComponent<MultiMusicPlayer>();
         gameManager = GetComponent<GameManager>();
         enemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<EnemyManager>();
+        StartCoroutine(IntroDelayCoroutine(introTime));
+    }
+
+    private IEnumerator IntroDelayCoroutine(int time){
+        yield return new WaitForSeconds(time);
         multiMusic.Play();
+        StartIntroRhythm();
     }
     private void StartIntroRhythm()
     {
