@@ -154,8 +154,15 @@ public class GameManager : MonoBehaviour
         auController.PointsSnapshotCheck();
     }
 
-    public void AddCoin(){
-        
+    public void CoinBehaviour(int coins, bool cons)
+    {
+        uiController.CoinsUI(coins);
+        auController.PlayCoin(cons);
+    }
+    public void CollectibleBehaviour(int collectible)
+    {
+        uiController.CollectibleUI(collectible);
+        auController.PlayCollectible();
     }
 
     #region Getters & Setters
@@ -166,6 +173,10 @@ public class GameManager : MonoBehaviour
     public bool GetPlayerBlock()
     {
         return playerManager.GetBlock();
+    }
+
+    public bool GetSatisfactionFever(){
+        return satisController.GetFeverState();
     }
 
     public int GetIntroCounter(){
@@ -204,11 +215,6 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayerBlock(bool block){
         playerManager.SetBlock(block);
-    }
-
-    public void GetCoinsUI(int coins){
-        uiController.CoinsUI(coins*10);
-
     }
     #endregion
 }

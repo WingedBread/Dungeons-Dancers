@@ -7,12 +7,20 @@ public class AudioController : MonoBehaviour {
     
     [Header("Game Manager")]
     private GameManager gameManager;
+    [Header("Choose Transition between Snapshots")]
     [SerializeField]
     private float transitionTime;
+    [Header("Drag AudioMixer Snapshots")]
     [SerializeField]
     private AudioMixerSnapshot[] auMixSnaps;
+
+    [Header("FX AudioSources")]
+    [SerializeField]
+    private GameObject FXSource;
+    private AudioSource[] FXaudioSource;
 	// Use this for initialization
 	void Start () {
+        FXaudioSource = FXSource.GetComponents<AudioSource>();
         gameManager = GetComponent<GameManager>();
 	}
 	
@@ -30,6 +38,23 @@ public class AudioController : MonoBehaviour {
     public void UnmuteSound()
     {
         auMixSnaps[1].TransitionTo(0);
+    }
+
+    public void PlayCoin(bool consecutive){
+        if (consecutive)
+        {
+            FXaudioSource[0].pitch = FXaudioSource[0].pitch + 0.1f;
+            FXaudioSource[0].Play();
+        }
+        else
+        {
+            FXaudioSource[0].pitch = 1;
+            FXaudioSource[0].Play();
+        } 
+    }
+
+    public void PlayCollectible(){
+        FXaudioSource[1].Play();
     }
 
 }

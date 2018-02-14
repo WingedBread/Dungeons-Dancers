@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MovingTrapBehaviour : MonoBehaviour {
 
-    [Header("Enemy Manager")]
-    private EnemyManager enemiesManager;
     private Material mat;
 
     [Header("Choose Trap Behaviour from 1-3")]
@@ -29,7 +27,6 @@ public class MovingTrapBehaviour : MonoBehaviour {
 
     void Start()
     {
-        enemiesManager = this.transform.parent.GetComponent<EnemyManager>();
         mat = this.GetComponent<MeshRenderer>().material;
     }
 

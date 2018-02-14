@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ProjectileTrapBehaviour : MonoBehaviour {
     
-    [Header("Enemy Manager")]
-    private EnemyManager enemiesManager;
     private Material mat;
 
     [Header("Choose Trap Behaviour from 1-3")]
@@ -35,7 +33,6 @@ public class ProjectileTrapBehaviour : MonoBehaviour {
 
     void Start()
     {
-        enemiesManager = this.transform.parent.GetComponent<EnemyManager>();
         InstantiateProjectile();
         mat = this.transform.GetChild(0).GetComponent<MeshRenderer>().material;
     }

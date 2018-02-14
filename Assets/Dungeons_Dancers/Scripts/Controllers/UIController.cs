@@ -179,7 +179,9 @@ public class UIController: MonoBehaviour {
     public void CoinsUI(int coins){
         coinsText.text = coins.ToString();
     }
-
+    public void CollectibleUI(int key){
+        keysImages[key-1].color = Color.white;
+    }
     private IEnumerator DeactivatorUI(Text text, float time)
     {
         yield return new WaitForSeconds(time);

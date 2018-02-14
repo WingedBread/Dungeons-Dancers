@@ -16,7 +16,7 @@ public class RhythmController : MonoBehaviour
     [Header("Accuracy Calculation")]
     private float duration;
     private float segmentDuration;
-    private float segment3, segment2, segment1;
+    private float segment3, segment2;
 
     private int accuracy = 0;
     private bool activePlayerInputEvent;
@@ -24,7 +24,6 @@ public class RhythmController : MonoBehaviour
 
     private MultiMusicPlayer multiMusic;
 
-    private bool flagAccuracy;
     // Use this for initialization
     void Start()
     {
@@ -83,7 +82,6 @@ public class RhythmController : MonoBehaviour
         else
         {
             activePlayerInputEvent = false;
-            flagAccuracy = true;
         }
 
     }
@@ -119,7 +117,6 @@ public class RhythmController : MonoBehaviour
         segmentDuration = duration / 3;
         segment3 = kCalcEvent.EndSample - segmentDuration;
         segment2 = segment3 - segmentDuration;
-        segment1 = segment2 - segmentDuration;
 
         if (sampleTime < segment2) accuracy = 0;
         else if (sampleTime < segment3) accuracy = 1;

@@ -95,4 +95,9 @@ public class SatisfactionController : MonoBehaviour {
         return points;
     }
 
+    public bool GetFeverState(){
+        if (points >= maxPoints) return true;
+        else return false;
+    }
+
 }
