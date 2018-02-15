@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
         collectiblesController = GetComponent<CollectiblesController>();
 
         animator = this.transform.GetChild(0).GetComponent<Animator>();
-        mat = this.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
+        mat = this.transform.GetChild(0).transform.GetChild(0).GetComponent<MeshRenderer>().material;
     }
 
     void Update()

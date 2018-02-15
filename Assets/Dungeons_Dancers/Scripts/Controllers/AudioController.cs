@@ -26,10 +26,10 @@ public class AudioController : MonoBehaviour {
 	
     public void PointsSnapshotCheck()
     {
-        if(gameManager.GetPoints() < 5) auMixSnaps[1].TransitionTo(transitionTime);
-        else if(gameManager.GetPoints() < 10) auMixSnaps[2].TransitionTo(transitionTime);
-        else if (gameManager.GetPoints() < 15) auMixSnaps[3].TransitionTo(transitionTime);
-        else if (gameManager.GetPoints() < 20) auMixSnaps[4].TransitionTo(transitionTime);
+        if(gameManager.GetPoints(0, 1, 0) < 5) auMixSnaps[1].TransitionTo(transitionTime);
+        else if(gameManager.GetPoints(0, 1, 0) < 10) auMixSnaps[2].TransitionTo(transitionTime);
+        else if (gameManager.GetPoints(0, 1, 0) < 15) auMixSnaps[3].TransitionTo(transitionTime);
+        else if (gameManager.GetPoints(0, 1, 0) < 20) auMixSnaps[4].TransitionTo(transitionTime);
     }
 
     public void MuteSound(){
@@ -37,7 +37,7 @@ public class AudioController : MonoBehaviour {
     }
     public void UnmuteSound()
     {
-        auMixSnaps[1].TransitionTo(0);
+        PointsSnapshotCheck();
     }
 
     public void PlayCoin(bool consecutive){

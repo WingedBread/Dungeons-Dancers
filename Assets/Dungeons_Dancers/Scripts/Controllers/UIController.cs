@@ -74,8 +74,10 @@ public class UIController: MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gameManager = GetComponent<GameManager>();
-        pointsSlider.value = gameManager.GetPoints();
-        pointsText.text = gameManager.GetPoints().ToString();
+        pointsSlider.minValue = gameManager.GetPoints(1, 0, 0);
+        pointsSlider.maxValue = gameManager.GetPoints(0, 0, 1);
+        pointsSlider.value = gameManager.GetPoints(0,1,0);
+        pointsText.text = gameManager.GetPoints(0,1,0).ToString();
 	}
     void Update(){
         dungeonTimerText.text = gameManager.GetDungeonTime().ToString("00");
@@ -83,8 +85,8 @@ public class UIController: MonoBehaviour {
 
     public void ResetUI()
     {
-        pointsText.text = gameManager.GetPoints().ToString();
-        pointsSlider.value = gameManager.GetPoints();
+        pointsText.text = gameManager.GetPoints(0, 1, 0).ToString();
+        pointsSlider.value = gameManager.GetPoints(0, 1, 0);
         WinGo.SetActive(false);
         DeadGo.SetActive(false);
         PauseGo.SetActive(false);
@@ -105,21 +107,21 @@ public class UIController: MonoBehaviour {
     }
 
     public void RemovePointUI(){
-        pointsText.text = gameManager.GetPoints().ToString();
-        pointsSlider.value = gameManager.GetPoints();
+        pointsText.text = gameManager.GetPoints(0, 1, 0).ToString();
+        pointsSlider.value = gameManager.GetPoints(0, 1, 0);
         PointsSliderChecker();
     }
 
     public void AddPointUI(){
         AccuracySliderCheck();
-        pointsText.text = gameManager.GetPoints().ToString();
-        pointsSlider.value = gameManager.GetPoints();
+        pointsText.text = gameManager.GetPoints(0, 1, 0).ToString();
+        pointsSlider.value = gameManager.GetPoints(0, 1, 0);
         PointsSliderChecker();
     }
 
     private void PointsSliderChecker()
     {
-        switch (gameManager.GetPoints())
+        switch (gameManager.GetPoints(0, 1, 0))
         {
             case 5:
                 sliderText.text = sliderFirst;

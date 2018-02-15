@@ -9,33 +9,39 @@ public class SatisfactionController : MonoBehaviour {
 
     [Header("Initial Satisfaction")]
     [SerializeField]
-    private int initPoints = 5;
+    private int initPoints;
+    [Header("Minimum Satisfaction")]
+    [SerializeField]
+    private int minPoints;
     [Header("Maximum Satisfaction")]
     [SerializeField]
-    private int maxPoints = 20;
+    private int maxPoints;
     [Header("Fever Satisfaction")]
     [SerializeField]
-    private int initFeverPoints = 1;
+    private int initFeverPoints;
     [Header("Soon Satisfaction")]
     [SerializeField]
-    private int soonPoints = 1;
+    private int soonPoints;
     [Header("Perfect Satisfaction")]
     [SerializeField]
-    private int perfectPoints = 2;
+    private int perfectPoints;
     [Header("Late Satisfaction")]
     [SerializeField]
-    private int latePoints = 1;
+    private int latePoints;
     [Header("Amount of Satisfaction Removal")]
     [SerializeField]
-    private int removePoints = 1;
-    private int points = 5;
-    private int feverPoints = 1;
+    private int removePoints;
+    private int points;
+    private int feverPoints;
 
 	// Use this for initialization
-	void Start () {
-        gameManager = GetComponent<GameManager>();
+    void Awake()
+    {
         points = initPoints;
         feverPoints = initFeverPoints;
+    }
+	void Start () {
+        gameManager = GetComponent<GameManager>();
 	}
 	
     public void AddPoint()
@@ -72,7 +78,10 @@ public class SatisfactionController : MonoBehaviour {
         else
         {
             points = points - removePoints;
-            if (points <= 0) gameManager.Dead();
+            if (points <= minPoints) {
+                gameManager.Dead();
+                points = minPoints;
+            }
         }
     }
 
@@ -90,9 +99,14 @@ public class SatisfactionController : MonoBehaviour {
         feverPoints = initFeverPoints;
     }
 
-    public int GetSatisfactionPoints()
+    public int GetSatisfactionPoints(int min, int current, int max)
     {
-        return points;
+
+        if (min == 1 && current == 0 && max == 0) return minPoints;
+        else if (min == 0 && current == 1 && max == 0) return points;
+        else if (min == 0 && current == 0 && max == 1) return maxPoints;
+
+        else return 0;
     }
 
     public bool GetFeverState(){

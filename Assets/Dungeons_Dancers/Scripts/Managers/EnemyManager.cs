@@ -15,10 +15,14 @@ public class EnemyManager : MonoBehaviour {
     [Header("Set Moving Traps")]
     [SerializeField]
     private MovingTrapBehaviour[] movingTraps;
+    [Header("Set Moving Enemies")]
+    [SerializeField]
+    private MovingEnemyBehaviour[] movingEnemy;
 
     private List<StaticTrapBehaviour> event1StaticTrap = new List<StaticTrapBehaviour>(), event2StaticTrap = new List<StaticTrapBehaviour>(), event3StaticTrap = new List<StaticTrapBehaviour>();
     private List<ProjectileTrapBehaviour> event1ProjectileTrap = new List<ProjectileTrapBehaviour>(), event2ProjectileTrap = new List<ProjectileTrapBehaviour>(), event3ProjectileTrap = new List<ProjectileTrapBehaviour>();
     private List<MovingTrapBehaviour> event1MovingTrap = new List<MovingTrapBehaviour>(), event2MovingTrap = new List<MovingTrapBehaviour>(), event3MovingTrap = new List<MovingTrapBehaviour>();
+    private List<MovingEnemyBehaviour> event1MovingEnemy = new List<MovingEnemyBehaviour>(), event2MovingEnemy = new List<MovingEnemyBehaviour>(), event3MovingEnemy = new List<MovingEnemyBehaviour>();
 
 	// Use this for initialization
 	void Start () {
@@ -68,6 +72,22 @@ public class EnemyManager : MonoBehaviour {
                     break;
             }
         }
+
+        for (int w = 0; w <= movingEnemy.Length - 1; w++)
+        {
+            switch (movingEnemy[w].GetTrapBehaviour())
+            {
+                case 1:
+                    event1MovingEnemy.Add(movingEnemy[w]);
+                    break;
+                case 2:
+                    event2MovingEnemy.Add(movingEnemy[w]);
+                    break;
+                case 3:
+                    event3MovingEnemy.Add(movingEnemy[w]);
+                    break;
+            }
+        }
 	}
 
     public void TrapEvent1Behaviour()
@@ -90,6 +110,12 @@ public class EnemyManager : MonoBehaviour {
             {
                 if (!event1MovingTrap[y].GetActiveTrapEvent()) event1MovingTrap[y].ActiveTrap();
                 else event1MovingTrap[y].DisableTrap();
+            }
+
+            for (int w = 0; w <= event1MovingEnemy.Count - 1; w++)
+            {
+                if (!event1MovingEnemy[w].GetActiveTrapEvent()) event1MovingEnemy[w].ActiveTrap();
+                else event1MovingEnemy[w].DisableTrap();
             }
         }
     }
@@ -115,6 +141,12 @@ public class EnemyManager : MonoBehaviour {
                 if (!event2MovingTrap[y].GetActiveTrapEvent()) event2MovingTrap[y].ActiveTrap();
                 else event2MovingTrap[y].DisableTrap();
             }
+
+            for (int w = 0; w <= event2MovingEnemy.Count - 1; w++)
+            {
+                if (!event2MovingEnemy[w].GetActiveTrapEvent()) event2MovingEnemy[w].ActiveTrap();
+                else event2MovingEnemy[w].DisableTrap();
+            }
         }
     }
 
@@ -138,6 +170,12 @@ public class EnemyManager : MonoBehaviour {
             {
                 if (!event3MovingTrap[y].GetActiveTrapEvent()) event3MovingTrap[y].ActiveTrap();
                 else event3MovingTrap[y].DisableTrap();
+            }
+
+            for (int w = 0; w <= event3MovingEnemy.Count - 1; w++)
+            {
+                if (!event3MovingEnemy[w].GetActiveTrapEvent()) event3MovingEnemy[w].ActiveTrap();
+                else event3MovingEnemy[w].DisableTrap();
             }
         }
     }

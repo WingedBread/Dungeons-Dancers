@@ -87,16 +87,16 @@ public class GameManager : MonoBehaviour
             if (Time.timeScale > 0)
             {
                 Time.timeScale = 0;
+                gameStart = false;
                 auController.MuteSound();
                 uiController.PauseUI();
-                gameStart = false;
             }
             else
             {
                 Time.timeScale = 1;
+                gameStart = true;
                 auController.UnmuteSound();
                 uiController.ResetUI();
-                gameStart = true;
             }
         }
     }
@@ -166,9 +166,13 @@ public class GameManager : MonoBehaviour
     }
 
     #region Getters & Setters
-    public int GetPoints()
+    public int GetPoints(int min, int current, int max)
     {
-        return satisController.GetSatisfactionPoints();
+        if (min == 1 && current == 0 && max == 0) return satisController.GetSatisfactionPoints(1, 0, 0);
+        else if (min == 0 && current == 1 && max == 0) return satisController.GetSatisfactionPoints(0, 1, 0);
+        else if (min == 0 && current == 0 && max == 1) return satisController.GetSatisfactionPoints(0, 0, 1);
+
+        else return 0;
     }
     public bool GetPlayerBlock()
     {
