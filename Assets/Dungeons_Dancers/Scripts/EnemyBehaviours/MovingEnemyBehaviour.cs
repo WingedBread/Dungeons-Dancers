@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(RaycastCollisions))]
 public class MovingEnemyBehaviour : MonoBehaviour {
     
-    private RaycastCollisions ray;
     public Transform[] points;
     private int destPoint = 0;
 
@@ -16,18 +14,11 @@ public class MovingEnemyBehaviour : MonoBehaviour {
     [SerializeField]
     private float timeIdle = 0.25f;
 
-    private Vector3 upv3, downv3, leftv3, rightv3;
-
     private bool activeTrapEvent;
 
     void Start()
     {
-        upv3 = new Vector3(1, 0, 0);
-        downv3 = new Vector3(-1, 0, 0);
-        leftv3 = new Vector3(0, 0, 1);
-        rightv3 = new Vector3(0, 0, -1);
-
-        ray.GetComponent<RaycastCollisions>();
+        
     }
 
     void Update()
@@ -36,12 +27,13 @@ public class MovingEnemyBehaviour : MonoBehaviour {
             //GotoNextPoint();
     }
 
-    public void ActiveTrap(){
-
+    public void ActiveTrap()
+    {
+        activeTrapEvent = true;
     }
-
-    public void DisableTrap(){
-        
+    public void DisableTrap()
+    {
+        activeTrapEvent = false;
     }
 
     void GotoNextPoint()
@@ -63,5 +55,11 @@ public class MovingEnemyBehaviour : MonoBehaviour {
     public bool GetActiveTrapEvent()
     {
         return activeTrapEvent;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Collide with directional platform
     }
 }

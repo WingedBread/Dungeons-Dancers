@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Coin
-  m_Shader: {fileID: 4800000, guid: e0d6325b9fc1e0245861ec87a0cd2113, type: 3}
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -65,6 +65,7 @@ Material:
     m_Floats:
     - PixelSnap: 0
     - _BumpScale: 1
+    - _ColorMask: 15
     - _CutRotation: 0
     - _Cutoff: 0.98
     - _DetailNormalMapScale: 1
@@ -86,12 +87,18 @@ Material:
     - _SpecularHighlights: 1
     - _Speed: 30
     - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _USEMASK: 0
     - _USEPOS: 0
     - _USESHEET: 0
     - _UVScrollX: 0
     - _UVScrollY: 0
     - _UVSec: 0
+    - _UseUIAlphaClip: 0
     - _ZWrite: 1
     - _xx: 1
     - _yy: 1
