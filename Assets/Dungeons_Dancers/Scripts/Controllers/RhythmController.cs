@@ -24,6 +24,11 @@ public class RhythmController : MonoBehaviour
 
     private MultiMusicPlayer multiMusic;
 
+    private int lastEndSample;
+
+
+    [SerializeField]
+    private DebugController debugController;
     // Use this for initialization
     void Start()
     {
@@ -73,6 +78,11 @@ public class RhythmController : MonoBehaviour
 
     void PlayerInputBehaviour(KoreographyEvent kInputEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
     {
+        debugController.RhythmStartSpanDebug(kInputEvent.StartSample);
+        debugController.RhythmEndSpanDebug(kInputEvent.EndSample);
+        debugController.RhythmDurationSpanDebug(kInputEvent.EndSample - kInputEvent.StartSample);
+        debugController.SetHitTime(sampleTime);
+
         if(gameManager.GetPlayerInputFlag()) CalculateTiming(sampleTime, kInputEvent);
 
         if (sampleTime < kInputEvent.EndSample)
@@ -88,6 +98,9 @@ public class RhythmController : MonoBehaviour
 
     void PlayerBeatBehaviour(KoreographyEvent kBeatEvent)
     {
+        debugController.RhythmBeatPlayerDebug(kBeatEvent.StartSample);
+        debugController.RhythmBeatDurationDebug(kBeatEvent.StartSample - lastEndSample);
+        lastEndSample = kBeatEvent.EndSample;
         if (!activePlayerBeatEvent)
         {
             activePlayerBeatEvent = true;

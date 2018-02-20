@@ -23,6 +23,9 @@ public class InputController : MonoBehaviour
     private Vector3 playerInitPos;
     private Transform playerChild;
 
+    [SerializeField]
+    private DebugController debugController;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -37,6 +40,7 @@ public class InputController : MonoBehaviour
 	void Update () 
     {
         if (!blockPlayer) PlayerMoveInput();
+        debugController.InputPlayerDebug(inputFlag);
 	}
 
     void PlayerMoveInput()
