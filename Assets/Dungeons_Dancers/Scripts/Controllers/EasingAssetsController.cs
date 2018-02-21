@@ -24,9 +24,6 @@ public class EasingAssetsController : MonoBehaviour {
     [Header("Choose Position Off Beat (if needed)")]
     [SerializeField]
     private Vector3 offBeatPositionVector3 = new Vector3(0, 0, 0);
-    [Header("Easing Speed Off Beat")]
-    [SerializeField]
-    private float easingOffSpeed;
     [Header("Easing Duration Off Beat")]
     [SerializeField]
     private float easingOffDuration;
@@ -39,38 +36,45 @@ public class EasingAssetsController : MonoBehaviour {
     [Header("Choose Position On Beat (if needed)")]
     [SerializeField]
     private Vector3 onBeatPositionVector3 = new Vector3(0, 0, 0);
-    [Header("Easing Speed On Beat")]
-    [SerializeField]
-    private float easingOnSpeed;
     [Header("Easing Duration On Beat")]
     [SerializeField]
     private float easingOnDuration;
 
+    private bool beatflag;
     // Use this for initialization
 	void Start () {
         rhythmController = GameObject.FindWithTag("GameManager").GetComponent<RhythmController>();
 	}
-                     
+
     // Update is called once per frame
     void Update()
     {
-        if (rhythmController.ActivePlayerBeatEvent())
+        if (rhythmController.ActivePlayerBeatEvent() && !beatflag)
         {
             OnBeatEvent();
+            beatflag = true;
         }
-        else if (!rhythmController.ActivePlayerBeatEvent())
+        else if (!rhythmController.ActivePlayerBeatEvent() && beatflag)
         {
             NoBeatEvent();
+            beatflag = false;
         }
     }
 
     void OnBeatEvent(){
-        if(scaleEasing) iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "speed", easingOnSpeed, "easetype", easingList));
-        if(moveEasing)iTween.MoveTo(gameObject, iTween.Hash("position", onBeatPositionVector3, "time", easingOnDuration, "speed", easingOnSpeed, "easetype", easingList));
+        if(scaleEasing) iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingList));
+        if(moveEasing)iTween.MoveTo(gameObject, iTween.Hash("position", onBeatPositionVector3, "time", easingOnDuration, "easetype", easingList));
+        StartCoroutine(EasingTiming(easingOffDuration));
     }
 
     void NoBeatEvent(){
-        if(scaleEasing)iTween.ScaleTo(gameObject, iTween.Hash("scale", offBeatScaleVector3, "time", easingOffDuration, "speed", easingOffSpeed, "easetype", easingList));
-        if(moveEasing) iTween.MoveTo(gameObject, iTween.Hash("position", offBeatPositionVector3, "time", easingOffDuration, "speed", easingOffSpeed, "easetype", easingList));
+        if(scaleEasing)iTween.ScaleTo(gameObject, iTween.Hash("scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingList));
+        if(moveEasing) iTween.MoveTo(gameObject, iTween.Hash("position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingList));
+    }
+
+    IEnumerator EasingTiming(float timeoff){
+        yield return new WaitForSeconds(timeoff);
+        NoBeatEvent();
+        StopCoroutine("EasingTiming");
     }
 }

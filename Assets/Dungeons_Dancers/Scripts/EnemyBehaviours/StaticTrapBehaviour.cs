@@ -9,12 +9,21 @@ public class StaticTrapBehaviour : MonoBehaviour {
     [Header("Choose Trap Behaviour from 1-3")]
     [SerializeField]
     private int trapBehaviour;
-    [Header("Choose Idle Return Time")]
+    [Header("Choose Trap Max Height")]
     [SerializeField]
-    private float timeIdle = 0.25f;
-    [Header("Choose Trap Height")]
+    private float trapMaxHeight = 1f;
+    [Header("Choose Trap MinHeight")]
     [SerializeField]
-    private float trapHeight = 1f;
+    private float trapMinHeight = 0.05f;
+    [Header("Choose Easing")]
+    [SerializeField]
+    private iTween.EaseType easingList;
+    [Header("Easing Duration On Beat")]
+    [SerializeField]
+    private float easingOnDuration;
+    [Header("Easing Duration Off Beat")]
+    [SerializeField]
+    private float easingOffDuration = 0.1f;
 
     private bool activeTrapEvent;
 
@@ -29,8 +38,8 @@ public class StaticTrapBehaviour : MonoBehaviour {
         activeTrapEvent = true;
         mat.color = Color.white;
         this.gameObject.GetComponent<Collider>().enabled = true;
-        this.transform.position = new Vector3(this.transform.position.x, trapHeight, this.transform.position.z);
-        StartCoroutine(ReturnIdle(timeIdle));
+        iTween.MoveTo(gameObject, iTween.Hash("y", trapMaxHeight, "time", easingOnDuration, "easetype", easingList));
+        StartCoroutine(ReturnIdle(easingOffDuration));
     }
 
     public void DisableTrap()
@@ -38,7 +47,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
         activeTrapEvent = false;
         mat.color = Color.black;
         this.gameObject.GetComponent<Collider>().enabled = false;
-        this.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
+        iTween.MoveTo(gameObject, iTween.Hash("y", trapMinHeight, "time", easingOffDuration, "easetype", easingList));
     }
 
     private IEnumerator ReturnIdle(float time)
@@ -46,7 +55,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
         yield return new WaitForSeconds(time);
         this.gameObject.GetComponent<Collider>().enabled = false;
         mat.color = Color.black;
-        this.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
+        iTween.MoveTo(gameObject, iTween.Hash("y", trapMinHeight, "time", easingOffDuration, "easetype", easingList));
 
         StopCoroutine("ReturnIdle");
     }
