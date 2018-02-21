@@ -1362,14 +1362,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveEasing: 0
-  scaleEasing: 0
+  scaleEasing: 1
   easingList: 0
   offBeatScaleVector3: {x: 1, y: 1, z: 1}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOffDuration: 1
+  easingOffDuration: 0.2
   onBeatScaleVector3: {x: 2, y: 2, z: 2}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOnDuration: 1
+  easingOnDuration: 0.2
 --- !u!1 &299876310
 GameObject:
   m_ObjectHideFlags: 0
@@ -4497,6 +4497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   debugController: {fileID: 1100077205}
+  easingList: 0
+  easingDuration: 0.2
 --- !u!114 &933711276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5995,14 +5997,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveEasing: 0
-  scaleEasing: 0
+  scaleEasing: 1
   easingList: 0
   offBeatScaleVector3: {x: 1, y: 1, z: 1}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOffDuration: 1
+  easingOffDuration: 0.2
   onBeatScaleVector3: {x: 2, y: 2, z: 2}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOnDuration: 1
+  easingOnDuration: 0.2
 --- !u!1001 &1200521335
 Prefab:
   m_ObjectHideFlags: 0

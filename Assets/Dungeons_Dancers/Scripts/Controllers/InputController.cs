@@ -26,6 +26,13 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private DebugController debugController;
 
+    [Header("Choose Easing")]
+    [SerializeField]
+    private iTween.EaseType easingList;
+    [Header("Easing Duration")]
+    [SerializeField]
+    private float easingDuration;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -50,7 +57,8 @@ public class InputController : MonoBehaviour
         {
             if (!rayCollision.LeftCollision() && inputFlag)
             {
-                this.transform.Translate(-speed, 0, 0);
+                //this.transform.Translate(-speed, 0, 0);
+                iTween.MoveTo(gameObject, iTween.Hash("x", transform.position.x-speed, "time", easingDuration, "easetype", easingList));
                 playerChild.rotation = Quaternion.Euler(0, -90, -65);
                 inputFlag = false;
 
@@ -64,7 +72,9 @@ public class InputController : MonoBehaviour
         {
             if (!rayCollision.RightCollision() && inputFlag)
             {
-                this.transform.Translate(speed, 0, 0);
+                //this.transform.Translate(speed, 0, 0);
+                Debug.Log("hi");
+                iTween.MoveTo(gameObject, iTween.Hash("x", transform.position.x+speed, "time", easingDuration, "easetype", easingList));
                 playerChild.rotation = Quaternion.Euler(0, 90, 65);
                 inputFlag = false;
 
@@ -78,7 +88,8 @@ public class InputController : MonoBehaviour
         {
             if (!rayCollision.DownCollision() && inputFlag)
             {
-                this.transform.Translate(0, 0, -speed);
+                //this.transform.Translate(0, 0, -speed);
+                iTween.MoveTo(gameObject, iTween.Hash("z", transform.position.x-speed, "time", easingDuration, "easetype", easingList));
                 playerChild.rotation = Quaternion.Euler(-65, 180, 0);
                 inputFlag = false;
 
@@ -92,7 +103,8 @@ public class InputController : MonoBehaviour
         {
             if (!rayCollision.UpCollision() && inputFlag)
             {
-                this.transform.Translate(0, 0, speed);
+                //this.transform.Translate(0, 0, speed);
+                iTween.MoveTo(gameObject, iTween.Hash("z", transform.position.x+speed, "time", easingDuration, "easetype", easingList));
                 playerChild.rotation = Quaternion.Euler(65, 0, 0);
                 inputFlag = false;
 
