@@ -56,25 +56,18 @@ public class EasingAssetsController : MonoBehaviour {
         }
         else if (!rhythmController.ActivePlayerBeatEvent() && beatflag)
         {
-            NoBeatEvent();
+            OnBeatEvent();
             beatflag = false;
         }
     }
 
     void OnBeatEvent(){
-        if(scaleEasing) iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingList));
-        if(moveEasing)iTween.MoveTo(gameObject, iTween.Hash("position", onBeatPositionVector3, "time", easingOnDuration, "easetype", easingList));
-        StartCoroutine(EasingTiming(easingOffDuration));
+        if(scaleEasing) iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingList, "oncomplete", "OffBeatEvent"));
+        if(moveEasing)iTween.MoveTo(gameObject, iTween.Hash("position", onBeatPositionVector3, "time", easingOnDuration, "easetype", easingList, "oncomplete", "OffBeatEvent"));
     }
 
-    void NoBeatEvent(){
-        if(scaleEasing)iTween.ScaleTo(gameObject, iTween.Hash("scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingList));
-        if(moveEasing) iTween.MoveTo(gameObject, iTween.Hash("position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingList));
-    }
-
-    IEnumerator EasingTiming(float timeoff){
-        yield return new WaitForSeconds(timeoff);
-        NoBeatEvent();
-        StopCoroutine("EasingTiming");
+    void OffBeatEvent(){
+        if (scaleEasing) iTween.ScaleTo(gameObject, iTween.Hash("scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingList));
+        if (moveEasing) iTween.MoveTo(gameObject, iTween.Hash("position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingList));
     }
 }

@@ -38,8 +38,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
         activeTrapEvent = true;
         mat.color = Color.white;
         this.gameObject.GetComponent<Collider>().enabled = true;
-        iTween.MoveTo(gameObject, iTween.Hash("y", trapMaxHeight, "time", easingOnDuration, "easetype", easingList));
-        StartCoroutine(ReturnIdle(easingOffDuration));
+        iTween.MoveTo(gameObject, iTween.Hash("y", trapMaxHeight, "time", easingOnDuration, "easetype", easingList, "oncomplete", "ReturnIdle"));
     }
 
     public void DisableTrap()
@@ -50,14 +49,11 @@ public class StaticTrapBehaviour : MonoBehaviour {
         iTween.MoveTo(gameObject, iTween.Hash("y", trapMinHeight, "time", easingOffDuration, "easetype", easingList));
     }
 
-    private IEnumerator ReturnIdle(float time)
+    private void ReturnIdle()
     {
-        yield return new WaitForSeconds(time);
         this.gameObject.GetComponent<Collider>().enabled = false;
         mat.color = Color.black;
         iTween.MoveTo(gameObject, iTween.Hash("y", trapMinHeight, "time", easingOffDuration, "easetype", easingList));
-
-        StopCoroutine("ReturnIdle");
     }
 
     public int GetTrapBehaviour(){
