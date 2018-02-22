@@ -435,36 +435,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224891123567093016, guid: 49c120603d00a4399b8ff81e0b61f7b3,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -515
-      objectReference: {fileID: 0}
-    - target: {fileID: 224891123567093016, guid: 49c120603d00a4399b8ff81e0b61f7b3,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -331.60327
-      objectReference: {fileID: 0}
-    - target: {fileID: 114474383798417736, guid: 49c120603d00a4399b8ff81e0b61f7b3,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114474383798417736, guid: 49c120603d00a4399b8ff81e0b61f7b3,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114474383798417736, guid: 49c120603d00a4399b8ff81e0b61f7b3,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114474383798417736, guid: 49c120603d00a4399b8ff81e0b61f7b3,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 23
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49c120603d00a4399b8ff81e0b61f7b3, type: 2}
   m_IsPrefabParent: 0
@@ -1391,13 +1361,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfee34ec43ddf4293afe4e88f82cf36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventID: Trap1Event
   moveEasing: 0
   scaleEasing: 1
-  easingList: 0
+  easingOffBeatList: 0
   offBeatScaleVector3: {x: 1, y: 1, z: 1}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOffDuration: 0.05
-  onBeatScaleVector3: {x: 3, y: 3, z: 3}
+  easingOnBeatList: 0
+  onBeatScaleVector3: {x: 1.5, y: 1.5, z: 1.5}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.1
 --- !u!1 &299876310
@@ -6026,12 +5998,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfee34ec43ddf4293afe4e88f82cf36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventID: PlayerBeatEvent
   moveEasing: 0
   scaleEasing: 1
-  easingList: 10
+  easingOffBeatList: 0
   offBeatScaleVector3: {x: 0.5, y: 0.5, z: 0.5}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOffDuration: 0.05
+  easingOnBeatList: 0
   onBeatScaleVector3: {x: 1.25, y: 1.25, z: 1.25}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.1
@@ -8812,15 +8786,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfee34ec43ddf4293afe4e88f82cf36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventID: PlayerBeatEvent
   moveEasing: 0
   scaleEasing: 1
-  easingList: 0
+  easingOffBeatList: 0
   offBeatScaleVector3: {x: 1, y: 1, z: 1}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOffDuration: 0.05
-  onBeatScaleVector3: {x: 3, y: 3, z: 3}
+  easingOnBeatList: 0
+  onBeatScaleVector3: {x: 1.5, y: 1.5, z: 1.5}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOnDuration: 0.1
+  easingOnDuration: 0.6
 --- !u!4 &1857014147 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4289536284287788, guid: bd1d8e47fe0dc6841a353d3fdbba55ed,
