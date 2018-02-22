@@ -239,14 +239,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 69690751}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -3.51, y: 0.5, z: 1.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1159098751}
   - {fileID: 120630528}
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 1837973094}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &120630527
 GameObject:
@@ -988,6 +988,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65473134291793298, guid: 04448752b03a3d24aa5e21ebef9f0f5d,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04448752b03a3d24aa5e21ebef9f0f5d, type: 2}
   m_IsPrefabParent: 0
@@ -1087,12 +1092,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfee34ec43ddf4293afe4e88f82cf36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventID: Trap1Event
   moveEasing: 0
   scaleEasing: 1
-  easingList: 27
+  easingOffBeatList: 0
   offBeatScaleVector3: {x: 1, y: 1, z: 1}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOffDuration: 0.2
+  easingOnBeatList: 0
   onBeatScaleVector3: {x: 1.2, y: 1, z: 1.2}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.1
@@ -2940,12 +2947,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfee34ec43ddf4293afe4e88f82cf36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventID: PlayerBeatEvent
   moveEasing: 0
   scaleEasing: 1
-  easingList: 0
+  easingOffBeatList: 21
   offBeatScaleVector3: {x: 0.25, y: 0.25, z: 0.25}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOffDuration: 0.1
+  easingOnBeatList: 0
   onBeatScaleVector3: {x: 0.4, y: 0.4, z: 0.4}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.2
@@ -4122,12 +4131,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfee34ec43ddf4293afe4e88f82cf36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventID: PlayerBeatEvent
   moveEasing: 0
   scaleEasing: 1
-  easingList: 0
+  easingOffBeatList: 21
   offBeatScaleVector3: {x: 0.25, y: 0.25, z: 0.25}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOffDuration: 0.1
+  easingOnBeatList: 0
   onBeatScaleVector3: {x: 0.4, y: 0.4, z: 0.4}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.2
@@ -6001,12 +6012,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfee34ec43ddf4293afe4e88f82cf36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventID: PlayerBeatEvent
   moveEasing: 0
   scaleEasing: 1
-  easingList: 21
+  easingOffBeatList: 22
   offBeatScaleVector3: {x: 0.25, y: 0.25, z: 0.25}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOffDuration: 0.1
+  easingOffDuration: 0
+  easingOnBeatList: 22
   onBeatScaleVector3: {x: 0.4, y: 0.4, z: 0.4}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.2
@@ -6092,6 +6105,7 @@ Transform:
   - {fileID: 1100521586}
   - {fileID: 362843335}
   - {fileID: 2055758465}
+  - {fileID: 69690753}
   m_Father: {fileID: 511648450}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
