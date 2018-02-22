@@ -42,23 +42,24 @@ public class UIController: MonoBehaviour {
 
     #region Editor Text
     [Header("Intro Text")]
-    [TextArea]
     [SerializeField]
     private string finalIntro;
     [Header("Slider Texts")]
-    [TextArea]
     [SerializeField]
     private string sliderFirst;
-    [TextArea]
     [SerializeField]
-    private string sliderSecond, sliderThird, sliderFourth;
+    private string sliderSecond;
+    [SerializeField]
+    private string sliderThird;
+    [SerializeField]
+    private string sliderFourth;
     [Header("Accuracy Texts")]
-    [TextArea]
     [SerializeField]
     private string accuracySoon;
-    [TextArea]
     [SerializeField]
-    private string accuracyPerfect, accuracyLate;
+    private string accuracyPerfect;
+    [SerializeField]
+    private string accuracyLate;
     #endregion
 
     [Header("Intro Text Time")]

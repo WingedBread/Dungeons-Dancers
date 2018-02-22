@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SonicBloom.Koreo;
 
 public class EasingAssetsController : MonoBehaviour {
-    [Header("Rhythm Controller")]
-    private RhythmController rhythmController;
+
+    [EventID]
+    public string eventID;
 
     [Header("Move or Scale (or Both)")]
     [SerializeField]
@@ -12,12 +14,11 @@ public class EasingAssetsController : MonoBehaviour {
     [SerializeField]
     private bool scaleEasing;
 
-    [Header("Choose Easing")]
-    [SerializeField]
-    private iTween.EaseType easingList;
-
     [Space(20)]
     [Header("-OFF BEAT EASING SETTINGS-")]
+    [Header("Choose Off Beat Easing")]
+    [SerializeField]
+    private iTween.EaseType easingOffBeatList;
     [Header("Choose Scale Off Beat (if needed)")]
     [SerializeField]
     private Vector3 offBeatScaleVector3 = new Vector3(1, 1, 1);
@@ -30,6 +31,9 @@ public class EasingAssetsController : MonoBehaviour {
 
     [Space(20)]
     [Header("-ON BEAT EASING SETTINGS-")]
+    [Header("Choose On Beat Easing")]
+    [SerializeField]
+    private iTween.EaseType easingOnBeatList;
     [Header("Choose Scale On Beat (if needed)")]
     [SerializeField]
     private Vector3 onBeatScaleVector3 = new Vector3(2, 2, 2);
@@ -41,41 +45,52 @@ public class EasingAssetsController : MonoBehaviour {
     private float easingOnDuration;
 
     private bool beatflag;
+
     // Use this for initialization
 	void Start () {
-        rhythmController = GameObject.FindWithTag("GameManager").GetComponent<RhythmController>();
+        Koreographer.Instance.RegisterForEvents(eventID, BeatEvent);
 	}
 
-    // Update is called once per frame
-    void Update()
+    private void BeatEvent(KoreographyEvent kevent)
     {
-        if (rhythmController.ActivePlayerBeatEvent() && !beatflag)
+
+        if (!beatflag)
         {
+            iTween.StopByName("onbeat");
+            //this.gameObject.transform.localScale = offBeatScaleVector3;
             OnBeatEvent();
             beatflag = true;
+
         }
-        else if (!rhythmController.ActivePlayerBeatEvent() && beatflag)
+        else
         {
-            OnBeatEvent();
+            OffBeatEvent();
             beatflag = false;
         }
+
     }
 
-    void OnBeatEvent(){
-        
-        if(scaleEasing) iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingList, "oncomplete", "OffBeatEvent"));
-        if(moveEasing)iTween.MoveTo(gameObject, iTween.Hash("position", onBeatPositionVector3, "time", easingOnDuration, "easetype", easingList, "oncomplete", "OffBeatEvent"));
+    void OnBeatEvent()
+    {
+        if (scaleEasing)
+        {
+            iTween.ScaleTo(gameObject, iTween.Hash("name", "onbeat", "scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingOnBeatList, "oncomplete", "OffBeatEvent"));
+        }
+        if (moveEasing)
+        {
+            iTween.ScaleTo(gameObject, iTween.Hash("name", "onbeat", "scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingOnBeatList, "oncomplete", "OffBeatEvent"));        
+        }
     }
 
     void OffBeatEvent()
     {
         if (scaleEasing)
         {
-            iTween.ScaleTo(gameObject, iTween.Hash("name", "OffBeatScale", "scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingList));
+            iTween.ScaleTo(gameObject, iTween.Hash("name", "OffBeatScale", "scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingOffBeatList));
         }
         if (moveEasing) 
         {
-            iTween.MoveTo(gameObject, iTween.Hash("name", "OffBeatMovement", "position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingList));
+            iTween.MoveTo(gameObject, iTween.Hash("name", "OffBeatMovement", "position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingOffBeatList));
         }
     }
 }
