@@ -435,6 +435,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1727750969704254, guid: 49c120603d00a4399b8ff81e0b61f7b3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49c120603d00a4399b8ff81e0b61f7b3, type: 2}
   m_IsPrefabParent: 0
@@ -5998,11 +6002,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveEasing: 0
   scaleEasing: 1
-  easingList: 0
-  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  easingList: 10
+  offBeatScaleVector3: {x: 0.5, y: 0.5, z: 0.5}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOffDuration: 0.05
-  onBeatScaleVector3: {x: 3, y: 3, z: 3}
+  onBeatScaleVector3: {x: 1.25, y: 1.25, z: 1.25}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.1
 --- !u!1001 &1200521335

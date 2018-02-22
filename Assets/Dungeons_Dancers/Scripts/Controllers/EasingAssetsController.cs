@@ -62,12 +62,20 @@ public class EasingAssetsController : MonoBehaviour {
     }
 
     void OnBeatEvent(){
+        
         if(scaleEasing) iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingList, "oncomplete", "OffBeatEvent"));
         if(moveEasing)iTween.MoveTo(gameObject, iTween.Hash("position", onBeatPositionVector3, "time", easingOnDuration, "easetype", easingList, "oncomplete", "OffBeatEvent"));
     }
 
-    void OffBeatEvent(){
-        if (scaleEasing) iTween.ScaleTo(gameObject, iTween.Hash("scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingList));
-        if (moveEasing) iTween.MoveTo(gameObject, iTween.Hash("position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingList));
+    void OffBeatEvent()
+    {
+        if (scaleEasing)
+        {
+            iTween.ScaleTo(gameObject, iTween.Hash("name", "OffBeatScale", "scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingList));
+        }
+        if (moveEasing) 
+        {
+            iTween.MoveTo(gameObject, iTween.Hash("name", "OffBeatMovement", "position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingList));
+        }
     }
 }
