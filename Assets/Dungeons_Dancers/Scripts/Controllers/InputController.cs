@@ -40,12 +40,12 @@ public class InputController : MonoBehaviour
         rayCollision = GetComponent<RaycastCollisions>();
         playerChild = this.transform.GetChild(0).transform;
         playerInitPos = this.transform.position;
-
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
+        //iTween.MoveTo(gameObject, iTween.Hash("y", transform.position.y + 0.5f, "time", easingDuration, "easetype", easingList, "looptype", "pingPong"));
         if (!blockPlayer) PlayerMoveInput();
         debugController.InputPlayerDebug(inputFlag);
 	}
@@ -58,6 +58,7 @@ public class InputController : MonoBehaviour
             if (!rayCollision.LeftCollision() && inputFlag)
             {
                 //this.transform.Translate(-speed, 0, 0);
+                //iTween.MoveTo(gameObject, iTween.Hash("y", transform.position.y + 0.5f, "time", easingDuration, "easetype", easingList, "looptype", "pingPong"));
                 iTween.MoveTo(gameObject, iTween.Hash("x", transform.position.x-speed, "time", easingDuration, "easetype", easingList));
                 playerChild.rotation = Quaternion.Euler(0, -90, -65);
                 inputFlag = false;
@@ -74,6 +75,7 @@ public class InputController : MonoBehaviour
             {
                 //this.transform.Translate(speed, 0, 0);
                 Debug.Log("hi");
+                //iTween.MoveTo(gameObject, iTween.Hash("y", transform.position.y + 2.5f, "time", easingDuration, "easetype", easingList, "looptype", "pingPong"));
                 iTween.MoveTo(gameObject, iTween.Hash("x", transform.position.x+speed, "time", easingDuration, "easetype", easingList));
                 playerChild.rotation = Quaternion.Euler(0, 90, 65);
                 inputFlag = false;
@@ -89,7 +91,8 @@ public class InputController : MonoBehaviour
             if (!rayCollision.DownCollision() && inputFlag)
             {
                 //this.transform.Translate(0, 0, -speed);
-                iTween.MoveTo(gameObject, iTween.Hash("z", transform.position.x-speed, "time", easingDuration, "easetype", easingList));
+                //iTween.MoveTo(gameObject, iTween.Hash("y", transform.position.y + 0.5f, "time", easingDuration, "easetype", easingList, "looptype", "pingPong"));
+                iTween.MoveTo(gameObject, iTween.Hash("z", transform.position.z-speed, "time", easingDuration, "easetype", easingList));
                 playerChild.rotation = Quaternion.Euler(-65, 180, 0);
                 inputFlag = false;
 
@@ -104,7 +107,8 @@ public class InputController : MonoBehaviour
             if (!rayCollision.UpCollision() && inputFlag)
             {
                 //this.transform.Translate(0, 0, speed);
-                iTween.MoveTo(gameObject, iTween.Hash("z", transform.position.x+speed, "time", easingDuration, "easetype", easingList));
+                //iTween.MoveTo(gameObject, iTween.Hash("y", transform.position.y + 0.5f, "time", easingDuration, "easetype", easingList, "looptype", "pingPong"));
+                iTween.MoveTo(gameObject, iTween.Hash("z", transform.position.z+speed, "time", easingDuration, "easetype", easingList));
                 playerChild.rotation = Quaternion.Euler(65, 0, 0);
                 inputFlag = false;
 

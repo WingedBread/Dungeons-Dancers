@@ -20,6 +20,11 @@ public class DebugController : MonoBehaviour {
     private Text endPlayerSpan;
     [SerializeField]
     private Text playerSpanDuration;
+    [SerializeField]
+    private Text fpsCounterText;
+
+    private float counter;
+
 
     private bool showDebug = true;
     bool ownFlag;
@@ -29,6 +34,9 @@ public class DebugController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        counter = (int)(1f / Time.unscaledDeltaTime);
+        fpsCounterText.text = "FPS :" + counter.ToString();
+
         if(Input.GetKeyDown(KeyCode.C)){
             showDebug = !showDebug;
             beatConsole.SetActive((showDebug));
