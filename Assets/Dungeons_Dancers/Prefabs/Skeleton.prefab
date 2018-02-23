@@ -321,7 +321,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4538850251711468}
   - component: {fileID: 136349900260124078}
-  m_Layer: 0
+  - component: {fileID: 114212846380113928}
+  - component: {fileID: 114012827352407334}
+  m_Layer: 8
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2150,6 +2152,34 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114012827352407334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1300567745086316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcc01e6b065149b99ae6c9bfcc33530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {fileID: 0}
+  - {fileID: 0}
+  trapBehaviour: 1
+  timeIdle: 0.25
+--- !u!114 &114212846380113928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1300567745086316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d95bbab282e4ffca048e1bdb332cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLenght: 1
 --- !u!136 &136349900260124078
 CapsuleCollider:
   m_ObjectHideFlags: 1
