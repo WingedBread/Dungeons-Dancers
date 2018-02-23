@@ -53,32 +53,18 @@ public class EasingAssetsController : MonoBehaviour {
 
     private void BeatEvent(KoreographyEvent kevent)
     {
-
-        if (!beatflag)
-        {
-            iTween.StopByName("onbeat");
-            //this.gameObject.transform.localScale = offBeatScaleVector3;
-            OnBeatEvent();
-            beatflag = true;
-
-        }
-        else
-        {
-            OffBeatEvent();
-            beatflag = false;
-        }
-
+        OnBeatEvent();
     }
 
     void OnBeatEvent()
     {
         if (scaleEasing)
         {
-            iTween.ScaleTo(gameObject, iTween.Hash("name", "onbeat", "scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingOnBeatList, "oncomplete", "OffBeatEvent"));
+            iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingOnBeatList, "oncomplete", "OffBeatEvent"));
         }
         if (moveEasing)
         {
-            iTween.ScaleTo(gameObject, iTween.Hash("name", "onbeat", "scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingOnBeatList, "oncomplete", "OffBeatEvent"));        
+            iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingOnBeatList, "oncomplete", "OffBeatEvent"));
         }
     }
 
@@ -86,11 +72,11 @@ public class EasingAssetsController : MonoBehaviour {
     {
         if (scaleEasing)
         {
-            iTween.ScaleTo(gameObject, iTween.Hash("name", "OffBeatScale", "scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingOffBeatList));
+            iTween.ScaleTo(gameObject, iTween.Hash("scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingOffBeatList));
         }
         if (moveEasing) 
         {
-            iTween.MoveTo(gameObject, iTween.Hash("name", "OffBeatMovement", "position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingOffBeatList));
+            iTween.MoveTo(gameObject, iTween.Hash("position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingOffBeatList));
         }
     }
 }

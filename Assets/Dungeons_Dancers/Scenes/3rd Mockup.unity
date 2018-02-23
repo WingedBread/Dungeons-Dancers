@@ -2362,8 +2362,6 @@ GameObject:
   m_Component:
   - component: {fileID: 936024188}
   - component: {fileID: 595697278}
-  - component: {fileID: 595697277}
-  - component: {fileID: 595697276}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Untagged
@@ -2371,34 +2369,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &595697276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 595697275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37d95bbab282e4ffca048e1bdb332cef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayLenght: 1
---- !u!114 &595697277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 595697275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdcc01e6b065149b99ae6c9bfcc33530, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  points:
-  - {fileID: 603366526}
-  - {fileID: 1577233732}
-  trapBehaviour: 1
-  timeIdle: 0.25
 --- !u!136 &595697278
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2476,8 +2446,7 @@ MonoBehaviour:
   - {fileID: 467702385}
   movingTraps:
   - {fileID: 1940367685}
-  movingEnemy:
-  - {fileID: 595697277}
+  movingEnemy: []
 --- !u!4 &622553704
 Transform:
   m_ObjectHideFlags: 0
@@ -4500,7 +4469,7 @@ MonoBehaviour:
   speed: 1
   debugController: {fileID: 1100077205}
   easingList: 0
-  easingDuration: 0.2
+  easingDuration: 0.05
 --- !u!114 &933711276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8796,7 +8765,7 @@ MonoBehaviour:
   easingOnBeatList: 0
   onBeatScaleVector3: {x: 1.5, y: 1.5, z: 1.5}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOnDuration: 0.6
+  easingOnDuration: 0.1
 --- !u!4 &1857014147 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4289536284287788, guid: bd1d8e47fe0dc6841a353d3fdbba55ed,
