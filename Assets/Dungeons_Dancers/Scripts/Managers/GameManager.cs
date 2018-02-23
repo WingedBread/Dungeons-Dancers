@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         rhythmController.SetRhythm(false);
         uiController.WinUI();
         auController.MuteSound();
-        StartCoroutine(Reset(resetTime));
+        StartCoroutine(Reset());
     }
 
     public void Dead()
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
             rhythmController.SetRhythm(false);
             uiController.DeadUI();
             auController.MuteSound();
-            StartCoroutine(Reset(resetTime));
+            StartCoroutine(Reset());
         }
     }
 
@@ -127,10 +127,16 @@ public class GameManager : MonoBehaviour
         if (!godMode) playerManager.SetPlayerStartDirection(1);
     }
 
-    private IEnumerator Reset(float time)
+    IEnumerator WaitForKeyDown(KeyCode keyCode)
+    {
+        while (!Input.GetKeyDown(keyCode))
+            yield return null;
+    }
+
+    private IEnumerator Reset()
     {
 
-        yield return new WaitForSeconds(time);
+        yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
         dungeonTimer = initDungeonTimer;
         satisController.ResetSatisfaction();
         uiController.ResetUI();
