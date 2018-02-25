@@ -51,8 +51,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241284527079648}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0.25, z: 3.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.5, y: 0.25, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4212862339443424}
@@ -65,13 +65,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722337306490640}
-  m_LocalRotation: {x: 0.35355338, y: -0.1464466, z: 0.35355338, w: 0.8535535}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4108557825269914}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
 --- !u!23 &23373274905021228
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -80,13 +80,13 @@ MeshRenderer:
   m_GameObject: {fileID: 1722337306490640}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2fe0011c44e21564783ad999e1c3ac85, type: 2}
+  - {fileID: 2100000, guid: e868c93f308a77d4184fcab29c976cd8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722337306490640}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 113d3b3958872e04e9d2f3a203fcff79, type: 3}
 --- !u!65 &65455639851081132
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -140,10 +140,10 @@ MonoBehaviour:
   moveEasing: 0
   scaleEasing: 1
   easingOffBeatList: 21
-  offBeatScaleVector3: {x: 0.25, y: 0.25, z: 0.25}
+  offBeatScaleVector3: {x: 0.5, y: 0.5, z: 0.5}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOffDuration: 0.15
-  easingOnBeatList: 27
-  onBeatScaleVector3: {x: 0.3, y: 0.3, z: 0.3}
+  easingOffDuration: 0.25
+  easingOnBeatList: 7
+  onBeatScaleVector3: {x: 0.6, y: 0.6, z: 0.6}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOnDuration: 0.1
+  easingOnDuration: 0.2
