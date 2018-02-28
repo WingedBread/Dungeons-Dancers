@@ -8,6 +8,8 @@ public class EasingAssetsController : MonoBehaviour {
     [EventID]
     public string eventID;
 
+    private GameManager gameManager;
+
     [Header("Move or Scale (or Both)")]
     [SerializeField]
     private bool moveEasing;
@@ -49,11 +51,12 @@ public class EasingAssetsController : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         Koreographer.Instance.RegisterForEvents(eventID, BeatEvent);
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
 	}
 
     private void BeatEvent(KoreographyEvent kevent)
     {
-        OnBeatEvent();
+        if(gameManager.GetGameStatus())OnBeatEvent();
     }
 
     void OnBeatEvent()

@@ -73,7 +73,7 @@ public class InputController : MonoBehaviour
             if (!rayCollision.LeftCollision() && inputFlag && easingflag) 
             {
                 iTween.MoveTo(gameObject, iTween.Hash("x", transform.position.x - speed, "time", easingSpeedDuration, "easetype", easingSpeedList, "oncomplete", "EasingTrue"));
-                iTween.MoveTo(gameObject.transform.GetChild(0).gameObject, iTween.Hash("y", transform.localPosition.y + jump, "islocal", true, "time", easingJumpDuration, "easetype", easingJumpList));
+                iTween.MoveTo(gameObject.transform.GetChild(0).gameObject, iTween.Hash("y", transform.position.y + jump, "islocal", true, "time", easingJumpDuration, "easetype", easingJumpList));
                 playerChild.rotation = Quaternion.Euler(0, -90, -65);
                 inputFlag = false;
                 easingflag = false;
@@ -89,7 +89,7 @@ public class InputController : MonoBehaviour
             if (!rayCollision.RightCollision() && inputFlag && easingflag)
             {
                 iTween.MoveTo(gameObject, iTween.Hash("x", transform.position.x + speed, "time", easingSpeedDuration, "easetype", easingSpeedList, "oncomplete", "EasingTrue"));
-                iTween.MoveTo(gameObject.transform.GetChild(0).gameObject, iTween.Hash("y", transform.localPosition.y + jump, "islocal", true, "time", easingJumpDuration, "easetype", easingJumpList));
+                iTween.MoveTo(gameObject.transform.GetChild(0).gameObject, iTween.Hash("y", transform.position.y + jump, "islocal", true, "time", easingJumpDuration, "easetype", easingJumpList));
                 playerChild.rotation = Quaternion.Euler(0, 90, 65);
                 inputFlag = false;
                 easingflag = false;
