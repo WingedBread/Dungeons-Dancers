@@ -33,9 +33,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float initDungeonTimer = 60f;
     private float dungeonTimer;
-    [Header("Player Reset Time")]
-    [SerializeField]
-    private float resetTime = 1f;
 
     // Use this for initialization
     void Start()
@@ -131,6 +128,7 @@ public class GameManager : MonoBehaviour
     {
         while (!Input.GetKeyDown(keyCode))
             yield return null;
+        StopCoroutine("WaitForKeyDown");
     }
 
     private IEnumerator Reset()
