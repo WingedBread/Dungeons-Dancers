@@ -24,6 +24,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private float timeIdle = 0.25f;
 
+    private List<GameObject> collectibles = new List<GameObject>();
+
     // Use this for initialization
     void Start()
     {
@@ -32,7 +34,7 @@ public class PlayerManager : MonoBehaviour
         collectiblesController = GetComponent<CollectiblesController>();
 
         animator = this.transform.GetChild(0).GetComponent<Animator>();
-        mat = this.transform.GetChild(0).transform.GetChild(0).GetComponent<MeshRenderer>().material;
+        mat = this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
     }
 
     void Update()
@@ -78,11 +80,13 @@ public class PlayerManager : MonoBehaviour
                 gameManager.Respawn();
                 break;
             case "Coin":
+                collectibles.Add(col.gameObject);
                 collectiblesController.AddCoin();
                 col.gameObject.SetActive(false);
                 gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()), false);
                 break;
             case "Key":
+                collectibles.Add(col.gameObject);
                 collectiblesController.AddKey(int.Parse(col.gameObject.name.Substring(0,2)));
                 col.gameObject.SetActive(false);
                 gameManager.CollectibleBehaviour(int.Parse(col.gameObject.name.Substring(0, 2)));
@@ -91,7 +95,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void SetPlayerStartDirection(int direction)
     {
-        inputController.SetStartDirection(direction);
+        inputController.SetStartRotation(direction);
     }
     public void SetBlock(bool Block)
     {
@@ -106,5 +110,15 @@ public class PlayerManager : MonoBehaviour
     public bool GetPlayerInputFlag()
     {
         return inputController.GetInputFlag();
+    }
+
+    public void ResetPlayer()
+    {
+        for (int i = 0; i < collectibles.Count; i++)
+        {
+            collectibles[i].SetActive(true);
+        }
+        collectibles.Clear();
+        collectiblesController.Reset();
     }
 }

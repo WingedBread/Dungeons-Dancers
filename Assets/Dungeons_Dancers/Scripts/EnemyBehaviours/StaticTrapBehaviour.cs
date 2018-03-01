@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StaticTrapBehaviour : MonoBehaviour {
     
-    private Material mat;
-
     [Header("Choose Trap Behaviour from 1-3")]
     [SerializeField]
     private int trapBehaviour;
@@ -14,7 +12,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
     private float trapMaxHeight = 1f;
     [Header("Choose Trap MinHeight")]
     [SerializeField]
-    private float trapMinHeight = 0.05f;
+    private float trapMinHeight = 0f;
     [Header("Choose Easing")]
     [SerializeField]
     private iTween.EaseType easingList;
@@ -27,33 +25,32 @@ public class StaticTrapBehaviour : MonoBehaviour {
 
     private bool activeTrapEvent;
 
+    private GameObject childSpikes;
+
 	// Use this for initialization
 	void Start () 
     {
-        mat = this.GetComponent<MeshRenderer>().material;
+        childSpikes = gameObject.transform.GetChild(0).gameObject;
 	}
 	
     public void ActiveTrap()
     {
         activeTrapEvent = true;
-        mat.color = Color.white;
         this.gameObject.GetComponent<Collider>().enabled = true;
-        iTween.MoveTo(gameObject, iTween.Hash("y", trapMaxHeight, "time", easingOnDuration, "easetype", easingList, "oncomplete", "ReturnIdle"));
+        iTween.MoveTo(childSpikes, iTween.Hash("y", trapMaxHeight, "movetopath", false, "time", easingOnDuration, "islocal", true, "easetype", easingList, "oncomplete", "ReturnIdle"));
     }
 
     public void DisableTrap()
     {
         activeTrapEvent = false;
-        mat.color = Color.black;
         this.gameObject.GetComponent<Collider>().enabled = false;
-        iTween.MoveTo(gameObject, iTween.Hash("y", trapMinHeight, "time", easingOffDuration, "easetype", easingList));
+        iTween.MoveTo(childSpikes, iTween.Hash("y", trapMinHeight, "movetopath", false,  "time", easingOffDuration,"islocal", true, "easetype", easingList));
     }
 
     private void ReturnIdle()
     {
         this.gameObject.GetComponent<Collider>().enabled = false;
-        mat.color = Color.black;
-        iTween.MoveTo(gameObject, iTween.Hash("y", trapMinHeight, "time", easingOffDuration, "easetype", easingList));
+        iTween.MoveTo(childSpikes, iTween.Hash("y", trapMinHeight, "movetopath", false, "time", easingOffDuration,"islocal", true, "easetype", easingList));
     }
 
     public int GetTrapBehaviour(){

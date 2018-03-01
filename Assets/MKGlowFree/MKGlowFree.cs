@@ -36,6 +36,7 @@ namespace MK.Glow
         private bool showInnerGlowBehavior = false;
 #pragma warning restore 414
 #endif
+        [SerializeField]
         private RenderTextureFormat rtFormat = RenderTextureFormat.Default;
 
         [SerializeField]
@@ -53,6 +54,9 @@ namespace MK.Glow
         {
             get { return GetComponent<Camera>(); }
         }
+
+        //[SerializeField]
+        //private DebugMode debugMode = DebugMode.NONE;
 
         [SerializeField]
         [Tooltip("recommend: -1")]
@@ -270,7 +274,23 @@ namespace MK.Glow
         {
             Graphics.Blit(glowTexRaw, glowTexInner);
 
+            /*
+            if(debugMode == DebugMode.GLOW_TEX_RAW)
+            {
+                Graphics.Blit(glowTexRaw, dest);
+                return;
+            }
+            */
+
             Blur(glowTexInner, tmpGlowTex);
+
+            /*
+            if (debugMode == DebugMode.GLOW_TEX_BLURRED)
+            {
+                Graphics.Blit(glowTexInner, dest);
+                return;
+            }
+            */
 
             compositeMaterial.SetTexture("_MKGlowTexInner", glowTexInner);
             Graphics.Blit(src, dest, compositeMaterial);
@@ -337,4 +357,13 @@ namespace MK.Glow
         Selective = 0,
         Fullscreen = 1
     }
+
+    /*
+    public enum DebugMode
+    {
+        NONE,
+        GLOW_TEX_RAW,
+        GLOW_TEX_BLURRED
+    }
+    */
 }

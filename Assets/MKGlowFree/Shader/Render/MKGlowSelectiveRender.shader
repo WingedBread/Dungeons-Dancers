@@ -1,5 +1,5 @@
 ﻿//////////////////////////////////////////////////////
-// MK Glow Free Selective Render Shader    			//
+// MK Glow Selective Render Shader    				//
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de | www.michaelkremmel.store //
@@ -73,9 +73,115 @@ Shader "Hidden/MK/Glow/SelectiveRender"
 			ENDCG
 		}
 	}
+	SubShader
+	{
+		Tags
+		{ 
+			"Queue"="Transparent" 
+			"IgnoreProjector"="True" 
+			"RenderType"="MKGlowUIDefault" 
+			"PreviewType"="Plane"
+			"CanUseSpriteAtlas"="True"
+		}
+		
+		Stencil
+		{
+			Ref [_Stencil]
+			Comp [_StencilComp]
+			Pass [_StencilOp] 
+			ReadMask [_StencilReadMask]
+			WriteMask [_StencilWriteMask]
+		}
+
+		Cull Off
+		Lighting Off
+		ZWrite Off
+		ZTest [unity_GUIZTestMode]
+		Blend SrcAlpha OneMinusSrcAlpha
+		ColorMask [_ColorMask]
+
+		Pass
+		{
+			Name "Default"
+		CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
+			#pragma target 2.0
+
+			#include "UnityCG.cginc"
+			#include "UnityUI.cginc"
+
+			#pragma multi_compile __ UNITY_UI_ALPHACLIP
+			
+			struct appdata_t
+			{
+				float4 vertex   : POSITION;
+				float4 color    : COLOR;
+				float2 texcoord : TEXCOORD0;
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+			};
+
+			struct v2f
+			{
+				float4 vertex   : SV_POSITION;
+				fixed4 color    : COLOR;
+				float2 texcoord  : TEXCOORD0;
+				float4 worldPosition : TEXCOORD1;
+				float2 uv_MKGlowTex : TEXCOORD2;
+				UNITY_VERTEX_OUTPUT_STEREO
+			};
+			
+			fixed4 _Color;
+			fixed4 _TextureSampleAdd;
+			float4 _ClipRect;
+
+			uniform sampler2D _MKGlowTex;
+			uniform float4 _MKGlowTex_ST;
+			uniform fixed4 _MKGlowColor;
+			uniform half _MKGlowPower;
+			uniform half _MKGlowTexPower;
+
+			v2f vert(appdata_t IN)
+			{
+				v2f OUT;
+				UNITY_SETUP_INSTANCE_ID(IN);
+				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
+				OUT.worldPosition = IN.vertex;
+				OUT.vertex = UnityObjectToClipPos(OUT.worldPosition);
+
+				OUT.texcoord = IN.texcoord;
+				OUT.uv_MKGlowTex = TRANSFORM_TEX(IN.texcoord, _MKGlowTex);
+				
+				OUT.color = IN.color * _Color;
+				return OUT;
+			}
+
+			sampler2D _MainTex;
+
+			fixed4 frag(v2f IN) : SV_Target
+			{
+				half4 color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
+				
+				fixed4 glow = tex2D(_MKGlowTex, IN.uv_MKGlowTex);
+				glow.rgb *= (_MKGlowColor * _MKGlowPower);
+				glow.a = _Color.a;
+
+				color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
+				
+				#ifdef UNITY_UI_ALPHACLIP
+				clip (color.a - 0.001);
+				#endif
+
+				glow.a = color.a;
+
+				return glow;
+			}
+		ENDCG
+		}
+	}
 	SubShader 
 	{
-		Tags { "RenderType"="MKGlowSprite" "Queue"="Transparent"}
+		Tags { "RenderType"="MKGlowNC" "Queue"="Transparent"}
 		Blend SrcAlpha OneMinusSrcAlpha
 		Pass 
 		{

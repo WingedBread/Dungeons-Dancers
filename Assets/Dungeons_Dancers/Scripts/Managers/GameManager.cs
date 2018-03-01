@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 [RequireComponent(typeof(SatisfactionController))]
 [RequireComponent(typeof(IntroController))]
 [RequireComponent (typeof(AudioController))]
@@ -135,9 +133,12 @@ public class GameManager : MonoBehaviour
     {
 
         yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
+        playerManager.ResetPlayer();
         dungeonTimer = initDungeonTimer;
         satisController.ResetSatisfaction();
         uiController.ResetUI();
+        uiController.CoinsUI(0);
+        uiController.CollectibleUI(0);
         playerManager.SetPlayerStartDirection(1);
         SetIntroCounter(0);
         rhythmController.SetIntroRhythm(true);

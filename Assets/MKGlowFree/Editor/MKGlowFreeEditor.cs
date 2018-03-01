@@ -46,6 +46,9 @@ namespace MK.Glow
         private SerializedProperty showMainBehavior;
         private SerializedProperty showInnerGlowBehavior;
 
+        //private SerializedProperty debugMode;
+        //private SerializedProperty rtFormat;
+
         [MenuItem("Window/MK/Glow/Add MK Glow Free To Selection")]
         private static void AddMKGlowToObject()
         {
@@ -69,6 +72,9 @@ namespace MK.Glow
 
             showInnerGlowBehavior = serializedObject.FindProperty("showInnerGlowBehavior");
             showMainBehavior = serializedObject.FindProperty("showMainBehavior");
+
+            //debugMode = serializedObject.FindProperty("debugMode");
+            //rtFormat = serializedObject.FindProperty("rtFormat");
         }
 
         public override void OnInspectorGUI()
@@ -78,6 +84,10 @@ namespace MK.Glow
             EditorGUI.BeginChangeCheck();
 
             serializedObject.Update();
+
+            //EditorGUILayout.LabelField("_Debug_", GuiStyles.header);
+            //EditorGUILayout.PropertyField(debugMode);
+            //EditorGUILayout.PropertyField(rtFormat);
 
             if (HandleBehavior("Main", ref showMainBehavior))
             {

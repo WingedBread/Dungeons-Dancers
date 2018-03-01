@@ -14,7 +14,7 @@ Properties {
 }
 
 Category {
-	Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="MKGlow" "PreviewType"="Plane" }
+	Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="MKGlowNC" "PreviewType"="Plane" }
 	Blend Zero SrcColor
 	Cull Off Lighting Off ZWrite Off
 	

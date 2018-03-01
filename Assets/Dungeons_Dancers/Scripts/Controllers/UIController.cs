@@ -183,7 +183,8 @@ public class UIController: MonoBehaviour {
         coinsText.text = coins.ToString();
     }
     public void CollectibleUI(int key){
-        keysImages[key-1].color = Color.white;
+        if(key == 0) for (int i = 0; i < keysImages.Length; i++ ) keysImages[i].color = Color.grey;
+        else keysImages[key - 1].color = Color.white;
     }
     private IEnumerator DeactivatorUI(Text text, float time)
     {

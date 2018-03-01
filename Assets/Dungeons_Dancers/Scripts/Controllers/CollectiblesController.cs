@@ -47,4 +47,9 @@ public class CollectiblesController : MonoBehaviour {
         }
         else return coins;
     }
+
+    public void Reset(){
+        for (int i = 0; i < doors.Length; i++) doors[i].GetComponent<Collider>().enabled = true;
+        keys.Clear();
+    }
 }

@@ -28,9 +28,9 @@
 		return o;
 	}
 
-	fixed4 fragBlur (v2fBlur o) : SV_Target 
+	half4 fragBlur (v2fBlur o) : SV_Target 
 	{
-		fixed4 color = float4 (0,0,0,0);
+		half4 color = half4 (0,0,0,0);
 
 		#if _MK_HQ_BLUR
 			color += tex2D (_MainTex, UnityStereoScreenSpaceUVAdjust(o.uv, _MainTex_ST));
