@@ -21,7 +21,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
     private float easingOnDuration;
     [Header("Easing Duration Off Beat")]
     [SerializeField]
-    private float easingOffDuration = 0.1f;
+    private float easingOffDuration;
 
     private bool activeTrapEvent;
 
@@ -37,7 +37,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
     {
         activeTrapEvent = true;
         this.gameObject.GetComponent<Collider>().enabled = true;
-        iTween.MoveTo(childSpikes, iTween.Hash("position", trapMaxHeight, "time", easingOnDuration, "islocal", true, "easetype", easingList, "oncomplete", "ReturnIdle"));
+        iTween.MoveTo(childSpikes, iTween.Hash("position", trapMaxHeight, "time", easingOnDuration, "islocal", true, "easetype", easingList, "oncomplete", "ReturnIdle", "oncompletetarget", gameObject));
     }
 
     public void DisableTrap()
