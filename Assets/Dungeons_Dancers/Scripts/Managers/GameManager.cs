@@ -112,8 +112,8 @@ public class GameManager : MonoBehaviour
         {
             gameStart = false;
             rhythmController.SetRhythm(false);
-            uiController.DeadUI();
             auController.MuteSound();
+            uiController.DeadUI();
             StartCoroutine(Reset());
         }
     }
@@ -135,7 +135,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Reset()
     {
-
         yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
         playerManager.ResetPlayer();
         dungeonTimer = initDungeonTimer;
@@ -151,16 +150,16 @@ public class GameManager : MonoBehaviour
 
     public void AddPoint()
     {
+        auController.PointsSnapshotCheck();
         satisController.AddPoint();
         uiController.AddPointUI();
-        auController.PointsSnapshotCheck();
     }
 
     public void RemovePoint()
     {
+        auController.PointsSnapshotCheck();
         satisController.RemovePoint();
         uiController.RemovePointUI();
-        auController.PointsSnapshotCheck();
     }
 
     public void CoinBehaviour(int coins, bool cons)
