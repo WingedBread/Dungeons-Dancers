@@ -9,10 +9,10 @@ public class StaticTrapBehaviour : MonoBehaviour {
     private int trapBehaviour;
     [Header("Choose Trap Max Height")]
     [SerializeField]
-    private float trapMaxHeight = 1f;
+    private Vector3 trapMaxHeight;
     [Header("Choose Trap MinHeight")]
     [SerializeField]
-    private float trapMinHeight = 0f;
+    private Vector3 trapMinHeight;
     [Header("Choose Easing")]
     [SerializeField]
     private iTween.EaseType easingList;
@@ -30,27 +30,27 @@ public class StaticTrapBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        childSpikes = gameObject.transform.GetChild(0).gameObject;
+        childSpikes = transform.GetChild(0).GetChild(0).gameObject;
 	}
 	
     public void ActiveTrap()
     {
         activeTrapEvent = true;
         this.gameObject.GetComponent<Collider>().enabled = true;
-        iTween.MoveTo(childSpikes, iTween.Hash("y", trapMaxHeight, "movetopath", false, "time", easingOnDuration, "islocal", true, "easetype", easingList, "oncomplete", "ReturnIdle"));
+        iTween.MoveTo(childSpikes, iTween.Hash("position", trapMaxHeight, "time", easingOnDuration, "islocal", true, "easetype", easingList, "oncomplete", "ReturnIdle"));
     }
 
     public void DisableTrap()
     {
         activeTrapEvent = false;
         this.gameObject.GetComponent<Collider>().enabled = false;
-        iTween.MoveTo(childSpikes, iTween.Hash("y", trapMinHeight, "movetopath", false,  "time", easingOffDuration,"islocal", true, "easetype", easingList));
+        iTween.MoveTo(childSpikes, iTween.Hash("position", trapMinHeight, "time", easingOffDuration,"islocal", true, "easetype", easingList));
     }
 
     private void ReturnIdle()
     {
         this.gameObject.GetComponent<Collider>().enabled = false;
-        iTween.MoveTo(childSpikes, iTween.Hash("y", trapMinHeight, "movetopath", false, "time", easingOffDuration,"islocal", true, "easetype", easingList));
+        iTween.MoveTo(childSpikes, iTween.Hash("position" ,trapMinHeight, "time", easingOffDuration,"islocal", true, "easetype", easingList));
     }
 
     public int GetTrapBehaviour(){
