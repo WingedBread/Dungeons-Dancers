@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        auController.PlayEndLevel();
         gameStart = false;
         rhythmController.SetRhythm(false);
         uiController.WinUI();
@@ -119,7 +120,10 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
-        if (!godMode) playerManager.SetPlayerStartDirection(1);
+        if (!godMode) { 
+            playerManager.SetPlayerStartDirection(1);
+            auController.PlayRetry();
+        }
     }
 
     IEnumerator WaitForKeyDown(KeyCode keyCode)

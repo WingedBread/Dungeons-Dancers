@@ -14,13 +14,20 @@ public class AudioController : MonoBehaviour {
     [SerializeField]
     private AudioMixerSnapshot[] auMixSnaps;
 
-    [Header("FX AudioSources")]
+    [Header("AudioClips")]
     [SerializeField]
-    private GameObject FXSource;
-    private AudioSource[] FXaudioSource;
+    private AudioClip coinClip;
+    [SerializeField]
+    private AudioClip keyClip;
+    [SerializeField]
+    private AudioClip endLeveClip;
+    [SerializeField]
+    private AudioClip retryClip;
+
+    private AudioSource audioSource;
 	// Use this for initialization
 	void Start () {
-        FXaudioSource = FXSource.GetComponents<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         gameManager = GetComponent<GameManager>();
 	}
 	
@@ -41,20 +48,38 @@ public class AudioController : MonoBehaviour {
     }
 
     public void PlayCoin(bool consecutive){
+        audioSource.volume = 0.1f;
+        audioSource.clip = coinClip;
         if (consecutive)
         {
-            FXaudioSource[0].pitch = FXaudioSource[0].pitch + 0.1f;
-            FXaudioSource[0].Play();
+            audioSource.pitch = audioSource.pitch + 0.1f;
+            audioSource.Play();
         }
         else
         {
-            FXaudioSource[0].pitch = 1;
-            FXaudioSource[0].Play();
+            audioSource.pitch = 1;
+            audioSource.Play();
         } 
     }
 
     public void PlayCollectible(){
-        FXaudioSource[1].Play();
+        audioSource.volume = 1f;
+        audioSource.clip = keyClip;
+        audioSource.Play();
+    }
+
+    public void PlayRetry()
+    {
+        audioSource.volume = 1f;
+        audioSource.clip = retryClip;
+        audioSource.Play();
+    }
+
+    public void PlayEndLevel()
+    {
+        audioSource.volume = 1f;
+        audioSource.clip = endLeveClip;
+        audioSource.Play();
     }
 
 }

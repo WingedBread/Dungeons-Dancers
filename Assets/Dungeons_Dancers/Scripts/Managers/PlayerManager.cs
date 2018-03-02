@@ -24,11 +24,20 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private float timeIdle = 0.25f;
 
+    [Header("AudioClips")]
+    [SerializeField]
+    private AudioClip goodMove;
+    [SerializeField]
+    private AudioClip badMove;
+
+    private AudioSource auSource;
+
     private List<GameObject> collectibles = new List<GameObject>();
 
     // Use this for initialization
     void Start()
     {
+        auSource = GetComponent<AudioSource>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         inputController = GetComponent<InputController>();
         collectiblesController = GetComponent<CollectiblesController>();
@@ -50,6 +59,8 @@ public class PlayerManager : MonoBehaviour
 
     public void CorrectInput()
     {
+        auSource.clip = goodMove;
+        auSource.Play();
         mat.color = Color.green;
         gameManager.AddPoint();
         StartCoroutine(ReturnIdle());
@@ -57,6 +68,8 @@ public class PlayerManager : MonoBehaviour
 
     public void IncorrectInput()
     {
+        auSource.clip = badMove;
+        auSource.Play();
         mat.color = Color.red;
         gameManager.RemovePoint();
         StartCoroutine(ReturnIdle());
