@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SonicBloom.Koreo;
+using DG.Tweening;
 
 public class EasingAssetsController : MonoBehaviour {
 
@@ -20,7 +21,7 @@ public class EasingAssetsController : MonoBehaviour {
     [Header("-OFF BEAT EASING SETTINGS-")]
     [Header("Choose Off Beat Easing")]
     [SerializeField]
-    private iTween.EaseType easingOffBeatList;
+    private Ease easingOffBeatList;
     [Header("Choose Scale Off Beat (if needed)")]
     [SerializeField]
     private Vector3 offBeatScaleVector3 = new Vector3(1, 1, 1);
@@ -35,7 +36,7 @@ public class EasingAssetsController : MonoBehaviour {
     [Header("-ON BEAT EASING SETTINGS-")]
     [Header("Choose On Beat Easing")]
     [SerializeField]
-    private iTween.EaseType easingOnBeatList;
+    private Ease easingOnBeatList;
     [Header("Choose Scale On Beat (if needed)")]
     [SerializeField]
     private Vector3 onBeatScaleVector3 = new Vector3(2, 2, 2);
@@ -63,23 +64,16 @@ public class EasingAssetsController : MonoBehaviour {
     {
         if (scaleEasing)
         {
-            iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingOnBeatList, "oncomplete", "OffBeatEvent"));
+            Sequence s = DOTween.Sequence();
+            s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+            s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
         }
+
         if (moveEasing)
         {
-            iTween.ScaleTo(gameObject, iTween.Hash("scale", onBeatScaleVector3, "time", easingOnDuration, "easetype", easingOnBeatList, "oncomplete", "OffBeatEvent"));
-        }
-    }
-
-    void OffBeatEvent()
-    {
-        if (scaleEasing)
-        {
-            iTween.ScaleTo(gameObject, iTween.Hash("scale", offBeatScaleVector3, "time", easingOffDuration, "easetype", easingOffBeatList));
-        }
-        if (moveEasing) 
-        {
-            iTween.MoveTo(gameObject, iTween.Hash("position", offBeatPositionVector3, "time", easingOffDuration, "easetype", easingOffBeatList));
+            Sequence s = DOTween.Sequence();
+            s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+            s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
         }
     }
 }

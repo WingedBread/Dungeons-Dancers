@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(RaycastCollisions))]
 public class InputController : MonoBehaviour 
@@ -31,23 +32,19 @@ public class InputController : MonoBehaviour
 
     [Header("Choose Walk Easing")]
     [SerializeField]
-    private iTween.EaseType easingSpeedList;
+    private Ease easingSpeedList;
+
     [Header("Easing Walk Duration")]
     [SerializeField]
     private float easingSpeedDuration;
 
     [Header("Choose Jump Easing")]
     [SerializeField]
-    private iTween.EaseType easingJumpList;
-    [Header("Choose Jump Duration", order = 0)]
-    [Space(-10, order = 1)]
-    [Header("(Always half of the Walk Easing Duration)", order = 2)]
-    [SerializeField]
-    private float easingJumpDuration;
+    private Ease easingJumpList;
 
     private Vector3[] verticalEasingCurve;
 
-    private bool easingflag = true;
+    private bool easingBool = true;
 
 	// Use this for initialization
 	void Start () 
@@ -56,6 +53,7 @@ public class InputController : MonoBehaviour
         rayCollision = GetComponent<RaycastCollisions>();
         playerChild = this.transform.GetChild(0).transform;
         playerInitPos = this.transform.position;
+
 	}
 	
 	// Update is called once per frame
@@ -67,16 +65,20 @@ public class InputController : MonoBehaviour
 
     void PlayerMoveInput()
     {
+        Sequence left = DOTween.Sequence();
+        Sequence s = DOTween.Sequence();
+        Debug.Log("COMPLETED? " + left.IsComplete());
         //LEFT
         if (Equals(Input.GetAxisRaw("Horizontal"), -1f))
         {
-            if (!rayCollision.LeftCollision() && inputFlag && easingflag) 
+            
+            if (!rayCollision.LeftCollision() && inputFlag && easingBool) 
             {
-                iTween.MoveTo(gameObject, iTween.Hash("x", transform.position.x - speed, "time", easingSpeedDuration, "easetype", easingSpeedList, "oncomplete", "EasingTrue"));
-                iTween.MoveTo(gameObject.transform.GetChild(0).gameObject, iTween.Hash("y", transform.position.y + jump,"movetopath", false, "islocal", true, "time", easingJumpDuration, "easetype", easingJumpList));
+                left.Append(transform.DOMoveX(transform.position.x - speed, easingSpeedDuration, false));
+                left.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration/2, false));
+                left.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
                 playerChild.rotation = Quaternion.Euler(0, -90, -45);
                 inputFlag = false;
-                easingflag = false;
 
                 if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
                 else playerManager.IncorrectInput();
@@ -86,13 +88,14 @@ public class InputController : MonoBehaviour
         //RIGHT
         else if (Equals(Input.GetAxisRaw("Horizontal"), 1f))
         {
-            if (!rayCollision.RightCollision() && inputFlag && easingflag)
+            
+            if (!rayCollision.RightCollision() && inputFlag)
             {
-                iTween.MoveTo(gameObject, iTween.Hash("x", transform.position.x + speed, "time", easingSpeedDuration, "easetype", easingSpeedList, "oncomplete", "EasingTrue"));
-                iTween.MoveTo(gameObject.transform.GetChild(0).gameObject, iTween.Hash("y", transform.position.y + jump,"movetopath", false, "islocal", true, "time", easingJumpDuration, "easetype", easingJumpList));
+                s.Append(transform.DOMoveX(transform.position.x + speed, easingSpeedDuration, false));
+                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));                
                 playerChild.rotation = Quaternion.Euler(0, 90, 45);
                 inputFlag = false;
-                easingflag = false;
 
                 if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
                 else playerManager.IncorrectInput();
@@ -102,13 +105,15 @@ public class InputController : MonoBehaviour
         //DOWN
         else if (Equals(Input.GetAxisRaw("Vertical"), -1f))
         {
-            if (!rayCollision.DownCollision() && inputFlag && easingflag)
+            
+            if (!rayCollision.DownCollision() && inputFlag)
             {
-                iTween.MoveTo(gameObject, iTween.Hash("z", transform.position.z - speed, "time", easingSpeedDuration, "easetype", easingSpeedList, "oncomplete", "EasingTrue"));
-                iTween.MoveTo(gameObject.transform.GetChild(0).gameObject, iTween.Hash("y", transform.position.y + jump,"movetopath", false, "islocal", true, "time", easingJumpDuration, "easetype", easingJumpList));
+                s.Append(transform.DOMoveZ(transform.position.z - speed, easingSpeedDuration, false));
+                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
                 playerChild.rotation = Quaternion.Euler(-45, 180, 0);
+
                 inputFlag = false;
-                easingflag = false;
 
                 if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
                 else playerManager.IncorrectInput();
@@ -118,24 +123,20 @@ public class InputController : MonoBehaviour
         //UP
         else if (Equals(Input.GetAxisRaw("Vertical"), 1f))
         {
-            if (!rayCollision.UpCollision() && inputFlag && easingflag)
+            
+            if (!rayCollision.UpCollision() && inputFlag)
             {
-                iTween.MoveTo(gameObject, iTween.Hash("z", transform.position.z + speed, "time", easingSpeedDuration, "easetype", easingSpeedList, "oncomplete", "EasingTrue"));
-                iTween.MoveTo(gameObject.transform.GetChild(0).gameObject, iTween.Hash("y", transform.position.y + jump,"movetopath", false, "islocal", true, "time", easingJumpDuration, "easetype", easingJumpList));
+                s.Append(transform.DOMoveZ(transform.position.z + speed, easingSpeedDuration, false));
+                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
                 playerChild.rotation = Quaternion.Euler(45, 0, 0);
                 inputFlag = false;
-                easingflag = false;
 
                 if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
                 else playerManager.IncorrectInput();
             }
         }
         else inputFlag = true;
-    }
-
-    void EasingTrue(){
-        iTween.MoveTo(gameObject.transform.GetChild(0).gameObject, iTween.Hash("y", 0.15,"movetopath", false, "islocal", true, "time", easingJumpDuration, "easetype", easingJumpList));
-        easingflag = true;
     }
 
     public void SetStartRotation(int direction)
