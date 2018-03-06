@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		Application.targetFrameRate = 60;
         DontDestroyOnLoad(this.gameObject);
         playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         uiController = GetComponent<UIController>();
