@@ -122,7 +122,6 @@ public class GameManager : MonoBehaviour
     public void Respawn()
     {
         if (!godMode) { 
-            playerManager.SetPlayerStartDirection(1);
             auController.PlayRetry();
         }
     }
@@ -137,13 +136,12 @@ public class GameManager : MonoBehaviour
     private IEnumerator Reset()
     {
         yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
-        playerManager.ResetPlayer();
+        StartCoroutine(playerManager.ResetPlayer(true));
         dungeonTimer = initDungeonTimer;
         satisController.ResetSatisfaction();
         uiController.ResetUI();
         uiController.CoinsUI(0);
         uiController.CollectibleUI(0);
-        playerManager.SetPlayerStartDirection(1);
         SetIntroCounter(0);
         rhythmController.SetIntroRhythm(true);
         StopCoroutine("Reset");

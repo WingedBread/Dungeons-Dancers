@@ -31,7 +31,8 @@ public class PlayerManager : MonoBehaviour
     private AudioClip badMove;
 
     private AudioSource auSource;
-
+    private Vector3 spawnPosition;
+    private Vector3 spawnInitPosition;
     private List<GameObject> collectibles = new List<GameObject>();
 
     // Use this for initialization
@@ -44,6 +45,8 @@ public class PlayerManager : MonoBehaviour
 
         animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
+        spawnPosition = transform.position;
+        spawnInitPosition = transform.position;
     }
 
     void Update()
@@ -90,7 +93,7 @@ public class PlayerManager : MonoBehaviour
                 gameManager.Win();
                 break;
             case "Trap":
-                gameManager.Respawn();
+                StartCoroutine(ResetPlayer(false));
                 break;
             case "Coin":
                 collectibles.Add(col.gameObject);
@@ -104,12 +107,12 @@ public class PlayerManager : MonoBehaviour
                 col.gameObject.SetActive(false);
                 gameManager.CollectibleBehaviour(int.Parse(col.gameObject.name.Substring(0, 2)));
                 break;
+            case "Spawn":
+                spawnPosition = col.gameObject.transform.position;
+                break;
         }
     }
-    public void SetPlayerStartDirection(int direction)
-    {
-        inputController.SetStartRotation(direction);
-    }
+
     public void SetBlock(bool Block)
     {
         inputController.SetInputBlock(Block);
@@ -125,13 +128,32 @@ public class PlayerManager : MonoBehaviour
         return inputController.GetInputFlag();
     }
 
-    public void ResetPlayer()
+    public IEnumerator ResetPlayer(bool dead)
     {
-        for (int i = 0; i < collectibles.Count; i++)
+        while (inputController.GetEasingEnd() == false)
         {
-            collectibles[i].SetActive(true);
+            yield return null;
         }
-        collectibles.Clear();
-        collectiblesController.Reset();
+
+        if (dead)
+        {
+            transform.position = spawnInitPosition;
+            inputController.SetRotation(1);
+            for (int i = 0; i < collectibles.Count; i++)
+            {
+                collectibles[i].SetActive(true);
+            }
+            collectibles.Clear();
+            collectiblesController.Reset();
+            StopCoroutine("ResetPlayer");
+        }
+        else
+        {
+            gameManager.Respawn();
+            transform.position = spawnPosition;
+            if (spawnPosition != spawnInitPosition) inputController.SetRotation(2);
+            else inputController.SetRotation(1);
+            StopCoroutine("ResetPlayer");
+        }
     }
 }
