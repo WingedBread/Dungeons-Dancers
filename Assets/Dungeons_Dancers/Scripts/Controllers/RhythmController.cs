@@ -45,6 +45,7 @@ public class RhythmController : MonoBehaviour
     }
     private void StartIntroRhythm()
     {
+        multiMusic.Play();
         Koreographer.Instance.RegisterForEvents("IntroEvent", IntroBehaviour);
     }
     private void StopIntroRhythm()
@@ -68,7 +69,6 @@ public class RhythmController : MonoBehaviour
         Koreographer.Instance.UnregisterForEvents("Trap1Event", StaticTrap1BeatBehaviour);
         Koreographer.Instance.UnregisterForEvents("Trap2Event", StaticTrap2BeatBehaviour);
         Koreographer.Instance.UnregisterForEvents("Trap3Event", StaticTrap3BeatBehaviour);
-        multiMusic.Play();
     }
 
     void IntroBehaviour(KoreographyEvent kIntroEvent)
