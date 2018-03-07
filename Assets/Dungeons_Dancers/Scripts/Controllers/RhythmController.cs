@@ -42,6 +42,7 @@ public class RhythmController : MonoBehaviour
         yield return new WaitForSeconds(time);
         multiMusic.Play();
         StartIntroRhythm();
+		StopCoroutine ("IntroDelayCoroutine");
     }
     private void StartIntroRhythm()
     {

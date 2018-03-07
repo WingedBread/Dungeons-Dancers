@@ -34,8 +34,10 @@ public class DebugController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        counter = (int)(1f / Time.unscaledDeltaTime);
-        fpsCounterText.text = "FPS :" + counter.ToString();
+		if (showDebug) {
+			counter = (int)(1f / Time.unscaledDeltaTime);
+			fpsCounterText.text = "FPS :" + counter.ToString ();
+		}
 
         if(Input.GetKeyDown(KeyCode.C)){
             showDebug = !showDebug;
@@ -45,42 +47,45 @@ public class DebugController : MonoBehaviour {
 
     public void RhythmBeatPlayerDebug(int BeatPlayer)
     {
-        beatPlayerTime.text = ConvertToSeconds(BeatPlayer).ToString("F");
-        currentbeat = BeatPlayer;
+		if (showDebug) {
+			beatPlayerTime.text = ConvertToSeconds (BeatPlayer).ToString ("F");
+			currentbeat = BeatPlayer;
+		}
     }
     public void RhythmBeatDurationDebug(int BeatDuration)
     {
-        beatDuration.text = ConvertToSeconds(BeatDuration).ToString("F");
+		if (showDebug) beatDuration.text = ConvertToSeconds(BeatDuration).ToString("F");
     }
     public void RhythmStartSpanDebug(int StartSpan)
     {
-        startPlayerSpan.text = ConvertToSeconds(StartSpan).ToString("F");
+		if (showDebug) startPlayerSpan.text = ConvertToSeconds(StartSpan).ToString("F");
     }
     public void RhythmEndSpanDebug(int EndSpan)
     {
-        endPlayerSpan.text = ConvertToSeconds(EndSpan).ToString("F");
+			if (showDebug) endPlayerSpan.text = ConvertToSeconds(EndSpan).ToString("F");
     }
     public void RhythmDurationSpanDebug(int DurationSpan)
     {
-        playerSpanDuration.text = ConvertToSeconds(DurationSpan).ToString("F");
+		if (showDebug) playerSpanDuration.text = ConvertToSeconds(DurationSpan).ToString("F");
     }
     public void SetHitTime(int PushTime)
     {
-        pushTime = PushTime;
+		if (showDebug) pushTime = PushTime;
     }
     public void InputPlayerDebug(bool notHit)
-    {
-        if (!notHit && ownFlag)
-        {
-            inputTime.text = ConvertToSeconds(pushTime).ToString("F");
-            inputTimeBeat.text = ConvertToSeconds(currentbeat).ToString("F");
-            ownFlag = false;
-        }
-        else if(!ownFlag && notHit) ownFlag = true;
+	{
+		if (showDebug) {
+			if (!notHit && ownFlag) {
+				inputTime.text = ConvertToSeconds (pushTime).ToString ("F");
+				inputTimeBeat.text = ConvertToSeconds (currentbeat).ToString ("F");
+				ownFlag = false;
+			} else if (!ownFlag && notHit)
+				ownFlag = true;
+		}
     }
 
-    double ConvertToSeconds(int sampleTime)
+    float ConvertToSeconds(int sampleTime)
     {
-        return ((sampleTime*0.26100591705)/10000);
+		return ((sampleTime*0.26100591705f)/10000f);
     }
 }
