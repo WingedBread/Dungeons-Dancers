@@ -81,7 +81,7 @@ public class UIController: MonoBehaviour {
         pointsText.text = gameManager.GetPoints(0,1,0).ToString();
 	}
     void Update(){
-        dungeonTimerText.text = gameManager.GetDungeonTime().ToString("F");
+		if(gameManager.GetGameStatus()) dungeonTimerText.text = gameManager.GetDungeonTime().ToString("F");
     }
 
     public void ResetUI()
