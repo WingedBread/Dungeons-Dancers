@@ -122,28 +122,30 @@ public class UIController: MonoBehaviour {
 
     private void PointsSliderChecker()
     {
-        switch (gameManager.GetPoints(0, 1, 0))
+
+        if (gameManager.GetPoints(0, 1, 0) == 15 || gameManager.GetPoints(0, 1, 0) == 16)
         {
-            case 5:
-                sliderText.text = sliderFirst;
-                sliderText.gameObject.SetActive(true);
-                StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
-                break;
-            case 10:
-                sliderText.text = sliderSecond;
-                sliderText.gameObject.SetActive(true);
-                StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
-                break;
-            case 15:
-                sliderText.text = sliderThird;
-                sliderText.gameObject.SetActive(true);
-                StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
-                break;
-            case 20:
-                sliderText.text = sliderFourth;
-                sliderText.gameObject.SetActive(true);
-                StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
-                break;
+            sliderText.text = sliderFirst;
+            sliderText.gameObject.SetActive(true);
+            StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
+        }
+        else if (gameManager.GetPoints(0, 1, 0) == 30 || gameManager.GetPoints(0, 1, 0) == 31)
+        {
+            sliderText.text = sliderSecond;
+            sliderText.gameObject.SetActive(true);
+            StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
+        }
+        else if (gameManager.GetPoints(0, 1, 0) == 45 || gameManager.GetPoints(0, 1, 0) == 46)
+        {
+            sliderText.text = sliderThird;
+            sliderText.gameObject.SetActive(true);
+            StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
+        }
+        else if (gameManager.GetPoints(0, 1, 0) == 60)
+        {
+            sliderText.text = sliderFourth;
+            sliderText.gameObject.SetActive(true);
+            StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
         }
     }
 
