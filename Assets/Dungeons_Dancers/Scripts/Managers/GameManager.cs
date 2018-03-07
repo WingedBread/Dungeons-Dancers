@@ -171,6 +171,9 @@ public class GameManager : MonoBehaviour
         uiController.CollectibleUI(collectible);
         auController.PlayCollectible();
     }
+    public void DoorBehaviour(){
+        auController.PlayDoor();
+    }
 
     #region Getters & Setters
     public int GetPoints(int min, int current, int max)

@@ -110,6 +110,10 @@ public class PlayerManager : MonoBehaviour
             case "Spawn":
                 spawnPosition = col.gameObject.transform.position;
                 break;
+            case "Door":
+                collectiblesController.OpenDoor();
+                gameManager.DoorBehaviour();
+                break;
         }
     }
 

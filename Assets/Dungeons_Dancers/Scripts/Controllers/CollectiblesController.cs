@@ -13,6 +13,8 @@ public class CollectiblesController : MonoBehaviour {
     [Header("Drag Doors")]
     [SerializeField]
     private GameObject[] doors;
+    [SerializeField]
+    private Material[] doorMaterial;
 
     public void AddCoin(){
         coins = coins + coinsValue;
@@ -25,8 +27,8 @@ public class CollectiblesController : MonoBehaviour {
         {
             if (key == int.Parse(doors[i].name.Substring(0, 2)))
             {
-                doors[i].GetComponent<Collider>().enabled = false;
-                keys.Remove(i);
+                doors[i].GetComponent<MeshRenderer>().material = doorMaterial[1];
+                doors[i].tag = "Door";
             }
         }
     }
@@ -48,8 +50,24 @@ public class CollectiblesController : MonoBehaviour {
         else return coins;
     }
 
+    public void OpenDoor()
+    {
+        for (int i = 0; i < keys.Count; i++)
+        {   doors[i].GetComponent<Collider>().enabled = false;
+            doors[i].tag = "Obstacle";
+            doors[i].transform.rotation = Quaternion.Euler(0, 90, 0);
+            keys.Remove(i);
+        }
+    }
+
     public void Reset(){
-        for (int i = 0; i < doors.Length; i++) doors[i].GetComponent<Collider>().enabled = true;
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doors[i].GetComponent<Collider>().enabled = true;
+            doors[i].tag = "Obstacle";
+            doors[i].transform.rotation = Quaternion.Euler(0, 0, 0);
+            doors[i].GetComponent<MeshRenderer>().material = doorMaterial[0];
+        }
         keys.Clear();
         coins = 0;
     }
