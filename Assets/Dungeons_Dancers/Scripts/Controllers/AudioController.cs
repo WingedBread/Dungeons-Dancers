@@ -23,6 +23,8 @@ public class AudioController : MonoBehaviour {
     private AudioClip endLeveClip;
     [SerializeField]
     private AudioClip retryClip;
+    [SerializeField]
+    private AudioClip doorClip;
 
     private AudioSource audioSource;
 	// Use this for initialization
@@ -66,6 +68,12 @@ public class AudioController : MonoBehaviour {
     public void PlayCollectible(){
         audioSource.volume = 1f;
         audioSource.clip = keyClip;
+        audioSource.Play();
+    }
+
+    public void PlayDoor(){
+        audioSource.volume = 1f;
+        audioSource.clip = doorClip;
         audioSource.Play();
     }
 

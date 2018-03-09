@@ -24,7 +24,6 @@ public class InputController : MonoBehaviour
 
     private bool blockPlayer = true;
 
-    private Vector3 playerInitPos;
     private Transform playerChild;
 
     [SerializeField]
@@ -46,13 +45,14 @@ public class InputController : MonoBehaviour
 
     private bool easingBool = true;
 
+    private int playerDirection;
+
 	// Use this for initialization
 	void Start () 
     {
         playerManager = GetComponent<PlayerManager>();
         rayCollision = GetComponent<RaycastCollisions>();
         playerChild = this.transform.GetChild(0).transform;
-        playerInitPos = this.transform.position;
 
 	}
 	
@@ -65,20 +65,19 @@ public class InputController : MonoBehaviour
 
     void PlayerMoveInput()
     {
-        Sequence left = DOTween.Sequence();
-        Sequence s = DOTween.Sequence();
-        Debug.Log("COMPLETED? " + left.IsComplete());
         //LEFT
         if (Equals(Input.GetAxisRaw("Horizontal"), -1f))
         {
-            
             if (!rayCollision.LeftCollision() && inputFlag && easingBool) 
             {
-                left.Append(transform.DOMoveX(transform.position.x - speed, easingSpeedDuration, false));
-                left.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration/2, false));
-                left.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
+                Sequence s = DOTween.Sequence();
+                s.Append(transform.DOMoveX(transform.position.x - speed, easingSpeedDuration, false)).OnComplete(EasingBool);
+                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration/2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
                 playerChild.rotation = Quaternion.Euler(0, -90, -45);
+                playerDirection = 0;
                 inputFlag = false;
+                easingBool = false;
 
                 if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
                 else playerManager.IncorrectInput();
@@ -89,13 +88,16 @@ public class InputController : MonoBehaviour
         else if (Equals(Input.GetAxisRaw("Horizontal"), 1f))
         {
             
-            if (!rayCollision.RightCollision() && inputFlag)
+            if (!rayCollision.RightCollision() && inputFlag && easingBool)
             {
-                s.Append(transform.DOMoveX(transform.position.x + speed, easingSpeedDuration, false));
+                Sequence s = DOTween.Sequence();
+                s.Append(transform.DOMoveX(transform.position.x + speed, easingSpeedDuration, false)).OnComplete(EasingBool);
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
                 s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));                
                 playerChild.rotation = Quaternion.Euler(0, 90, 45);
+                playerDirection = 1;
                 inputFlag = false;
+                easingBool = false;
 
                 if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
                 else playerManager.IncorrectInput();
@@ -106,14 +108,16 @@ public class InputController : MonoBehaviour
         else if (Equals(Input.GetAxisRaw("Vertical"), -1f))
         {
             
-            if (!rayCollision.DownCollision() && inputFlag)
+            if (!rayCollision.DownCollision() && inputFlag && easingBool)
             {
-                s.Append(transform.DOMoveZ(transform.position.z - speed, easingSpeedDuration, false));
+                Sequence s = DOTween.Sequence();
+                s.Append(transform.DOMoveZ(transform.position.z - speed, easingSpeedDuration, false)).OnComplete(EasingBool);
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
                 s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
                 playerChild.rotation = Quaternion.Euler(-45, 180, 0);
-
+                playerDirection = 2;
                 inputFlag = false;
+                easingBool = false;
 
                 if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
                 else playerManager.IncorrectInput();
@@ -124,13 +128,16 @@ public class InputController : MonoBehaviour
         else if (Equals(Input.GetAxisRaw("Vertical"), 1f))
         {
             
-            if (!rayCollision.UpCollision() && inputFlag)
+            if (!rayCollision.UpCollision() && inputFlag && easingBool)
             {
-                s.Append(transform.DOMoveZ(transform.position.z + speed, easingSpeedDuration, false));
+                Sequence s = DOTween.Sequence();
+                s.Append(transform.DOMoveZ(transform.position.z + speed, easingSpeedDuration, false)).OnComplete(EasingBool);
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
                 s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
                 playerChild.rotation = Quaternion.Euler(45, 0, 0);
+                playerDirection = 3;
                 inputFlag = false;
+                easingBool = false;
 
                 if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
                 else playerManager.IncorrectInput();
@@ -139,7 +146,9 @@ public class InputController : MonoBehaviour
         else inputFlag = true;
     }
 
-    public void SetStartRotation(int direction)
+    void EasingBool() { easingBool = true; }
+
+    public void SetRotation(int direction)
     {
         switch (direction)
         {
@@ -156,7 +165,6 @@ public class InputController : MonoBehaviour
                 playerChild.rotation = Quaternion.Euler(45, 0, 0);
                 break;
         }
-        this.transform.position = playerInitPos;
     }
 
     public void SetInputBlock(bool Block)
@@ -172,5 +180,14 @@ public class InputController : MonoBehaviour
     public bool GetInputFlag()
     {
         return inputFlag;
+    }
+
+    public int GetDirection()
+    {
+        return playerDirection;
+    }
+
+    public bool GetEasingEnd(){
+        return easingBool;
     }
 }

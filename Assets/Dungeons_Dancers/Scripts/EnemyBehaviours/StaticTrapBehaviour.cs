@@ -37,18 +37,14 @@ public class StaticTrapBehaviour : MonoBehaviour {
     public void ActiveTrap()
     {
         activeTrapEvent = true;
-        this.gameObject.GetComponent<Collider>().enabled = true;
+        StartCoroutine(ColliderCoroutine());
         childSpikes.transform.DOLocalMove(trapMaxHeight, easingOnDuration, false).OnComplete(DisableTrap);
     }
 
     public void DisableTrap()
     {
-        if (activeTrapEvent)
-        {
-            activeTrapEvent = false;
-            this.gameObject.GetComponent<Collider>().enabled = false;
-            childSpikes.transform.DOLocalMove(trapMinHeight, easingOffDuration, false);
-        }
+        activeTrapEvent = false;
+        childSpikes.transform.DOLocalMove(trapMinHeight, easingOffDuration, false);
     }
 
     public int GetTrapBehaviour(){
@@ -57,5 +53,15 @@ public class StaticTrapBehaviour : MonoBehaviour {
 
     public bool GetActiveTrapEvent(){
         return activeTrapEvent;
+    }
+
+    private IEnumerator ColliderCoroutine()
+    {
+        yield return new WaitForSeconds(easingOnDuration / 2);
+        gameObject.GetComponent<Collider>().enabled = true;
+        yield return new WaitForSeconds(easingOffDuration / 2);
+        gameObject.GetComponent<Collider>().enabled = false;
+        StopCoroutine("ColliderCoroutine");
+
     }
 }
