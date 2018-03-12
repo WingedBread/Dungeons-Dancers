@@ -22,11 +22,11 @@ public class SatisfactionBarSetupEditor : Editor {
 
         SatisfactionBarSetup so = target as SatisfactionBarSetup;
 
-        EditorGUILayout.BeginHorizontal();
-        so.minPoints = EditorGUILayout.IntField("Min: ",so.minPoints,GUILayout.Width(150));
-        so.initPoints = EditorGUILayout.IntField("Init: ", so.initPoints, GUILayout.Width(150));
-        so.maxPoints = EditorGUILayout.IntField("Max: ",so.maxPoints, GUILayout.Width(150));
-        EditorGUILayout.EndHorizontal();
+        //EditorGUILayout.BeginHorizontal();
+        so.minPoints = EditorGUILayout.IntField("Min: ",so.minPoints/*, GUILayout.Width(150)*/);
+        so.initPoints = EditorGUILayout.IntField("Init: ", so.initPoints/*, GUILayout.Width(150)*/);
+        so.maxPoints = EditorGUILayout.IntField("Max: ",so.maxPoints/*, GUILayout.Width(150)*/);
+        //EditorGUILayout.EndHorizontal();
 
         /*
         EditorGUILayout.MinMaxSlider("pepe",ref pointsmin, ref pointsmax, 0, 100);
