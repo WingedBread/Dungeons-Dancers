@@ -7,38 +7,18 @@ public class SatisfactionController : MonoBehaviour {
     [Header("Game Manager")]
     private GameManager gameManager;
 
-    [Header("Initial Satisfaction")]
+    [Header("Setup Satisfaction")]
     [SerializeField]
-    private int initPoints;
-    [Header("Minimum Satisfaction")]
-    [SerializeField]
-    private int minPoints;
-    [Header("Maximum Satisfaction")]
-    [SerializeField]
-    private int maxPoints;
-    [Header("Fever Satisfaction")]
-    [SerializeField]
-    private int initFeverPoints;
-    [Header("Soon Satisfaction")]
-    [SerializeField]
-    private int soonPoints;
-    [Header("Perfect Satisfaction")]
-    [SerializeField]
-    private int perfectPoints;
-    [Header("Late Satisfaction")]
-    [SerializeField]
-    private int latePoints;
-    [Header("Amount of Satisfaction Removal")]
-    [SerializeField]
-    private int removePoints;
+    private SatisfactionBarSetup setupValues;
+
     private int points;
     private int feverPoints;
 
 	// Use this for initialization
     void Awake()
     {
-        points = initPoints;
-        feverPoints = initFeverPoints;
+        points = setupValues.initPoints;
+        feverPoints = setupValues.amountOfFailInputsWhenFever;
     }
 	void Start () {
         gameManager = GetComponent<GameManager>();
@@ -46,7 +26,7 @@ public class SatisfactionController : MonoBehaviour {
 	
     public void AddPoint()
     {
-        if (points >= maxPoints)
+        if (points >= setupValues.maxPoints)
         {
             FeverState();
         }
@@ -55,32 +35,32 @@ public class SatisfactionController : MonoBehaviour {
             switch (gameManager.GetRhythmAccuracy())
             {
                 case 0:
-                    points = points + soonPoints;
+                    points = points + setupValues.soonPoints;
                     break;
                 case 1:
-                    points = points + perfectPoints;
+                    points = points + setupValues.perfectPoints;
                     break;
                 case 2:
-                    points = points + latePoints;
+                    points = points + setupValues.latePoints;
                     break;
             }
-            if (points >= maxPoints) points = maxPoints;
+            if (points >= setupValues.maxPoints) points = setupValues.maxPoints;
         }
     }
 
     public void RemovePoint()
     {
-        if (points >= maxPoints)
+        if (points >= setupValues.maxPoints)
         {
             feverPoints--;
             FeverState();
         }
         else
         {
-            points = points - removePoints;
-            if (points <= minPoints) {
+            points = points - setupValues.failPoints;
+            if (points <= setupValues.minPoints) {
                 gameManager.Dead();
-                points = minPoints;
+                points = setupValues.minPoints;
             }
         }
     }
@@ -90,27 +70,27 @@ public class SatisfactionController : MonoBehaviour {
         if (feverPoints <= 0)
         {
             points--;
-            feverPoints = initFeverPoints;
+            feverPoints = setupValues.amountOfFailInputsWhenFever;
         }
     }
 
     public void ResetSatisfaction(){
-        points = initPoints;
-        feverPoints = initFeverPoints;
+        points = setupValues.initPoints;
+        feverPoints = setupValues.amountOfFailInputsWhenFever;
     }
 
     public int GetSatisfactionPoints(int min, int current, int max)
     {
 
-        if (min == 1 && current == 0 && max == 0) return minPoints;
+        if (min == 1 && current == 0 && max == 0) return setupValues.minPoints;
         else if (min == 0 && current == 1 && max == 0) return points;
-        else if (min == 0 && current == 0 && max == 1) return maxPoints;
+        else if (min == 0 && current == 0 && max == 1) return setupValues.maxPoints;
 
         else return 0;
     }
 
     public bool GetFeverState(){
-        if (points >= maxPoints) return true;
+        if (points >= setupValues.maxPoints) return true;
         else return false;
     }
 
