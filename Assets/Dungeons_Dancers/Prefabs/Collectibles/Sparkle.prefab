@@ -26,6 +26,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+=======
+--- !u!1 &1619231287534200
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4658254838473356}
+  - component: {fileID: 33957305022782228}
+  - component: {fileID: 23700550386920382}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+>>>>>>> 66f1a99051bbb0f55b33001b4666b2cd2c614381
 --- !u!1 &1722337306490640
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,10 +88,27 @@ Transform:
   m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
   m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_Children: []
+  m_Children:
+  - {fileID: 4658254838473356}
   m_Father: {fileID: 4108557825269914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+--- !u!4 &4658254838473356
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1619231287534200}
+  m_LocalRotation: {x: 0.08715578, y: -0, z: -0, w: 0.9961947}
+  m_LocalPosition: {x: 0, y: 0.03472967, z: -0.19696166}
+  m_LocalScale: {x: 0.65, y: 0.49999997, z: 0.49999997}
+  m_Children: []
+  m_Father: {fileID: 4212862339443424}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> 66f1a99051bbb0f55b33001b4666b2cd2c614381
 --- !u!23 &23373274905021228
 MeshRenderer:
   m_ObjectHideFlags: 1
