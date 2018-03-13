@@ -16,20 +16,29 @@ public class SatisfactionBarSetupEditor : EditorWindow {
     bool showCosas = true;
     bool canJump = true;
 
-    private SerializedObject so;
-    // Add menu named "My Window" to the Window menu
-    [MenuItem("Window/SatisfactionBarSetup")]
+    bool showPosition = true;
+
+    string status;
+
+    private SatisfactionBarSetup so;
+
+    [MenuItem("Curial Tools/SatisfactionBarSetup")]
     static void Init()
     {
-        SatisfactionBarSetupEditor window = (SatisfactionBarSetupEditor)EditorWindow.GetWindow(typeof(SatisfactionBarSetupEditor));
-        window.Show();
+        Object[] selection = Selection.GetFiltered(typeof(SatisfactionBarSetup), SelectionMode.Assets);
+        if (selection.Length > 0)
+        {
+            so = selection[0] as SatisfactionBarSetup;
+            SatisfactionBarSetupEditor window = (SatisfactionBarSetupEditor)EditorWindow.GetWindow(typeof(SatisfactionBarSetupEditor));
+            window.Show();
+        }
     }
+	private void OnEnable()
+	{
+        so = new SatisfactionBarSetup();
+	}
 
-    private void SetSerialization(SatisfactionBarSetup sbsetup) {
-        so = new SerializedObject(sbsetup);
-    }
-
-    private void OnGUI()
+	private void OnGUI()
 	{
         //base.OnInspectorGUI();
 
@@ -49,20 +58,34 @@ public class SatisfactionBarSetupEditor : EditorWindow {
         EditorGUILayout.ColorField(Color.red);
 
         EditorGUILayout.FloatField(rafa+90);
-*/
+        */
+
+        showPosition = EditorGUILayout.Foldout(showPosition, status);
+        if (showPosition)
+            if (Selection.activeTransform)
+            {
+                Selection.activeTransform.position =
+                    EditorGUILayout.Vector3Field("Position", Selection.activeTransform.position);
+                status = Selection.activeTransform.name;
+            }
+
+        if (!Selection.activeTransform)
+        {
+            status = "Select a GameObject";
+            showPosition = false;
+        }
+
+
         showCosas = EditorGUILayout.Foldout(showCosas,"COSAS");
         if (showCosas)
         {
 
-            for (int i = 0; i < so.cosas.Count; i++)
-            {
-                EditorGUILayout.LabelField("COSA " + i + ":");
-                so.cosas[i].cosa1 = EditorGUILayout.IntField("Cosa 1", so.cosas[i].cosa1);
-                so.cosas[i].cosa2 = EditorGUILayout.TextField("Cosa 2", so.cosas[i].cosa2);
-            }
-
-
-
+            //for (int i = 0; i < so.cosas.Count; i++)
+            //{
+            //    EditorGUILayout.LabelField("COSA " + i + ":");
+            //    so.cosas[i].cosa1 = EditorGUILayout.IntField("Cosa 1", so.cosas[i].cosa1);
+            //    so.cosas[i].cosa2 = EditorGUILayout.TextField("Cosa 2", so.cosas[i].cosa2);
+            //}
 
             canJump = EditorGUILayout.Toggle("Can Jump", canJump);
 
