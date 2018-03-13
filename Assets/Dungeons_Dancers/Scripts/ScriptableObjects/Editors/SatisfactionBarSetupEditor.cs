@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(SatisfactionBarSetup))]
-public class SatisfactionBarSetupEditor : Editor {
+public class SatisfactionBarSetupEditor : EditorWindow {
 
 
     float rafa = 99;
@@ -16,11 +16,24 @@ public class SatisfactionBarSetupEditor : Editor {
     bool showCosas = true;
     bool canJump = true;
 
-	public override void OnInspectorGUI()
+    private SerializedObject so;
+    // Add menu named "My Window" to the Window menu
+    [MenuItem("Window/SatisfactionBarSetup")]
+    static void Init()
+    {
+        SatisfactionBarSetupEditor window = (SatisfactionBarSetupEditor)EditorWindow.GetWindow(typeof(SatisfactionBarSetupEditor));
+        window.Show();
+    }
+
+    private void SetSerialization(SatisfactionBarSetup sbsetup) {
+        so = new SerializedObject(sbsetup);
+    }
+
+    private void OnGUI()
 	{
         //base.OnInspectorGUI();
 
-        SatisfactionBarSetup so = target as SatisfactionBarSetup;
+        //SatisfactionBarSetup so = target as SatisfactionBarSetup;
 
         //EditorGUILayout.BeginHorizontal();
         so.minPoints = EditorGUILayout.IntField("Min: ",so.minPoints/*, GUILayout.Width(150)*/);
@@ -46,7 +59,6 @@ public class SatisfactionBarSetupEditor : Editor {
                 EditorGUILayout.LabelField("COSA " + i + ":");
                 so.cosas[i].cosa1 = EditorGUILayout.IntField("Cosa 1", so.cosas[i].cosa1);
                 so.cosas[i].cosa2 = EditorGUILayout.TextField("Cosa 2", so.cosas[i].cosa2);
-
             }
 
 

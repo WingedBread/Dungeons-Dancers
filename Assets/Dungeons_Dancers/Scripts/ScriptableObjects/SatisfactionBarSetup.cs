@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-[CreateAssetMenu(fileName = "StatisfactionBarSetupValues", menuName = "Tools/SatisfactionBar")]
+[CreateAssetMenu(fileName = "SatisfactionBarSetupValues", menuName = "Tools/SatisfactionBarSetup")]
 public class SatisfactionBarSetup : ScriptableObject
 {
     [Header("Bar Values")]
