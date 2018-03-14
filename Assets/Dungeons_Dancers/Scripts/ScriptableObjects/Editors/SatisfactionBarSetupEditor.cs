@@ -26,12 +26,12 @@ public class SatisfactionBarSetupEditor : EditorWindow {
     static void Init()
     {
         Object[] selection = Selection.GetFiltered(typeof(SatisfactionBarSetup), SelectionMode.Assets);
-        if (selection.Length > 0)
-        {
-            so = selection[0] as SatisfactionBarSetup;
-            SatisfactionBarSetupEditor window = (SatisfactionBarSetupEditor)EditorWindow.GetWindow(typeof(SatisfactionBarSetupEditor));
-            window.Show();
-        }
+        //if (selection.Length > 0)
+        //{
+        //    so = selection[0] as SatisfactionBarSetup;
+        //    SatisfactionBarSetupEditor window = (SatisfactionBarSetupEditor)EditorWindow.GetWindow(typeof(SatisfactionBarSetupEditor));
+        //    window.Show();
+        //}
     }
 	private void OnEnable()
 	{
