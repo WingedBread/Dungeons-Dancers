@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(SatisfactionController))]
 [RequireComponent(typeof(IntroController))]
 [RequireComponent (typeof(AudioController))]
@@ -32,11 +33,24 @@ public class GameManager : MonoBehaviour
     private float initDungeonTimer = 60f;
     private float dungeonTimer;
 
+    private int currentLevelState = 0;
+
+    private LevelStates state;
+
+    [SerializeField]
+    private DebugController debugController;
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     // Use this for initialization
     void Start()
     {
-		Application.targetFrameRate = 60;
-        DontDestroyOnLoad(this.gameObject);
+        state = LevelStates.LevelStart;
+        debugController.GameState((int)state);
         playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         uiController = GetComponent<UIController>();
         rhythmController = GetComponent<RhythmController>();
@@ -69,6 +83,8 @@ public class GameManager : MonoBehaviour
     public void IntroBehaviour(int intro){
         uiController.IntroUICheck(intro);
         if(GetIntroCounter() == 5){
+            state = LevelStates.LevelPlay;
+            debugController.GameState((int)state);
             gameStart = true;
             auController.UnmuteSound();
             rhythmController.SetIntroRhythm(false);
@@ -82,6 +98,8 @@ public class GameManager : MonoBehaviour
         {
             if (Time.timeScale > 0)
             {
+                state = LevelStates.LevelPaused;
+                debugController.GameState((int)state);
                 Time.timeScale = 0;
                 gameStart = false;
                 auController.MuteSound();
@@ -89,6 +107,8 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                state = LevelStates.LevelPlay;
+                debugController.GameState((int)state);
                 Time.timeScale = 1;
                 gameStart = true;
                 auController.UnmuteSound();
@@ -99,6 +119,8 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        state = LevelStates.LevelEnd;
+        debugController.GameState((int)state);
         auController.PlayEndLevel();
         gameStart = false;
         rhythmController.SetRhythm(false);
@@ -138,6 +160,8 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
         StartCoroutine(playerManager.ResetPlayer(true));
         dungeonTimer = initDungeonTimer;
+        state = LevelStates.LevelStart;
+        debugController.GameState((int)state);
         satisController.ResetSatisfaction();
         uiController.ResetUI();
         uiController.CoinsUI(0);
@@ -229,6 +253,72 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayerBlock(bool block){
         playerManager.SetBlock(block);
+    }
+
+    //public LevelStates GetGameState()
+    //{
+    //    return state;
+    //}
+
+    #endregion
+
+    #region Events
+    private void EvtIntroStart()
+    {
+
+    }
+    private void EvtIntroEnd()
+    {
+
+    }
+    private void EvtStartPlay()
+    {
+
+    }
+    private void EvtOnBeat()
+    {
+
+    }
+    private void EvtBeatBehaviours()
+    {
+
+    }
+    private void EvtOnCheckpoint()
+    {
+
+    }
+    private void EvtGetCollectible()
+    {
+
+    }
+    private void EvtTimeNearOver()
+    {
+
+    }
+    private void EvtTimeOver()
+    {
+
+    }
+    private void EvtStatisfactionLZero()
+    {
+
+    }
+    private void EvtStatisfactionLv1()
+    {
+
+    }
+    private void EvtStatisfactionLv2()
+    {
+
+    }
+    private void EvtStatisfactionLv3()
+    {
+
+    }
+    private void EvtStatisfactionClimax()
+    {
+
+
     }
     #endregion
 }

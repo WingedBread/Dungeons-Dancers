@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class DebugController : MonoBehaviour {
-    
+
     [SerializeField]
     private GameObject beatConsole;
     [SerializeField]
@@ -23,10 +23,18 @@ public class DebugController : MonoBehaviour {
     [SerializeField]
     private Text fpsCounterText;
 
+    [SerializeField]
+    private GameObject statesConsole;
+    [SerializeField]
+    private Text playerState;
+    [SerializeField]
+    private Text gameState;
+
     private float counter;
 
 
     private bool showDebug = true;
+    private bool showDebugState = true;
     bool ownFlag;
 
     private int pushTime;
@@ -41,9 +49,15 @@ public class DebugController : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.C)){
             showDebug = !showDebug;
-            beatConsole.SetActive((showDebug));
+            statesConsole.SetActive(showDebug);
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            showDebugState = !showDebugState;
+            beatConsole.SetActive(showDebugState);
+        }
+    }
 
     public void RhythmBeatPlayerDebug(int BeatPlayer)
     {
@@ -82,6 +96,47 @@ public class DebugController : MonoBehaviour {
 			} else if (!ownFlag && notHit)
 				ownFlag = true;
 		}
+    }
+
+    public void PlayerState(int currentState)
+    {
+        if (showDebugState)
+        {
+            switch (currentState)
+            {
+                case 0:
+                    playerState.text = "Dancing";
+                    break;
+                case 1:
+                    playerState.text = "Hit";
+                    break;
+                case 2:
+                    playerState.text = "Succeed";
+                    break;
+            }
+        }
+    }
+
+    public void GameState(int currentState)
+    {
+        if (showDebugState)
+        {
+            switch (currentState)
+            {
+                case 0:
+                    gameState.text = "LeveStart";
+                    break;
+                case 1:
+                    gameState.text = "LevelPaused";
+                    break;
+                case 2:
+                    gameState.text = "LevelPlay";
+                    break;
+                case 3:
+                    gameState.text = "LevelEnd";
+                    break;
+            }
+        }
     }
 
     float ConvertToSeconds(int sampleTime)
