@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent (typeof(CollectiblesController))]
 [RequireComponent(typeof(InputController))]
@@ -35,9 +34,16 @@ public class PlayerManager : MonoBehaviour
     private Vector3 spawnInitPosition;
     private List<GameObject> collectibles = new List<GameObject>();
 
+    private PlayerStates state;
+
+    [SerializeField]
+    private DebugController debugController;
+
     // Use this for initialization
     void Start()
     {
+        state = PlayerStates.Dancing;
+        debugController.PlayerState((int)state);
         auSource = GetComponent<AudioSource>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         inputController = GetComponent<InputController>();
@@ -90,9 +96,13 @@ public class PlayerManager : MonoBehaviour
         switch (col.gameObject.tag)
         {
             case "Exit":
+                state = PlayerStates.Succeed;
+                debugController.PlayerState((int)state);
                 gameManager.Win();
                 break;
             case "Trap":
+                state = PlayerStates.Hit;
+                debugController.PlayerState((int)state);
                 StartCoroutine(ResetPlayer(false));
                 break;
             case "Coin":
@@ -150,6 +160,8 @@ public class PlayerManager : MonoBehaviour
             }
             collectibles.Clear();
             collectiblesController.Reset();
+            state = PlayerStates.Dancing;
+            debugController.PlayerState((int)state);
             StopCoroutine("ResetPlayer");
         }
         else
@@ -158,7 +170,22 @@ public class PlayerManager : MonoBehaviour
             transform.position = spawnPosition;
             if (spawnPosition != spawnInitPosition) inputController.SetRotation(2);
             else inputController.SetRotation(1);
+            state = PlayerStates.Dancing;
+            debugController.PlayerState((int)state);
             StopCoroutine("ResetPlayer");
+
         }
     }
+
+    //public PlayerStates GetPlayerState()
+    //{
+    //    return state;
+    //}
+
+    #region Events
+    private void EvtOnHit()
+    {
+
+    }
+    #endregion
 }
