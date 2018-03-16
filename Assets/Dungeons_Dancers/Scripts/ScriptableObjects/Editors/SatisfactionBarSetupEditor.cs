@@ -21,19 +21,16 @@ public class SatisfactionBarSetupEditor : EditorWindow {
     string status;
 
     private SatisfactionBarSetup so;
+    private SerializedObject satisObj;
 
     [MenuItem("Curial Tools/SatisfactionBarSetup")]
     static void Init()
     {
-        Object[] selection = Selection.GetFiltered(typeof(SatisfactionBarSetup), SelectionMode.Assets);
-        //if (selection.Length > 0)
-        //{
-        //    so = selection[0] as SatisfactionBarSetup;
-        //    SatisfactionBarSetupEditor window = (SatisfactionBarSetupEditor)EditorWindow.GetWindow(typeof(SatisfactionBarSetupEditor));
-        //    window.Show();
-        //}
+        SatisfactionBarSetupEditor window = (SatisfactionBarSetupEditor)EditorWindow.GetWindow(typeof(SatisfactionBarSetupEditor));
+        window.Show();
     }
-	private void OnEnable()
+
+    void OnEnable()
 	{
         so = new SatisfactionBarSetup();
 	}
@@ -95,13 +92,10 @@ public class SatisfactionBarSetupEditor : EditorWindow {
             EditorGUI.EndDisabledGroup();
 
 
-
-
             if (GUILayout.Button("RAFA"))
             {
                 so.RAFA();
             }
-
 
 
             EditorGUILayout.BeginHorizontal();
@@ -117,6 +111,13 @@ public class SatisfactionBarSetupEditor : EditorWindow {
                 so.cosas.RemoveAt(so.cosas.Count - 1);
             }
             EditorGUILayout.EndHorizontal();
+
+            if (GUI.changed)
+            {
+                //Debug.Log("GUI.changed");
+                EditorUtility.SetDirty(so);
+            }
+
         }
     }
 

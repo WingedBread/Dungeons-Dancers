@@ -38,13 +38,9 @@ public class SatisfactionBarSetup : ScriptableObject
 
     public void RAFA()
     {
-
         Debug.Log("hell yeah");
-
-
         Rafa temp = new Rafa();
         Debug.Log(JsonUtility.ToJson(temp));
-
     }
 }
 
