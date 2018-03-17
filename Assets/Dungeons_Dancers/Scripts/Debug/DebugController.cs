@@ -104,13 +104,13 @@ public class DebugController : MonoBehaviour {
         {
             switch (currentState)
             {
-                case 0:
+                case 1:
                     playerState.text = "Dancing";
                     break;
-                case 1:
+                case 2:
                     playerState.text = "Hit";
                     break;
-                case 2:
+                case 3:
                     playerState.text = "Succeed";
                     break;
             }
@@ -123,16 +123,16 @@ public class DebugController : MonoBehaviour {
         {
             switch (currentState)
             {
-                case 0:
+                case 1:
                     gameState.text = "LeveStart";
                     break;
-                case 1:
+                case 2:
                     gameState.text = "LevelPaused";
                     break;
-                case 2:
+                case 3:
                     gameState.text = "LevelPlay";
                     break;
-                case 3:
+                case 4:
                     gameState.text = "LevelEnd";
                     break;
             }
