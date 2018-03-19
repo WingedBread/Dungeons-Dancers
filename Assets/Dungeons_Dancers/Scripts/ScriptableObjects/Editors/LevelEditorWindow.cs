@@ -30,15 +30,16 @@ public class LevelEditorWindow : EditorWindow {
         levelsetup = new LevelSetup();
 	}
 
-	private void OnGUI()
-	{
-        if(GUILayout.Button("Add Event")){
+    private void OnGUI()
+    {
+        if (GUILayout.Button("Add Event"))
+        {
             levelsetup.AddEvent();
         }
 
 
         levelStates = (LevelStates)EditorGUILayout.EnumFlagsField("Level Events", levelStates);
-        playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player Events",playerStates);
+        playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player Events", playerStates);
 
         showGameObject = EditorGUILayout.Foldout(showGameObject, status, true);
         if (showGameObject)
@@ -57,11 +58,18 @@ public class LevelEditorWindow : EditorWindow {
         }
 
         animator = (Animator)EditorGUILayout.ObjectField("Animator", animator, typeof(Animator), true);
-        auClip = (AudioClip) EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
-        particles = (GameObject) EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
+        auClip = (AudioClip)EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
+        particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
 
-        if(GUILayout.Button ("Remove Event")){
-            levelsetup.eventsLevel.RemoveAt(levelsetup.eventsLevel.Count-1);
+        if (GUILayout.Button("Remove Event"))
+        {
+            levelsetup.eventsLevel.RemoveAt(levelsetup.eventsLevel.Count - 1);
         }
-	}
+
+        if (GUILayout.Button("Save Data"))
+        {
+            AssetDatabase.SaveAssets();
+            EditorUtility.SetDirty(Selection.activeObject);
+        }
+    }
 }
