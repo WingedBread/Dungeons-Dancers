@@ -8,33 +8,110 @@ public class LevelSetup : ScriptableObject
 {
     [Header("List LevelEvent Class")]
     [HideInInspector]
-    public List<LevelEvent> eventsLevel;
+    public List<LevelEvents> eventsLevel;
 
     public void AddEvent()
     {
-        LevelEvent temp = new LevelEvent();
+        LevelEvents temp = new LevelEvents();
     }
 
+    public void DeleteEvent(){
+        eventsLevel.RemoveAt(eventsLevel.Count - 1);
+    }
 
+    //Repartir por los scripts.
+    #region Level Events
+    private void EvtIntroStart()
+    {
+
+    }
+    private void EvtIntroEnd()
+    {
+
+    }
+    private void EvtStartPlay()
+    {
+
+    }
+    private void EvtOnBeat()
+    {
+
+    }
+    private void EvtBeatBehaviours()
+    {
+
+    }
+    private void EvtOnCheckpoint()
+    {
+
+    }
+    private void EvtGetCollectible()
+    {
+
+    }
+    private void EvtTimeNearOver()
+    {
+
+    }
+    private void EvtTimeOver()
+    {
+
+    }
+    private void EvtStatisfactionLZero()
+    {
+
+    }
+    private void EvtStatisfactionLv1()
+    {
+
+    }
+    private void EvtStatisfactionLv2()
+    {
+
+    }
+    private void EvtStatisfactionLv3()
+    {
+
+    }
+    private void EvtStatisfactionClimax()
+    {
+
+
+    }
+    #endregion
+
+    #region Player Events
+    private void EvtOnHit()
+    {
+
+    }
+    #endregion
 }
 
-public class LevelEvent
+public class LevelEvents
 {
 
-    public virtual void AnimationEvent(Animator animator){
-        
-    }
+    private Animator animator;
+    private AudioClip auClip;
+    private GameObject particles;
 
-    public virtual void SoundEvent(AudioClip auClip)
+    public void SetAnimator(Animator anim)
     {
-
+        anim = animator;
     }
-    public virtual void ParticlesEvent(GameObject particles)
+
+    public void SetAudioClip(AudioClip audioClip)
     {
-
+        audioClip = auClip;
     }
 
-    public virtual void EasingsEvent(){
+    public void SetParticles(GameObject particleSystem)
+    {
+        particleSystem = particles;
+    }
+
+    public virtual void EasingsEvent()
+    {
         
     }
 }

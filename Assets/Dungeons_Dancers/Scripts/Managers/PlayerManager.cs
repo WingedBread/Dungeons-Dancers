@@ -177,15 +177,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    //public PlayerStates GetPlayerState()
-    //{
-    //    return state;
-    //}
-
-    #region Events
-    private void EvtOnHit()
+    public PlayerStates GetPlayerState()
     {
-
+        return state;
     }
-    #endregion
 }
