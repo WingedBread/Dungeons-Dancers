@@ -7,14 +7,10 @@ using UnityEditor;
 public class LevelEditorWindow : EditorWindow {
 
     string status;
-
     bool showGameObject;
-
     LevelSetup levelsetup;
-
     LevelStates levelStates;
     PlayerStates playerStates;
-
     Animator animator;
     AudioClip auClip;
     GameObject particles;
