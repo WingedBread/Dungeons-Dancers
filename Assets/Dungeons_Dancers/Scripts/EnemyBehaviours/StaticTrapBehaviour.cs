@@ -24,6 +24,10 @@ public class StaticTrapBehaviour : MonoBehaviour {
     [SerializeField]
     private float easingOffDuration;
 
+	[Header("Collision Time Division")]
+	[SerializeField]
+	private float colTime = 2f;
+
     private bool activeTrapEvent;
 
     private GameObject childSpikes;
@@ -57,9 +61,9 @@ public class StaticTrapBehaviour : MonoBehaviour {
 
     private IEnumerator ColliderCoroutine()
     {
-        yield return new WaitForSeconds(easingOnDuration / 2);
+		yield return new WaitForSeconds(easingOnDuration / colTime);
         gameObject.GetComponent<Collider>().enabled = true;
-        yield return new WaitForSeconds(easingOffDuration / 2);
+		yield return new WaitForSeconds(easingOffDuration / colTime);
         gameObject.GetComponent<Collider>().enabled = false;
         StopCoroutine("ColliderCoroutine");
 

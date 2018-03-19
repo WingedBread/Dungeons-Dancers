@@ -901,8 +901,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!114 &114871846322350384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -914,9 +914,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872477a31823649e6ba8717d3d00224f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapBehaviour: 1
+  trapBehaviour: 2
   trapMaxHeight: {x: 0, y: 0.75, z: 0}
   trapMinHeight: {x: 0, y: 0, z: 0}
   easingList: 15
-  easingOnDuration: 0.05
-  easingOffDuration: 0.2
+  easingOnDuration: 0.1
+  easingOffDuration: 0.1
+  colTime: 2
