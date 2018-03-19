@@ -58,12 +58,17 @@ public class LevelEditorWindow : EditorWindow {
         }
 
         animator = (Animator)EditorGUILayout.ObjectField("Animator", animator, typeof(Animator), true);
+        //if (animator != null) for (int i = 0; i < levelsetup.eventsLevel.Count - 1; i++)levelsetup.eventsLevel[i].SetAnimator(animator);
+
         auClip = (AudioClip)EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
+        //if (auClip != null) levelsetup.SetAudioClip(auClip);
+
         particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
+        //if (particles != null) levelsetup.SetParticles(particles);
 
         if (GUILayout.Button("Remove Event"))
         {
-            levelsetup.eventsLevel.RemoveAt(levelsetup.eventsLevel.Count - 1);
+            levelsetup.DeleteEvent();
         }
 
         if (GUILayout.Button("Save Data"))

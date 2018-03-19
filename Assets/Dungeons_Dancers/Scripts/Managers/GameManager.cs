@@ -255,70 +255,10 @@ public class GameManager : MonoBehaviour
         playerManager.SetBlock(block);
     }
 
-    //public LevelStates GetGameState()
-    //{
-    //    return state;
-    //}
-
-    #endregion
-
-    #region Events
-    private void EvtIntroStart()
+    public LevelStates GetGameState()
     {
-
+        return state;
     }
-    private void EvtIntroEnd()
-    {
 
-    }
-    private void EvtStartPlay()
-    {
-
-    }
-    private void EvtOnBeat()
-    {
-
-    }
-    private void EvtBeatBehaviours()
-    {
-
-    }
-    private void EvtOnCheckpoint()
-    {
-
-    }
-    private void EvtGetCollectible()
-    {
-
-    }
-    private void EvtTimeNearOver()
-    {
-
-    }
-    private void EvtTimeOver()
-    {
-
-    }
-    private void EvtStatisfactionLZero()
-    {
-
-    }
-    private void EvtStatisfactionLv1()
-    {
-
-    }
-    private void EvtStatisfactionLv2()
-    {
-
-    }
-    private void EvtStatisfactionLv3()
-    {
-
-    }
-    private void EvtStatisfactionClimax()
-    {
-
-
-    }
     #endregion
 }
