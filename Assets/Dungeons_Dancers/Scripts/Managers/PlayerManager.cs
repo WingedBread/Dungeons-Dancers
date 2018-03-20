@@ -6,6 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(InputController))]
 public class PlayerManager : MonoBehaviour
 {
+    [Header("Setup Level")]
+    [SerializeField]
+    private LevelSetup levelSetup;
+
     [Header("Game Manager")]
     [HideInInspector]
     public GameManager gameManager;
@@ -102,6 +106,7 @@ public class PlayerManager : MonoBehaviour
                 break;
             case "Trap":
                 state = PlayerStates.Hit;
+                levelSetup.EvtOnHit();
                 debugController.PlayerState((int)state);
                 StartCoroutine(ResetPlayer(false));
                 break;
@@ -109,16 +114,19 @@ public class PlayerManager : MonoBehaviour
                 collectibles.Add(col.gameObject);
                 collectiblesController.AddCoin();
                 col.gameObject.SetActive(false);
+                levelSetup.EvtGetCollectible();
                 gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()), false);
                 break;
             case "Key":
                 collectibles.Add(col.gameObject);
                 collectiblesController.AddKey(int.Parse(col.gameObject.name.Substring(0,2)));
                 col.gameObject.SetActive(false);
+                levelSetup.EvtGetCollectible();
                 gameManager.CollectibleBehaviour(int.Parse(col.gameObject.name.Substring(0, 2)));
                 break;
             case "Spawn":
                 spawnPosition = col.gameObject.transform.position;
+                levelSetup.EvtOnCheckpoint();
                 break;
             case "Door":
                 collectiblesController.OpenDoor();

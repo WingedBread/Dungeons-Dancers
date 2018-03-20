@@ -10,108 +10,92 @@ public class LevelSetup : ScriptableObject
     [HideInInspector]
     public List<LevelEvents> eventsLevel;
 
-    public void AddEvent()
+    public void AddEvent(LevelEvents temp)
     {
-        LevelEvents temp = new LevelEvents();
+        eventsLevel.Add(temp);
+        Debug.Log(eventsLevel.Count);
     }
 
     public void DeleteEvent(){
         eventsLevel.RemoveAt(eventsLevel.Count - 1);
+        Debug.Log(eventsLevel.Count);
     }
 
-    //Repartir por los scripts.
     #region Level Events
-    private void EvtIntroStart()
+    public void EvtIntroStart()
     {
 
     }
-    private void EvtIntroEnd()
+    public void EvtIntroEnd()
     {
 
     }
-    private void EvtStartPlay()
+    public void EvtStartPlay()
     {
 
     }
-    private void EvtOnBeat()
+    public void EvtOnBeat()
+    {
+        //x
+    }
+    public void EvtBeatBehaviours()
+    {
+        //x --choose and execute eventonbeat on editor.
+    }
+    public void EvtOnCheckpoint()
     {
 
     }
-    private void EvtBeatBehaviours()
+    public void EvtGetCollectible()
     {
 
     }
-    private void EvtOnCheckpoint()
+    public void EvtTimeNearOver()
     {
 
     }
-    private void EvtGetCollectible()
+    public void EvtTimeOver()
     {
 
     }
-    private void EvtTimeNearOver()
+    public void EvtStatisfactionLZero()
     {
-
+        //x
     }
-    private void EvtTimeOver()
+    public void EvtStatisfactionLv1()
     {
-
+        //x
     }
-    private void EvtStatisfactionLZero()
+    public void EvtStatisfactionLv2()
     {
-
+        //x
     }
-    private void EvtStatisfactionLv1()
+    public void EvtStatisfactionLv3()
     {
-
+        //x
     }
-    private void EvtStatisfactionLv2()
+    public void EvtStatisfactionClimax()
     {
-
-    }
-    private void EvtStatisfactionLv3()
-    {
-
-    }
-    private void EvtStatisfactionClimax()
-    {
-
-
+        //x
     }
     #endregion
 
     #region Player Events
-    private void EvtOnHit()
+    public void EvtOnHit()
     {
 
     }
     #endregion
 }
 
-public class LevelEvents
+public class LevelEvents : ScriptableObject
 {
 
     private Animator animator;
     private AudioClip auClip;
     private GameObject particles;
 
-    public void SetAnimator(Animator anim)
-    {
-        anim = animator;
-    }
+    //SAVE EDITOR VARIABLES ONLY
 
-    public void SetAudioClip(AudioClip audioClip)
-    {
-        audioClip = auClip;
-    }
 
-    public void SetParticles(GameObject particleSystem)
-    {
-        particleSystem = particles;
-    }
-
-    public virtual void EasingsEvent()
-    {
-        
-    }
 }

@@ -10,6 +10,9 @@ using UnityEngine;
 [RequireComponent(typeof(EventController))]
 public class GameManager : MonoBehaviour
 {
+    [Header("Setup Level")]
+    public LevelSetup levelSetup;
+
     [Header("Player Manager")]
     private PlayerManager playerManager;
 
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         state = LevelStates.LevelStart;
+        levelSetup.EvtIntroStart();
         debugController.GameState((int)state);
         playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         uiController = GetComponent<UIController>();
@@ -73,9 +77,12 @@ public class GameManager : MonoBehaviour
             dungeonTimer -= Time.deltaTime;
             if (dungeonTimer <= 0)
             {
+                levelSetup.EvtTimeOver();
                 Dead();
                 dungeonTimer = initDungeonTimer;
             }
+
+            if (Equals(dungeonTimer, 5)) levelSetup.EvtTimeNearOver();
         }
         else playerManager.SetBlock(true);
     }
@@ -84,6 +91,8 @@ public class GameManager : MonoBehaviour
         uiController.IntroUICheck(intro);
         if(GetIntroCounter() == 5){
             state = LevelStates.LevelPlay;
+            levelSetup.EvtIntroEnd();
+            levelSetup.EvtStartPlay();
             debugController.GameState((int)state);
             gameStart = true;
             auController.UnmuteSound();

@@ -8,10 +8,13 @@ public class LevelEditorWindow : EditorWindow {
 
     string status;
     bool showGameObject;
+
     LevelSetup levelsetup;
+
     LevelStates levelStates;
     PlayerStates playerStates;
-    Animator animator;
+
+    UnityEditor.Animations.AnimatorController animator;
     AudioClip auClip;
     GameObject particles;
 
@@ -21,21 +24,17 @@ public class LevelEditorWindow : EditorWindow {
         window.Show();
     }
 
-	private void Awake()
-	{
-        levelsetup = new LevelSetup();
-	}
-
     private void OnGUI()
     {
+        levelsetup = (LevelSetup)EditorGUILayout.ObjectField("Level Setup", levelsetup, typeof(LevelSetup), true);
+
         if (GUILayout.Button("Add Event"))
         {
-            levelsetup.AddEvent();
+            LevelEvents temp = new LevelEvents();
+            levelsetup.AddEvent(temp);
         }
 
-
         levelStates = (LevelStates)EditorGUILayout.EnumFlagsField("Level Events", levelStates);
-        playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player Events", playerStates);
 
         showGameObject = EditorGUILayout.Foldout(showGameObject, status, true);
         if (showGameObject)
@@ -45,6 +44,39 @@ public class LevelEditorWindow : EditorWindow {
                 Selection.activeTransform.position =
                 EditorGUILayout.Vector3Field("Position", Selection.activeTransform.position);
                 status = Selection.activeTransform.name;
+
+                if(Selection.activeGameObject.tag == "Player") playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player Events", playerStates);
+
+                animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
+                if (animator != null)
+                {
+                    if (Selection.activeGameObject.GetComponent<Animator>() != null)
+                    {
+                        Selection.activeGameObject.GetComponent<Animator>().runtimeAnimatorController = animator;
+                    }
+                    else Debug.Log("Does not have Animator");
+                }
+
+                auClip = (AudioClip)EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
+                if (auClip != null)
+                {
+                    if (Selection.activeGameObject.GetComponent<AudioSource>() != null)
+                    {
+                        Selection.activeGameObject.GetComponent<AudioSource>().clip = auClip;
+                    }
+                    else Debug.Log("Does not have Audio Source");
+                }
+
+                //Maybe change to ParticleSystem(?)
+                particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
+                //if (animator != null)
+                //{
+                //    if (Selection.activeGameObject.GetComponent<Animator>() != null)
+                //    {
+                //        Selection.activeGameObject.GetComponent<Animator>().runtimeAnimatorController = animator;
+                //    }
+                //    else Debug.Log("Does not have Animator");
+                //}
             }
         }
         if (!Selection.activeTransform)
@@ -52,15 +84,6 @@ public class LevelEditorWindow : EditorWindow {
             status = "Select a GameObject";
             showGameObject = false;
         }
-
-        animator = (Animator)EditorGUILayout.ObjectField("Animator", animator, typeof(Animator), true);
-        //if (animator != null) for (int i = 0; i < levelsetup.eventsLevel.Count - 1; i++)levelsetup.eventsLevel[i].SetAnimator(animator);
-
-        auClip = (AudioClip)EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
-        //if (auClip != null) levelsetup.SetAudioClip(auClip);
-
-        particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
-        //if (particles != null) levelsetup.SetParticles(particles);
 
         if (GUILayout.Button("Remove Event"))
         {

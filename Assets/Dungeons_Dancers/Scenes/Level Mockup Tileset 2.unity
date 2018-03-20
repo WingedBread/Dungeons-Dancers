@@ -6765,6 +6765,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114950762113473110, guid: 49c120603d00a4399b8ff81e0b61f7b3,
+        type: 2}
+      propertyPath: m_Text
+      value: '-'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114917858668644504, guid: 49c120603d00a4399b8ff81e0b61f7b3,
+        type: 2}
+      propertyPath: m_Text
+      value: '-'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49c120603d00a4399b8ff81e0b61f7b3, type: 2}
   m_IsPrefabParent: 0
@@ -20340,6 +20350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88cbf28bd2db4619af9c2aa0a7e381e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSetup: {fileID: 11400000, guid: 77ad1dfe9a40e4a80b5bc8b448876930, type: 2}
   godMode: 0
   initDungeonTimer: 60
   debugController: {fileID: 1209642999}
@@ -21575,6 +21586,24 @@ Prefab:
       propertyPath: debugController
       value: 
       objectReference: {fileID: 1209642999}
+    - target: {fileID: 114558854404669180, guid: b232df0317a244d7bbd62de247f3daa8,
+        type: 2}
+      propertyPath: levelSetup
+      value: 
+      objectReference: {fileID: 11400000, guid: 77ad1dfe9a40e4a80b5bc8b448876930,
+        type: 2}
+    - target: {fileID: 4266721288836098, guid: b232df0317a244d7bbd62de247f3daa8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266721288836098, guid: b232df0317a244d7bbd62de247f3daa8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.09999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266721288836098, guid: b232df0317a244d7bbd62de247f3daa8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09999991
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b232df0317a244d7bbd62de247f3daa8, type: 2}
   m_IsPrefabParent: 0
