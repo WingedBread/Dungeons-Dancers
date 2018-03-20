@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -14,7 +16,7 @@ public class SatisfactionBarSetup : ScriptableObject
     [HideInInspector]
     public int maxPoints;
 
-    [Range(0,89)]
+    [Range(0, 89)]
     [HideInInspector]
     public float rafa;
 
@@ -47,7 +49,8 @@ public class SatisfactionBarSetup : ScriptableObject
 [Serializable]
 public class Rafa
 {
-    public int cosa1=3;
-    public string cosa2="pepe";
+    public int cosa1 = 3;
+    public string cosa2 = "pepe";
 
 }
+#endif

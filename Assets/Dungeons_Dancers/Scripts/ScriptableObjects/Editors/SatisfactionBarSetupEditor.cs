@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(SatisfactionBarSetup))]
-public class SatisfactionBarSetupEditor : EditorWindow {
+public class SatisfactionBarSetupEditor : EditorWindow
+{
 
 
     float rafa = 99;
@@ -31,20 +34,20 @@ public class SatisfactionBarSetupEditor : EditorWindow {
     }
 
     void OnEnable()
-	{
+    {
         so = new SatisfactionBarSetup();
-	}
+    }
 
-	private void OnGUI()
-	{
+    private void OnGUI()
+    {
         //base.OnInspectorGUI();
 
         //SatisfactionBarSetup so = target as SatisfactionBarSetup;
 
         //EditorGUILayout.BeginHorizontal();
-        so.minPoints = EditorGUILayout.IntField("Min: ",so.minPoints/*, GUILayout.Width(150)*/);
+        so.minPoints = EditorGUILayout.IntField("Min: ", so.minPoints/*, GUILayout.Width(150)*/);
         so.initPoints = EditorGUILayout.IntField("Init: ", so.initPoints/*, GUILayout.Width(150)*/);
-        so.maxPoints = EditorGUILayout.IntField("Max: ",so.maxPoints/*, GUILayout.Width(150)*/);
+        so.maxPoints = EditorGUILayout.IntField("Max: ", so.maxPoints/*, GUILayout.Width(150)*/);
         //EditorGUILayout.EndHorizontal();
 
         /*
@@ -73,7 +76,7 @@ public class SatisfactionBarSetupEditor : EditorWindow {
         }
 
 
-        showCosas = EditorGUILayout.Foldout(showCosas,"COSAS");
+        showCosas = EditorGUILayout.Foldout(showCosas, "COSAS");
         if (showCosas)
         {
 
@@ -122,6 +125,7 @@ public class SatisfactionBarSetupEditor : EditorWindow {
     }
 
 }
+#endif
 
 
 

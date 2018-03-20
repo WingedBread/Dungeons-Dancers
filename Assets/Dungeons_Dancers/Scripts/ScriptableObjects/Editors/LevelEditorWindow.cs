@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor (typeof(LevelSetup))]
-public class LevelEditorWindow : EditorWindow {
+[CustomEditor(typeof(LevelSetup))]
+public class LevelEditorWindow : EditorWindow
+{
 
     string status;
     bool showGameObject;
@@ -19,7 +22,8 @@ public class LevelEditorWindow : EditorWindow {
     GameObject particles;
 
     [MenuItem("Curial Tools/Level Editor", false, 0)]
-    static void Init(){
+    static void Init()
+    {
         LevelEditorWindow window = (LevelEditorWindow)EditorWindow.GetWindow(typeof(LevelEditorWindow));
         window.Show();
     }
@@ -45,7 +49,7 @@ public class LevelEditorWindow : EditorWindow {
                 EditorGUILayout.Vector3Field("Position", Selection.activeTransform.position);
                 status = Selection.activeTransform.name;
 
-                if(Selection.activeGameObject.tag == "Player") playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player Events", playerStates);
+                if (Selection.activeGameObject.tag == "Player") playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player Events", playerStates);
 
                 animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
                 if (animator != null)
@@ -97,3 +101,4 @@ public class LevelEditorWindow : EditorWindow {
         }
     }
 }
+#endif
