@@ -1,6 +1,5 @@
 ﻿public enum ScreenStates
 {
-    None,
     MainMenu,
     WorldMap,
     Level,
@@ -9,7 +8,6 @@
 
 public enum LevelStates
 {
-    None,
     LevelStart,
     LevelPaused,
     LevelPlay,
@@ -18,7 +16,6 @@ public enum LevelStates
 
 public enum PlayerStates
 {
-    None,
     Dancing,
     Hit,
     Succeed

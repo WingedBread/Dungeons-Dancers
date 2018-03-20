@@ -95,7 +95,7 @@ public class LevelEvents : ScriptableObject
     private AudioClip auClip;
     private GameObject particles;
 
-    //SAVE EDITOR VARIABLES ONLY
+    //SAVE EDITOR VARIABLES ONLY(?)
 
 
 }

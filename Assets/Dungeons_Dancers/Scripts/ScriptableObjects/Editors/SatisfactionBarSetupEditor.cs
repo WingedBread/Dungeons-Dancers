@@ -8,8 +8,6 @@ using UnityEditor;
 [CustomEditor(typeof(SatisfactionBarSetup))]
 public class SatisfactionBarSetupEditor : EditorWindow
 {
-
-
     float rafa = 99;
 
     float pointsmin = 0;
