@@ -28,7 +28,7 @@ public class CollectiblesController : MonoBehaviour {
             if (key == int.Parse(doors[i].name.Substring(0, 2)))
             {
                 doors[i].GetComponent<MeshRenderer>().material = doorMaterial[1];
-                doors[i].tag = "Door";
+                doors[i].transform.GetChild(0).tag = "Door";
             }
         }
     }
@@ -53,8 +53,8 @@ public class CollectiblesController : MonoBehaviour {
     public void OpenDoor()
     {
         for (int i = 0; i < keys.Count; i++)
-        {   doors[i].GetComponent<Collider>().enabled = false;
-            doors[i].tag = "Obstacle";
+        {   doors[i].transform.GetChild(0).GetComponent<Collider>().enabled = false;
+            doors[i].transform.GetChild(0).tag = "Obstacle";
             doors[i].transform.rotation = Quaternion.Euler(0, 90, 0);
             keys.Remove(i);
         }
@@ -63,10 +63,10 @@ public class CollectiblesController : MonoBehaviour {
     public void Reset(){
         for (int i = 0; i < doors.Length; i++)
         {
-            doors[i].GetComponent<Collider>().enabled = true;
-            doors[i].tag = "Obstacle";
+            doors[i].transform.GetChild(0).GetComponent<Collider>().enabled = true;
+            doors[i].transform.GetChild(0).tag = "Obstacle";
             doors[i].transform.rotation = Quaternion.Euler(0, 0, 0);
-            doors[i].GetComponent<MeshRenderer>().material = doorMaterial[0];
+            doors[i].transform.GetComponent<MeshRenderer>().material = doorMaterial[0];
         }
         keys.Clear();
         coins = 0;

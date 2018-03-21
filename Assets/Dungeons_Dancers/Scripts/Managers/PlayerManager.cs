@@ -94,46 +94,7 @@ public class PlayerManager : MonoBehaviour
         StopCoroutine("ReturnIdle");
     }
 
-    private void OnTriggerEnter(Collider col)
-    {
-        switch (col.gameObject.tag)
-        {
-            case "Exit":
-                state = PlayerStates.Succeed;
-                debugController.PlayerState((int)state);
-                gameManager.Win();
-                break;
-            case "Trap":
-                state = PlayerStates.Hit;
-                levelSetup.EvtOnHit();
-                debugController.PlayerState((int)state);
-                StartCoroutine(ResetPlayer(false));
-                break;
-            case "Coin":
-                collectibles.Add(col.gameObject);
-                collectiblesController.AddCoin();
-                col.gameObject.SetActive(false);
-                levelSetup.EvtGetCollectible();
-                gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()), false);
-                break;
-            case "Key":
-                collectibles.Add(col.gameObject);
-                collectiblesController.AddKey(int.Parse(col.gameObject.name.Substring(0,2)));
-                col.gameObject.SetActive(false);
-                levelSetup.EvtGetCollectible();
-                gameManager.CollectibleBehaviour(int.Parse(col.gameObject.name.Substring(0, 2)));
-                break;
-            case "Spawn":
-                spawnPosition = col.gameObject.transform.position;
-                levelSetup.EvtOnCheckpoint();
-                break;
-            case "Door":
-                collectiblesController.OpenDoor();
-                gameManager.DoorBehaviour();
-                break;
-        }
-    }
-
+    #region OnTriggerMethods
     public void ExitBehaviour()
     {
         state = PlayerStates.Succeed;
@@ -178,6 +139,7 @@ public class PlayerManager : MonoBehaviour
         collectiblesController.OpenDoor();
         gameManager.DoorBehaviour();
     }
+#endregion
 
     public void SetBlock(bool Block)
     {
