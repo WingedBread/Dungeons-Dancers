@@ -20,8 +20,8 @@ public class PlayerManager : MonoBehaviour
 
     private Material mat;
 
-    //[Header("Animator")]
-    //private Animator animator;
+    [Header("Animator")]
+    private Animator animator;
 
     [Header("Idle Return Time")]
     [SerializeField]
@@ -52,9 +52,8 @@ public class PlayerManager : MonoBehaviour
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         inputController = GetComponent<InputController>();
         collectiblesController = GetComponent<CollectiblesController>();
-
-        //animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
-        mat = transform.GetChild(0)./*GetChild(0).GetChild(0).GetChild(0).*/GetComponent</*Skinned*/MeshRenderer>().material;
+        animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
+        mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
         spawnPosition = transform.position;
         spawnInitPosition = transform.position;
     }
@@ -66,8 +65,8 @@ public class PlayerManager : MonoBehaviour
 
     void PlayerBeatAnimatorCheck()
     {
-        //if (gameManager.GetRhythmActiveBeat() && !animator.GetBool("onBeat")) animator.SetBool("onBeat", true);
-        //else if(!gameManager.GetRhythmActiveBeat() && animator.GetBool("onBeat")) animator.SetBool("onBeat", false);
+        if (gameManager.GetRhythmActiveBeat() && !animator.GetBool("onBeat")) animator.SetBool("onBeat", true);
+        else if(!gameManager.GetRhythmActiveBeat() && animator.GetBool("onBeat")) animator.SetBool("onBeat", false);
     }
 
     public void CorrectInput()
@@ -135,6 +134,51 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void ExitBehaviour()
+    {
+        state = PlayerStates.Succeed;
+        debugController.PlayerState((int)state);
+        gameManager.Win();
+    }
+
+    public void TrapBehaviour()
+    {
+        state = PlayerStates.Hit;
+        levelSetup.EvtOnHit();
+        debugController.PlayerState((int)state);
+        StartCoroutine(ResetPlayer(false));
+    }
+
+    public void CoinBehaviour(Collider col)
+    {
+        collectibles.Add(col.gameObject);
+        collectiblesController.AddCoin();
+        col.gameObject.SetActive(false);
+        levelSetup.EvtGetCollectible();
+        gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()), false);
+    }
+
+    public void KeyBehaviour(Collider col)
+    {
+        collectibles.Add(col.gameObject);
+        collectiblesController.AddKey(int.Parse(col.gameObject.name.Substring(0, 2)));
+        col.gameObject.SetActive(false);
+        levelSetup.EvtGetCollectible();
+        gameManager.CollectibleBehaviour(int.Parse(col.gameObject.name.Substring(0, 2)));
+    }
+
+    public void SpawnBehaviour(Collider col)
+    {
+        spawnPosition = col.gameObject.transform.position;
+        levelSetup.EvtOnCheckpoint();
+    }
+
+    public void DoorBehaviour()
+    {
+        collectiblesController.OpenDoor();
+        gameManager.DoorBehaviour();
+    }
+
     public void SetBlock(bool Block)
     {
         inputController.SetInputBlock(Block);
@@ -160,6 +204,7 @@ public class PlayerManager : MonoBehaviour
         if (dead)
         {
             transform.position = spawnInitPosition;
+            transform.parent.GetChild(1).position = spawnInitPosition;
             spawnPosition = spawnInitPosition;
             inputController.SetRotation(1);
             for (int i = 0; i < collectibles.Count; i++)
@@ -176,6 +221,7 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.Respawn();
             transform.position = spawnPosition;
+            transform.parent.GetChild(1).position = spawnPosition;
             if (spawnPosition != spawnInitPosition) inputController.SetRotation(2);
             else inputController.SetRotation(1);
             state = PlayerStates.Dancing;

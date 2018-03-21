@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-[RequireComponent(typeof(RaycastCollisions))]
 public class InputController : MonoBehaviour 
 {
     [Header("Player Manager")]
     private PlayerManager playerManager;
 
     [Header("Raycast Collisons")]
-    private RaycastCollisions rayCollision;
+    private PlayerCollisions playerCollision;
 
     [Header("Player Speed")]
     [SerializeField]
@@ -51,7 +50,7 @@ public class InputController : MonoBehaviour
 	void Start () 
     {
         playerManager = GetComponent<PlayerManager>();
-        rayCollision = GetComponent<RaycastCollisions>();
+        playerCollision = transform.parent.GetChild(1).GetComponent<PlayerCollisions>();
         playerChild = this.transform.GetChild(0).transform;
 
 	}
@@ -68,12 +67,13 @@ public class InputController : MonoBehaviour
         //LEFT
         if (Equals(Input.GetAxisRaw("Horizontal"), -1f))
         {
-            if (!rayCollision.LeftCollision() && inputFlag && easingBool) 
+            if (!playerCollision.LeftCollision() && inputFlag && easingBool) 
             {
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveX(transform.position.x - speed, easingSpeedDuration, false)).OnComplete(EasingBool);
-                s.Insert(0, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(transform.position.y + jump, easingSpeedDuration/2, false));
-                s.Insert(easingSpeedDuration / 2, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
+                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration/2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
+                transform.parent.GetChild(1).transform.position = new Vector3(transform.parent.GetChild(1).transform.position.x - speed, transform.parent.GetChild(1).transform.position.y, transform.parent.GetChild(1).transform.position.z);
                 playerChild.rotation = Quaternion.Euler(0, -90, -45);
                 playerDirection = 0;
                 inputFlag = false;
@@ -88,12 +88,14 @@ public class InputController : MonoBehaviour
         else if (Equals(Input.GetAxisRaw("Horizontal"), 1f))
         {
             
-            if (!rayCollision.RightCollision() && inputFlag && easingBool)
+            if (!playerCollision.RightCollision() && inputFlag && easingBool)
             {
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveX(transform.position.x + speed, easingSpeedDuration, false)).OnComplete(EasingBool);
-                s.Insert(0, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
-                s.Insert(easingSpeedDuration / 2, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));                
+                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
+                transform.parent.GetChild(1).transform.position = new Vector3(transform.parent.GetChild(1).transform.position.x + speed, transform.parent.GetChild(1).transform.position.y, transform.parent.GetChild(1).transform.position.z);
+
                 playerChild.rotation = Quaternion.Euler(0, 90, 45);
                 playerDirection = 1;
                 inputFlag = false;
@@ -108,12 +110,13 @@ public class InputController : MonoBehaviour
         else if (Equals(Input.GetAxisRaw("Vertical"), -1f))
         {
             
-            if (!rayCollision.DownCollision() && inputFlag && easingBool)
+            if (!playerCollision.DownCollision() && inputFlag && easingBool)
             {
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveZ(transform.position.z - speed, easingSpeedDuration, false)).OnComplete(EasingBool);
-                s.Insert(0, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
-                s.Insert(easingSpeedDuration / 2, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
+                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
+                transform.parent.GetChild(1).transform.position = new Vector3(transform.parent.GetChild(1).transform.position.x, transform.parent.GetChild(1).transform.position.y, transform.parent.GetChild(1).transform.position.z - speed);
                 playerChild.rotation = Quaternion.Euler(-45, 180, 0);
                 playerDirection = 2;
                 inputFlag = false;
@@ -128,12 +131,13 @@ public class InputController : MonoBehaviour
         else if (Equals(Input.GetAxisRaw("Vertical"), 1f))
         {
             
-            if (!rayCollision.UpCollision() && inputFlag && easingBool)
+            if (!playerCollision.UpCollision() && inputFlag && easingBool)
             {
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveZ(transform.position.z + speed, easingSpeedDuration, false)).OnComplete(EasingBool);
-                s.Insert(0, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
-                s.Insert(easingSpeedDuration / 2, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
+                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
+                transform.parent.GetChild(1).transform.position = new Vector3(transform.parent.GetChild(1).transform.position.x, transform.parent.GetChild(1).transform.position.y, transform.parent.GetChild(1).transform.position.z + speed);
                 playerChild.rotation = Quaternion.Euler(45, 0, 0);
                 playerDirection = 3;
                 inputFlag = false;

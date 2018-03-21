@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("Setup Level")]
     public LevelSetup levelSetup;
 
-    [Header("Player Manager")]
+    [Header("Player Manager")][SerializeField]
     private PlayerManager playerManager;
 
     [Header("Controllers")]
@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
         state = LevelStates.LevelStart;
         levelSetup.EvtIntroStart();
         debugController.GameState((int)state);
-        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         uiController = GetComponent<UIController>();
         rhythmController = GetComponent<RhythmController>();
         auController = GetComponent<AudioController>();
