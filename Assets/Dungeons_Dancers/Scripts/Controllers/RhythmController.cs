@@ -52,6 +52,8 @@ public class RhythmController : MonoBehaviour
     private void StopIntroRhythm()
     {
         Koreographer.Instance.UnregisterForEvents("IntroEvent", IntroBehaviour);
+        multiMusic.Stop();
+        multiMusic.Play();
     }
     private void StartRhythm()
     {

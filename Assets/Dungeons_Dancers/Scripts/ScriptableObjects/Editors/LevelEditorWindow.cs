@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using DG.Tweening;
 
 [CustomEditor(typeof(LevelSetup))]
 public class LevelEditorWindow : EditorWindow
@@ -20,6 +21,8 @@ public class LevelEditorWindow : EditorWindow
     UnityEditor.Animations.AnimatorController animator;
     AudioClip auClip;
     GameObject particles;
+    Ease easingListIn;
+    Ease easingListOut;
 
     [MenuItem("Curial Tools/Level Editor", false, 0)]
     static void Init()
@@ -73,14 +76,23 @@ public class LevelEditorWindow : EditorWindow
 
                 //Maybe change to ParticleSystem(?)
                 particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
-                //if (animator != null)
-                //{
-                //    if (Selection.activeGameObject.GetComponent<Animator>() != null)
-                //    {
-                //        Selection.activeGameObject.GetComponent<Animator>().runtimeAnimatorController = animator;
-                //    }
-                //    else Debug.Log("Does not have Animator");
-                //}
+
+                easingListIn = (Ease)EditorGUILayout.EnumFlagsField("Easing List", easingListIn);
+                easingListOut = (Ease)EditorGUILayout.EnumFlagsField("Easing List", easingListOut);
+                /*Position -- Rotation -- Scale -- Color -- Alpha-Fade
+                 * Select Tween In
+                 * From
+                 * To
+                 * Duration
+                 * Select Tween Out
+                 * From
+                 * To
+                 * Duration
+                 */
+
+
+
+
             }
         }
         if (!Selection.activeTransform)
