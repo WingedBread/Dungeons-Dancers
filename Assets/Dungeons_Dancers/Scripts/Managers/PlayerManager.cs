@@ -20,8 +20,8 @@ public class PlayerManager : MonoBehaviour
 
     private Material mat;
 
-    [Header("Animator")]
-    private Animator animator;
+    //[Header("Animator")]
+    //private Animator animator;
 
     [Header("Idle Return Time")]
     [SerializeField]
@@ -53,8 +53,8 @@ public class PlayerManager : MonoBehaviour
         inputController = GetComponent<InputController>();
         collectiblesController = GetComponent<CollectiblesController>();
 
-        animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
-        mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
+        //animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
+        mat = transform.GetChild(0)./*GetChild(0).GetChild(0).GetChild(0).*/GetComponent</*Skinned*/MeshRenderer>().material;
         spawnPosition = transform.position;
         spawnInitPosition = transform.position;
     }
@@ -66,8 +66,8 @@ public class PlayerManager : MonoBehaviour
 
     void PlayerBeatAnimatorCheck()
     {
-        if (gameManager.GetRhythmActiveBeat() && !animator.GetBool("onBeat")) animator.SetBool("onBeat", true);
-        else if(!gameManager.GetRhythmActiveBeat() && animator.GetBool("onBeat")) animator.SetBool("onBeat", false);
+        //if (gameManager.GetRhythmActiveBeat() && !animator.GetBool("onBeat")) animator.SetBool("onBeat", true);
+        //else if(!gameManager.GetRhythmActiveBeat() && animator.GetBool("onBeat")) animator.SetBool("onBeat", false);
     }
 
     public void CorrectInput()

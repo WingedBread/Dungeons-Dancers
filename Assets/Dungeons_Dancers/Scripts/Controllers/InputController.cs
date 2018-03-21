@@ -72,8 +72,8 @@ public class InputController : MonoBehaviour
             {
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveX(transform.position.x - speed, easingSpeedDuration, false)).OnComplete(EasingBool);
-                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration/2, false));
-                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
+                s.Insert(0, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(transform.position.y + jump, easingSpeedDuration/2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
                 playerChild.rotation = Quaternion.Euler(0, -90, -45);
                 playerDirection = 0;
                 inputFlag = false;
@@ -92,8 +92,8 @@ public class InputController : MonoBehaviour
             {
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveX(transform.position.x + speed, easingSpeedDuration, false)).OnComplete(EasingBool);
-                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
-                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));                
+                s.Insert(0, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));                
                 playerChild.rotation = Quaternion.Euler(0, 90, 45);
                 playerDirection = 1;
                 inputFlag = false;
@@ -112,8 +112,8 @@ public class InputController : MonoBehaviour
             {
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveZ(transform.position.z - speed, easingSpeedDuration, false)).OnComplete(EasingBool);
-                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
-                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
+                s.Insert(0, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
                 playerChild.rotation = Quaternion.Euler(-45, 180, 0);
                 playerDirection = 2;
                 inputFlag = false;
@@ -132,8 +132,8 @@ public class InputController : MonoBehaviour
             {
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveZ(transform.position.z + speed, easingSpeedDuration, false)).OnComplete(EasingBool);
-                s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
-                s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
+                s.Insert(0, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
+                s.Insert(easingSpeedDuration / 2, transform.GetChild(0)./*GetChild(0).*/DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));  
                 playerChild.rotation = Quaternion.Euler(45, 0, 0);
                 playerDirection = 3;
                 inputFlag = false;
