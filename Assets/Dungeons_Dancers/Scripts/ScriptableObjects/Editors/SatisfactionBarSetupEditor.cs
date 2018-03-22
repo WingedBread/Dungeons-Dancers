@@ -6,48 +6,35 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(SatisfactionBarSetup))]
-public class SatisfactionBarSetupEditor : EditorWindow
+public class SatisfactionBarSetupEditor : Editor
 {
 
+    //float rafa = 99;
 
-    float rafa = 99;
+    //float pointsmin = 0;
+    //float pointsmax = 100;
+    //float pointsInitial = 20;
 
-    float pointsmin = 0;
-    float pointsmax = 100;
-    float pointsInitial = 20;
+    //bool showCosas = true;
+    //bool canJump = true;
 
-    bool showCosas = true;
-    bool canJump = true;
-
-    bool showPosition = true;
-
-    string status;
-
-    private SatisfactionBarSetup so;
-    private SerializedObject satisObj;
-
-    [MenuItem("Curial Tools/SatisfactionBarSetup")]
-    static void Init()
-    {
-        SatisfactionBarSetupEditor window = (SatisfactionBarSetupEditor)EditorWindow.GetWindow(typeof(SatisfactionBarSetupEditor));
-        window.Show();
-    }
-
-    void OnEnable()
-    {
-        so = new SatisfactionBarSetup();
-    }
-
-    private void OnGUI()
+    public override void OnInspectorGUI()
     {
         //base.OnInspectorGUI();
 
-        //SatisfactionBarSetup so = target as SatisfactionBarSetup;
+        SatisfactionBarSetup so = target as SatisfactionBarSetup;
 
         //EditorGUILayout.BeginHorizontal();
-        so.minPoints = EditorGUILayout.IntField("Min: ", so.minPoints/*, GUILayout.Width(150)*/);
-        so.initPoints = EditorGUILayout.IntField("Init: ", so.initPoints/*, GUILayout.Width(150)*/);
-        so.maxPoints = EditorGUILayout.IntField("Max: ", so.maxPoints/*, GUILayout.Width(150)*/);
+        so.minPoints = EditorGUILayout.IntField("Min: ",so.minPoints);
+        so.initPoints = EditorGUILayout.IntField("Init: ", so.initPoints);
+        so.maxPoints = EditorGUILayout.IntField("Max: ",so.maxPoints);
+
+
+        so.soonPoints = EditorGUILayout.IntField("Soon: ", so.soonPoints);
+        so.perfectPoints = EditorGUILayout.IntField("Perfect: ", so.perfectPoints);
+        so.latePoints = EditorGUILayout.IntField("Late: ", so.latePoints);
+        so.failPoints = EditorGUILayout.IntField("Fail: ", so.failPoints);
+        so.amountOfFailInputsWhenFever = EditorGUILayout.IntField("Fail When Fever: ", so.amountOfFailInputsWhenFever);
         //EditorGUILayout.EndHorizontal();
 
         /*
@@ -58,72 +45,54 @@ public class SatisfactionBarSetupEditor : EditorWindow
         EditorGUILayout.ColorField(Color.red);
 
         EditorGUILayout.FloatField(rafa+90);
-        */
+    */
+    //    showCosas = EditorGUILayout.Foldout(showCosas,"COSAS");
+    //    if (showCosas)
+    //    {
 
-        showPosition = EditorGUILayout.Foldout(showPosition, status);
-        if (showPosition)
-            if (Selection.activeTransform)
-            {
-                Selection.activeTransform.position =
-                    EditorGUILayout.Vector3Field("Position", Selection.activeTransform.position);
-                status = Selection.activeTransform.name;
-            }
+    //        for (int i = 0; i<so.cosas.Count; i++)
+    //        {
+    //            EditorGUILayout.LabelField("COSA " + i + ":");
+    //            so.cosas[i].cosa1 = EditorGUILayout.IntField("Cosa 1", so.cosas[i].cosa1);
+    //            so.cosas[i].cosa2 = EditorGUILayout.TextField("Cosa 2", so.cosas[i].cosa2);
 
-        if (!Selection.activeTransform)
-        {
-            status = "Select a GameObject";
-            showPosition = false;
-        }
+    //        }
 
 
-        showCosas = EditorGUILayout.Foldout(showCosas, "COSAS");
-        if (showCosas)
-        {
-
-            //for (int i = 0; i < so.cosas.Count; i++)
-            //{
-            //    EditorGUILayout.LabelField("COSA " + i + ":");
-            //    so.cosas[i].cosa1 = EditorGUILayout.IntField("Cosa 1", so.cosas[i].cosa1);
-            //    so.cosas[i].cosa2 = EditorGUILayout.TextField("Cosa 2", so.cosas[i].cosa2);
-            //}
-
-            canJump = EditorGUILayout.Toggle("Can Jump", canJump);
-
-            // Disable the jumping height control if canJump is false:
-            EditorGUI.BeginDisabledGroup(!canJump);
-            pointsmax = EditorGUILayout.FloatField("Jump Height", pointsmax);
-            EditorGUI.EndDisabledGroup();
 
 
-            if (GUILayout.Button("RAFA"))
-            {
-                so.RAFA();
-            }
+    //        canJump = EditorGUILayout.Toggle("Can Jump", canJump);
+
+    //        // Disable the jumping height control if canJump is false:
+    //        EditorGUI.BeginDisabledGroup(!canJump);
+    //        pointsmax = EditorGUILayout.FloatField("Jump Height", pointsmax);
+    //        EditorGUI.EndDisabledGroup();
 
 
-            EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("Add"))
-            {
 
-                so.cosas.Add(new Rafa());
-            }
 
-            if (GUILayout.Button("Delete"))
-            {
+    //        if (GUILayout.Button("RAFA"))
+    //        {
+    //            so.RAFA();
+    //        }
 
-                so.cosas.RemoveAt(so.cosas.Count - 1);
-            }
-            EditorGUILayout.EndHorizontal();
 
-            if (GUI.changed)
-            {
-                //Debug.Log("GUI.changed");
-                EditorUtility.SetDirty(so);
-            }
 
-        }
+    //        EditorGUILayout.BeginHorizontal();
+    //        if (GUILayout.Button("Add"))
+    //        {
+
+    //            so.cosas.Add(new Rafa());
+    //        }
+
+    //        if (GUILayout.Button("Delete"))
+    //        {
+
+    //            so.cosas.RemoveAt(so.cosas.Count - 1);
+    //        }
+    //        EditorGUILayout.EndHorizontal();
+    //    }
     }
-
 }
 #endif
 

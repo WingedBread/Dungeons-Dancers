@@ -14,9 +14,9 @@ public class SatisfactionBarSetup : ScriptableObject
     [HideInInspector]
     public int maxPoints;
 
-    [Range(0, 89)]
-    [HideInInspector]
-    public float rafa;
+    //[Range(0, 89)]
+    //[HideInInspector]
+    //public float rafa;
 
     [Header("Input Points")]
     [HideInInspector]
@@ -31,23 +31,23 @@ public class SatisfactionBarSetup : ScriptableObject
     [Header("")]
     [HideInInspector]
     public int amountOfFailInputsWhenFever;
-    [HideInInspector]
-    public List<Rafa> cosas;
+    //[HideInInspector]
+    //public List<Rafa> cosas;
 
     //INSERT INSPECTORGUI BUTTON TO OPEN HIS EDITOR WINDOW.
 
-    public void RAFA()
-    {
-        Debug.Log("hell yeah");
-        Rafa temp = new Rafa();
-        Debug.Log(JsonUtility.ToJson(temp));
-    }
+    //public void RAFA()
+    //{
+    //    Debug.Log("hell yeah");
+    //    Rafa temp = new Rafa();
+    //    Debug.Log(JsonUtility.ToJson(temp));
+    //}
 }
 
-[Serializable]
-public class Rafa
-{
-    public int cosa1 = 3;
-    public string cosa2 = "pepe";
+//[Serializable]
+//public class Rafa
+//{
+//    public int cosa1 = 3;
+//    public string cosa2 = "pepe";
 
-}
+//}

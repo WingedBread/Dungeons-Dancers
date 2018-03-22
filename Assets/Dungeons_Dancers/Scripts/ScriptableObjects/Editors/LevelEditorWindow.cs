@@ -91,8 +91,6 @@ public class LevelEditorWindow : EditorWindow
                  */
 
 
-
-
             }
         }
         if (!Selection.activeTransform)
