@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System;
+using SonicBloom.Koreo;
 
 [CreateAssetMenu(fileName = "LevelValues", menuName = "Tools/Level Setup")]
 public class LevelSetup : ScriptableObject 
@@ -10,7 +9,15 @@ public class LevelSetup : ScriptableObject
     [HideInInspector]
     public List<LevelEvents> eventsLevel;
 
-    public void AddEvent(LevelEvents temp)
+    [EventID]
+    public string eventID;
+
+	private void Awake()
+	{
+		
+	}
+
+	public void AddEvent(LevelEvents temp)
     {
         eventsLevel.Add(temp);
         Debug.Log(eventsLevel.Count);
@@ -21,7 +28,8 @@ public class LevelSetup : ScriptableObject
         Debug.Log(eventsLevel.Count);
     }
 
-    #region Level Events
+    #region Events
+    //Level Events
     public void EvtIntroStart()
     {
 
@@ -78,9 +86,7 @@ public class LevelSetup : ScriptableObject
     {
         //x
     }
-    #endregion
-
-    #region Player Events
+    //Player Events
     public void EvtOnHit()
     {
 
@@ -96,6 +102,4 @@ public class LevelEvents : ScriptableObject
     private GameObject particles;
 
     //SAVE EDITOR VARIABLES ONLY
-
-
 }
