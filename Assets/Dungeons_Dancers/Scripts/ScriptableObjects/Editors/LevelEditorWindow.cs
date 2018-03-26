@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using DG.Tweening;
+//using SonicBloom.Koreo;
 
 [CustomEditor(typeof(LevelSetup))]
 public class LevelEditorWindow : EditorWindow
@@ -23,6 +24,9 @@ public class LevelEditorWindow : EditorWindow
     GameObject particles;
     Ease easingListIn;
     Ease easingListOut;
+
+    //[EventID]
+    //public string eventID;
 
     [MenuItem("Curial Tools/Level Editor", false, 0)]
     static void Init()

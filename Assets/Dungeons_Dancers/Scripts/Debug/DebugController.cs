@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class DebugController : MonoBehaviour {
 
+    [Header("Beat")]
     [SerializeField]
     private GameObject beatConsole;
     [SerializeField]
@@ -23,6 +24,7 @@ public class DebugController : MonoBehaviour {
     [SerializeField]
     private Text fpsCounterText;
 
+    [Header("States")]
     [SerializeField]
     private GameObject statesConsole;
     [SerializeField]
@@ -30,32 +32,62 @@ public class DebugController : MonoBehaviour {
     [SerializeField]
     private Text gameState;
 
+    [Header("Events")]
+    [SerializeField]
+    private GameObject eventsConsole;
+    [SerializeField]
+    private Text[] eventsDebug = new Text[10];
+    public static string[] eventsStaticDebug = new string[10];
+
+
     private float counter;
-
-
     private bool showDebug = true;
+    private bool showDebugEvent = true;
     private bool showDebugState = true;
     bool ownFlag;
 
     private int pushTime;
     private int currentbeat;
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
 		if (showDebug) {
 			counter = (int)(1f / Time.unscaledDeltaTime);
 			fpsCounterText.text = "FPS :" + counter.ToString ();
 		}
 
-        if(Input.GetKeyDown(KeyCode.C)){
+        if(Input.GetKeyDown(KeyCode.J)){
             showDebug = !showDebug;
-            statesConsole.SetActive(showDebug);
+            showDebugEvent = false;
+            showDebugState = false;
+            beatConsole.SetActive(showDebug);
+            statesConsole.SetActive(showDebugState);
+            eventsConsole.SetActive(showDebugEvent);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            showDebugState = !showDebugState;
+            showDebugEvent = false;
+            showDebug = false;
+            beatConsole.SetActive(showDebug);
+            statesConsole.SetActive(showDebugState);
+            eventsConsole.SetActive(showDebugEvent);
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            showDebugState = !showDebugState;
-            beatConsole.SetActive(showDebugState);
+            showDebugEvent = !showDebugEvent;
+            showDebug = false;
+            showDebugState = false;
+            beatConsole.SetActive(showDebug);
+            statesConsole.SetActive(showDebugState);
+            eventsConsole.SetActive(showDebugEvent);
+
+            for (int i = 0; i < eventsDebug.Length - 1; i++)
+            {
+                eventsStaticDebug[i] = eventsDebug[i].text;
+            }
         }
     }
 

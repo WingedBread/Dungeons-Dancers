@@ -26,6 +26,7 @@ public class SatisfactionController : MonoBehaviour {
 	
     public void AddPoint()
     {
+        PointEvents();
         if (points >= setupValues.maxPoints)
         {
             FeverState();
@@ -47,6 +48,16 @@ public class SatisfactionController : MonoBehaviour {
             if (points >= setupValues.maxPoints) points = setupValues.maxPoints;
         }
     }
+
+    void PointEvents()
+    {
+        //Just Once(?)
+        if (points == 0) gameManager.levelSetup.EvtStatisfactionZero();
+        else if (points < 15) gameManager.levelSetup.EvtStatisfactionLv1();
+        else if (points < 30) gameManager.levelSetup.EvtStatisfactionLv2();
+        else if (points < 45) gameManager.levelSetup.EvtStatisfactionLv3();
+        else if (points < 60) gameManager.levelSetup.EvtStatisfactionClimax();
+    } 
 
     public void RemovePoint()
     {

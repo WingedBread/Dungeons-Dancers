@@ -3,21 +3,32 @@ using UnityEngine;
 using SonicBloom.Koreo;
 
 [CreateAssetMenu(fileName = "LevelValues", menuName = "Tools/Level Setup")]
-public class LevelSetup : ScriptableObject 
+public class LevelSetup : ScriptableObject
 {
     [Header("List LevelEvent Class")]
     [HideInInspector]
     public List<LevelEvents> eventsLevel;
 
-    [EventID]
-    public string eventID;
+    //[EventID]
+    //public string eventID;
 
-	private void Awake()
+    private void Awake()
 	{
-		
-	}
+		Koreographer.Instance.RegisterForEvents("PlayerBeatEvent", BeatBehaviour);
+        //Koreographer.Instance.RegisterForEvents(eventID, BeatBehaviour);
+    }
 
-	public void AddEvent(LevelEvents temp)
+    void BeatBehaviour(KoreographyEvent kIntroEvent)
+    {
+        EvtOnBeat();
+    }
+
+    void MultipleBeatBehaviours(KoreographyEvent kIntroEvent)
+    {
+        EvtBeatBehaviours();
+    }
+
+    public void AddEvent(LevelEvents temp)
     {
         eventsLevel.Add(temp);
         Debug.Log(eventsLevel.Count);
@@ -32,23 +43,26 @@ public class LevelSetup : ScriptableObject
     //Level Events
     public void EvtIntroStart()
     {
-
+        DebugController.eventsStaticDebug[0] = "1";
     }
     public void EvtIntroEnd()
     {
-
+        DebugController.eventsStaticDebug[0] = "0";
+        DebugController.eventsStaticDebug[1] = "1";
     }
     public void EvtStartPlay()
     {
-
+        DebugController.eventsStaticDebug[1] = "0";
+        DebugController.eventsStaticDebug[2] = "1";
     }
     public void EvtOnBeat()
     {
-        //x
+        DebugController.eventsStaticDebug[3] = "1";
     }
     public void EvtBeatBehaviours()
     {
-        //x --choose and execute eventonbeat on editor.
+        //xd de momento.
+        DebugController.eventsStaticDebug[4] = "1";
     }
     public void EvtOnCheckpoint()
     {
@@ -66,28 +80,34 @@ public class LevelSetup : ScriptableObject
     {
 
     }
-    public void EvtStatisfactionLZero()
+    public void EvtStatisfactionZero()
     {
-        //x
+
     }
     public void EvtStatisfactionLv1()
     {
-        //x
+
     }
     public void EvtStatisfactionLv2()
     {
-        //x
+
     }
     public void EvtStatisfactionLv3()
     {
-        //x
+
     }
     public void EvtStatisfactionClimax()
     {
-        //x
+
     }
     //Player Events
     public void EvtOnHit()
+    {
+
+    }
+
+    //Trap Events(?)
+    public void EvtOnShoot()
     {
 
     }
