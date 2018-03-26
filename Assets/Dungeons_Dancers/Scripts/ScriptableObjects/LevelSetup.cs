@@ -43,73 +43,71 @@ public class LevelSetup : ScriptableObject
     //Level Events
     public void EvtIntroStart()
     {
-        DebugController.eventsStaticDebug[0] = "1";
+        Debug.Log("IntroStart");
     }
     public void EvtIntroEnd()
     {
-        DebugController.eventsStaticDebug[0] = "0";
-        DebugController.eventsStaticDebug[1] = "1";
+        Debug.Log("IntroEnd");
     }
     public void EvtStartPlay()
     {
-        DebugController.eventsStaticDebug[1] = "0";
-        DebugController.eventsStaticDebug[2] = "1";
+        Debug.Log("StartPlay");
     }
     public void EvtOnBeat()
     {
-        DebugController.eventsStaticDebug[3] = "1";
+        Debug.Log("OnBeat");
     }
     public void EvtBeatBehaviours()
     {
         //xd de momento.
-        DebugController.eventsStaticDebug[4] = "1";
+        Debug.Log("OnBeatBehaviour");
     }
     public void EvtOnCheckpoint()
     {
-
+        Debug.Log("OnCheckpoint");
     }
     public void EvtGetCollectible()
     {
-
+        Debug.Log("GetCollectible");
     }
     public void EvtTimeNearOver()
     {
-
+        Debug.Log("TimeNearOver");
     }
     public void EvtTimeOver()
     {
-
+        Debug.Log("TimeOver");
     }
     public void EvtStatisfactionZero()
     {
-
+        Debug.Log("Satisfaction_0");
     }
     public void EvtStatisfactionLv1()
     {
-
+        Debug.Log("Satisfaction_1");
     }
     public void EvtStatisfactionLv2()
     {
-
+        Debug.Log("Satisfaction_2");
     }
     public void EvtStatisfactionLv3()
     {
-
+        Debug.Log("Satisfaction_3");
     }
     public void EvtStatisfactionClimax()
     {
-
+        Debug.Log("Satisfaction_Climax");
     }
     //Player Events
     public void EvtOnHit()
     {
-
+        Debug.Log("OnHit");
     }
 
     //Trap Events(?)
     public void EvtOnShoot()
     {
-
+        Debug.Log("OnShoot");
     }
     #endregion
 }
