@@ -14,7 +14,7 @@ public class LevelSetup : ScriptableObject
 
     private void Awake()
 	{
-		Koreographer.Instance.RegisterForEvents("PlayerBeatEvent", BeatBehaviour);
+		//Koreographer.Instance.RegisterForEvents("PlayerBeatEvent", BeatBehaviour);
         //Koreographer.Instance.RegisterForEvents(eventID, BeatBehaviour);
     }
 
@@ -66,9 +66,13 @@ public class LevelSetup : ScriptableObject
     {
         Debug.Log("OnCheckpoint");
     }
-    public void EvtGetCollectible()
+    public void EvtGetSparkle()
     {
-        Debug.Log("GetCollectible");
+        Debug.Log("GetSparkle");
+    }
+    public void EvtGetKey()
+    {
+        Debug.Log("GetKey");
     }
     public void EvtTimeNearOver()
     {
@@ -98,10 +102,19 @@ public class LevelSetup : ScriptableObject
     {
         Debug.Log("Satisfaction_Climax");
     }
+
     //Player Events
     public void EvtOnHit()
     {
         Debug.Log("OnHit");
+    }
+    public void EvtPerfectMove()
+    {
+        Debug.Log("Perfect Move");
+    }
+    public void EvtWrongMove()
+    {
+        Debug.Log("Wrong Move");
     }
 
     //Trap Events(?)

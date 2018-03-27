@@ -71,6 +71,7 @@ public class PlayerManager : MonoBehaviour
 
     public void CorrectInput()
     {
+        levelSetup.EvtPerfectMove();
         auSource.clip = goodMove;
         auSource.Play();
         mat.color = Color.green;
@@ -80,6 +81,7 @@ public class PlayerManager : MonoBehaviour
 
     public void IncorrectInput()
     {
+        levelSetup.EvtWrongMove();
         auSource.clip = badMove;
         auSource.Play();
         mat.color = Color.red;
@@ -115,7 +117,7 @@ public class PlayerManager : MonoBehaviour
         collectibles.Add(col.gameObject);
         collectiblesController.AddCoin();
         col.gameObject.SetActive(false);
-        levelSetup.EvtGetCollectible();
+        levelSetup.EvtGetSparkle();
         gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()), false);
     }
 
@@ -124,14 +126,14 @@ public class PlayerManager : MonoBehaviour
         collectibles.Add(col.gameObject);
         collectiblesController.AddKey(int.Parse(col.gameObject.name.Substring(0, 2)));
         col.gameObject.SetActive(false);
-        levelSetup.EvtGetCollectible();
+        levelSetup.EvtGetKey();
         gameManager.CollectibleBehaviour(int.Parse(col.gameObject.name.Substring(0, 2)));
     }
 
     public void SpawnBehaviour(Collider col)
     {
+        if (spawnPosition != col.gameObject.transform.position) levelSetup.EvtOnCheckpoint();
         spawnPosition = col.gameObject.transform.position;
-        levelSetup.EvtOnCheckpoint();
     }
 
     public void DoorBehaviour()

@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private DebugController debugController;
 
+
+    bool flagTimeNearOver = true;
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -81,7 +84,11 @@ public class GameManager : MonoBehaviour
                 dungeonTimer = initDungeonTimer;
             }
 
-            if (Equals(dungeonTimer, 5)) levelSetup.EvtTimeNearOver();
+            if (dungeonTimer < 5 && flagTimeNearOver) 
+            { 
+                levelSetup.EvtTimeNearOver();
+                flagTimeNearOver = false;
+            }
         }
         else playerManager.SetBlock(true);
     }
@@ -168,6 +175,7 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
         StartCoroutine(playerManager.ResetPlayer(true));
         dungeonTimer = initDungeonTimer;
+        flagTimeNearOver = true;
         state = LevelStates.LevelStart;
         debugController.GameState((int)state);
         satisController.ResetSatisfaction();

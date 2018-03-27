@@ -14,6 +14,8 @@ public class SatisfactionController : MonoBehaviour {
     private int points;
     private int feverPoints;
 
+    private int pointsflag = 0;
+
 	// Use this for initialization
     void Awake()
     {
@@ -51,12 +53,31 @@ public class SatisfactionController : MonoBehaviour {
 
     void PointEvents()
     {
-        //Just Once(?)
-        if (points == 0) gameManager.levelSetup.EvtStatisfactionZero();
-        else if (points < 15) gameManager.levelSetup.EvtStatisfactionLv1();
-        else if (points < 30) gameManager.levelSetup.EvtStatisfactionLv2();
-        else if (points < 45) gameManager.levelSetup.EvtStatisfactionLv3();
-        else if (points < 60) gameManager.levelSetup.EvtStatisfactionClimax();
+        if (points == 0 && pointsflag != 0)
+        {
+            gameManager.levelSetup.EvtStatisfactionZero();
+            pointsflag = 0;
+        }
+        else if (points < 15 && points > 0 &&pointsflag != 1) 
+        { 
+            gameManager.levelSetup.EvtStatisfactionLv1();
+            pointsflag = 1;
+        }
+        else if (points < 30 && points > 15 && pointsflag != 2)
+        {
+            gameManager.levelSetup.EvtStatisfactionLv2();
+            pointsflag = 2;
+        }
+        else if (points < 45 && points > 30 &&pointsflag != 3)
+        {
+            gameManager.levelSetup.EvtStatisfactionLv3();
+            pointsflag = 3;
+        }
+        else if (points < 60 && points > 45 &&pointsflag != 4)
+        {
+            gameManager.levelSetup.EvtStatisfactionClimax();
+            pointsflag = 4;
+        }
     } 
 
     public void RemovePoint()
