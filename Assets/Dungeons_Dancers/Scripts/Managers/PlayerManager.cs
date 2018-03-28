@@ -71,7 +71,7 @@ public class PlayerManager : MonoBehaviour
 
     public void CorrectInput()
     {
-        levelSetup.EvtPerfectMove();
+        //levelSetup.EvtPerfectMove();
         auSource.clip = goodMove;
         auSource.Play();
         mat.color = Color.green;

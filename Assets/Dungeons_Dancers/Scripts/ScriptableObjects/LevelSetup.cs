@@ -66,6 +66,11 @@ public class LevelSetup : ScriptableObject
     {
         Debug.Log("OnCheckpoint");
     }
+    public void EvtWinLevel()
+    {
+        Debug.Log("WinLevel");
+    }
+
     public void EvtGetSparkle()
     {
         Debug.Log("GetSparkle");

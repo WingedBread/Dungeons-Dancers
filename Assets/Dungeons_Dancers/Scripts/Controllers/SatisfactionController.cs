@@ -42,6 +42,7 @@ public class SatisfactionController : MonoBehaviour {
                     break;
                 case 1:
                     points = points + setupValues.perfectPoints;
+                    gameManager.levelSetup.EvtPerfectMove();
                     break;
                 case 2:
                     points = points + setupValues.latePoints;

@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour
     {
         state = LevelStates.LevelEnd;
         debugController.GameState((int)state);
+        levelSetup.EvtWinLevel();
         auController.PlayEndLevel();
         gameStart = false;
         rhythmController.SetRhythm(false);
