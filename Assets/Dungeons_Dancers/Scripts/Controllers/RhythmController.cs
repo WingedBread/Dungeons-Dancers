@@ -39,21 +39,21 @@ public class RhythmController : MonoBehaviour
     }
 
     private IEnumerator IntroDelayCoroutine(int time){
-        yield return new WaitForSeconds(time);
         multiMusic.Play();
+        yield return new WaitForSeconds(time);
         StartIntroRhythm();
 		StopCoroutine ("IntroDelayCoroutine");
     }
     private void StartIntroRhythm()
     {
-        multiMusic.Play();
+        //multiMusic.Play();
         Koreographer.Instance.RegisterForEvents("IntroEvent", IntroBehaviour);
     }
     private void StopIntroRhythm()
     {
         Koreographer.Instance.UnregisterForEvents("IntroEvent", IntroBehaviour);
-        multiMusic.Stop();
-        multiMusic.Play();
+        //multiMusic.Stop();
+        //multiMusic.Play();
     }
     private void StartRhythm()
     {

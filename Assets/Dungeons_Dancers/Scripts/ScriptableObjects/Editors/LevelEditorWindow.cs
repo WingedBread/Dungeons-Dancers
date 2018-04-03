@@ -45,7 +45,7 @@ public class LevelEditorWindow : EditorWindow
             levelsetup.AddEvent(temp);
         }
 
-        levelStates = (LevelStates)EditorGUILayout.EnumFlagsField("Level Events", levelStates);
+        levelStates = (LevelStates)EditorGUILayout.EnumFlagsField("Level States", levelStates);
 
         showGameObject = EditorGUILayout.Foldout(showGameObject, status, true);
         if (showGameObject)
@@ -56,7 +56,7 @@ public class LevelEditorWindow : EditorWindow
                 EditorGUILayout.Vector3Field("Position", Selection.activeTransform.position);
                 status = Selection.activeTransform.name;
 
-                if (Selection.activeGameObject.tag == "Player") playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player Events", playerStates);
+                if (Selection.activeGameObject.tag == "Player") playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player States", playerStates);
 
                 animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
                 if (animator != null)
@@ -81,14 +81,14 @@ public class LevelEditorWindow : EditorWindow
                 //Maybe change to ParticleSystem(?)
                 particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
 
-                easingListIn = (Ease)EditorGUILayout.EnumFlagsField("Easing List", easingListIn);
-                easingListOut = (Ease)EditorGUILayout.EnumFlagsField("Easing List", easingListOut);
-                /*Position -- Rotation -- Scale -- Color -- Alpha-Fade
-                 * Select Tween In
+                easingListIn = (Ease)EditorGUILayout.EnumFlagsField("Easing List IN", easingListIn);
+                easingListOut = (Ease)EditorGUILayout.EnumFlagsField("Easing List OUT", easingListOut);
+                /*Position -- Scale -- Rotation -- Color -- Alpha-Fade
+                 * Select Tween In--
                  * From
                  * To
                  * Duration
-                 * Select Tween Out
+                 * Select Tween Out--
                  * From
                  * To
                  * Duration

@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         eventController = GetComponent<EventController>();
         introController = GetComponent<IntroController>();
         dungeonTimer = initDungeonTimer;
-        auController.MuteSound();
+        //auController.MuteSound();
         SetIntroCounter(0);
     }
 
