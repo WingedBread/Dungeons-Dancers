@@ -18,6 +18,7 @@ public class LevelEditorWindow : EditorWindow
 
     LevelStates levelStates;
     PlayerStates playerStates;
+    LevelEvents levelEvents;
 
     UnityEditor.Animations.AnimatorController animator;
     AudioClip auClip;
@@ -41,11 +42,12 @@ public class LevelEditorWindow : EditorWindow
 
         if (GUILayout.Button("Add Event"))
         {
-            LevelEvents temp = new LevelEvents();
+            LevelEventsClass temp = new LevelEventsClass();
             levelsetup.AddEvent(temp);
         }
 
         levelStates = (LevelStates)EditorGUILayout.EnumFlagsField("Level States", levelStates);
+        levelEvents = (LevelEvents)EditorGUILayout.EnumFlagsField("Level States", levelEvents);
 
         showGameObject = EditorGUILayout.Foldout(showGameObject, status, true);
         if (showGameObject)
@@ -110,8 +112,7 @@ public class LevelEditorWindow : EditorWindow
 
         if (GUILayout.Button("Save Data"))
         {
-            AssetDatabase.SaveAssets();
-            EditorUtility.SetDirty(Selection.activeObject);
+            
         }
     }
 }

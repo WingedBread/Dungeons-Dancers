@@ -56,27 +56,27 @@ public class SatisfactionController : MonoBehaviour {
     {
         if (points == 0 && pointsflag != 0)
         {
-            gameManager.levelSetup.EvtStatisfactionZero();
+            gameManager.levelSetup.EvtSatisfactionZero();
             pointsflag = 0;
         }
         else if (points < 15 && points > 0 &&pointsflag != 1) 
         { 
-            gameManager.levelSetup.EvtStatisfactionLv1();
+            gameManager.levelSetup.EvtSatisfactionLvl1();
             pointsflag = 1;
         }
         else if (points < 30 && points > 15 && pointsflag != 2)
         {
-            gameManager.levelSetup.EvtStatisfactionLv2();
+            gameManager.levelSetup.EvtSatisfactionLvl2();
             pointsflag = 2;
         }
         else if (points < 45 && points > 30 &&pointsflag != 3)
         {
-            gameManager.levelSetup.EvtStatisfactionLv3();
+            gameManager.levelSetup.EvtSatisfactionLvl3();
             pointsflag = 3;
         }
         else if (points < 60 && points > 45 &&pointsflag != 4)
         {
-            gameManager.levelSetup.EvtStatisfactionClimax();
+            gameManager.levelSetup.EvtSatisfactionClimax();
             pointsflag = 4;
         }
     } 
