@@ -149,14 +149,16 @@ public class LevelSetup : ScriptableObject
 
 public class LevelEventsClass : ScriptableObject
 {
-    private Animator animator;
-    private AudioClip auClip;
-    private GameObject particles;
+    public Animator animator;
+    public AudioClip auClip;
+    public GameObject particles;
+    public AudioSource audioSource;
 
     #region Events
     //Level Events
     public void EvtIntroStartEdit()
     {
+        audioSource.Play();
     }
     public void EvtIntroEndEdit()
     {

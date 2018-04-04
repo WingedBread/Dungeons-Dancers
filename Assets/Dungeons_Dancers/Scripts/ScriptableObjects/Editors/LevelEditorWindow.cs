@@ -26,6 +26,8 @@ public class LevelEditorWindow : EditorWindow
     Ease easingListIn;
     Ease easingListOut;
 
+    List<LevelEventsClass> currentEvents = new List<LevelEventsClass>();
+
     //[EventID]
     //public string eventID;
 
@@ -43,23 +45,20 @@ public class LevelEditorWindow : EditorWindow
         if (GUILayout.Button("Add Event"))
         {
             LevelEventsClass temp = new LevelEventsClass();
+            currentEvents.Add(temp);
             levelsetup.AddEvent(temp);
         }
 
-        levelStates = (LevelStates)EditorGUILayout.EnumFlagsField("Level States", levelStates);
-        levelEvents = (LevelEvents)EditorGUILayout.EnumFlagsField("Level States", levelEvents);
+        levelStates = (LevelStates)EditorGUILayout.EnumPopup("Level States", levelStates);
+        levelEvents = (LevelEvents)EditorGUILayout.EnumPopup("Level Events", levelEvents);
 
         showGameObject = EditorGUILayout.Foldout(showGameObject, status, true);
         if (showGameObject)
         {
             if (Selection.activeTransform)
             {
-                Selection.activeTransform.position =
-                EditorGUILayout.Vector3Field("Position", Selection.activeTransform.position);
                 status = Selection.activeTransform.name;
-
-                if (Selection.activeGameObject.tag == "Player") playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player States", playerStates);
-
+                playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player States", playerStates);
                 animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
                 if (animator != null)
                 {
@@ -75,7 +74,9 @@ public class LevelEditorWindow : EditorWindow
                 {
                     if (Selection.activeGameObject.GetComponent<AudioSource>() != null)
                     {
+                        currentEvents[0].audioSource = Selection.activeGameObject.GetComponent<AudioSource>();
                         Selection.activeGameObject.GetComponent<AudioSource>().clip = auClip;
+                        currentEvents[0].auClip = auClip;
                     }
                     else Debug.Log("Does not have Audio Source");
                 }
@@ -83,8 +84,8 @@ public class LevelEditorWindow : EditorWindow
                 //Maybe change to ParticleSystem(?)
                 particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
 
-                easingListIn = (Ease)EditorGUILayout.EnumFlagsField("Easing List IN", easingListIn);
-                easingListOut = (Ease)EditorGUILayout.EnumFlagsField("Easing List OUT", easingListOut);
+                easingListIn = (Ease)EditorGUILayout.EnumPopup("Easing List IN", easingListIn);
+                easingListOut = (Ease)EditorGUILayout.EnumPopup("Easing List OUT", easingListOut);
                 /*Position -- Scale -- Rotation -- Color -- Alpha-Fade
                  * Select Tween In--
                  * From
@@ -108,6 +109,7 @@ public class LevelEditorWindow : EditorWindow
         if (GUILayout.Button("Remove Event"))
         {
             levelsetup.DeleteEvent();
+            currentEvents.RemoveAt(currentEvents.Count - 1);;
         }
 
         if (GUILayout.Button("Save Data"))
