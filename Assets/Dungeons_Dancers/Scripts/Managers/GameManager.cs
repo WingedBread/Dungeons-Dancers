@@ -65,7 +65,6 @@ public class GameManager : MonoBehaviour
         eventController = GetComponent<EventController>();
         introController = GetComponent<IntroController>();
         dungeonTimer = initDungeonTimer;
-        //auController.MuteSound();
         SetIntroCounter(0);
     }
 
@@ -95,13 +94,12 @@ public class GameManager : MonoBehaviour
 
     public void IntroBehaviour(int intro){
         uiController.IntroUICheck(intro);
-        if(GetIntroCounter() == 5){
+        if(GetIntroCounter() == 6){
             state = LevelStates.LevelPlay;
             levelSetup.EvtIntroEnd();
             levelSetup.EvtStartPlay();
             debugController.GameState((int)state);
             gameStart = true;
-            auController.UnmuteSound();
             rhythmController.SetIntroRhythm(false);
             rhythmController.SetRhythm(true);
         }
@@ -180,6 +178,7 @@ public class GameManager : MonoBehaviour
         state = LevelStates.LevelStart;
         debugController.GameState((int)state);
         satisController.ResetSatisfaction();
+        auController.UnmuteSound();
         uiController.ResetUI();
         uiController.CoinsUI(0);
         uiController.CollectibleUI(0);
@@ -275,6 +274,10 @@ public class GameManager : MonoBehaviour
     public LevelStates GetGameState()
     {
         return state;
+    }
+
+    public void PlayIntroClip(){
+        auController.PlayIntro();
     }
 
     #endregion

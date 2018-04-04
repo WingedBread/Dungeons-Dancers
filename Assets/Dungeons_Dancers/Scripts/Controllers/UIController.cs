@@ -173,8 +173,9 @@ public class UIController: MonoBehaviour {
     public void IntroUICheck(int intro)
     {
         introText.gameObject.SetActive(true);
-        if (intro != 0) introText.text = intro.ToString();
-        else 
+        if (intro > 0) introText.text = intro.ToString();
+        else if(intro == 0)introText.text = "";
+        else if(intro < 0)
         { 
             introText.text = finalIntro;
             StartCoroutine(DeactivatorUI(introText, introTextTime));

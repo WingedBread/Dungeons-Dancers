@@ -9,6 +9,10 @@ public class RhythmController : MonoBehaviour
     [Header("Managers")]
     private GameManager gameManager;
     private EnemyManager enemyManager;
+    [SerializeField]
+    private DebugController debugController;
+    private MultiMusicPlayer multiMusic;
+
     [Header("Intro Delay Time")]
     [SerializeField]
     private int introTime;
@@ -21,14 +25,8 @@ public class RhythmController : MonoBehaviour
     private int accuracy = 0;
     private bool activePlayerInputEvent;
     private bool activePlayerBeatEvent;
-
-    private MultiMusicPlayer multiMusic;
-
     private int lastEndSample;
 
-
-    [SerializeField]
-    private DebugController debugController;
     // Use this for initialization
     void Start()
     {
@@ -39,14 +37,13 @@ public class RhythmController : MonoBehaviour
     }
 
     private IEnumerator IntroDelayCoroutine(int time){
-        multiMusic.Play();
         yield return new WaitForSeconds(time);
         StartIntroRhythm();
 		StopCoroutine ("IntroDelayCoroutine");
     }
     private void StartIntroRhythm()
     {
-        //multiMusic.Play();
+        multiMusic.Play();
         Koreographer.Instance.RegisterForEvents("IntroEvent", IntroBehaviour);
     }
     private void StopIntroRhythm()
@@ -77,6 +74,7 @@ public class RhythmController : MonoBehaviour
     void IntroBehaviour(KoreographyEvent kIntroEvent)
     {
         gameManager.SetIntroCounter(gameManager.GetIntroCounter()+1);
+        gameManager.PlayIntroClip();
     }
 
     void PlayerInputBehaviour(KoreographyEvent kInputEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
@@ -152,7 +150,7 @@ public class RhythmController : MonoBehaviour
 
     public void SetIntroRhythm(bool introbool)
     {
-        if (introbool) StartIntroRhythm();
+        if (introbool) StartCoroutine(IntroDelayCoroutine(introTime));
         else StopIntroRhythm();
     }
 

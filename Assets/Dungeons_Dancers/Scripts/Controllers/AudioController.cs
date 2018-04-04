@@ -16,6 +16,8 @@ public class AudioController : MonoBehaviour {
 
     [Header("AudioClips")]
     [SerializeField]
+    private AudioClip introClip;
+    [SerializeField]
     private AudioClip coinClip;
     [SerializeField]
     private AudioClip keyClip;
@@ -88,6 +90,13 @@ public class AudioController : MonoBehaviour {
     {
         audioSource.volume = 1f;
         audioSource.clip = endLeveClip;
+        audioSource.Play();
+    }
+
+    public void PlayIntro()
+    {
+        audioSource.volume = 1f;
+        audioSource.clip = introClip;
         audioSource.Play();
     }
 
