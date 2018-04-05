@@ -14,6 +14,8 @@ public class LevelEditorWindow : EditorWindow
     string status;
     bool showGameObject;
 
+    bool showEnums;
+
     LevelSetup levelsetup;
 
     LevelStates levelStates;
@@ -44,13 +46,18 @@ public class LevelEditorWindow : EditorWindow
 
         if (GUILayout.Button("Add Event"))
         {
-            LevelEventsClass temp = new LevelEventsClass();
+            LevelEventsClass temp = ScriptableObject.CreateInstance<LevelEventsClass>();
             currentEvents.Add(temp);
             levelsetup.AddEvent(temp);
         }
-
+        showEnums = EditorGUILayout.Toggle("Select States / Events", showEnums);
+        EditorGUI.BeginDisabledGroup(showEnums == false);
         levelStates = (LevelStates)EditorGUILayout.EnumPopup("Level States", levelStates);
+        EditorGUI.EndDisabledGroup();
+        EditorGUI.BeginDisabledGroup(showEnums == true);
         levelEvents = (LevelEvents)EditorGUILayout.EnumPopup("Level Events", levelEvents);
+        EditorGUI.EndDisabledGroup();
+
 
         showGameObject = EditorGUILayout.Foldout(showGameObject, status, true);
         if (showGameObject)
@@ -59,6 +66,7 @@ public class LevelEditorWindow : EditorWindow
             {
                 status = Selection.activeTransform.name;
                 playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player States", playerStates);
+
                 animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
                 if (animator != null)
                 {
@@ -76,7 +84,6 @@ public class LevelEditorWindow : EditorWindow
                     {
                         currentEvents[0].audioSource = Selection.activeGameObject.GetComponent<AudioSource>();
                         Selection.activeGameObject.GetComponent<AudioSource>().clip = auClip;
-                        currentEvents[0].auClip = auClip;
                     }
                     else Debug.Log("Does not have Audio Source");
                 }
@@ -96,8 +103,6 @@ public class LevelEditorWindow : EditorWindow
                  * To
                  * Duration
                  */
-
-
             }
         }
         if (!Selection.activeTransform)
@@ -112,10 +117,13 @@ public class LevelEditorWindow : EditorWindow
             currentEvents.RemoveAt(currentEvents.Count - 1);;
         }
 
-        if (GUILayout.Button("Save Data"))
+        if (GUILayout.Button("Save Event -- State"))
         {
-            
+            currentEvents[0].selectedEventsEnum = levelEvents;
+            currentEvents[0].selectedStatesEnum = levelStates;
+            currentEvents[0].CheckActiveEventsAndStates();
         }
+
     }
 }
 #endif
