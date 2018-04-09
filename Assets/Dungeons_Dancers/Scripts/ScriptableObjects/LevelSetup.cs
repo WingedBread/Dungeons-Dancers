@@ -2,10 +2,10 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LevelValues", menuName = "Tools/Level Setup")]
+[System.Serializable]
 public class LevelSetup : ScriptableObject
 {
     [Header("List LevelEvent Class")]
-    [HideInInspector]
     public List<LevelEventsClass> eventsLevel;
 
     public void AddEvent(LevelEventsClass temp)
@@ -212,6 +212,8 @@ public class LevelSetup : ScriptableObject
 
 }
 
+[CreateAssetMenu(fileName = "LevelEventClass", menuName = "Tools/LevelEvent")]
+[System.Serializable]
 public class LevelEventsClass : ScriptableObject
 {
     public GameObject particles;
