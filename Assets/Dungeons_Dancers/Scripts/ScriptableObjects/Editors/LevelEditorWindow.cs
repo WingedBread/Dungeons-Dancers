@@ -5,12 +5,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using DG.Tweening;
-//using SonicBloom.Koreo;
 
 [CustomEditor(typeof(LevelSetup))]
 public class LevelEditorWindow : EditorWindow
 {
-
     string status;
     bool showGameObject;
 
@@ -28,7 +26,10 @@ public class LevelEditorWindow : EditorWindow
     Ease easingListIn;
     Ease easingListOut;
 
-    List<LevelEventsClass> currentEvents = new List<LevelEventsClass>();
+    enum LevelOptions { LevelStates, LevelEvents, PlayerStates };
+    LevelOptions optionSelection;
+
+    //List<LevelEventsClass> currentEvents = new List<LevelEventsClass>();
 
     //[EventID]
     //public string eventID;
@@ -47,26 +48,25 @@ public class LevelEditorWindow : EditorWindow
         if (GUILayout.Button("Add Event"))
         {
             LevelEventsClass temp = ScriptableObject.CreateInstance<LevelEventsClass>();
-            currentEvents.Add(temp);
+            //currentEvents.Add(temp);
             levelsetup.AddEvent(temp);
         }
-        showEnums = EditorGUILayout.Toggle("Select States / Events", showEnums);
-        EditorGUI.BeginDisabledGroup(showEnums == false);
-        levelStates = (LevelStates)EditorGUILayout.EnumPopup("Level States", levelStates);
-        EditorGUI.EndDisabledGroup();
-        EditorGUI.BeginDisabledGroup(showEnums == true);
-        levelEvents = (LevelEvents)EditorGUILayout.EnumPopup("Level Events", levelEvents);
-        EditorGUI.EndDisabledGroup();
 
-        if (currentEvents.Count > 0)
+       
+        optionSelection = (LevelOptions)EditorGUILayout.EnumPopup("Choose Event/State", optionSelection);
+
+        if (levelsetup.eventsLevel.Count > 0)
         {
+            if (optionSelection == LevelOptions.LevelStates) levelStates = (LevelStates)EditorGUILayout.EnumPopup("Level States", levelStates);
+            else if (optionSelection == LevelOptions.LevelEvents) levelEvents = (LevelEvents)EditorGUILayout.EnumPopup("Level Events", levelEvents);
+            else if (optionSelection == LevelOptions.PlayerStates) playerStates = (PlayerStates)EditorGUILayout.EnumPopup("Player States", playerStates);
+
             showGameObject = EditorGUILayout.Foldout(showGameObject, status, true);
             if (showGameObject)
             {
                 if (Selection.activeTransform)
                 {
                     status = Selection.activeTransform.name;
-                    playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player States", playerStates);
 
                     animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
                     if (animator != null)
@@ -90,7 +90,7 @@ public class LevelEditorWindow : EditorWindow
                     {
                         if (Selection.activeGameObject.GetComponent<AudioSource>() != null)
                         {
-                            currentEvents[0].audioSource = Selection.activeGameObject.GetComponent<AudioSource>();
+                            levelsetup.eventsLevel[0].audioSource = Selection.activeGameObject.GetComponent<AudioSource>();
                             Selection.activeGameObject.GetComponent<AudioSource>().clip = auClip;
                         }
                         else
@@ -131,7 +131,7 @@ public class LevelEditorWindow : EditorWindow
             if (GUILayout.Button("Remove Event"))
             {
                 levelsetup.DeleteEvent();
-                currentEvents.RemoveAt(currentEvents.Count - 1);
+                //currentEvents.RemoveAt(currentEvents.Count - 1);
                 if (auClip != null)
                 {
                     auClip = null;
@@ -144,11 +144,15 @@ public class LevelEditorWindow : EditorWindow
                 }
             }
 
-            if (GUILayout.Button("Save Event -- State"))
+            if (GUILayout.Button("SAVE"))
             {
-                currentEvents[0].selectedEventsEnum = levelEvents;
-                currentEvents[0].selectedStatesEnum = levelStates;
-                currentEvents[0].CheckActiveEventsAndStates();
+
+                if (optionSelection == LevelOptions.LevelStates) levelsetup.eventsLevel[0].selectedStatesEnum = levelStates;
+                else if (optionSelection == LevelOptions.LevelEvents) levelsetup.eventsLevel[0].selectedEventsEnum = levelEvents;
+                else if (optionSelection == LevelOptions.PlayerStates) levelsetup.eventsLevel[0].selectedPlayerStateEnum = playerStates;
+                    
+                levelsetup.eventsLevel[0].CheckActiveEventsAndStates();
+                //AssetDatabase.SaveAssets();
             }
         }
 
