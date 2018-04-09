@@ -12,6 +12,8 @@ public class LevelEditorWindow : EditorWindow
     string status;
     bool showGameObject;
 
+    bool showEnums;
+
     LevelSetup levelsetup;
 
     LevelStates levelStates;
@@ -45,7 +47,6 @@ public class LevelEditorWindow : EditorWindow
 
         if (GUILayout.Button("Add Event"))
         {
-<<<<<<< HEAD
             LevelEventsClass temp = ScriptableObject.CreateInstance<LevelEventsClass>();
             //currentEvents.Add(temp);
             levelsetup.AddEvent(temp);
@@ -53,19 +54,9 @@ public class LevelEditorWindow : EditorWindow
 
        
         optionSelection = (LevelOptions)EditorGUILayout.EnumPopup("Choose Event/State", optionSelection);
-=======
-            LevelEventsClass temp = new LevelEventsClass();
-            currentEvents.Add(temp);
-            levelsetup.AddEvent(temp);
-        }
-
-        levelStates = (LevelStates)EditorGUILayout.EnumPopup("Level States", levelStates);
-        levelEvents = (LevelEvents)EditorGUILayout.EnumPopup("Level Events", levelEvents);
->>>>>>> parent of 3569de3... Tool First Iteration AudioClip Working!
 
         if (levelsetup.eventsLevel.Count > 0)
         {
-<<<<<<< HEAD
             if (optionSelection == LevelOptions.LevelStates) levelStates = (LevelStates)EditorGUILayout.EnumPopup("Level States", levelStates);
             else if (optionSelection == LevelOptions.LevelEvents) levelEvents = (LevelEvents)EditorGUILayout.EnumPopup("Level Events", levelEvents);
             else if (optionSelection == LevelOptions.PlayerStates) playerStates = (PlayerStates)EditorGUILayout.EnumPopup("Player States", playerStates);
@@ -74,14 +65,6 @@ public class LevelEditorWindow : EditorWindow
             if (showGameObject)
             {
                 if (Selection.activeTransform)
-=======
-            if (Selection.activeTransform)
-            {
-                status = Selection.activeTransform.name;
-                playerStates = (PlayerStates)EditorGUILayout.EnumFlagsField("Player States", playerStates);
-                animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
-                if (animator != null)
->>>>>>> parent of 3569de3... Tool First Iteration AudioClip Working!
                 {
                     status = Selection.activeTransform.name;
 
@@ -105,7 +88,6 @@ public class LevelEditorWindow : EditorWindow
                     auClip = (AudioClip)EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
                     if (auClip != null)
                     {
-<<<<<<< HEAD
                         if (Selection.activeGameObject.GetComponent<AudioSource>() != null)
                         {
                             levelsetup.eventsLevel[0].audioSource = Selection.activeGameObject.GetComponent<AudioSource>();
@@ -120,11 +102,6 @@ public class LevelEditorWindow : EditorWindow
                                 Selection.activeGameObject.GetComponent<AudioSource>().playOnAwake = false;
                             }
                         }
-=======
-                        currentEvents[0].audioSource = Selection.activeGameObject.GetComponent<AudioSource>();
-                        Selection.activeGameObject.GetComponent<AudioSource>().clip = auClip;
-                        currentEvents[0].auClip = auClip;
->>>>>>> parent of 3569de3... Tool First Iteration AudioClip Working!
                     }
 
                     //Maybe change to ParticleSystem(?)
@@ -145,30 +122,10 @@ public class LevelEditorWindow : EditorWindow
                 }
             }
 
-<<<<<<< HEAD
             if (!Selection.activeTransform)
             {
                 status = "Select a GameObject";
                 showGameObject = false;
-=======
-                //Maybe change to ParticleSystem(?)
-                particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
-
-                easingListIn = (Ease)EditorGUILayout.EnumPopup("Easing List IN", easingListIn);
-                easingListOut = (Ease)EditorGUILayout.EnumPopup("Easing List OUT", easingListOut);
-                /*Position -- Scale -- Rotation -- Color -- Alpha-Fade
-                 * Select Tween In--
-                 * From
-                 * To
-                 * Duration
-                 * Select Tween Out--
-                 * From
-                 * To
-                 * Duration
-                 */
-
-
->>>>>>> parent of 3569de3... Tool First Iteration AudioClip Working!
             }
 
             if (GUILayout.Button("Remove Event"))
@@ -187,7 +144,6 @@ public class LevelEditorWindow : EditorWindow
                 }
             }
 
-<<<<<<< HEAD
             if (GUILayout.Button("SAVE"))
             {
 
@@ -198,12 +154,8 @@ public class LevelEditorWindow : EditorWindow
                 levelsetup.eventsLevel[0].CheckActiveEventsAndStates();
                 //AssetDatabase.SaveAssets();
             }
-=======
-        if (GUILayout.Button("Save Data"))
-        {
-            
->>>>>>> parent of 3569de3... Tool First Iteration AudioClip Working!
         }
+
     }
 }
 #endif
