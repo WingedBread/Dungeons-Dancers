@@ -99,7 +99,6 @@ public class RhythmController : MonoBehaviour
 
     void PlayerBeatBehaviour(KoreographyEvent kBeatEvent)
     {
-        gameManager.levelSetup.EvtOnBeat();
         debugController.RhythmBeatPlayerDebug(kBeatEvent.StartSample);
         debugController.RhythmBeatDurationDebug(kBeatEvent.StartSample - lastEndSample);
         lastEndSample = kBeatEvent.EndSample;
