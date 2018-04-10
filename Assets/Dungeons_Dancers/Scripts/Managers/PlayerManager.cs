@@ -50,6 +50,7 @@ public class PlayerManager : MonoBehaviour
         debugController.PlayerState((int)state);
         auSource = GetComponent<AudioSource>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        levelSetup = gameManager.GetComponent<LevelSetup>();
         inputController = GetComponent<InputController>();
         collectiblesController = GetComponent<CollectiblesController>();
         animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();

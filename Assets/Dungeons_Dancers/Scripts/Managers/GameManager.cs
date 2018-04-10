@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LevelSetup))]
 [RequireComponent(typeof(SatisfactionController))]
 [RequireComponent(typeof(IntroController))]
 [RequireComponent (typeof(AudioController))]
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
         state = LevelStates.LevelStart;
         levelSetup.EvtIntroStart();
         debugController.GameState((int)state);
+        levelSetup = GetComponent<LevelSetup>();
         uiController = GetComponent<UIController>();
         rhythmController = GetComponent<RhythmController>();
         auController = GetComponent<AudioController>();

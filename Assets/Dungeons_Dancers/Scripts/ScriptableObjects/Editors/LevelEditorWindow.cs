@@ -1,24 +1,21 @@
 ﻿#if UNITY_EDITOR
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using DG.Tweening;
 //using SonicBloom.Koreo;
 
-[CustomEditor(typeof(LevelSetup))]
 public class LevelEditorWindow : EditorWindow
 {
 
     string status;
     bool showGameObject;
 
-    LevelSetup levelsetup;
-
     LevelStates levelStates;
     PlayerStates playerStates;
     LevelEvents levelEvents;
+
+    LevelSetup levelSetup;
 
     UnityEditor.Animations.AnimatorController animator;
     AudioClip auClip;
@@ -29,8 +26,6 @@ public class LevelEditorWindow : EditorWindow
     enum LevelOptions { LevelStates, LevelEvents, PlayerStates };
     LevelOptions optionSelection;
 
-    //List<LevelEventsClass> currentEvents = new List<LevelEventsClass>();
-
     [MenuItem("Curial Tools/Level Editor", false, 0)]
     static void Init()
     {
@@ -38,124 +33,256 @@ public class LevelEditorWindow : EditorWindow
         window.Show();
     }
 
+    void OnEnable()
+    {
+        GameObject go = GameObject.FindWithTag("GameManager");
+        levelSetup = (LevelSetup)go.GetComponent(typeof(LevelSetup));
+        if(levelSetup == null )Debug.Log("Add LevelSetup to GameManager GameObject!");
+    }
+
     private void OnGUI()
     {
-        levelsetup = (LevelSetup)EditorGUILayout.ObjectField("Level Setup", levelsetup, typeof(LevelSetup), true);
+        EditorGUILayout.Space();
+        optionSelection = (LevelOptions)EditorGUILayout.EnumPopup("Choose Event/State", optionSelection);
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
-        if (GUILayout.Button("Add Event"))
+        switch (optionSelection)
         {
-            LevelEventsClass temp = ScriptableObject.CreateInstance<LevelEventsClass>();
-            //currentEvents.Add(temp);
-            levelsetup.AddEvent(temp);
+            case LevelOptions.LevelStates:
+                if (GUILayout.Button("Add  ''LevelState''  Event"))
+                {
+                    if (Selection.activeGameObject.GetComponent<LevelStateEvents>() == null)
+                    {
+                        Selection.activeGameObject.AddComponent<LevelStateEvents>();
+                        levelSetup.levelStatesEvt.Add(Selection.activeGameObject.GetComponent<LevelStateEvents>());
+                    }
+                    else Debug.Log("This GameObject already has a LevelState Event");
+                }
+                EditorGUILayout.Space();
+                levelStates = (LevelStates)EditorGUILayout.EnumPopup("Level States", levelStates);
+                break;
+            case LevelOptions.LevelEvents:
+                if (GUILayout.Button("Add  ''LevelEvent''  Event"))
+                {
+                    if (Selection.activeGameObject.GetComponent<LevelEventEvents>() == null)
+                    {
+                        Selection.activeGameObject.AddComponent<LevelEventEvents>();
+                        levelSetup.levelEventsEvt.Add(Selection.activeGameObject.GetComponent<LevelEventEvents>());
+                    }
+                    else Debug.Log("This GameObject already has a LevelEvent Event");
+                }
+                EditorGUILayout.Space();
+                levelEvents = (LevelEvents)EditorGUILayout.EnumPopup("Level Events", levelEvents);
+                break;
+            case LevelOptions.PlayerStates:
+                if (GUILayout.Button("Add  ''PlayerState''  Event"))
+                {
+                    if (Selection.activeGameObject.GetComponent<PlayerStatesEvents>() == null)
+                    {
+                        Selection.activeGameObject.AddComponent<PlayerStatesEvents>();
+                        levelSetup.playerStatesEvt.Add(Selection.activeGameObject.GetComponent<PlayerStatesEvents>());
+                    }
+                    else Debug.Log("This GameObject already has a PlayerState Event");
+                }
+                EditorGUILayout.Space();
+                playerStates = (PlayerStates)EditorGUILayout.EnumPopup("Player States", playerStates);
+                break;
         }
 
-        optionSelection = (LevelOptions)EditorGUILayout.EnumPopup("Choose Event/State", optionSelection);
-
-
-        if (levelsetup.eventsLevel.Count > 0)
+        if(levelSetup.levelStatesEvt.Count > 0 || levelSetup.levelEventsEvt.Count > 0 || levelSetup.playerStatesEvt.Count > 0)
         {
-            if (optionSelection == LevelOptions.LevelStates) levelStates = (LevelStates)EditorGUILayout.EnumPopup("Level States", levelStates);
-            else if (optionSelection == LevelOptions.LevelEvents) levelEvents = (LevelEvents)EditorGUILayout.EnumPopup("Level Events", levelEvents);
-            else if (optionSelection == LevelOptions.PlayerStates) playerStates = (PlayerStates)EditorGUILayout.EnumPopup("Player States", playerStates);
-
+            EditorGUILayout.Space();
             showGameObject = EditorGUILayout.Foldout(showGameObject, status, true);
             if (showGameObject)
             {
                 if (Selection.activeTransform)
                 {
                     status = Selection.activeTransform.name;
-                    animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
-                    if (animator != null)
+                    if (Selection.activeGameObject.GetComponent<LevelStateEvents>() != null)
                     {
-                        if (Selection.activeGameObject.GetComponent<Animator>() != null)
+                        animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
+                        if (animator != null)
                         {
-                            Selection.activeGameObject.GetComponent<Animator>().runtimeAnimatorController = animator;
-                        }
-                        else
-                        {
-                            Debug.Log("Does not have Animator");
-                            if (GUILayout.Button("Add Animator"))
+                            if (Selection.activeGameObject.GetComponent<Animator>() != null)
                             {
-                                Selection.activeGameObject.AddComponent<Animator>();
+                                Selection.activeGameObject.GetComponent<Animator>().runtimeAnimatorController = animator;
+                            }
+                            else
+                            {
+                                Debug.Log("Does not have Animator");
+                                if (GUILayout.Button("Add Animator"))
+                                {
+                                    Selection.activeGameObject.AddComponent<Animator>();
+                                }
                             }
                         }
-                    }
 
-                    auClip = (AudioClip)EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
+                        auClip = (AudioClip)EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
+                        if (auClip != null)
+                        {
+                            if (Selection.activeGameObject.GetComponent<AudioSource>() != null)
+                            {
+                                Selection.activeGameObject.GetComponent<AudioSource>().clip = auClip;
+                            }
+                            else
+                            {
+                                Debug.Log("Does not have Audio Source");
+                                if (GUILayout.Button("Add AudioSource"))
+                                {
+                                    Selection.activeGameObject.AddComponent<AudioSource>();
+                                    Selection.activeGameObject.GetComponent<AudioSource>().playOnAwake = false;
+                                }
+                            }
+                        }
+
+
+                        //Maybe change to ParticleSystem(?)
+                        particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
+
+                        easingListIn = (Ease)EditorGUILayout.EnumPopup("Easing List IN", easingListIn);
+                        easingListOut = (Ease)EditorGUILayout.EnumPopup("Easing List OUT", easingListOut);
+                        /*Position -- Scale -- Rotation -- Color -- Alpha-Fade
+                         * Select Tween In--
+                         * From
+                         * To
+                         * Duration
+                         * Select Tween Out--
+                         * From
+                         * To
+                         * Duration
+                         */
+                    }
+                    else if(Selection.activeGameObject.GetComponent<LevelEventEvents>() != null){
+
+                        animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
+                        if (animator != null)
+                        {
+                            if (Selection.activeGameObject.GetComponent<Animator>() != null)
+                            {
+                                Selection.activeGameObject.GetComponent<Animator>().runtimeAnimatorController = animator;
+                            }
+                            else
+                            {
+                                Debug.Log("Does not have Animator");
+                                if (GUILayout.Button("Add Animator"))
+                                {
+                                    Selection.activeGameObject.AddComponent<Animator>();
+                                }
+                            }
+                        }
+
+                        auClip = (AudioClip)EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
+                        if (auClip != null)
+                        {
+                            if (Selection.activeGameObject.GetComponent<AudioSource>() != null)
+                            {
+                                Selection.activeGameObject.GetComponent<AudioSource>().clip = auClip;
+                            }
+                            else
+                            {
+                                Debug.Log("Does not have Audio Source");
+                                if (GUILayout.Button("Add AudioSource"))
+                                {
+                                    Selection.activeGameObject.AddComponent<AudioSource>();
+                                    Selection.activeGameObject.GetComponent<AudioSource>().playOnAwake = false;
+                                }
+                            }
+                        }
+
+                        //Maybe change to ParticleSystem(?)
+                        particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
+
+                        easingListIn = (Ease)EditorGUILayout.EnumPopup("Easing List IN", easingListIn);
+                        easingListOut = (Ease)EditorGUILayout.EnumPopup("Easing List OUT", easingListOut);
+                        /*Position -- Scale -- Rotation -- Color -- Alpha-Fade
+                         * Select Tween In--
+                         * From
+                         * To
+                         * Duration
+                         * Select Tween Out--
+                         * From
+                         * To
+                         * Duration
+                         */
+                    }
+                    else if (Selection.activeGameObject.GetComponent<PlayerStatesEvents>() != null)
+                    {
+                        animator = (UnityEditor.Animations.AnimatorController)EditorGUILayout.ObjectField("Animator", animator, typeof(UnityEditor.Animations.AnimatorController), true);
+                        if (animator != null)
+                        {
+                            if (Selection.activeGameObject.GetComponent<Animator>() != null)
+                            {
+                                Selection.activeGameObject.GetComponent<Animator>().runtimeAnimatorController = animator;
+                            }
+                            else
+                            {
+                                Debug.Log("Does not have Animator");
+                                if (GUILayout.Button("Add Animator"))
+                                {
+                                    Selection.activeGameObject.AddComponent<Animator>();
+                                }
+                            }
+                        }
+
+                        auClip = (AudioClip)EditorGUILayout.ObjectField("AudioClip", auClip, typeof(AudioClip), true);
+                        if (auClip != null)
+                        {
+                            if (Selection.activeGameObject.GetComponent<AudioSource>() != null)
+                            {
+                                Selection.activeGameObject.GetComponent<AudioSource>().clip = auClip;
+                            }
+                            else
+                            {
+                                Debug.Log("Does not have Audio Source");
+                                if (GUILayout.Button("Add AudioSource"))
+                                {
+                                    Selection.activeGameObject.AddComponent<AudioSource>();
+                                    Selection.activeGameObject.GetComponent<AudioSource>().playOnAwake = false;
+                                }
+                            }
+                        }
+
+                        //Maybe change to ParticleSystem(?)
+                        particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
+
+                        easingListIn = (Ease)EditorGUILayout.EnumPopup("Easing List IN", easingListIn);
+                        easingListOut = (Ease)EditorGUILayout.EnumPopup("Easing List OUT", easingListOut);
+                        /*Position -- Scale -- Rotation -- Color -- Alpha-Fade
+                         * Select Tween In--
+                         * From
+                         * To
+                         * Duration
+                         * Select Tween Out--
+                         * From
+                         * To
+                         * Duration
+                         */
+                    }
+                }
+                if (!Selection.activeTransform)
+                {
+                    status = "Select a GameObject";
+                    showGameObject = false;
+                }
+
+                if (GUILayout.Button("Remove Event"))
+                {
+                    //levelsetup.DeleteEvent();
+                    //currentEvents.RemoveAt(currentEvents.Count - 1);
                     if (auClip != null)
                     {
-                        if (Selection.activeGameObject.GetComponent<AudioSource>() != null)
-                        {
-                            levelsetup.eventsLevel[0].audioSource = Selection.activeGameObject.GetComponent<AudioSource>();
-                            //currentEvents[0].audioSource = Selection.activeGameObject.GetComponent<AudioSource>();
-                            Selection.activeGameObject.GetComponent<AudioSource>().clip = auClip;
-                        }
-                        else
-                        {
-                            Debug.Log("Does not have Audio Source");
-                            if (GUILayout.Button("Add AudioSource"))
-                            {
-                                Selection.activeGameObject.AddComponent<AudioSource>();
-                                Selection.activeGameObject.GetComponent<AudioSource>().playOnAwake = false;
-                            }
-                        }
+                        auClip = null;
+                        Selection.activeGameObject.GetComponent<AudioSource>().clip = null;
                     }
-
-                    //Maybe change to ParticleSystem(?)
-                    particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
-
-                    easingListIn = (Ease)EditorGUILayout.EnumPopup("Easing List IN", easingListIn);
-                    easingListOut = (Ease)EditorGUILayout.EnumPopup("Easing List OUT", easingListOut);
-                    /*Position -- Scale -- Rotation -- Color -- Alpha-Fade
-                     * Select Tween In--
-                     * From
-                     * To
-                     * Duration
-                     * Select Tween Out--
-                     * From
-                     * To
-                     * Duration
-                     */
+                    if (animator != null)
+                    {
+                        animator = null;
+                        Selection.activeGameObject.GetComponent<Animator>().runtimeAnimatorController = null;
+                    }
                 }
+
             }
-
-            if (!Selection.activeTransform)
-            {
-                status = "Select a GameObject";
-                showGameObject = false;
-            }
-
-            if (GUILayout.Button("Remove Event"))
-            {
-                levelsetup.DeleteEvent();
-                //currentEvents.RemoveAt(currentEvents.Count - 1);
-                if (auClip != null)
-                {
-                    auClip = null;
-                    Selection.activeGameObject.GetComponent<AudioSource>().clip = null;
-                }
-                if (animator != null)
-                {
-                    animator = null;
-                    Selection.activeGameObject.GetComponent<Animator>().runtimeAnimatorController = null;
-                }
-            }
-
-            if (GUILayout.Button("Save Event -- State"))
-            {
-                //currentEvents[0].selectedEventsEnum = levelEvents;
-                //currentEvents[0].selectedStatesEnum = levelStates;
-                //currentEvents[0].CheckActiveEventsAndStates();
-
-                if (optionSelection == LevelOptions.LevelStates) levelsetup.eventsLevel[0].selectedStatesEnum = levelStates;
-                else if (optionSelection == LevelOptions.LevelEvents) levelsetup.eventsLevel[0].selectedEventsEnum = levelEvents;
-                else if (optionSelection == LevelOptions.PlayerStates) levelsetup.eventsLevel[0].selectedPlayerStateEnum = playerStates;
-
-                levelsetup.eventsLevel[0].CheckActiveEventsAndStates();
-                //AssetDatabase.SaveAssets();
-            }
-        }
-
+        }   
     }
 }
 #endif
