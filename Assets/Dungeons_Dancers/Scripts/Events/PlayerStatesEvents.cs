@@ -14,8 +14,26 @@ public class PlayerStatesEvents : MonoBehaviour {
 
     PlayerStates playerStates;
 
+    public bool[] activeEvents = new bool[2];
+
     public void SetPlayerState(PlayerStates state)
     {
         playerStates = state;
+    }
+
+    public void EventContainer()
+    {
+        if (audioSource != null) audioSource.Play();
+    }
+
+    public int GetRuntimeActiveEvents()
+    {
+        return (int)playerStates;
+    }
+
+    public void CheckActiveEvents()
+    {
+        for (int i = 0; i < activeEvents.Length; i++) activeEvents[i] = false;
+        activeEvents[GetRuntimeActiveEvents()] = true;
     }
 }
