@@ -56,10 +56,11 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        levelSetup = GetComponent<LevelSetup>();
         state = LevelStates.LevelStart;
+        levelSetup.LevelStatesEvts(state);
         levelSetup.EvtIntroStart();
         debugController.GameState((int)state);
-        levelSetup = GetComponent<LevelSetup>();
         uiController = GetComponent<UIController>();
         rhythmController = GetComponent<RhythmController>();
         auController = GetComponent<AudioController>();
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
         uiController.IntroUICheck(intro);
         if(GetIntroCounter() == 6){
             state = LevelStates.LevelPlay;
+            levelSetup.LevelStatesEvts(state);
             levelSetup.EvtIntroEnd();
             levelSetup.EvtStartPlay();
             debugController.GameState((int)state);
@@ -114,6 +116,7 @@ public class GameManager : MonoBehaviour
             if (Time.timeScale > 0)
             {
                 state = LevelStates.LevelPaused;
+                levelSetup.LevelStatesEvts(state);
                 debugController.GameState((int)state);
                 Time.timeScale = 0;
                 gameStart = false;
@@ -123,6 +126,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 state = LevelStates.LevelPlay;
+                levelSetup.LevelStatesEvts(state);
                 debugController.GameState((int)state);
                 Time.timeScale = 1;
                 gameStart = true;
@@ -178,6 +182,7 @@ public class GameManager : MonoBehaviour
         dungeonTimer = initDungeonTimer;
         flagTimeNearOver = true;
         state = LevelStates.LevelStart;
+        levelSetup.LevelStatesEvts(state);
         debugController.GameState((int)state);
         satisController.ResetSatisfaction();
         auController.UnmuteSound();
@@ -272,11 +277,6 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayerBlock(bool block){
         playerManager.SetBlock(block);
-    }
-
-    public LevelStates GetGameState()
-    {
-        return state;
     }
 
     public void PlayIntroClip(){

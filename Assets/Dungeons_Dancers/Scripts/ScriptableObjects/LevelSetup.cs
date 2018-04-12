@@ -266,19 +266,73 @@ public class LevelSetup : MonoBehaviour {
     }
     #endregion
 
-    void LevelStatesEvts(LevelStates current)
+    public void LevelStatesEvts(LevelStates current)
     {
         switch(current)
         {
             case LevelStates.LevelStart:
+                for (int i = 0; i < levelStatesEvt.Count; i++)
+                {
+                    levelStatesEvt[i].EventContainer();
+                    Debug.Log("LevelStart_Event");
+                }
+                Debug.Log("LevelStart");
                 break;
             case LevelStates.LevelPaused:
+                for (int i = 0; i < levelStatesEvt.Count; i++)
+                {
+                    levelStatesEvt[i].EventContainer();
+                    Debug.Log("LevelPaused_Event");
+                }
+                Debug.Log("LevelPaused");
                 break;
             case LevelStates.LevelPlay:
+                for (int i = 0; i < levelStatesEvt.Count; i++)
+                {
+                    levelStatesEvt[i].EventContainer();
+                    Debug.Log("LevelPlay_Event");
+                }
+                Debug.Log("LevelPlay");
                 break;
             case LevelStates.LevelEnd:
+                for (int i = 0; i < levelStatesEvt.Count; i++)
+                {
+                    levelStatesEvt[i].EventContainer();
+                    Debug.Log("LevelEnd_Event");
+                }
+                Debug.Log("LevelEnd");
                 break;
         }
     }
 
+    public void PlayerStatesEvts(PlayerStates current)
+    {
+        switch (current)
+        {
+            case PlayerStates.Dancing:
+                for (int i = 0; i < playerStatesEvt.Count; i++)
+                {
+                    playerStatesEvt[i].EventContainer();
+                    Debug.Log("PlayerDancing_Event");
+                }
+                Debug.Log("PlayerDancing");
+                break;
+            case PlayerStates.Hit:
+                for (int i = 0; i < playerStatesEvt.Count; i++)
+                {
+                    playerStatesEvt[i].EventContainer();
+                    Debug.Log("PlayerHit_Event");
+                }
+                Debug.Log("PlayerHit");
+                break;
+            case PlayerStates.Succeed:
+                for (int i = 0; i < playerStatesEvt.Count; i++)
+                {
+                    playerStatesEvt[i].EventContainer();
+                    Debug.Log("PlayerSucceed_Event");
+                }
+                Debug.Log("PlayerSucceed");
+                break;
+        }
+    }
 }

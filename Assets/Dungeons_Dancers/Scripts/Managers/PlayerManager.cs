@@ -39,10 +39,11 @@ public class PlayerManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        levelSetup = gameManager.GetComponent<LevelSetup>();
         state = PlayerStates.Dancing;
+        levelSetup.PlayerStatesEvts(state);
         debugController.PlayerState((int)state);
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        levelSetup = gameManager.GetComponent<LevelSetup>();
         inputController = GetComponent<InputController>();
         collectiblesController = GetComponent<CollectiblesController>();
         animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
@@ -89,6 +90,7 @@ public class PlayerManager : MonoBehaviour
     public void ExitBehaviour()
     {
         state = PlayerStates.Succeed;
+        levelSetup.PlayerStatesEvts(state);
         debugController.PlayerState((int)state);
         gameManager.Win();
     }
@@ -96,6 +98,7 @@ public class PlayerManager : MonoBehaviour
     public void TrapBehaviour()
     {
         state = PlayerStates.Hit;
+        levelSetup.PlayerStatesEvts(state);
         levelSetup.EvtOnHit();
         debugController.PlayerState((int)state);
         StartCoroutine(ResetPlayer(false));
@@ -167,6 +170,7 @@ public class PlayerManager : MonoBehaviour
             collectibles.Clear();
             collectiblesController.Reset();
             state = PlayerStates.Dancing;
+            levelSetup.PlayerStatesEvts(state);
             debugController.PlayerState((int)state);
             StopCoroutine("ResetPlayer");
         }
@@ -178,14 +182,10 @@ public class PlayerManager : MonoBehaviour
             if (spawnPosition != spawnInitPosition) inputController.SetRotation(2);
             else inputController.SetRotation(1);
             state = PlayerStates.Dancing;
+            levelSetup.PlayerStatesEvts(state);
             debugController.PlayerState((int)state);
             StopCoroutine("ResetPlayer");
 
         }
-    }
-
-    public PlayerStates GetPlayerState()
-    {
-        return state;
     }
 }
