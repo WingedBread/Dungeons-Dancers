@@ -2,8 +2,10 @@
 
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
-//using SonicBloom.Koreo;
+using SonicBloom.Koreo;
 
 public class LevelEditorWindow : EditorWindow
 {
@@ -111,7 +113,7 @@ public class LevelEditorWindow : EditorWindow
 
 
                                     //Maybe change to ParticleSystem(?)
-                                    particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
+                                    particles = (GameObject)EditorGUILayout.ObjectField("Particles", particles, typeof(GameObject), true);
 
                                     easingListIn = (Ease)EditorGUILayout.EnumPopup("Easing List IN", easingListIn);
                                     easingListOut = (Ease)EditorGUILayout.EnumPopup("Easing List OUT", easingListOut);
@@ -162,6 +164,7 @@ public class LevelEditorWindow : EditorWindow
                             Selection.activeGameObject.GetComponent<LevelStateEvents>().CheckActiveEvents();
                             EditorUtility.SetDirty(levelSetup);
                             EditorUtility.SetDirty(Selection.activeGameObject);
+                            EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
                             //levelSetup.levelStatesEvt[0].SetLevelState(levelStates);
                             //levelSetup.levelStatesEvt[0].CheckActiveEvents();
                         }
@@ -229,7 +232,7 @@ public class LevelEditorWindow : EditorWindow
                                     }
 
                                     //Maybe change to ParticleSystem(?)
-                                    particles = (GameObject)EditorGUILayout.ObjectField("Partciles", particles, typeof(GameObject), true);
+                                    particles = (GameObject)EditorGUILayout.ObjectField("Particles", particles, typeof(GameObject), true);
 
                                     easingListIn = (Ease)EditorGUILayout.EnumPopup("Easing List IN", easingListIn);
                                     easingListOut = (Ease)EditorGUILayout.EnumPopup("Easing List OUT", easingListOut);
@@ -281,6 +284,7 @@ public class LevelEditorWindow : EditorWindow
                             Selection.activeGameObject.GetComponent<LevelEventEvents>().CheckActiveEvents();
                             EditorUtility.SetDirty(levelSetup);
                             EditorUtility.SetDirty(Selection.activeGameObject);
+                            EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
                             //levelSetup.levelEventsEvt[0].SetLevelEvents(levelEvents);
                             //levelSetup.levelEventsEvt[0].CheckActiveEvents();
                         }
@@ -398,6 +402,7 @@ public class LevelEditorWindow : EditorWindow
                             Selection.activeGameObject.GetComponent<PlayerStatesEvents>().CheckActiveEvents();
                             EditorUtility.SetDirty(levelSetup);
                             EditorUtility.SetDirty(Selection.activeGameObject);
+                            EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
                             //levelSetup.playerStatesEvt[0].SetPlayerState(playerStates);
                             //levelSetup.playerStatesEvt[0].CheckActiveEvents();
                         }

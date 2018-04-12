@@ -27,13 +27,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private float timeIdle = 0.25f;
 
-    [Header("AudioClips")]
-    [SerializeField]
-    private AudioClip goodMove;
-    [SerializeField]
-    private AudioClip badMove;
-
-    private AudioSource auSource;
     private Vector3 spawnPosition;
     private Vector3 spawnInitPosition;
     private List<GameObject> collectibles = new List<GameObject>();
@@ -48,7 +41,6 @@ public class PlayerManager : MonoBehaviour
     {
         state = PlayerStates.Dancing;
         debugController.PlayerState((int)state);
-        auSource = GetComponent<AudioSource>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         levelSetup = gameManager.GetComponent<LevelSetup>();
         inputController = GetComponent<InputController>();
@@ -72,9 +64,7 @@ public class PlayerManager : MonoBehaviour
 
     public void CorrectInput()
     {
-        //levelSetup.EvtPerfectMove();
-        auSource.clip = goodMove;
-        auSource.Play();
+        levelSetup.EvtGoodMove();
         mat.color = Color.green;
         gameManager.AddPoint();
         StartCoroutine(ReturnIdle());
@@ -83,8 +73,6 @@ public class PlayerManager : MonoBehaviour
     public void IncorrectInput()
     {
         levelSetup.EvtWrongMove();
-        auSource.clip = badMove;
-        auSource.Play();
         mat.color = Color.red;
         gameManager.RemovePoint();
         StartCoroutine(ReturnIdle());

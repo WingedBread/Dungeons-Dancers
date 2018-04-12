@@ -226,11 +226,24 @@ public class LevelSetup : MonoBehaviour {
         }
         Debug.Log("PerfectMove");
     }
-    public void EvtWrongMove()
+    public void EvtGoodMove()
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
             if (levelEventsEvt[i].activeEvents[18])
+            {
+                levelEventsEvt[i].EventContainer();
+                Debug.Log("GoodMove_Event");
+            }
+        }
+        Debug.Log("GoodMove");
+    }
+
+    public void EvtWrongMove()
+    {
+        for (int i = 0; i < levelEventsEvt.Count; i++)
+        {
+            if (levelEventsEvt[i].activeEvents[19])
             {
                 levelEventsEvt[i].EventContainer();
                 Debug.Log("WrongMove_Event");
@@ -243,7 +256,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
-            if (levelEventsEvt[i].activeEvents[19])
+            if (levelEventsEvt[i].activeEvents[20])
             {
                 levelEventsEvt[i].EventContainer();
                 Debug.Log("OnShoot_Event");
@@ -252,5 +265,20 @@ public class LevelSetup : MonoBehaviour {
         Debug.Log("OnShoot");
     }
     #endregion
+
+    void LevelStatesEvts(LevelStates current)
+    {
+        switch(current)
+        {
+            case LevelStates.LevelStart:
+                break;
+            case LevelStates.LevelPaused:
+                break;
+            case LevelStates.LevelPlay:
+                break;
+            case LevelStates.LevelEnd:
+                break;
+        }
+    }
 
 }

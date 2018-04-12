@@ -13,7 +13,7 @@ public class LevelEventEvents : MonoBehaviour {
     LevelEvents levelEvents;
 
     //[HideInInspector]
-    public bool[] activeEvents = new bool[19];
+    public bool[] activeEvents = new bool[20];
 
     void Start()
     {
