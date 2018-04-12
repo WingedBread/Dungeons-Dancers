@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using DG.Tweening;
 
 public class LevelEventEvents : MonoBehaviour {
@@ -14,6 +12,7 @@ public class LevelEventEvents : MonoBehaviour {
 
     LevelEvents levelEvents;
 
+    //[HideInInspector]
     public bool[] activeEvents = new bool[19];
 
     void Start()
@@ -21,6 +20,7 @@ public class LevelEventEvents : MonoBehaviour {
         if(this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
         if (this.gameObject.GetComponent<Animator>() != null) animator = GetComponent<Animator>();
     }
+
     public void SetLevelEvents(LevelEvents state)
     {
         levelEvents = state;
@@ -38,8 +38,23 @@ public class LevelEventEvents : MonoBehaviour {
 
     public void CheckActiveEvents()
     {
-        for (int i = 0; i < activeEvents.Length; i++) activeEvents[i] = false;
         activeEvents[GetRuntimeActiveEvents()] = true;
     }
 
+    public void UncheckAllEvents()
+    {
+        for (int i = 0; i < activeEvents.Length; i++) activeEvents[i] = false;
+    }
+
+    public void UncheckLastEvent()
+    {
+        activeEvents[(int)levelEvents] = false;
+    }
+
+    public int GetActiveEventsCount()
+    {
+        int w = 0;
+        for (int i = 0; i < activeEvents.Length; i++) if (activeEvents[i] == true) w++;
+        return w;
+    }
 }

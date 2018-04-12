@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using DG.Tweening;
 
 public class PlayerStatesEvents : MonoBehaviour {
@@ -16,6 +14,12 @@ public class PlayerStatesEvents : MonoBehaviour {
 
     public bool[] activeEvents = new bool[2];
 
+    void Start()
+    {
+        if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
+        if (this.gameObject.GetComponent<Animator>() != null) animator = GetComponent<Animator>();
+    }
+
     public void SetPlayerState(PlayerStates state)
     {
         playerStates = state;
@@ -23,7 +27,7 @@ public class PlayerStatesEvents : MonoBehaviour {
 
     public void EventContainer()
     {
-        if (audioSource != null) audioSource.Play();
+        audioSource.Play();
     }
 
     public int GetRuntimeActiveEvents()
@@ -33,7 +37,23 @@ public class PlayerStatesEvents : MonoBehaviour {
 
     public void CheckActiveEvents()
     {
-        for (int i = 0; i < activeEvents.Length; i++) activeEvents[i] = false;
         activeEvents[GetRuntimeActiveEvents()] = true;
+    }
+
+    public void UncheckAllEvents()
+    {
+        for (int i = 0; i < activeEvents.Length; i++) activeEvents[i] = false;
+    }
+
+    public void UncheckLastEvent()
+    {
+        activeEvents[(int)playerStates] = false;
+    }
+
+    public int GetActiveEventsCount()
+    {
+        int w = 0;
+        for (int i = 0; i < activeEvents.Length; i++) if (activeEvents[i] == true) w++;
+        return w;
     }
 }
