@@ -37,7 +37,7 @@ public class LevelEditorWindow : EditorWindow
     {
         GameObject go = GameObject.FindWithTag("GameManager");
         levelSetup = (LevelSetup)go.GetComponent(typeof(LevelSetup));
-        if(levelSetup == null )Debug.Log("Add LevelSetup to GameManager GameObject!");
+        if(levelSetup == null ) Debug.Log("Add LevelSetup to GameManager GameObject!");
     }
 
     private void OnGUI()
@@ -160,6 +160,10 @@ public class LevelEditorWindow : EditorWindow
                         {
                             Selection.activeGameObject.GetComponent<LevelStateEvents>().SetLevelState(levelStates);
                             Selection.activeGameObject.GetComponent<LevelStateEvents>().CheckActiveEvents();
+                            EditorUtility.SetDirty(levelSetup);
+                            EditorUtility.SetDirty(Selection.activeGameObject);
+                            //levelSetup.levelStatesEvt[0].SetLevelState(levelStates);
+                            //levelSetup.levelStatesEvt[0].CheckActiveEvents();
                         }
                     }
 
@@ -275,6 +279,10 @@ public class LevelEditorWindow : EditorWindow
                         {
                             Selection.activeGameObject.GetComponent<LevelEventEvents>().SetLevelEvents(levelEvents);
                             Selection.activeGameObject.GetComponent<LevelEventEvents>().CheckActiveEvents();
+                            EditorUtility.SetDirty(levelSetup);
+                            EditorUtility.SetDirty(Selection.activeGameObject);
+                            //levelSetup.levelEventsEvt[0].SetLevelEvents(levelEvents);
+                            //levelSetup.levelEventsEvt[0].CheckActiveEvents();
                         }
                     }
 
@@ -388,6 +396,10 @@ public class LevelEditorWindow : EditorWindow
                         {
                             Selection.activeGameObject.GetComponent<PlayerStatesEvents>().SetPlayerState(playerStates);
                             Selection.activeGameObject.GetComponent<PlayerStatesEvents>().CheckActiveEvents();
+                            EditorUtility.SetDirty(levelSetup);
+                            EditorUtility.SetDirty(Selection.activeGameObject);
+                            //levelSetup.playerStatesEvt[0].SetPlayerState(playerStates);
+                            //levelSetup.playerStatesEvt[0].CheckActiveEvents();
                         }
                     }
 

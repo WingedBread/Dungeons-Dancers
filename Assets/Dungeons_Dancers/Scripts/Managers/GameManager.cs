@@ -220,6 +220,7 @@ public class GameManager : MonoBehaviour
     #region Getters & Setters
     public int GetPoints(int min, int current, int max)
     {
+        if(satisController == null) satisController = GetComponent<SatisfactionController>();
         if (min == 1 && current == 0 && max == 0) return satisController.GetSatisfactionPoints(1, 0, 0);
         else if (min == 0 && current == 1 && max == 0) return satisController.GetSatisfactionPoints(0, 1, 0);
         else if (min == 0 && current == 0 && max == 1) return satisController.GetSatisfactionPoints(0, 0, 1);
