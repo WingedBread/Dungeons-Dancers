@@ -141,7 +141,6 @@ public class GameManager : MonoBehaviour
         state = LevelStates.LevelEnd;
         debugController.GameState((int)state);
         levelSetup.EvtWinLevel();
-        auController.PlayEndLevel();
         gameStart = false;
         rhythmController.SetRhythm(false);
         uiController.WinUI();
@@ -163,8 +162,9 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
-        if (!godMode) { 
-            auController.PlayRetry();
+        if (!godMode) 
+        {
+            
         }
     }
 
@@ -208,18 +208,16 @@ public class GameManager : MonoBehaviour
         uiController.RemovePointUI();
     }
 
-    public void CoinBehaviour(int coins, bool cons)
+    public void CoinBehaviour(int coins)
     {
         uiController.CoinsUI(coins);
-        auController.PlayCoin(cons);
     }
     public void CollectibleBehaviour(int collectible)
     {
         uiController.CollectibleUI(collectible);
-        auController.PlayCollectible();
     }
     public void DoorBehaviour(){
-        auController.PlayDoor();
+        levelSetup.EvtDoor();
     }
 
     #region Getters & Setters

@@ -110,7 +110,7 @@ public class PlayerManager : MonoBehaviour
         collectiblesController.AddCoin();
         col.gameObject.SetActive(false);
         levelSetup.EvtGetSparkle();
-        gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()), false);
+        gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()));
     }
 
     public void KeyBehaviour(Collider col)

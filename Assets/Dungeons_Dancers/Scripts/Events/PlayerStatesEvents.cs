@@ -56,4 +56,5 @@ public class PlayerStatesEvents : MonoBehaviour {
         for (int i = 0; i < activeEvents.Length; i++) if (activeEvents[i] == true) w++;
         return w;
     }
+
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelSetup : MonoBehaviour {
 
     public List<LevelEventEvents> levelEventsEvt;
-    public List<LevelStateEvents> levelStatesEvt;
+    public List<LevelStatesEvents> levelStatesEvt;
     public List<PlayerStatesEvents> playerStatesEvt;
 
     #region Events
@@ -251,7 +251,7 @@ public class LevelSetup : MonoBehaviour {
         }
         Debug.Log("WrongMove");
     }
-    //Trap Events(?)
+
     public void EvtOnShoot()
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
@@ -263,6 +263,19 @@ public class LevelSetup : MonoBehaviour {
             }
         }
         Debug.Log("OnShoot");
+    }
+
+    public void EvtDoor()
+    {
+        for (int i = 0; i < levelEventsEvt.Count; i++)
+        {
+            if (levelEventsEvt[i].activeEvents[21])
+            {
+                levelEventsEvt[i].EventContainer();
+                Debug.Log("Door_Event");
+            }
+        }
+        Debug.Log("Door");
     }
     #endregion
 

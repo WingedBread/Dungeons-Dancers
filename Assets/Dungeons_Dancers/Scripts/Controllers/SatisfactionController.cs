@@ -54,12 +54,12 @@ public class SatisfactionController : MonoBehaviour {
 
     void PointEvents()
     {
-        if (points == 0 && pointsflag != 0)
+        if (points <= 0 && pointsflag != 0)
         {
             gameManager.levelSetup.EvtSatisfactionZero();
             pointsflag = 0;
         }
-        else if (points < 15 && points > 0 &&pointsflag != 1) 
+        else if (points < 15 && points > 0 && pointsflag != 1) 
         { 
             gameManager.levelSetup.EvtSatisfactionLvl1();
             pointsflag = 1;

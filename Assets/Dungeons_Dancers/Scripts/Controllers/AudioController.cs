@@ -17,16 +17,6 @@ public class AudioController : MonoBehaviour {
     [Header("AudioClips")]
     [SerializeField]
     private AudioClip introClip;
-    [SerializeField]
-    private AudioClip coinClip;
-    [SerializeField]
-    private AudioClip keyClip;
-    [SerializeField]
-    private AudioClip endLeveClip;
-    [SerializeField]
-    private AudioClip retryClip;
-    [SerializeField]
-    private AudioClip doorClip;
 
     private AudioSource audioSource;
 	// Use this for initialization
@@ -50,47 +40,6 @@ public class AudioController : MonoBehaviour {
     public void UnmuteSound()
     {
         PointsSnapshotCheck();
-    }
-
-    public void PlayCoin(bool consecutive){
-        audioSource.volume = 0.1f;
-        audioSource.clip = coinClip;
-        if (consecutive)
-        {
-            audioSource.pitch = audioSource.pitch + 0.1f;
-            audioSource.Play();
-        }
-        else
-        {
-            audioSource.pitch = 1;
-            audioSource.Play();
-        } 
-    }
-
-    public void PlayCollectible(){
-        audioSource.volume = 1f;
-        audioSource.clip = keyClip;
-        audioSource.Play();
-    }
-
-    public void PlayDoor(){
-        audioSource.volume = 1f;
-        audioSource.clip = doorClip;
-        audioSource.Play();
-    }
-
-    public void PlayRetry()
-    {
-        audioSource.volume = 1f;
-        audioSource.clip = retryClip;
-        audioSource.Play();
-    }
-
-    public void PlayEndLevel()
-    {
-        audioSource.volume = 1f;
-        audioSource.clip = endLeveClip;
-        audioSource.Play();
     }
 
     public void PlayIntro()

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 
-public class LevelStateEvents : MonoBehaviour {
+public class LevelStatesEvents : MonoBehaviour {
     
     private AudioSource audioSource;
     private Animator animator;
