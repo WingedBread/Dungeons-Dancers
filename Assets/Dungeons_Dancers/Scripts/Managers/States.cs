@@ -8,12 +8,22 @@
 
 public enum LevelStates
 {
+    None,
     LevelStart,
     LevelPaused,
     LevelPlay,
-    LevelEnd
+    LevelEnd, 
+
 }
 
+public enum SatisfactionStates
+{
+    None,
+    SatisfactionLvl1,
+    SatisfactionLvl2,
+    SatisfactionLvl3,
+    SatisfactionClimax
+}
 public enum LevelEvents
 {
     IntroStart, IntroEnd, StartPlay, OnBeat, BeatBehaviour, OnCheckpoint, WinLevel, GetSparkle, GetKey, TimeNearOver,
@@ -22,6 +32,7 @@ public enum LevelEvents
 
 public enum PlayerStates
 {
+    None, 
     Dancing,
     Hit,
     Succeed

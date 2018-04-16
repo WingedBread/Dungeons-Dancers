@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 
+[RequireComponent(typeof(AudioSource))]
 public class LevelStatesEvents : MonoBehaviour {
     
     private AudioSource audioSource;
@@ -10,8 +11,13 @@ public class LevelStatesEvents : MonoBehaviour {
     Ease easingListIn;
     Ease easingListOut;
 
-    LevelStates levelStates;
+    [SerializeField]
+    LevelStates[] levelStates;
 
+    [SerializeField]
+    private AudioClip[] auClip;
+
+    [HideInInspector]
     public bool[] activeEvents = new bool[3];
 
 	void Start()
@@ -22,7 +28,7 @@ public class LevelStatesEvents : MonoBehaviour {
 
     public void SetLevelState(LevelStates state)
     {
-        levelStates = state;
+        levelStates[0] = state;
     }
 
     public void EventContainer()
@@ -32,7 +38,7 @@ public class LevelStatesEvents : MonoBehaviour {
 
     public int GetRuntimeActiveEvents()
     {
-        return (int)levelStates;
+        return (int)levelStates[0];
     }
 
     public void CheckActiveEvents()
@@ -47,7 +53,7 @@ public class LevelStatesEvents : MonoBehaviour {
 
     public void UncheckLastEvent()
     {
-        activeEvents[(int)levelStates] = false;
+        activeEvents[(int)levelStates[0]] = false;
     }
 
     public int GetActiveEventsCount()

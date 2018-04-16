@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerStatesEvents : MonoBehaviour {
     
     private AudioSource audioSource;
@@ -10,8 +11,13 @@ public class PlayerStatesEvents : MonoBehaviour {
     Ease easingListIn;
     Ease easingListOut;
 
-    PlayerStates playerStates;
+    [SerializeField]
+    PlayerStates[] playerStates;
 
+    [SerializeField]
+    private AudioClip[] auClip;
+
+    [HideInInspector]
     public bool[] activeEvents = new bool[2];
 
     void Start()
@@ -22,7 +28,7 @@ public class PlayerStatesEvents : MonoBehaviour {
 
     public void SetPlayerState(PlayerStates state)
     {
-        playerStates = state;
+        playerStates[0] = state;
     }
 
     public void EventContainer()
@@ -32,7 +38,7 @@ public class PlayerStatesEvents : MonoBehaviour {
 
     public int GetRuntimeActiveEvents()
     {
-        return (int)playerStates;
+        return (int)playerStates[0];
     }
 
     public void CheckActiveEvents()
@@ -47,7 +53,7 @@ public class PlayerStatesEvents : MonoBehaviour {
 
     public void UncheckLastEvent()
     {
-        activeEvents[(int)playerStates] = false;
+        activeEvents[(int)playerStates[0]] = false;
     }
 
     public int GetActiveEventsCount()
