@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        levelSetup = gameManager.GetComponent<LevelSetup>();
+        
         state = PlayerStates.Dancing;
         levelSetup.PlayerStatesEvts(state);
         debugController.PlayerState((int)state);
@@ -50,6 +50,7 @@ public class PlayerManager : MonoBehaviour
         mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
         spawnPosition = transform.position;
         spawnInitPosition = transform.position;
+        //levelSetup = gameManager.GetComponent<LevelSetup>();
     }
 
     void Update()

@@ -13,6 +13,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[0])
             {
                 levelEventsEvt[i].EventContainer();
@@ -25,6 +26,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[1])
             {
                 levelEventsEvt[i].EventContainer();
@@ -37,6 +39,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[2])
             {
                 levelEventsEvt[i].EventContainer();
@@ -49,6 +52,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[3])
             {
                 levelEventsEvt[i].EventContainer();
@@ -61,6 +65,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[4])
             {
                 levelEventsEvt[i].EventContainer();
@@ -73,6 +78,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[5])
             {
                 levelEventsEvt[i].EventContainer();
@@ -85,6 +91,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[6])
             {
                 levelEventsEvt[i].EventContainer();
@@ -97,6 +104,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[7])
             {
                 levelEventsEvt[i].EventContainer();
@@ -109,6 +117,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[8])
             {
                 levelEventsEvt[i].EventContainer();
@@ -121,6 +130,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[9])
             {
                 levelEventsEvt[i].EventContainer();
@@ -133,6 +143,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[10])
             {
                 levelEventsEvt[i].EventContainer();
@@ -145,6 +156,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[11])
             {
                 levelEventsEvt[i].EventContainer();
@@ -157,6 +169,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[12])
             {
                 levelEventsEvt[i].EventContainer();
@@ -169,6 +182,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[13])
             {
                 levelEventsEvt[i].EventContainer();
@@ -181,6 +195,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[14])
             {
                 levelEventsEvt[i].EventContainer();
@@ -193,6 +208,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[15])
             {
                 levelEventsEvt[i].EventContainer();
@@ -206,6 +222,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[16])
             {
                 levelEventsEvt[i].EventContainer();
@@ -218,6 +235,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[17])
             {
                 levelEventsEvt[i].EventContainer();
@@ -230,6 +248,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[18])
             {
                 levelEventsEvt[i].EventContainer();
@@ -243,6 +262,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[19])
             {
                 levelEventsEvt[i].EventContainer();
@@ -256,6 +276,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[20])
             {
                 levelEventsEvt[i].EventContainer();
@@ -269,6 +290,7 @@ public class LevelSetup : MonoBehaviour {
     {
         for (int i = 0; i < levelEventsEvt.Count; i++)
         {
+            if (levelEventsEvt[i] == null) levelEventsEvt.Remove(levelEventsEvt[i]);
             if (levelEventsEvt[i].activeEvents[21])
             {
                 levelEventsEvt[i].EventContainer();
@@ -286,6 +308,7 @@ public class LevelSetup : MonoBehaviour {
             case LevelStates.LevelStart:
                 for (int i = 0; i < levelStatesEvt.Count; i++)
                 {
+                    if (levelStatesEvt[i] == null) levelStatesEvt.Remove(levelStatesEvt[i]);
                     levelStatesEvt[i].EventContainer();
                     Debug.Log("LevelStart_Event");
                 }
@@ -294,6 +317,7 @@ public class LevelSetup : MonoBehaviour {
             case LevelStates.LevelPaused:
                 for (int i = 0; i < levelStatesEvt.Count; i++)
                 {
+                    if (levelStatesEvt[i] == null) levelStatesEvt.Remove(levelStatesEvt[i]);
                     levelStatesEvt[i].EventContainer();
                     Debug.Log("LevelPaused_Event");
                 }
@@ -302,6 +326,7 @@ public class LevelSetup : MonoBehaviour {
             case LevelStates.LevelPlay:
                 for (int i = 0; i < levelStatesEvt.Count; i++)
                 {
+                    if (levelStatesEvt[i] == null) levelStatesEvt.Remove(levelStatesEvt[i]);
                     levelStatesEvt[i].EventContainer();
                     Debug.Log("LevelPlay_Event");
                 }
@@ -310,6 +335,7 @@ public class LevelSetup : MonoBehaviour {
             case LevelStates.LevelEnd:
                 for (int i = 0; i < levelStatesEvt.Count; i++)
                 {
+                    if (levelStatesEvt[i] == null) levelStatesEvt.Remove(levelStatesEvt[i]);
                     levelStatesEvt[i].EventContainer();
                     Debug.Log("LevelEnd_Event");
                 }
@@ -325,6 +351,7 @@ public class LevelSetup : MonoBehaviour {
             case PlayerStates.Dancing:
                 for (int i = 0; i < playerStatesEvt.Count; i++)
                 {
+                    if (playerStatesEvt[i] == null) playerStatesEvt.Remove(playerStatesEvt[i]);
                     playerStatesEvt[i].EventContainer();
                     Debug.Log("PlayerDancing_Event");
                 }
@@ -333,6 +360,7 @@ public class LevelSetup : MonoBehaviour {
             case PlayerStates.Hit:
                 for (int i = 0; i < playerStatesEvt.Count; i++)
                 {
+                    if (playerStatesEvt[i] == null) playerStatesEvt.Remove(playerStatesEvt[i]);
                     playerStatesEvt[i].EventContainer();
                     Debug.Log("PlayerHit_Event");
                 }
@@ -341,6 +369,7 @@ public class LevelSetup : MonoBehaviour {
             case PlayerStates.Succeed:
                 for (int i = 0; i < playerStatesEvt.Count; i++)
                 {
+                    if (playerStatesEvt[i] == null) playerStatesEvt.Remove(playerStatesEvt[i]);
                     playerStatesEvt[i].EventContainer();
                     Debug.Log("PlayerSucceed_Event");
                 }
