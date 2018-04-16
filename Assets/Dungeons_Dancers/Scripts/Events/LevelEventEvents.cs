@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using SonicBloom.Koreo;
 
+[RequireComponent(typeof(AudioSource))]
 public class LevelEventEvents : MonoBehaviour {
 
     private AudioSource audioSource;
@@ -10,9 +12,25 @@ public class LevelEventEvents : MonoBehaviour {
     Ease easingListIn;
     Ease easingListOut;
 
-    LevelEvents levelEvents;
+    [SerializeField]
+    LevelStates levelStates;
+    [Header("ONLY WORKS ON LEVEL STATE = PLAY!")]
+    [SerializeField]
+    PlayerStates playerStates;
+    [SerializeField]
+    SatisfactionStates satisfactionStates;
 
-    //[HideInInspector]
+    [SerializeField]
+    LevelEvents[] levelEvents;
+
+    [SerializeField]
+    private AudioClip[] auClip;
+    [Space]
+
+    [EventID]
+    public string beatBhv;
+
+    [HideInInspector]
     public bool[] activeEvents = new bool[21];
 
     void Start()
@@ -23,7 +41,7 @@ public class LevelEventEvents : MonoBehaviour {
 
     public void SetLevelEvents(LevelEvents state)
     {
-        levelEvents = state;
+        levelEvents[0] = state;
     }
 
     public void EventContainer()
@@ -33,7 +51,7 @@ public class LevelEventEvents : MonoBehaviour {
 
     public int GetRuntimeActiveEvents()
     {
-        return (int)levelEvents;
+        return (int)levelEvents[0];
     }
 
     public void CheckActiveEvents()
@@ -48,7 +66,7 @@ public class LevelEventEvents : MonoBehaviour {
 
     public void UncheckLastEvent()
     {
-        activeEvents[(int)levelEvents] = false;
+        activeEvents[(int)levelEvents[0]] = false;
     }
 
     public int GetActiveEventsCount()

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LevelSetup))]
 [RequireComponent(typeof(SatisfactionController))]
 [RequireComponent(typeof(IntroController))]
 [RequireComponent (typeof(AudioController))]
