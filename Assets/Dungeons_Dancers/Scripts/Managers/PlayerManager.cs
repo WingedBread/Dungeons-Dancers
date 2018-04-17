@@ -6,9 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(InputController))]
 public class PlayerManager : MonoBehaviour
 {
-    [Header("Setup Level")]
-    [SerializeField]
-    private LevelSetup levelSetup;
 
     [Header("Game Manager")]
     [HideInInspector]
@@ -39,18 +36,16 @@ public class PlayerManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
-        state = PlayerStates.Dancing;
-        levelSetup.PlayerStatesEvts(state);
         debugController.PlayerState((int)state);
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        state = PlayerStates.Dancing;
+        gameManager.levelSetup.PlayerStatesEvts(state);
         inputController = GetComponent<InputController>();
         collectiblesController = GetComponent<CollectiblesController>();
         animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
         spawnPosition = transform.position;
         spawnInitPosition = transform.position;
-        //levelSetup = gameManager.GetComponent<LevelSetup>();
     }
 
     void Update()
@@ -66,7 +61,7 @@ public class PlayerManager : MonoBehaviour
 
     public void CorrectInput()
     {
-        levelSetup.EvtGoodMove();
+        gameManager.levelSetup.EvtGoodMove();
         mat.color = Color.green;
         gameManager.AddPoint();
         StartCoroutine(ReturnIdle());
@@ -74,7 +69,7 @@ public class PlayerManager : MonoBehaviour
 
     public void IncorrectInput()
     {
-        levelSetup.EvtWrongMove();
+        gameManager.levelSetup.EvtWrongMove();
         mat.color = Color.red;
         gameManager.RemovePoint();
         StartCoroutine(ReturnIdle());
@@ -91,7 +86,7 @@ public class PlayerManager : MonoBehaviour
     public void ExitBehaviour()
     {
         state = PlayerStates.Succeed;
-        levelSetup.PlayerStatesEvts(state);
+        gameManager.levelSetup.PlayerStatesEvts(state);
         debugController.PlayerState((int)state);
         gameManager.Win();
     }
@@ -99,8 +94,8 @@ public class PlayerManager : MonoBehaviour
     public void TrapBehaviour()
     {
         state = PlayerStates.Hit;
-        levelSetup.PlayerStatesEvts(state);
-        levelSetup.EvtOnHit();
+        gameManager.levelSetup.PlayerStatesEvts(state);
+        gameManager.levelSetup.EvtOnHit();
         debugController.PlayerState((int)state);
         StartCoroutine(ResetPlayer(false));
     }
@@ -110,7 +105,7 @@ public class PlayerManager : MonoBehaviour
         collectibles.Add(col.gameObject);
         collectiblesController.AddCoin();
         col.gameObject.SetActive(false);
-        levelSetup.EvtGetSparkle();
+        gameManager.levelSetup.EvtGetSparkle();
         gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()));
     }
 
@@ -119,13 +114,13 @@ public class PlayerManager : MonoBehaviour
         collectibles.Add(col.gameObject);
         collectiblesController.AddKey(int.Parse(col.gameObject.name.Substring(0, 2)));
         col.gameObject.SetActive(false);
-        levelSetup.EvtGetKey();
+        gameManager.levelSetup.EvtGetKey();
         gameManager.CollectibleBehaviour(int.Parse(col.gameObject.name.Substring(0, 2)));
     }
 
     public void SpawnBehaviour(Collider col)
     {
-        if (spawnPosition != col.gameObject.transform.position) levelSetup.EvtOnCheckpoint();
+        if (spawnPosition != col.gameObject.transform.position) gameManager.levelSetup.EvtOnCheckpoint();
         spawnPosition = col.gameObject.transform.position;
     }
 
@@ -171,7 +166,7 @@ public class PlayerManager : MonoBehaviour
             collectibles.Clear();
             collectiblesController.Reset();
             state = PlayerStates.Dancing;
-            levelSetup.PlayerStatesEvts(state);
+            gameManager.levelSetup.PlayerStatesEvts(state);
             debugController.PlayerState((int)state);
             StopCoroutine("ResetPlayer");
         }
@@ -183,7 +178,7 @@ public class PlayerManager : MonoBehaviour
             if (spawnPosition != spawnInitPosition) inputController.SetRotation(2);
             else inputController.SetRotation(1);
             state = PlayerStates.Dancing;
-            levelSetup.PlayerStatesEvts(state);
+            gameManager.levelSetup.PlayerStatesEvts(state);
             debugController.PlayerState((int)state);
             StopCoroutine("ResetPlayer");
 
