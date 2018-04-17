@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [Header("Setup Level")]
     public LevelSetup levelSetup;
 
+    public List<LevelEventsAudio> levelEventsAudios = new List<LevelEventsAudio>();
+
     [Header("Player Manager")][SerializeField]
     private PlayerManager playerManager;
 

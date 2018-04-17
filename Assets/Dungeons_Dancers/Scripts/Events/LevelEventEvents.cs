@@ -6,11 +6,6 @@ using SonicBloom.Koreo;
 public class LevelEventEvents : MonoBehaviour {
 
     private AudioSource audioSource;
-    private Animator animator;
-    private GameObject particles;
-
-    Ease easingListIn;
-    Ease easingListOut;
 
     [SerializeField]
     LevelStates levelStates;
@@ -23,12 +18,13 @@ public class LevelEventEvents : MonoBehaviour {
     [SerializeField]
     LevelEvents[] levelEvents;
 
-    [SerializeField]
-    private AudioClip[] auClip;
     [Space]
-
+    [Header("ONLY WORKS ON LEVEL EVENT = BEAT BEHAVIOUR!")]
     [EventID]
     public string beatBhv;
+
+    [SerializeField]
+    private AudioClip[] auClip;
 
     [HideInInspector]
     public bool[] activeEvents = new bool[21];
@@ -36,7 +32,6 @@ public class LevelEventEvents : MonoBehaviour {
     void Start()
     {
         if(this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
-        if (this.gameObject.GetComponent<Animator>() != null) animator = GetComponent<Animator>();
     }
 
     public void SetLevelEvents(LevelEvents state)
