@@ -10,10 +10,7 @@ using UnityEngine;
 [RequireComponent(typeof(EventController))]
 public class GameManager : MonoBehaviour
 {
-    [Header("Setup Level")]
-    public LevelSetup levelSetup;
-
-    public List<LevelEventsAudio> levelEventsAudios = new List<LevelEventsAudio>();
+    public List<LevelEventsAudio> levelEventsAudios;
 
     [Header("Player Manager")][SerializeField]
     private PlayerManager playerManager;
@@ -40,8 +37,6 @@ public class GameManager : MonoBehaviour
 
     private int currentLevelState = 0;
 
-    private LevelStates state;
-
     [SerializeField]
     private DebugController debugController;
 
@@ -57,11 +52,12 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        levelSetup = GetComponent<LevelSetup>();
-        state = LevelStates.LevelStart;
-        levelSetup.LevelStatesEvts(state);
-        levelSetup.EvtIntroStart();
-        debugController.GameState((int)state);
+        if (levelEventsAudios == null) Debug.Log("hi");
+        for (int i = 0; i < levelEventsAudios.Count; i++)
+        {
+            levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
+            levelEventsAudios[i].IntroStart();
+        }
         uiController = GetComponent<UIController>();
         rhythmController = GetComponent<RhythmController>();
         auController = GetComponent<AudioController>();
@@ -82,14 +78,20 @@ public class GameManager : MonoBehaviour
             dungeonTimer -= Time.deltaTime;
             if (dungeonTimer <= 0)
             {
-                levelSetup.EvtTimeOver();
+                for (int i = 0; i < levelEventsAudios.Count; i++)
+                {
+                    levelEventsAudios[i].TimeOver();
+                }
                 Dead();
                 dungeonTimer = initDungeonTimer;
             }
 
             if (dungeonTimer < 5 && flagTimeNearOver) 
             { 
-                levelSetup.EvtTimeNearOver();
+                for (int i = 0; i < levelEventsAudios.Count; i++)
+                {
+                    levelEventsAudios[i].TimeNearOver();
+                }
                 flagTimeNearOver = false;
             }
         }
@@ -99,11 +101,12 @@ public class GameManager : MonoBehaviour
     public void IntroBehaviour(int intro){
         uiController.IntroUICheck(intro);
         if(GetIntroCounter() == 6){
-            state = LevelStates.LevelPlay;
-            levelSetup.LevelStatesEvts(state);
-            levelSetup.EvtIntroEnd();
-            levelSetup.EvtStartPlay();
-            debugController.GameState((int)state);
+            for (int i = 0; i < levelEventsAudios.Count; i++)
+            {
+                levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
+                levelEventsAudios[i].IntroEnd();
+                levelEventsAudios[i].StartPlay();
+            }
             gameStart = true;
             rhythmController.SetIntroRhythm(false);
             rhythmController.SetRhythm(true);
@@ -116,9 +119,10 @@ public class GameManager : MonoBehaviour
         {
             if (Time.timeScale > 0)
             {
-                state = LevelStates.LevelPaused;
-                levelSetup.LevelStatesEvts(state);
-                debugController.GameState((int)state);
+                for (int i = 0; i < levelEventsAudios.Count; i++)
+                {
+                    levelEventsAudios[i].SetLevelState(LevelStates.LevelPaused);
+                }
                 Time.timeScale = 0;
                 gameStart = false;
                 auController.MuteSound();
@@ -126,9 +130,10 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                state = LevelStates.LevelPlay;
-                levelSetup.LevelStatesEvts(state);
-                debugController.GameState((int)state);
+                for (int i = 0; i < levelEventsAudios.Count; i++)
+                {
+                    levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
+                }
                 Time.timeScale = 1;
                 gameStart = true;
                 auController.UnmuteSound();
@@ -139,9 +144,11 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        state = LevelStates.LevelEnd;
-        debugController.GameState((int)state);
-        levelSetup.EvtWinLevel();
+        for (int i = 0; i < levelEventsAudios.Count; i++)
+        {
+            levelEventsAudios[i].SetLevelState(LevelStates.LevelEnd);
+            levelEventsAudios[i].WinLevel();
+        }
         gameStart = false;
         rhythmController.SetRhythm(false);
         uiController.WinUI();
@@ -182,9 +189,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(playerManager.ResetPlayer(true));
         dungeonTimer = initDungeonTimer;
         flagTimeNearOver = true;
-        state = LevelStates.LevelStart;
-        levelSetup.LevelStatesEvts(state);
-        debugController.GameState((int)state);
+        for (int i = 0; i < levelEventsAudios.Count; i++)
+        {
+            levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
+        }
         satisController.ResetSatisfaction();
         auController.UnmuteSound();
         uiController.ResetUI();
@@ -218,7 +226,10 @@ public class GameManager : MonoBehaviour
         uiController.CollectibleUI(collectible);
     }
     public void DoorBehaviour(){
-        levelSetup.EvtDoor();
+        for (int i = 0; i < levelEventsAudios.Count; i++)
+        {
+            levelEventsAudios[i].Door();
+        }
     }
 
     #region Getters & Setters

@@ -28,18 +28,17 @@ public class PlayerManager : MonoBehaviour
     private Vector3 spawnInitPosition;
     private List<GameObject> collectibles = new List<GameObject>();
 
-    private PlayerStates state;
-
     [SerializeField]
     private DebugController debugController;
 
     // Use this for initialization
     void Start()
     {
-        debugController.PlayerState((int)state);
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        state = PlayerStates.Dancing;
-        gameManager.levelSetup.PlayerStatesEvts(state);
+        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+        {
+            gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Dancing);
+        }
         inputController = GetComponent<InputController>();
         collectiblesController = GetComponent<CollectiblesController>();
         animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
@@ -61,7 +60,10 @@ public class PlayerManager : MonoBehaviour
 
     public void CorrectInput()
     {
-        gameManager.levelSetup.EvtGoodMove();
+        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+        {
+            gameManager.levelEventsAudios[i].GoodMove();
+        }
         mat.color = Color.green;
         gameManager.AddPoint();
         StartCoroutine(ReturnIdle());
@@ -69,7 +71,10 @@ public class PlayerManager : MonoBehaviour
 
     public void IncorrectInput()
     {
-        gameManager.levelSetup.EvtWrongMove();
+        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+        {
+            gameManager.levelEventsAudios[i].WrongMove();
+        }
         mat.color = Color.red;
         gameManager.RemovePoint();
         StartCoroutine(ReturnIdle());
@@ -85,18 +90,20 @@ public class PlayerManager : MonoBehaviour
     #region OnTriggerMethods
     public void ExitBehaviour()
     {
-        state = PlayerStates.Succeed;
-        gameManager.levelSetup.PlayerStatesEvts(state);
-        debugController.PlayerState((int)state);
+        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+        {
+            gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Succeed);
+        }
         gameManager.Win();
     }
 
     public void TrapBehaviour()
     {
-        state = PlayerStates.Hit;
-        gameManager.levelSetup.PlayerStatesEvts(state);
-        gameManager.levelSetup.EvtOnHit();
-        debugController.PlayerState((int)state);
+        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+        {
+            gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Hit);
+            gameManager.levelEventsAudios[i].OnHit();
+        }
         StartCoroutine(ResetPlayer(false));
     }
 
@@ -105,7 +112,10 @@ public class PlayerManager : MonoBehaviour
         collectibles.Add(col.gameObject);
         collectiblesController.AddCoin();
         col.gameObject.SetActive(false);
-        gameManager.levelSetup.EvtGetSparkle();
+        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+        {
+            gameManager.levelEventsAudios[i].GetSparkle();
+        }
         gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()));
     }
 
@@ -114,13 +124,23 @@ public class PlayerManager : MonoBehaviour
         collectibles.Add(col.gameObject);
         collectiblesController.AddKey(int.Parse(col.gameObject.name.Substring(0, 2)));
         col.gameObject.SetActive(false);
-        gameManager.levelSetup.EvtGetKey();
+        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+        {
+            gameManager.levelEventsAudios[i].GetKey();
+        }
         gameManager.CollectibleBehaviour(int.Parse(col.gameObject.name.Substring(0, 2)));
     }
 
     public void SpawnBehaviour(Collider col)
     {
-        if (spawnPosition != col.gameObject.transform.position) gameManager.levelSetup.EvtOnCheckpoint();
+        if (spawnPosition != col.gameObject.transform.position) 
+        {
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].OnCheckpoint();;
+            }
+        }
+
         spawnPosition = col.gameObject.transform.position;
     }
 
@@ -165,9 +185,10 @@ public class PlayerManager : MonoBehaviour
             }
             collectibles.Clear();
             collectiblesController.Reset();
-            state = PlayerStates.Dancing;
-            gameManager.levelSetup.PlayerStatesEvts(state);
-            debugController.PlayerState((int)state);
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Dancing);
+            }
             StopCoroutine("ResetPlayer");
         }
         else
@@ -177,9 +198,10 @@ public class PlayerManager : MonoBehaviour
             transform.parent.GetChild(1).position = spawnPosition;
             if (spawnPosition != spawnInitPosition) inputController.SetRotation(2);
             else inputController.SetRotation(1);
-            state = PlayerStates.Dancing;
-            gameManager.levelSetup.PlayerStatesEvts(state);
-            debugController.PlayerState((int)state);
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Dancing);
+            }
             StopCoroutine("ResetPlayer");
 
         }

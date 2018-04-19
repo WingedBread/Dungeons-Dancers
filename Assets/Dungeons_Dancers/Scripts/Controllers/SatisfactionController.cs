@@ -42,7 +42,10 @@ public class SatisfactionController : MonoBehaviour {
                     break;
                 case 1:
                     points = points + setupValues.perfectPoints;
-                    gameManager.levelSetup.EvtPerfectMove();
+                    for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+                    {
+                        gameManager.levelEventsAudios[i].PerfectMove();
+                    }
                     break;
                 case 2:
                     points = points + setupValues.latePoints;
@@ -56,27 +59,47 @@ public class SatisfactionController : MonoBehaviour {
     {
         if (points <= 0 && pointsflag != 0)
         {
-            gameManager.levelSetup.EvtSatisfactionZero();
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].SatisfactionZero();
+                gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.None);
+            }
             pointsflag = 0;
         }
         else if (points < 15 && points > 0 && pointsflag != 1) 
         { 
-            gameManager.levelSetup.EvtSatisfactionLvl1();
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].SatisfactionLvl1();
+                gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
             pointsflag = 1;
         }
         else if (points < 30 && points > 15 && pointsflag != 2)
         {
-            gameManager.levelSetup.EvtSatisfactionLvl2();
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].SatisfactionLvl2();
+                gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
+            }
             pointsflag = 2;
         }
         else if (points < 45 && points > 30 &&pointsflag != 3)
         {
-            gameManager.levelSetup.EvtSatisfactionLvl3();
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].SatisfactionLvl3();
+                gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
+            }
             pointsflag = 3;
         }
         else if (points < 60 && points > 45 &&pointsflag != 4)
         {
-            gameManager.levelSetup.EvtSatisfactionClimax();
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].SatisfactionClimax();
+                gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
+            }
             pointsflag = 4;
         }
     } 
