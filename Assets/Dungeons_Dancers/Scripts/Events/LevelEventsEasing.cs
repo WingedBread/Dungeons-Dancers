@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using SonicBloom.Koreo;
+using DG.Tweening;
 
-[RequireComponent(typeof(AudioSource))]
-public class LevelEventsAudio : MonoBehaviour {
+public class LevelEventsEasing : MonoBehaviour {
+    
     private AudioSource audioSource;
     private GameManager gameManager;
 
@@ -39,7 +40,7 @@ public class LevelEventsAudio : MonoBehaviour {
 	private void Awake()
 	{
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        gameManager.levelEventsAudios.Add(this);
+        gameManager.levelEventsEasing.Add(this);
         for (int i = 0; i < levelEvents.Length; i++){
             for (int w = 0; w < 21; w++)
             {
@@ -47,21 +48,21 @@ public class LevelEventsAudio : MonoBehaviour {
             }
         }
 	}
-	// Use this for initialization
-	void Start () 
-    {
-        if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
-        Koreographer.Instance.RegisterForEvents(beatBhv, BeatBehaviour);
-        CheckActiveEvents();
-	}
 
-    private void Update()
-    {
+	private void Update()
+	{
         Debug.Log("bool event " + eventPlaying);
         EventContainerLevelStates();
         EventContainerPlayerStates();
         EventContainerSatisStates();
-    }
+	}
+
+	// Use this for initialization
+	void Start () 
+    {
+        if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
+        CheckActiveEvents();
+	}
 
 	void EventContainerLevelStates()
     {
@@ -183,9 +184,9 @@ public class LevelEventsAudio : MonoBehaviour {
             }
         }
     }
-    public void BeatBehaviour(KoreographyEvent kevent)
+    public void BeatBehaviour()
     {
-        if (eventPlaying && gameManager.GetGameStatus())
+        if (eventPlaying)
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
