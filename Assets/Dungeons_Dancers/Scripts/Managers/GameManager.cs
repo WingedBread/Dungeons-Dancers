@@ -93,6 +93,10 @@ public class GameManager : MonoBehaviour
                 {
                     levelEventsAudios[i].TimeOver();
                 }
+                for (int i = 0; i < levelEventsEasing.Count; i++)
+                {
+                    levelEventsEasing[i].TimeOver();
+                }
                 Dead();
                 dungeonTimer = initDungeonTimer;
             }
@@ -102,6 +106,10 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < levelEventsAudios.Count; i++)
                 {
                     levelEventsAudios[i].TimeNearOver();
+                }
+                for (int i = 0; i < levelEventsEasing.Count; i++)
+                {
+                    levelEventsEasing[i].TimeNearOver();
                 }
                 flagTimeNearOver = false;
             }
@@ -117,6 +125,12 @@ public class GameManager : MonoBehaviour
                 levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
                 levelEventsAudios[i].IntroEnd();
                 levelEventsAudios[i].StartPlay();
+            }
+            for (int i = 0; i < levelEventsEasing.Count; i++)
+            {
+                levelEventsEasing[i].SetLevelState(LevelStates.LevelPlay);
+                levelEventsEasing[i].IntroEnd();
+                levelEventsEasing[i].StartPlay();
             }
             gameStart = true;
             rhythmController.SetIntroRhythm(false);
@@ -134,6 +148,10 @@ public class GameManager : MonoBehaviour
                 {
                     levelEventsAudios[i].SetLevelState(LevelStates.LevelPaused);
                 }
+                for (int i = 0; i < levelEventsEasing.Count; i++)
+                {
+                    levelEventsEasing[i].SetLevelState(LevelStates.LevelPaused);
+                }
                 Time.timeScale = 0;
                 gameStart = false;
                 auController.MuteSound();
@@ -144,6 +162,10 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < levelEventsAudios.Count; i++)
                 {
                     levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
+                }
+                for (int i = 0; i < levelEventsEasing.Count; i++)
+                {
+                    levelEventsEasing[i].SetLevelState(LevelStates.LevelPlay);
                 }
                 Time.timeScale = 1;
                 gameStart = true;
@@ -159,6 +181,11 @@ public class GameManager : MonoBehaviour
         {
             levelEventsAudios[i].SetLevelState(LevelStates.LevelEnd);
             levelEventsAudios[i].WinLevel();
+        }
+        for (int i = 0; i < levelEventsEasing.Count; i++)
+        {
+            levelEventsEasing[i].SetLevelState(LevelStates.LevelEnd);
+            levelEventsEasing[i].WinLevel();
         }
         gameStart = false;
         rhythmController.SetRhythm(false);
@@ -204,6 +231,10 @@ public class GameManager : MonoBehaviour
         {
             levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
         }
+        for (int i = 0; i < levelEventsEasing.Count; i++)
+        {
+            levelEventsEasing[i].SetLevelState(LevelStates.LevelStart);
+        }
         satisController.ResetSatisfaction();
         auController.UnmuteSound();
         uiController.ResetUI();
@@ -240,6 +271,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < levelEventsAudios.Count; i++)
         {
             levelEventsAudios[i].Door();
+        }
+        for (int i = 0; i < levelEventsEasing.Count; i++)
+        {
+            levelEventsEasing[i].Door();
         }
     }
 

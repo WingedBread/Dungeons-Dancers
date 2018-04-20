@@ -4,7 +4,6 @@ using DG.Tweening;
 
 public class LevelEventsEasing : MonoBehaviour {
     
-    private AudioSource audioSource;
     private GameManager gameManager;
 
     [SerializeField]
@@ -23,9 +22,51 @@ public class LevelEventsEasing : MonoBehaviour {
     [EventID]
     public string beatBhv;
 
+    [Header("Scale -- Move -- Rotate")]
     [SerializeField]
-    private AudioClip[] auClip;
+    private bool scaleEasing;
+    [SerializeField]
+    private bool moveEasing;
+    [SerializeField]
+    private bool rotationEasing;
 
+    [Space(20)]
+    [Header("-OFF BEAT EASING SETTINGS-")]
+    [Header("Choose Off Beat Easing")]
+    [SerializeField]
+    private Ease easingOffBeatList;
+    [Header("Choose Scale Off Beat (if needed)")]
+    [SerializeField]
+    private Vector3 offBeatScaleVector3 = new Vector3(1, 1, 1);
+    [Header("Choose Position Off Beat (if needed)")]
+    [SerializeField]
+    private Vector3 offBeatPositionVector3 = new Vector3(0, 0, 0);
+    [Header("Choose Rotation Off Beat (if needed)")]
+    [SerializeField]
+    private Vector3 offBeatRotationVector3 = new Vector3(0, 0, 0);
+    [Header("Easing Duration Off Beat")]
+    [SerializeField]
+    private float easingOffDuration;
+
+    [Space(20)]
+    [Header("-ON BEAT EASING SETTINGS-")]
+    [Header("Choose On Beat Easing")]
+    [SerializeField]
+    private Ease easingOnBeatList;
+    [Header("Choose Scale On Beat (if needed)")]
+    [SerializeField]
+    private Vector3 onBeatScaleVector3 = new Vector3(1, 1, 1);
+    [Header("Choose Position On Beat (if needed)")]
+    [SerializeField]
+    private Vector3 onBeatPositionVector3 = new Vector3(0, 0, 0);
+    [Header("Choose Rotation On Beat (if needed)")]
+    [SerializeField]
+    private Vector3 onBeatRotationVector3 = new Vector3(0, 0, 0);
+    [Header("Easing Duration On Beat")]
+    [SerializeField]
+    private float easingOnDuration;
+
+    [Space(20)]
     [HideInInspector]
     public LevelStates managerLS;
     [HideInInspector]
@@ -49,27 +90,28 @@ public class LevelEventsEasing : MonoBehaviour {
         }
 	}
 
-	private void Update()
-	{
-        Debug.Log("bool event " + eventPlaying);
-        EventContainerLevelStates();
-        EventContainerPlayerStates();
-        EventContainerSatisStates();
-	}
-
 	// Use this for initialization
 	void Start () 
     {
-        if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
+        for (int w = 0; w < levelEvents.Length; w++)
+        {
+            if (levelEvents[w] == LevelEvents.BeatBehaviour) Koreographer.Instance.RegisterForEvents(beatBhv, BeatBehaviour);
+        }
         CheckActiveEvents();
 	}
+
+    private void Update()
+    {
+        EventContainerLevelStates();
+        EventContainerPlayerStates();
+        EventContainerSatisStates();
+    }
 
 	void EventContainerLevelStates()
     {
         switch (levelStates)
         {
             case LevelStates.None:
-                Debug.Log("Nothing will happen!");
                 eventPlaying = true;
                 break;
             case LevelStates.LevelStart:
@@ -131,9 +173,30 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 0])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if(rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
                 }
             }
         }
@@ -147,9 +210,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 1])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -162,9 +245,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 2])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -177,24 +280,64 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 3])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
     }
-    public void BeatBehaviour()
+    public void BeatBehaviour(KoreographyEvent kevent)
     {
-        if (eventPlaying)
+        if (eventPlaying && gameManager.GetGameStatus())
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
                 if (activeLevelEvents[w, 4])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -207,9 +350,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 5])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -222,9 +385,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 6])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -237,9 +420,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 7])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -252,9 +455,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 8])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -267,9 +490,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 9])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -282,9 +525,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 10])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if(scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -297,9 +560,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 11])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -312,9 +595,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 12])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -328,9 +631,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 13])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -343,9 +666,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 14])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -358,9 +701,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 15])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -373,9 +736,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 16])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -388,9 +771,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 17])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -403,9 +806,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 18])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -418,9 +841,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 19])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -433,9 +876,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 20])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -448,9 +911,29 @@ public class LevelEventsEasing : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 21])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
+                        s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        eventPlaying = false;
+                    }
                 }
             }
         }

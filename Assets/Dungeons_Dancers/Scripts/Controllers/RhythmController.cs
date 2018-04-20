@@ -103,6 +103,10 @@ public class RhythmController : MonoBehaviour
         {
             gameManager.levelEventsAudios[i].OnBeat();
         }
+        for (int i = 0; i < gameManager.levelEventsEasing.Count; i++)
+        {
+            gameManager.levelEventsEasing[i].OnBeat();
+        }
 
         debugController.RhythmBeatPlayerDebug(kBeatEvent.StartSample);
         debugController.RhythmBeatDurationDebug(kBeatEvent.StartSample - lastEndSample);

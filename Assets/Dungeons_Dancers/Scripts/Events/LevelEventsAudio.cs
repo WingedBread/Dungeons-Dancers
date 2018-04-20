@@ -51,13 +51,15 @@ public class LevelEventsAudio : MonoBehaviour {
 	void Start () 
     {
         if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
-        Koreographer.Instance.RegisterForEvents(beatBhv, BeatBehaviour);
+        for (int w = 0; w < levelEvents.Length; w++)
+        {
+            if (levelEvents[w] == LevelEvents.BeatBehaviour) Koreographer.Instance.RegisterForEvents(beatBhv, BeatBehaviour);
+        }
         CheckActiveEvents();
 	}
 
     private void Update()
     {
-        Debug.Log("bool event " + eventPlaying);
         EventContainerLevelStates();
         EventContainerPlayerStates();
         EventContainerSatisStates();
@@ -68,7 +70,6 @@ public class LevelEventsAudio : MonoBehaviour {
         switch (levelStates)
         {
             case LevelStates.None:
-                Debug.Log("Nothing will happen!");
                 eventPlaying = true;
                 break;
             case LevelStates.LevelStart:
