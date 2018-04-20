@@ -17,11 +17,11 @@ public class LevelEventsAudio : MonoBehaviour {
     [SerializeField]
     LevelEvents[] levelEvents;
 
-    [Space]
     [Header("ONLY WORKS ON LEVEL EVENT = BEAT BEHAVIOUR!")]
     [EventID]
     public string beatBhv;
 
+    [Space]
     [SerializeField]
     private AudioClip[] auClip;
 

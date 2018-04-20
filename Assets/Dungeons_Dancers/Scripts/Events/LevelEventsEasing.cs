@@ -17,11 +17,12 @@ public class LevelEventsEasing : MonoBehaviour {
     [SerializeField]
     LevelEvents[] levelEvents;
 
-    [Space]
     [Header("ONLY WORKS ON LEVEL EVENT = BEAT BEHAVIOUR!")]
     [EventID]
     public string beatBhv;
 
+
+    [Space]
     [Header("Scale -- Move -- Rotate")]
     [SerializeField]
     private bool scaleEasing;
@@ -30,43 +31,51 @@ public class LevelEventsEasing : MonoBehaviour {
     [SerializeField]
     private bool rotationEasing;
 
-    [Space(20)]
-    [Header("-OFF BEAT EASING SETTINGS-")]
+    [Space]
+    [Header("EASING SETTINGS:")]
     [Header("Choose Off Beat Easing")]
     [SerializeField]
     private Ease easingOffBeatList;
-    [Header("Choose Scale Off Beat (if needed)")]
-    [SerializeField]
-    private Vector3 offBeatScaleVector3 = new Vector3(1, 1, 1);
-    [Header("Choose Position Off Beat (if needed)")]
-    [SerializeField]
-    private Vector3 offBeatPositionVector3 = new Vector3(0, 0, 0);
-    [Header("Choose Rotation Off Beat (if needed)")]
-    [SerializeField]
-    private Vector3 offBeatRotationVector3 = new Vector3(0, 0, 0);
-    [Header("Easing Duration Off Beat")]
-    [SerializeField]
-    private float easingOffDuration;
-
-    [Space(20)]
-    [Header("-ON BEAT EASING SETTINGS-")]
     [Header("Choose On Beat Easing")]
     [SerializeField]
     private Ease easingOnBeatList;
-    [Header("Choose Scale On Beat (if needed)")]
+
+    [Space]
+    [Header("SCALE SETTINGS:")]
+    [Header("Choose Scale IN Easing")]
     [SerializeField]
     private Vector3 onBeatScaleVector3 = new Vector3(1, 1, 1);
-    [Header("Choose Position On Beat (if needed)")]
+    [Header("Choose Scale OUT Easing")]
+    [SerializeField]
+    private Vector3 offBeatScaleVector3 = new Vector3(1, 1, 1);
+
+    [Space]
+    [Header("MOVEMENT SETTINGS:")]
+    [Header("Choose Position IN Easing")]
     [SerializeField]
     private Vector3 onBeatPositionVector3 = new Vector3(0, 0, 0);
-    [Header("Choose Rotation On Beat (if needed)")]
+    [Header("Choose Position OUT Easing")]
+    [SerializeField]
+    private Vector3 offBeatPositionVector3 = new Vector3(0, 0, 0);
+
+    [Space]
+    [Header("ROTATION SETTINGS:")]
+    [Header("Choose Rotation IN Easing")]
     [SerializeField]
     private Vector3 onBeatRotationVector3 = new Vector3(0, 0, 0);
-    [Header("Easing Duration On Beat")]
+    [Header("Choose Rotation OUT Easing)")]
+    [SerializeField]
+    private Vector3 offBeatRotationVector3 = new Vector3(0, 0, 0);
+
+    [Space]
+    [Header("DURATION SETTINGS:")]
+    [Header("Easing Duration IN")]
     [SerializeField]
     private float easingOnDuration;
+    [Header("Easing Duration OUT")]
+    [SerializeField]
+    private float easingOffDuration;
 
-    [Space(20)]
     [HideInInspector]
     public LevelStates managerLS;
     [HideInInspector]
