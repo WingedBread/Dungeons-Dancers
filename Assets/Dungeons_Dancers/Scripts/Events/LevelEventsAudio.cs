@@ -33,6 +33,8 @@ public class LevelEventsAudio : MonoBehaviour {
     [HideInInspector]
     public SatisfactionStates managerSS;
 
+    bool eventPlaying = false;
+
     public bool[,] activeLevelEvents = new bool [21,21];
 
 	private void Awake()
@@ -47,325 +49,411 @@ public class LevelEventsAudio : MonoBehaviour {
         }
 	}
 
+	private void Update()
+	{
+        Debug.Log("bool event " + eventPlaying);
+        EventContainerLevelStates();
+        EventContainerPlayerStates();
+        EventContainerSatisStates();
+	}
+
 	// Use this for initialization
 	void Start () 
     {
         if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
         CheckActiveEvents();
 	}
-	
-    void EventContainerLevelStates()
+
+	void EventContainerLevelStates()
     {
-        switch (managerLS)
+        switch (levelStates)
         {
             case LevelStates.None:
                 Debug.Log("Nothing will happen!");
+                eventPlaying = true;
                 break;
             case LevelStates.LevelStart:
-                if(levelStates == managerLS)GetLevelEvent();
+                if(levelStates == managerLS)eventPlaying = true;
                 break;
             case LevelStates.LevelPaused:
-                if (levelStates == managerLS)GetLevelEvent();
+                if (levelStates == managerLS)eventPlaying = true;
                 break;
             case LevelStates.LevelPlay:
-                if (levelStates == managerLS)GetLevelEvent();
                 break;
             case LevelStates.LevelEnd:
-                if (levelStates == managerLS)GetLevelEvent();
+                if (levelStates == managerLS)eventPlaying = true;
                 break;
         }
     }
 
     void EventContainerPlayerStates(){
-        switch (managerPS)
+        switch (playerStates)
         {
             case PlayerStates.None:
-                Debug.Log("No PlayerState Selected!");
                 break;
             case PlayerStates.Dancing:
-                if(playerStates == managerPS)GetLevelEvent();
+                if(playerStates == managerPS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
                 break;
             case PlayerStates.Hit:
-                if (playerStates == managerPS)GetLevelEvent();
+                if (playerStates == managerPS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
                 break;
             case PlayerStates.Succeed:
-                if (playerStates == managerPS)GetLevelEvent();
+                if (playerStates == managerPS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
                 break;
         }
     }
 
     void EventContainerSatisStates(){
-        switch (managerSS)
+        switch (satisfactionStates)
         {
             case SatisfactionStates.None:
-                Debug.Log("Satisfaction = 0");
                 break;
             case SatisfactionStates.SatisfactionLvl1:
-                if(satisfactionStates == managerSS)GetLevelEvent();
+                if(satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
                 break;
             case SatisfactionStates.SatisfactionLvl2:
-                if (satisfactionStates == managerSS)GetLevelEvent();
+                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
                 break;
             case SatisfactionStates.SatisfactionLvl3:
-                if (satisfactionStates == managerSS)GetLevelEvent();
+                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
                 break;
             case SatisfactionStates.SatisfactionClimax:
-                if (satisfactionStates == managerSS)GetLevelEvent();
+                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
                 break;
         }
     }
 
     #region Level Events Functions
-    public void IntroStart(){
-        for (int w = 0; w < levelEvents.Length; w++)
-        {
-            if(activeLevelEvents[w,0]){
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+    public void IntroStart()
+    {
+        if (eventPlaying){
+            for (int w = 0; w < levelEvents.Length; w++)
+            {
+                if (activeLevelEvents[w, 0])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
 
     public void IntroEnd()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,1])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 1])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void StartPlay()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,2])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 2])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void OnBeat()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,3])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 3])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void BeatBehaviour()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,4])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 4])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void OnCheckpoint()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,5])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 5])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void WinLevel()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,6])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 6])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void GetSparkle()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,7])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 7])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void GetKey()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,8])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 8])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void TimeNearOver()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,10])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 9])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void TimeOver()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,11])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 10])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void SatisfactionZero()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,12])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 11])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void SatisfactionLvl1()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,13])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 12])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
 
     public void SatisfactionLvl2()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,14])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 13])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void SatisfactionLvl3()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,15])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 14])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void SatisfactionClimax()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,16])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 15])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void OnHit()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,17])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 16])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void PerfectMove()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,18])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 17])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void GoodMove()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,19])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 18])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void WrongMove()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,20])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 19])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void OnShoot()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,21])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 20])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
     }
     public void Door()
     {
-        for (int w = 0; w < levelEvents.Length; w++)
+        if (eventPlaying)
         {
-            if (activeLevelEvents[w,22])
+            for (int w = 0; w < levelEvents.Length; w++)
             {
-                audioSource.clip = auClip[w];
-                audioSource.Play();
+                if (activeLevelEvents[w, 21])
+                {
+                    audioSource.clip = auClip[w];
+                    audioSource.Play();
+                    eventPlaying = false;
+                }
             }
         }
-    }
-
-    void GetLevelEvent(){
-        //for (int w = 0; w < auClip.Length; w++)
-        //{
-        //    audioSource.clip = auClip[w];
-        //    audioSource.Play();
-        //}
-        
     }
     #endregion
 
@@ -373,6 +461,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         managerLS = le;
         EventContainerLevelStates();
+
     }
     public void SetPlayerState(PlayerStates ps)
     {
@@ -391,7 +480,6 @@ public class LevelEventsAudio : MonoBehaviour {
         for (int w = 0; w < levelEvents.Length; w++)
         {
             activeLevelEvents[w,(int)levelEvents[w]] = true;
-            Debug.Log("XD " + activeLevelEvents[w, (int)levelEvents[w]] + " W " + w + " lew " + (int)levelEvents[w]);
         }
     }
 }
