@@ -10,6 +10,7 @@ using UnityEngine;
 [RequireComponent(typeof(EventController))]
 public class GameManager : MonoBehaviour
 {
+    [HideInInspector]
     public List<LevelEventsAudio> levelEventsAudios;
 
     [Header("Player Manager")][SerializeField]
