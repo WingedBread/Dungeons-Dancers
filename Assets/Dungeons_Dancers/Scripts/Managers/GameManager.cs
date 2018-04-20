@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector]
     public List<LevelEventsAudio> levelEventsAudios;
+    [HideInInspector]
+    public List<LevelEventsEasing> levelEventsEasing;
 
     [Header("Player Manager")][SerializeField]
     private PlayerManager playerManager;
@@ -55,10 +57,18 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < levelEventsAudios.Count; i++)
         {
-            if (levelEventsAudios == null) Debug.Log("hi");
+            if (levelEventsAudios == null) Debug.Log("null audios");
             levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
             levelEventsAudios[i].IntroStart();
         }
+
+        for (int i = 0; i < levelEventsEasing.Count; i++)
+        {
+            if (levelEventsEasing == null) Debug.Log("null easing");
+            levelEventsEasing[i].SetLevelState(LevelStates.LevelStart);
+            levelEventsEasing[i].IntroStart();
+        }
+
         uiController = GetComponent<UIController>();
         rhythmController = GetComponent<RhythmController>();
         auController = GetComponent<AudioController>();
