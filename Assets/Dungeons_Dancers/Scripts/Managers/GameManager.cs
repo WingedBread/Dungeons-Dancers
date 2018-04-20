@@ -52,9 +52,9 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (levelEventsAudios == null) Debug.Log("hi");
         for (int i = 0; i < levelEventsAudios.Count; i++)
         {
+            if (levelEventsAudios == null) Debug.Log("hi");
             levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
             levelEventsAudios[i].IntroStart();
         }

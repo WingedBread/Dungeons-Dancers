@@ -33,24 +33,25 @@ public class LevelEventsAudio : MonoBehaviour {
     [HideInInspector]
     public SatisfactionStates managerSS;
 
-
-
-    bool[][] activeLevelEvents;
-    bool[] activeLevelStates = new bool[4];
-    bool[] activePlayerStates = new bool[3];
-    bool[] activeSatisfactionStates = new bool[4];
+    public bool[,] activeLevelEvents = new bool [21,21];
 
 	private void Awake()
 	{
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         gameManager.levelEventsAudios.Add(this);
+        for (int i = 0; i < levelEvents.Length; i++){
+            for (int w = 0; w < 21; w++)
+            {
+                activeLevelEvents[i,w] = false;
+            }
+        }
 	}
 
 	// Use this for initialization
 	void Start () 
     {
         if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
-        //CheckActiveEvents();
+        CheckActiveEvents();
 	}
 	
     void EventContainerLevelStates()
@@ -118,7 +119,7 @@ public class LevelEventsAudio : MonoBehaviour {
     public void IntroStart(){
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if(activeLevelEvents[w][1]){
+            if(activeLevelEvents[w,0]){
                 audioSource.clip = auClip[w];
                 audioSource.Play();
             }
@@ -129,7 +130,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][2])
+            if (activeLevelEvents[w,1])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -140,7 +141,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][3])
+            if (activeLevelEvents[w,2])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -151,7 +152,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][4])
+            if (activeLevelEvents[w,3])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -162,7 +163,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][5])
+            if (activeLevelEvents[w,4])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -173,7 +174,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][6])
+            if (activeLevelEvents[w,5])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -184,7 +185,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][7])
+            if (activeLevelEvents[w,6])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -195,7 +196,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][8])
+            if (activeLevelEvents[w,7])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -206,7 +207,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][9])
+            if (activeLevelEvents[w,8])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -217,7 +218,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][10])
+            if (activeLevelEvents[w,10])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -228,7 +229,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][11])
+            if (activeLevelEvents[w,11])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -239,7 +240,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][12])
+            if (activeLevelEvents[w,12])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -250,7 +251,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][13])
+            if (activeLevelEvents[w,13])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -262,7 +263,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][14])
+            if (activeLevelEvents[w,14])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -273,7 +274,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][15])
+            if (activeLevelEvents[w,15])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -284,7 +285,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][16])
+            if (activeLevelEvents[w,16])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -295,7 +296,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][17])
+            if (activeLevelEvents[w,17])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -306,7 +307,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][18])
+            if (activeLevelEvents[w,18])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -317,7 +318,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][19])
+            if (activeLevelEvents[w,19])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -328,7 +329,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][20])
+            if (activeLevelEvents[w,20])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -339,7 +340,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][21])
+            if (activeLevelEvents[w,21])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -350,7 +351,7 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            if (activeLevelEvents[w][22])
+            if (activeLevelEvents[w,22])
             {
                 audioSource.clip = auClip[w];
                 audioSource.Play();
@@ -389,7 +390,8 @@ public class LevelEventsAudio : MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            activeLevelEvents[w][(int)levelEvents[w]] = true;
+            activeLevelEvents[w,(int)levelEvents[w]] = true;
+            Debug.Log("XD " + activeLevelEvents[w, (int)levelEvents[w]] + " W " + w + " lew " + (int)levelEvents[w]);
         }
     }
 }
