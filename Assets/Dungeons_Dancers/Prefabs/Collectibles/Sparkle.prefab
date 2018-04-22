@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 33763211947410498}
   - component: {fileID: 23373274905021228}
   - component: {fileID: 114582555455684092}
+  - component: {fileID: 114142846457978066}
   m_Layer: 0
   m_Name: SparkleRombus
   m_TagString: Untagged
@@ -66,8 +67,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241284527079648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0.25, z: 5.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5, y: 0.25, z: 5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4410088019814606}
@@ -80,13 +81,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722337306490640}
-  m_LocalRotation: {x: -0.23911728, y: -0.09904532, z: -0.36964434, w: 0.8923991}
+  m_LocalRotation: {x: -0.23911758, y: -0.099045746, z: -0.3696438, w: 0.89239913}
   m_LocalPosition: {x: 0, y: 0, z: 0.099999905}
   m_LocalScale: {x: 0.45, y: 0.4500001, z: 0.60000014}
   m_Children: []
   m_Father: {fileID: 4410088019814606}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -30.000002, y: 0, z: -45.000004}
+  m_LocalEulerAnglesHint: {x: -30, y: 0, z: -45.000004}
 --- !u!4 &4410088019814606
 Transform:
   m_ObjectHideFlags: 1
@@ -154,13 +155,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9, z: 0.9}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114582555455684092
+--- !u!114 &114142846457978066
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722337306490640}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7867dd5c40740b08d39b427eb263ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 0
+  moveEasing: 0
+  rotationEasing: 1
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 0.6, y: 0.6, z: 0.8}
+  offBeatScaleVector3: {x: 0.45, y: 0.45, z: 0.6}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0.1}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: -30, y: 0, z: 0}
+  offBeatRotationVector3: {x: -30, y: 0, z: -45}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!114 &114582555455684092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722337306490640}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfee34ec43ddf4293afe4e88f82cf36f, type: 3}
   m_Name: 
