@@ -115,6 +115,15 @@ public class GameManager : MonoBehaviour
             }
         }
         else playerManager.SetBlock(true);
+
+        //if(Input.GetKeyDown(KeyCode.P)){
+        //    Photo();
+        //}
+    }
+
+    void Photo()
+    {
+        ScreenCapture.CaptureScreenshot("Photo.png",16);
     }
 
     public void IntroBehaviour(int intro){
