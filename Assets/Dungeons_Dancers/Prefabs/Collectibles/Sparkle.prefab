@@ -52,7 +52,6 @@ GameObject:
   - component: {fileID: 4212862339443424}
   - component: {fileID: 33763211947410498}
   - component: {fileID: 23373274905021228}
-  - component: {fileID: 114582555455684092}
   - component: {fileID: 114142846457978066}
   m_Layer: 0
   m_Name: SparkleRombus
@@ -68,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241284527079648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0.25, z: 5.5}
+  m_LocalPosition: {x: 1.5, y: 0.25, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4410088019814606}
@@ -168,9 +167,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStates: 0
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 
   levelEvents: 04000000
   beatBhv: MusicBeat
+  satisXEvent: 
   scaleEasing: 0
   moveEasing: 0
   rotationEasing: 1
@@ -187,25 +187,3 @@ MonoBehaviour:
   managerLS: 0
   managerPS: 0
   managerSS: 0
---- !u!114 &114582555455684092
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1722337306490640}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfee34ec43ddf4293afe4e88f82cf36f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventID: Trap1Event
-  moveEasing: 0
-  scaleEasing: 1
-  easingOffBeatList: 21
-  offBeatScaleVector3: {x: 0.5, y: 0.5, z: 0.5}
-  offBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOffDuration: 0.1
-  easingOnBeatList: 24
-  onBeatScaleVector3: {x: 0.75, y: 0.75, z: 0.75}
-  onBeatPositionVector3: {x: 0, y: 0, z: 0}
-  easingOnDuration: 0.05
