@@ -11,6 +11,24 @@ public class SatisfactionController : MonoBehaviour {
     [SerializeField]
     private SatisfactionBarSetup setupValues;
 
+	// --- Afegit pel Curial (pot ser que acabi modificant-se pel Jesús!) --- //
+	[Header("Satisfaction Bar modificators")]
+	[SerializeField]
+	private int ScoreGood;
+	[SerializeField]
+	private int ScoreGreat;
+	[SerializeField]
+	private int ScorePerfect;
+	[SerializeField]
+	private int ScoreBad;
+	[SerializeField]
+	private int ClimaxMaxFails;
+
+	[Header("Set track position by Satisfaction Bar percent")] // Canviar els valors hardcodejats a PointsEvents pels d'aquesta llista
+	[SerializeField]
+	private float[] TracksPosition;
+	// --- End Afegit pel Curial --- //
+
     private int points;
     private int feverPoints;
 
