@@ -46,9 +46,21 @@ public class SatisfactionController : MonoBehaviour {
                     {
                         gameManager.levelEventsAudios[i].PerfectMove();
                     }
-                    for (int i = 0; i < gameManager.levelEventsEasing.Count; i++)
+                    for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
                     {
-                        gameManager.levelEventsEasing[i].PerfectMove();
+                        gameManager.levelEventsEasing1[i].PerfectMove();
+                    }
+                    for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+                    {
+                        gameManager.levelEventsEasing2[i].PerfectMove();
+                    }
+                    for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+                    {
+                        gameManager.levelEventsEasing3[i].PerfectMove();
+                    }
+                    for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+                    {
+                        gameManager.levelEventsEasing4[i].PerfectMove();
                     }
                     break;
                 case 2:
@@ -68,10 +80,25 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsAudios[i].SatisfactionZero();
                 gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.None);
             }
-            for (int i = 0; i < gameManager.levelEventsEasing.Count; i++)
+            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
             {
-                gameManager.levelEventsEasing[i].SatisfactionZero();
-                gameManager.levelEventsEasing[i].SetSatisfactionState(SatisfactionStates.None);
+                gameManager.levelEventsEasing1[i].SatisfactionZero();
+                gameManager.levelEventsEasing1[i].SetSatisfactionState(SatisfactionStates.None);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+            {
+                gameManager.levelEventsEasing2[i].SatisfactionZero();
+                gameManager.levelEventsEasing2[i].SetSatisfactionState(SatisfactionStates.None);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+            {
+                gameManager.levelEventsEasing3[i].SatisfactionZero();
+                gameManager.levelEventsEasing3[i].SetSatisfactionState(SatisfactionStates.None);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+            {
+                gameManager.levelEventsEasing4[i].SatisfactionZero();
+                gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.None);
             }
             pointsflag = 0;
         }
@@ -82,10 +109,25 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsAudios[i].SatisfactionLvl1();
                 gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
             }
-            for (int i = 0; i < gameManager.levelEventsEasing.Count; i++)
+            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
             {
-                gameManager.levelEventsEasing[i].SatisfactionLvl1();
-                gameManager.levelEventsEasing[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+                gameManager.levelEventsEasing1[i].SatisfactionLvl1();
+                gameManager.levelEventsEasing1[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+            {
+                gameManager.levelEventsEasing2[i].SatisfactionLvl1();
+                gameManager.levelEventsEasing2[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+            {
+                gameManager.levelEventsEasing3[i].SatisfactionLvl1();
+                gameManager.levelEventsEasing3[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+            {
+                gameManager.levelEventsEasing4[i].SatisfactionLvl1();
+                gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
             }
             pointsflag = 1;
         }
@@ -96,10 +138,25 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsAudios[i].SatisfactionLvl2();
                 gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
             }
-            for (int i = 0; i < gameManager.levelEventsEasing.Count; i++)
+            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
             {
-                gameManager.levelEventsEasing[i].SatisfactionLvl2();
-                gameManager.levelEventsEasing[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
+                gameManager.levelEventsEasing1[i].SatisfactionLvl2();
+                gameManager.levelEventsEasing1[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+            {
+                gameManager.levelEventsEasing2[i].SatisfactionLvl2();
+                gameManager.levelEventsEasing2[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+            {
+                gameManager.levelEventsEasing3[i].SatisfactionLvl2();
+                gameManager.levelEventsEasing3[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+            {
+                gameManager.levelEventsEasing4[i].SatisfactionLvl2();
+                gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
             }
             pointsflag = 2;
         }
@@ -110,10 +167,25 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsAudios[i].SatisfactionLvl3();
                 gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
             }
-            for (int i = 0; i < gameManager.levelEventsEasing.Count; i++)
+            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
             {
-                gameManager.levelEventsEasing[i].SatisfactionLvl3();
-                gameManager.levelEventsEasing[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
+                gameManager.levelEventsEasing1[i].SatisfactionLvl3();
+                gameManager.levelEventsEasing1[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+            {
+                gameManager.levelEventsEasing2[i].SatisfactionLvl3();
+                gameManager.levelEventsEasing2[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+            {
+                gameManager.levelEventsEasing3[i].SatisfactionLvl3();
+                gameManager.levelEventsEasing3[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+            {
+                gameManager.levelEventsEasing4[i].SatisfactionLvl3();
+                gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
             }
             pointsflag = 3;
         }
@@ -124,10 +196,25 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsAudios[i].SatisfactionClimax();
                 gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
             }
-            for (int i = 0; i < gameManager.levelEventsEasing.Count; i++)
+            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
             {
-                gameManager.levelEventsEasing[i].SatisfactionClimax();
-                gameManager.levelEventsEasing[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
+                gameManager.levelEventsEasing1[i].SatisfactionClimax();
+                gameManager.levelEventsEasing1[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+            {
+                gameManager.levelEventsEasing2[i].SatisfactionClimax();
+                gameManager.levelEventsEasing2[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+            {
+                gameManager.levelEventsEasing3[i].SatisfactionClimax();
+                gameManager.levelEventsEasing3[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+            {
+                gameManager.levelEventsEasing4[i].SatisfactionClimax();
+                gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
             }
             pointsflag = 4;
         }
