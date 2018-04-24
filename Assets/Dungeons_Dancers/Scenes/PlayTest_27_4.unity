@@ -3696,10 +3696,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStates: 3
   playerStates: 0
-  satisfactionStates: 
+  satisfactionStates: 0
   levelEvents: 04000000
   beatBhv: Trap1Event
-  satisXEvent: 
   scaleEasing: 1
   moveEasing: 0
   rotationEasing: 0
@@ -7937,10 +7936,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStates: 0
   playerStates: 0
-  satisfactionStates: 
+  satisfactionStates: 0
   levelEvents: 04000000
   beatBhv: MusicBeat
-  satisXEvent: 
   scaleEasing: 1
   moveEasing: 0
   rotationEasing: 0
@@ -30098,10 +30096,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStates: 3
   playerStates: 0
-  satisfactionStates: 
+  satisfactionStates: 0
   levelEvents: 04000000
   beatBhv: Trap1Event
-  satisXEvent: 
   scaleEasing: 1
   moveEasing: 0
   rotationEasing: 0
@@ -51137,6 +51134,38 @@ GameObject:
   m_PrefabParentObject: {fileID: 1507458684731164, guid: 331828e5d69fcf148a4fa6dadc2c2f41,
     type: 2}
   m_PrefabInternal: {fileID: 1705212540}
+--- !u!114 &1198787863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1198787862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8722875875f7d478a963ab6155e2e895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 2
+  levelEvents: 04000000
+  beatBhv: IntroEvent
+  scaleEasing: 0
+  moveEasing: 1
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 3, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!114 &1198787865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51148,12 +51177,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7867dd5c40740b08d39b427eb263ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0100000002000000
-  levelEvents: 0300000004000000
+  satisfactionStates: 1
+  levelEvents: 03000000
   beatBhv: IntroEvent
-  satisXEvent: 0000000001000000
   scaleEasing: 0
   moveEasing: 1
   rotationEasing: 0
@@ -64136,10 +64164,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStates: 3
   playerStates: 0
-  satisfactionStates: 
+  satisfactionStates: 0
   levelEvents: 04000000
   beatBhv: Trap2Event
-  satisXEvent: 
   scaleEasing: 1
   moveEasing: 0
   rotationEasing: 0
@@ -81858,7 +81885,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelEventsAudios: []
-  levelEventsEasing: []
+  levelEventsEasing1: []
+  levelEventsEasing2: []
+  levelEventsEasing3: []
+  levelEventsEasing4: []
   playerManager: {fileID: 1896864767}
   godMode: 0
   initDungeonTimer: 60
@@ -87611,10 +87641,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStates: 3
   playerStates: 0
-  satisfactionStates: 
+  satisfactionStates: 0
   levelEvents: 04000000
   beatBhv: Trap2Event
-  satisXEvent: 
   scaleEasing: 1
   moveEasing: 0
   rotationEasing: 0
