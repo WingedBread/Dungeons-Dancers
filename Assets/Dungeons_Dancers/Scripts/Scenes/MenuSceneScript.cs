@@ -3,8 +3,12 @@ using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using SonicBloom.Koreo;
+using System.Collections;
+using SonicBloom.Koreo.Players;
 
-public class MenuScript : MonoBehaviour {
+public class MenuSceneScript : MonoBehaviour {
+
+    private SimpleMusicPlayer splayer;
 
     [SerializeField]
     private Text startText;
@@ -30,8 +34,13 @@ public class MenuScript : MonoBehaviour {
     [EventID]
     public string eventID_spot4;
 
+	private void Awake()
+	{
+        Application.targetFrameRate = 60;
+	}
 	// Use this for initialization
 	void Start () {
+        splayer = GetComponent<SimpleMusicPlayer>();
         Koreographer.Instance.RegisterForEvents(eventID_text, FadeText);
         Koreographer.Instance.RegisterForEvents(eventID_spot1, FadeSpot1);
         Koreographer.Instance.RegisterForEvents(eventID_spot2, FadeSpot2);
@@ -44,7 +53,13 @@ public class MenuScript : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(1);
+            splayer.Stop();
+            Koreographer.Instance.UnregisterForEvents(eventID_text, FadeText);
+            Koreographer.Instance.UnregisterForEvents(eventID_spot1, FadeSpot1);
+            Koreographer.Instance.UnregisterForEvents(eventID_spot2, FadeSpot2);
+            Koreographer.Instance.UnregisterForEvents(eventID_spot3, FadeSpot3);
+            Koreographer.Instance.UnregisterForEvents(eventID_spot4, FadeSpot4);
+            StartCoroutine(LoadYourAsyncScene());
         }
 	}
 
@@ -77,5 +92,15 @@ public class MenuScript : MonoBehaviour {
         Sequence j = DOTween.Sequence();
         j.Append(spotImage04.DOFade(0, 0.1f));
         j.Append(spotImage04.DOFade(1, 0.05f));
+    }
+
+    IEnumerator LoadYourAsyncScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SatisfactionController))]
 [RequireComponent(typeof(IntroController))]
@@ -54,8 +55,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 60;
-        DontDestroyOnLoad(this.gameObject);
+        //Application.targetFrameRate = 60;
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     // Use this for initialization
@@ -305,7 +306,9 @@ public class GameManager : MonoBehaviour
         rhythmController.SetRhythm(false);
         uiController.WinUI();
         auController.MuteSound();
-        StartCoroutine(Reset());
+        //StartCoroutine(Reset());
+        PlayerPrefs.SetInt("HighScoreLVL1", playerManager.GetCoins());
+        SceneManager.LoadScene(2);
     }
 
     public void Dead()

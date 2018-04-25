@@ -282,7 +282,9 @@ public class PlayerManager : MonoBehaviour
         gameManager.DoorBehaviour();
     }
 #endregion
-
+    public int GetCoins(){
+        return collectiblesController.GetCoins(gameManager.GetSatisfactionFever());
+    }
     public void SetBlock(bool Block)
     {
         inputController.SetInputBlock(Block);
