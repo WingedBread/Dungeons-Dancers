@@ -479,6 +479,9 @@ public class GameManager : MonoBehaviour
     public void PlayIntroClip(){
         auController.PlayIntro();
     }
+    public float GetSatisfactionTrackPos(int trackpos){
+        return satisController.GetTrackPosition(trackpos);
+    }
 
     #endregion
 }

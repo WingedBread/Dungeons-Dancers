@@ -7,9 +7,13 @@ public class SatisfactionController : MonoBehaviour {
     [Header("Game Manager")]
     private GameManager gameManager;
 
-    [Header("Setup Satisfaction")]
+    [Header("Bar Values")]
     [SerializeField]
-    private SatisfactionBarSetup setupValues;
+    private int initPoints;
+    [SerializeField]
+    private int minPoints;
+    [SerializeField]
+    private int maxPoints;
 
 	// --- Afegit pel Curial (pot ser que acabi modificant-se pel Jesús!) --- //
 	[Header("Satisfaction Bar modificators")]
@@ -26,7 +30,7 @@ public class SatisfactionController : MonoBehaviour {
 
 	[Header("Set track position by Satisfaction Bar percent")] // Canviar els valors hardcodejats a PointsEvents pels d'aquesta llista
 	[SerializeField]
-	private float[] TracksPosition;
+    private float[] TracksPosition = new float[5];
 	// --- End Afegit pel Curial --- //
 
     private int points;
@@ -37,8 +41,8 @@ public class SatisfactionController : MonoBehaviour {
 	// Use this for initialization
     void Awake()
     {
-        points = setupValues.initPoints;
-        feverPoints = setupValues.amountOfFailInputsWhenFever;
+        points = initPoints;
+        feverPoints = ClimaxMaxFails;
     }
 	void Start () {
         gameManager = GetComponent<GameManager>();
@@ -47,7 +51,7 @@ public class SatisfactionController : MonoBehaviour {
     public void AddPoint()
     {
         PointEvents();
-        if (points >= setupValues.maxPoints)
+        if (points >= maxPoints)
         {
             FeverState();
         }
@@ -56,10 +60,10 @@ public class SatisfactionController : MonoBehaviour {
             switch (gameManager.GetRhythmAccuracy())
             {
                 case 0:
-                    points = points + setupValues.soonPoints;
+                    points = points + ScoreGood;
                     break;
                 case 1:
-                    points = points + setupValues.perfectPoints;
+                    points = points + ScorePerfect;
                     for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
                     {
                         gameManager.levelEventsAudios[i].PerfectMove();
@@ -82,16 +86,16 @@ public class SatisfactionController : MonoBehaviour {
                     }
                     break;
                 case 2:
-                    points = points + setupValues.latePoints;
+                    points = points + ScoreGreat;
                     break;
             }
-            if (points >= setupValues.maxPoints) points = setupValues.maxPoints;
+            if (points >= maxPoints) points = maxPoints;
         }
     }
 
     void PointEvents()
     {
-        if (points <= 0 && pointsflag != 0)
+        if (points <= TracksPosition[0] && pointsflag != 0)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -120,7 +124,7 @@ public class SatisfactionController : MonoBehaviour {
             }
             pointsflag = 0;
         }
-        else if (points < 15 && points > 0 && pointsflag != 1) 
+        else if (points < TracksPosition[1]  && points > TracksPosition[0] && pointsflag != 1) 
         { 
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -149,7 +153,7 @@ public class SatisfactionController : MonoBehaviour {
             }
             pointsflag = 1;
         }
-        else if (points < 30 && points > 15 && pointsflag != 2)
+        else if (points < TracksPosition[2] && points > TracksPosition[1] && pointsflag != 2)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -178,7 +182,7 @@ public class SatisfactionController : MonoBehaviour {
             }
             pointsflag = 2;
         }
-        else if (points < 45 && points > 30 &&pointsflag != 3)
+        else if (points < TracksPosition[3] && points > TracksPosition[2] &&pointsflag != 3)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -207,7 +211,7 @@ public class SatisfactionController : MonoBehaviour {
             }
             pointsflag = 3;
         }
-        else if (points < 60 && points > 45 &&pointsflag != 4)
+        else if (points < TracksPosition[4] && points > TracksPosition[3] &&pointsflag != 4)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -240,17 +244,17 @@ public class SatisfactionController : MonoBehaviour {
 
     public void RemovePoint()
     {
-        if (points >= setupValues.maxPoints)
+        if (points >= maxPoints)
         {
             feverPoints--;
             FeverState();
         }
         else
         {
-            points = points - setupValues.failPoints;
-            if (points <= setupValues.minPoints) {
+            points = points - ScoreBad;
+            if (points <= minPoints) {
                 gameManager.Dead();
-                points = setupValues.minPoints;
+                points = minPoints;
             }
         }
     }
@@ -260,28 +264,36 @@ public class SatisfactionController : MonoBehaviour {
         if (feverPoints <= 0)
         {
             points--;
-            feverPoints = setupValues.amountOfFailInputsWhenFever;
+            feverPoints = ClimaxMaxFails;
         }
     }
 
     public void ResetSatisfaction(){
-        points = setupValues.initPoints;
-        feverPoints = setupValues.amountOfFailInputsWhenFever;
+        points = initPoints;
+        feverPoints = ClimaxMaxFails;
     }
 
     public int GetSatisfactionPoints(int min, int current, int max)
     {
 
-        if (min == 1 && current == 0 && max == 0) return setupValues.minPoints;
+        if (min == 1 && current == 0 && max == 0) return minPoints;
         else if (min == 0 && current == 1 && max == 0) return points;
-        else if (min == 0 && current == 0 && max == 1) return setupValues.maxPoints;
+        else if (min == 0 && current == 0 && max == 1) return maxPoints;
 
         else return 0;
     }
 
     public bool GetFeverState(){
-        if (points >= setupValues.maxPoints) return true;
+        if (points >= maxPoints) return true;
         else return false;
     }
-
+    /// <summary>
+    /// Gets the track position.
+    /// </summary>
+    /// <returns>The track position.</returns>
+    /// <param name="trackpos">Trackpos.</param>
+    public float GetTrackPosition(int trackpos)
+    {
+        return TracksPosition[trackpos];
+    }
 }
