@@ -42,11 +42,11 @@ public class AudioController : MonoBehaviour {
         else if (gameManager.GetPoints(0, 1, 0) < 60) auMixSnaps[4].TransitionTo(transitionTime);
         */
 		// Modificació Curial
-		if (gameManager.GetPoints(0, 1, 0) < TracksPosition [0]) auMixSnaps[1].TransitionTo(transitionTime);		// Metronome
-		else if (gameManager.GetPoints(0, 1, 0) < TracksPosition [1]) auMixSnaps[2].TransitionTo(transitionTime);	// Satisf 1
-		else if(gameManager.GetPoints(0, 1, 0) < TracksPosition [2]) auMixSnaps[3].TransitionTo(transitionTime);	// Satisf 2 
-		else if(gameManager.GetPoints(0, 1, 0) < TracksPosition [3]) auMixSnaps[4].TransitionTo(transitionTime);	// Satisf 3
-		else if (gameManager.GetPoints(0, 1, 0) >= TracksPosition [3]) auMixSnaps[5].TransitionTo(transitionTime);	// Satisf 4
+        if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(1)) auMixSnaps[1].TransitionTo(transitionTime);		// Metronome
+        else if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(2)) auMixSnaps[2].TransitionTo(transitionTime);	// Satisf 1
+        else if(gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(3)) auMixSnaps[3].TransitionTo(transitionTime);	// Satisf 2 
+        else if(gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(4)) auMixSnaps[4].TransitionTo(transitionTime);	// Satisf 3
+        else if (gameManager.GetPoints(0, 1, 0) >= gameManager.GetSatisfactionTrackPos(4)) auMixSnaps[5].TransitionTo(transitionTime);	// Satisf 4
     }
 
     public void MuteSound(){

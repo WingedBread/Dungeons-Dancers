@@ -83286,6 +83286,21 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82826900615749988, guid: 6312a0c4ac70add41a90c54fa38b340c,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82826900615749988, guid: 6312a0c4ac70add41a90c54fa38b340c,
+        type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114167473298603538, guid: 6312a0c4ac70add41a90c54fa38b340c,
+        type: 2}
+      propertyPath: beatBhv
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6312a0c4ac70add41a90c54fa38b340c, type: 2}
   m_IsPrefabParent: 0
@@ -84880,13 +84895,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8f3194c4b144c169d30e857d5ed58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setupValues: {fileID: 11400000, guid: 01b9c8ec0459a4f95bac721c9960eaa3, type: 2}
+  initPoints: 10
+  minPoints: 0
+  maxPoints: 100
   ScoreGood: 1
   ScoreGreat: 2
   ScorePerfect: 3
   ScoreBad: 2
   ClimaxMaxFails: 3
   TracksPosition:
+  - 0
   - 10
   - 33.333
   - 66.666

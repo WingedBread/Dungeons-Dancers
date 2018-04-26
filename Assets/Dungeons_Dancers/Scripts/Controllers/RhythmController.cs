@@ -153,9 +153,12 @@ public class RhythmController : MonoBehaviour
         segment3 = kCalcEvent.EndSample - segmentDuration;
         segment2 = segment3 - segmentDuration;
 
-        if (sampleTime < segment2) accuracy = 0;
-        else if (sampleTime < segment3) accuracy = 1;
-        else if (sampleTime < kCalcEvent.EndSample) accuracy = 2;
+        if (sampleTime < (segment2 / 3)) accuracy = 0; //Good
+        else if (sampleTime < (segment3 - (segment2 / 2))) accuracy = 2; // Great
+        else if (sampleTime < (segment3 + (segment2 / 3))) accuracy = 1; //Perfect
+        else if (sampleTime < (kCalcEvent.EndSample - (segment3 / 2))) accuracy = 2; //Great
+        else if (sampleTime < (kCalcEvent.EndSample - (segment3 / 3))) accuracy = 0; //Great
+
     }
 
     public int GetAccuracy()
