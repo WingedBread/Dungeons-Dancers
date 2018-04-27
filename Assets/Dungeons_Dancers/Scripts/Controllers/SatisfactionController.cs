@@ -7,16 +7,10 @@ public class SatisfactionController : MonoBehaviour {
     [Header("Game Manager")]
     private GameManager gameManager;
 
-    [Header("Bar Values")]
-    [SerializeField]
-    private int initPoints;
-    [SerializeField]
-    private int minPoints;
-    [SerializeField]
-    private int maxPoints;
-
 	// --- Afegit pel Curial (pot ser que acabi modificant-se pel Jesús!) --- //
 	[Header("Satisfaction Bar modificators")]
+    [SerializeField]
+    private int initPoints;
 	[SerializeField]
 	private int ScoreGood;
 	[SerializeField]
@@ -31,7 +25,14 @@ public class SatisfactionController : MonoBehaviour {
 	[Header("Set track position by Satisfaction Bar percent")] // Canviar els valors hardcodejats a PointsEvents pels d'aquesta llista
 	[SerializeField]
     private float[] TracksPosition = new float[5];
-	// --- End Afegit pel Curial --- //
+    // --- End Afegit pel Curial --- //
+
+    [Header("Separators")]
+    [SerializeField]
+    private GameObject[] separatorsObj = new GameObject[3];
+    //Init 0
+    //End 600
+
 
     private int points;
     private int feverPoints;
@@ -51,7 +52,7 @@ public class SatisfactionController : MonoBehaviour {
     public void AddPoint()
     {
         PointEvents();
-        if (points >= maxPoints)
+        if (points >= TracksPosition[4])
         {
             FeverState();
         }
@@ -89,9 +90,10 @@ public class SatisfactionController : MonoBehaviour {
                     points = points + ScoreGreat;
                     break;
             }
-            if (points >= maxPoints) 
+            if (points >= TracksPosition[4]) 
             { 
-                points = maxPoints; gameManager.ClimaxUIBehaviour(feverPoints, true); 
+                points = (int)TracksPosition[4]; 
+                gameManager.ClimaxUIBehaviour(feverPoints, true); 
             }
         }
     }
@@ -247,7 +249,7 @@ public class SatisfactionController : MonoBehaviour {
 
     public void RemovePoint()
     {
-        if (points >= maxPoints)
+        if (points >= TracksPosition[4])
         {
             feverPoints--;
             gameManager.ClimaxUIBehaviour(feverPoints, true);
@@ -256,9 +258,9 @@ public class SatisfactionController : MonoBehaviour {
         else
         {
             points = points - ScoreBad;
-            if (points <= minPoints) {
+            if (points <= TracksPosition[0]) {
                 gameManager.Dead();
-                points = minPoints;
+                points = (int)TracksPosition[0];
             }
         }
     }
@@ -281,15 +283,15 @@ public class SatisfactionController : MonoBehaviour {
     public int GetSatisfactionPoints(int min, int current, int max)
     {
 
-        if (min == 1 && current == 0 && max == 0) return minPoints;
+        if (min == 1 && current == 0 && max == 0) return (int)TracksPosition[0];
         else if (min == 0 && current == 1 && max == 0) return points;
-        else if (min == 0 && current == 0 && max == 1) return maxPoints;
+        else if (min == 0 && current == 0 && max == 1) return (int)TracksPosition[4];
 
         else return 0;
     }
 
     public bool GetFeverState(){
-        if (points >= maxPoints) return true;
+        if (points >= TracksPosition[4]) return true;
         else return false;
     }
     /// <summary>
