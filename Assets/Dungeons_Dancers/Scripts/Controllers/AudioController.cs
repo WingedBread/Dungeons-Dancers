@@ -14,12 +14,6 @@ public class AudioController : MonoBehaviour {
     [SerializeField]
     private AudioMixerSnapshot[] auMixSnaps;
 
-	// --- Modificat pel Curial --- //
-	// Eliminar quan s'hagi pogut fer funcionar el TracksPosition de SatisfactionController amb totes les classes que el necessitin
-	[Header("Set track position by Satisfaction Bar percent")]
-	[SerializeField]
-	private float[] TracksPosition;
-	// --------------------------- //
 
     [Header("AudioClips")]
     [SerializeField]
