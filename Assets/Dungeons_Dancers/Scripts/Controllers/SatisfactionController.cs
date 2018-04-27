@@ -89,7 +89,10 @@ public class SatisfactionController : MonoBehaviour {
                     points = points + ScoreGreat;
                     break;
             }
-            if (points >= maxPoints) points = maxPoints;
+            if (points >= maxPoints) 
+            { 
+                points = maxPoints; gameManager.ClimaxUIBehaviour(feverPoints, true); 
+            }
         }
     }
 
@@ -247,6 +250,7 @@ public class SatisfactionController : MonoBehaviour {
         if (points >= maxPoints)
         {
             feverPoints--;
+            gameManager.ClimaxUIBehaviour(feverPoints, true);
             FeverState();
         }
         else
@@ -265,6 +269,7 @@ public class SatisfactionController : MonoBehaviour {
         {
             points--;
             feverPoints = ClimaxMaxFails;
+            gameManager.ClimaxUIBehaviour(feverPoints, false);
         }
     }
 

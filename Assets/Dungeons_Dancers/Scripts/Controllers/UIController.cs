@@ -23,7 +23,17 @@ public class UIController: MonoBehaviour {
     private Text coinsText;
     [Header("Keys")]
     [SerializeField]
-    private Image[] keysImages;
+    private Image[] keysImages = new Image[2];
+
+    [Header("Climax Number")]
+    [SerializeField]
+    private Text climaxNumber;
+
+    [Header("Climax Locks")]
+    [SerializeField]
+    private Image climaxLock;
+    [SerializeField]
+    private Image climaxUnlock;
 
     [Header("Win/Dead/Pause")]
     [SerializeField]
@@ -189,6 +199,23 @@ public class UIController: MonoBehaviour {
         if(key == 0) for (int i = 0; i < keysImages.Length; i++ ) keysImages[i].color = Color.grey;
         else keysImages[key - 1].color = Color.white;
     }
+
+
+    public void ClimaxUIBehaviour(int feverpoints, bool climax)
+    {
+        if(climax){
+            climaxLock.gameObject.SetActive(false);
+            climaxUnlock.gameObject.SetActive(true);
+            climaxNumber.text = feverpoints.ToString();
+        } 
+        else{
+            climaxUnlock.gameObject.SetActive(false);
+            climaxLock.gameObject.SetActive(true);
+            climaxNumber.text = feverpoints.ToString();
+        }
+    }
+
+
     private IEnumerator DeactivatorUI(Text text, float time)
     {
         yield return new WaitForSeconds(time);

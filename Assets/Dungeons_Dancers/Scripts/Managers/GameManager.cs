@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SatisfactionController))]
 [RequireComponent(typeof(IntroController))]
-[RequireComponent (typeof(AudioController))]
+[RequireComponent(typeof(AudioController))]
 [RequireComponent(typeof(RhythmController))]
 [RequireComponent(typeof(UIController))]
 [RequireComponent(typeof(EventController))]
@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public List<LevelEventsEasing_04> levelEventsEasing4;
 
-    [Header("Player Manager")][SerializeField]
+    [Header("Player Manager")]
+    [SerializeField]
     private PlayerManager playerManager;
 
     [Header("Controllers")]
@@ -138,8 +139,8 @@ public class GameManager : MonoBehaviour
                 dungeonTimer = initDungeonTimer;
             }
 
-            if (dungeonTimer < 5 && flagTimeNearOver) 
-            { 
+            if (dungeonTimer < 5 && flagTimeNearOver)
+            {
                 for (int i = 0; i < levelEventsAudios.Count; i++)
                 {
                     levelEventsAudios[i].TimeNearOver();
@@ -172,12 +173,14 @@ public class GameManager : MonoBehaviour
 
     void Photo()
     {
-        ScreenCapture.CaptureScreenshot("Photo.png",16);
+        ScreenCapture.CaptureScreenshot("Photo.png", 16);
     }
 
-    public void IntroBehaviour(int intro){
+    public void IntroBehaviour(int intro)
+    {
         uiController.IntroUICheck(intro);
-        if(GetIntroCounter() == 6){
+        if (GetIntroCounter() == 6)
+        {
             for (int i = 0; i < levelEventsAudios.Count; i++)
             {
                 levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
@@ -325,9 +328,9 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
-        if (!godMode) 
+        if (!godMode)
         {
-            
+
         }
     }
 
@@ -396,7 +399,8 @@ public class GameManager : MonoBehaviour
     {
         uiController.CollectibleUI(collectible);
     }
-    public void DoorBehaviour(){
+    public void DoorBehaviour()
+    {
         for (int i = 0; i < levelEventsAudios.Count; i++)
         {
             levelEventsAudios[i].Door();
@@ -422,7 +426,7 @@ public class GameManager : MonoBehaviour
     #region Getters & Setters
     public int GetPoints(int min, int current, int max)
     {
-        if(satisController == null) satisController = GetComponent<SatisfactionController>();
+        if (satisController == null) satisController = GetComponent<SatisfactionController>();
         if (min == 1 && current == 0 && max == 0) return satisController.GetSatisfactionPoints(1, 0, 0);
         else if (min == 0 && current == 1 && max == 0) return satisController.GetSatisfactionPoints(0, 1, 0);
         else if (min == 0 && current == 0 && max == 1) return satisController.GetSatisfactionPoints(0, 0, 1);
@@ -434,11 +438,13 @@ public class GameManager : MonoBehaviour
         return playerManager.GetBlock();
     }
 
-    public bool GetSatisfactionFever(){
+    public bool GetSatisfactionFever()
+    {
         return satisController.GetFeverState();
     }
 
-    public int GetIntroCounter(){
+    public int GetIntroCounter()
+    {
         return introController.GetCounter();
     }
 
@@ -451,20 +457,24 @@ public class GameManager : MonoBehaviour
         return rhythmController.ActivePlayerBeatEvent();
     }
 
-    public int GetRhythmAccuracy(){
+    public int GetRhythmAccuracy()
+    {
         return rhythmController.GetAccuracy();
     }
 
-    public bool GetGameStatus(){
+    public bool GetGameStatus()
+    {
         return gameStart;
     }
 
-    public bool GetPlayerInputFlag(){
+    public bool GetPlayerInputFlag()
+    {
         return playerManager.GetPlayerInputFlag();
     }
 
-    public float GetDungeonTime(){
-        return dungeonTimer;  
+    public float GetDungeonTime()
+    {
+        return dungeonTimer;
     }
 
     public void SetIntroCounter(int setintro)
@@ -472,15 +482,22 @@ public class GameManager : MonoBehaviour
         introController.SetCounter(setintro);
     }
 
-    public void SetPlayerBlock(bool block){
+    public void SetPlayerBlock(bool block)
+    {
         playerManager.SetBlock(block);
     }
 
-    public void PlayIntroClip(){
+    public void PlayIntroClip()
+    {
         auController.PlayIntro();
     }
-    public float GetSatisfactionTrackPos(int trackpos){
+    public float GetSatisfactionTrackPos(int trackpos)
+    {
         return satisController.GetTrackPosition(trackpos);
+    }
+
+    public void ClimaxUIBehaviour(int feverpoints, bool climax){
+        uiController.ClimaxUIBehaviour(feverpoints, climax);
     }
 
     #endregion
