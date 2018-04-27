@@ -7,7 +7,7 @@ public class CollectiblesController : MonoBehaviour {
     [Header("Coins Value")]
     [SerializeField]
     private int coinsValue = 10;
-    private int coins = 10;
+    private int coins = 0;
     private List<int> keys = new List<int>();
 
     [Header("Drag Doors")]
@@ -44,7 +44,7 @@ public class CollectiblesController : MonoBehaviour {
     public int GetCoins(bool fever){
         if (fever)
         {
-            coins = coinsValue * 2;
+            coins = coins + (coinsValue * 2);
             return coins;
         }
         else return coins;
