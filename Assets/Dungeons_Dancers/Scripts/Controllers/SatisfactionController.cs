@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SatisfactionController : MonoBehaviour {
@@ -47,6 +46,7 @@ public class SatisfactionController : MonoBehaviour {
     }
 	void Start () {
         gameManager = GetComponent<GameManager>();
+        PointEvents();
 	}
 	
     public void AddPoint()
@@ -100,7 +100,7 @@ public class SatisfactionController : MonoBehaviour {
 
     void PointEvents()
     {
-        if (points <= TracksPosition[0] && pointsflag != 0)
+        if (points <= TracksPosition[1] && pointsflag != 0)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -129,7 +129,7 @@ public class SatisfactionController : MonoBehaviour {
             }
             pointsflag = 0;
         }
-        else if (points < TracksPosition[1]  && points > TracksPosition[0] && pointsflag != 1) 
+        else if (points < TracksPosition[2]  && points > TracksPosition[1] && pointsflag != 1) 
         { 
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -158,7 +158,7 @@ public class SatisfactionController : MonoBehaviour {
             }
             pointsflag = 1;
         }
-        else if (points < TracksPosition[2] && points > TracksPosition[1] && pointsflag != 2)
+        else if (points < TracksPosition[3] && points > TracksPosition[2] && pointsflag != 2)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -187,7 +187,7 @@ public class SatisfactionController : MonoBehaviour {
             }
             pointsflag = 2;
         }
-        else if (points < TracksPosition[3] && points > TracksPosition[2] &&pointsflag != 3)
+        else if (points < TracksPosition[4] && points > TracksPosition[3] &&pointsflag != 3)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -216,7 +216,7 @@ public class SatisfactionController : MonoBehaviour {
             }
             pointsflag = 3;
         }
-        else if (points < TracksPosition[4] && points > TracksPosition[3] &&pointsflag != 4)
+        else if (points >= TracksPosition[4] && pointsflag != 4)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -249,6 +249,7 @@ public class SatisfactionController : MonoBehaviour {
 
     public void RemovePoint()
     {
+        PointEvents();
         if (points >= TracksPosition[4])
         {
             feverPoints--;

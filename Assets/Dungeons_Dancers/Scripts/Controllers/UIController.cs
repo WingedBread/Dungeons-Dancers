@@ -31,8 +31,6 @@ public class UIController: MonoBehaviour {
 
     [Header("Climax Locks")]
     [SerializeField]
-    private Image climaxLock;
-    [SerializeField]
     private Image climaxUnlock;
 
     [Header("Win/Dead/Pause")]
