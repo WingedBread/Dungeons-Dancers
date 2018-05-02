@@ -373,9 +373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -933,9 +933,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -2251,6 +2251,10 @@ Prefab:
     - target: {fileID: 4357362721605656, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549527818239736, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
@@ -3585,9 +3589,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -3606,6 +3610,88 @@ MonoBehaviour:
   managerLS: 0
   managerPS: 0
   managerSS: 0
+--- !u!1001 &123257788
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1485290587}
+    m_Modifications:
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -12.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 198136091348747168, guid: 2554ae71634c4ee49889dce6264052f5,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.27843142
+      objectReference: {fileID: 0}
+    - target: {fileID: 198136091348747168, guid: 2554ae71634c4ee49889dce6264052f5,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198136091348747168, guid: 2554ae71634c4ee49889dce6264052f5,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.40284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.29999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.32933992
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.21955997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415746636243302, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_Name
+      value: Particles_Fire (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &123257789 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 123257788}
 --- !u!1001 &128406174
 Prefab:
   m_ObjectHideFlags: 0
@@ -3893,6 +3979,88 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 130030833}
+--- !u!1001 &138059518
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1485290587}
+    m_Modifications:
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -7.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 198136091348747168, guid: 2554ae71634c4ee49889dce6264052f5,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.27843142
+      objectReference: {fileID: 0}
+    - target: {fileID: 198136091348747168, guid: 2554ae71634c4ee49889dce6264052f5,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198136091348747168, guid: 2554ae71634c4ee49889dce6264052f5,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.40284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.32934463
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.21955957
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415746636243302, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_Name
+      value: Particles_Fire (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &138059519 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 138059518}
 --- !u!1001 &138172709
 Prefab:
   m_ObjectHideFlags: 0
@@ -3902,15 +4070,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4767933163431898, guid: 75940785cec02894881375a52dcba655, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -12.71
+      value: -7.24
       objectReference: {fileID: 0}
     - target: {fileID: 4767933163431898, guid: 75940785cec02894881375a52dcba655, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.26
       objectReference: {fileID: 0}
     - target: {fileID: 4767933163431898, guid: 75940785cec02894881375a52dcba655, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.67
+      value: -4.45
       objectReference: {fileID: 0}
     - target: {fileID: 4767933163431898, guid: 75940785cec02894881375a52dcba655, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3930,7 +4098,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4767933163431898, guid: 75940785cec02894881375a52dcba655, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4767933163431898, guid: 75940785cec02894881375a52dcba655, type: 2}
       propertyPath: m_LocalScale.x
@@ -3956,6 +4124,10 @@ Prefab:
     - target: {fileID: 4767933163431898, guid: 75940785cec02894881375a52dcba655, type: 2}
       propertyPath: m_LocalScale.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898733311608154, guid: 75940785cec02894881375a52dcba655, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75940785cec02894881375a52dcba655, type: 2}
@@ -5396,7 +5568,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-5030
+  m_Name: pb_Mesh-4116
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -5666,9 +5838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -5890,9 +6062,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -6109,12 +6281,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 199602420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.65, y: -2.193, z: 1.21}
+  m_LocalPosition: {x: -13.53, y: -2.193, z: 1.35}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 2130925836}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 15
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &200121309
 GameObject:
@@ -8110,9 +8282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -8218,9 +8390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -8254,9 +8426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -11699,9 +11871,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -12580,9 +12752,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -12688,9 +12860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -12753,9 +12925,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -13897,9 +14069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -15411,6 +15583,114 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1 &384048335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1556435689501796, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 384048336}
+  - component: {fileID: 384048338}
+  - component: {fileID: 384048337}
+  - component: {fileID: 384048339}
+  m_Layer: 0
+  m_Name: Int_12_Corner_Rect_U_L (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &384048336
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4107210244517808, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 384048335}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.4, y: 0.9, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1923764280}
+  m_RootOrder: 117
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &384048337
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23223836089280110, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 384048335}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 90ffc30a20fe67b459a638e3ae94a8c8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &384048338
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33772447001822870, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 384048335}
+  m_Mesh: {fileID: 4300000, guid: 48f87c9e243b8914196ec01179def127, type: 3}
+--- !u!114 &384048339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 384048335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!1 &384227068
 GameObject:
   m_ObjectHideFlags: 0
@@ -17071,9 +17351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -17417,9 +17697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -17492,6 +17772,10 @@ Prefab:
     - target: {fileID: 4357362721605656, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549527818239736, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
@@ -18045,12 +18329,120 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 463007096}
+--- !u!1 &468466667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1187716283335710, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 468466668}
+  - component: {fileID: 468466670}
+  - component: {fileID: 468466669}
+  - component: {fileID: 468466671}
+  m_Layer: 0
+  m_Name: Int_8_Corner_Rect_D_R (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &468466668
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4079304577698530, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 468466667}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.4, y: 0.9, z: -0.39999986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1923764280}
+  m_RootOrder: 119
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &468466669
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23940870198530488, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 468466667}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 90ffc30a20fe67b459a638e3ae94a8c8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &468466670
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33483583852458268, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 468466667}
+  m_Mesh: {fileID: 4300000, guid: f3978969545b78b4cb62607be6e54f91, type: 3}
+--- !u!114 &468466671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 468466667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!43 &468948968
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh20080
+  m_Name: pb_Mesh20686
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -18262,9 +18654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -18528,9 +18920,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -18806,9 +19198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -18990,9 +19382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -19564,9 +19956,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -19629,9 +20021,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -19879,9 +20271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -20446,7 +20838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &515557987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21226,6 +21618,92 @@ Transform:
   m_Father: {fileID: 1923764280}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &516831749
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1923764280}
+    m_Modifications:
+    - target: {fileID: 400000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+      propertyPath: m_RootOrder
+      value: 111
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+      propertyPath: m_Name
+      value: Int_17_Wall_Hor_End_Left (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+  m_IsPrefabParent: 0
+--- !u!4 &516831750 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+  m_PrefabInternal: {fileID: 516831749}
+--- !u!1 &516831751 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: d62f97d57a0b9bd46bd88352064b8c28, type: 3}
+  m_PrefabInternal: {fileID: 516831749}
+--- !u!114 &516831752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 516831751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!1 &517837636
 GameObject:
   m_ObjectHideFlags: 0
@@ -21270,9 +21748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -21416,12 +21894,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 521398176}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.35, y: -2.193, z: 1.21}
+  m_LocalPosition: {x: 0.11, y: -2.193, z: 1.35}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 2058717127}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 16
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &534512672
 Prefab:
@@ -21465,6 +21943,10 @@ Prefab:
     - target: {fileID: 4357362721605656, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
       propertyPath: m_LocalScale.x
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549527818239736, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
@@ -23111,9 +23593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -23294,9 +23776,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -23486,9 +23968,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -25744,7 +26226,7 @@ Transform:
   m_Children:
   - {fileID: 1603971445}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &596862987
 GameObject:
@@ -25833,9 +26315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -25884,7 +26366,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 597191940}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0.39, y: 0.12, z: -0.44}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
   m_Father: {fileID: 2037496956}
@@ -27992,6 +28474,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4207313181069178, guid: cd9e757cfa40d76458373e32ab80a358, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -6.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924881458768934, guid: cd9e757cfa40d76458373e32ab80a358, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -6.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4036986583236878, guid: cd9e757cfa40d76458373e32ab80a358, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 6.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd9e757cfa40d76458373e32ab80a358, type: 2}
   m_IsPrefabParent: 0
@@ -28369,6 +28863,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: ed302bd86704f0740aab0b3c8f2bc17f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb02ef8a1f3fb8045b757f2c597e265c, type: 2}
+    - target: {fileID: 2300002, guid: ed302bd86704f0740aab0b3c8f2bc17f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb02ef8a1f3fb8045b757f2c597e265c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed302bd86704f0740aab0b3c8f2bc17f, type: 3}
   m_IsPrefabParent: 0
@@ -28571,6 +29073,88 @@ Transform:
   m_Father: {fileID: 1712169084}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &671910290
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1485290587}
+    m_Modifications:
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -12.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 198136091348747168, guid: 2554ae71634c4ee49889dce6264052f5,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.27843142
+      objectReference: {fileID: 0}
+    - target: {fileID: 198136091348747168, guid: 2554ae71634c4ee49889dce6264052f5,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198136091348747168, guid: 2554ae71634c4ee49889dce6264052f5,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.40284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.29999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.32933992
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.21955997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415746636243302, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+      propertyPath: m_Name
+      value: Particles_Fire (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2554ae71634c4ee49889dce6264052f5, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &671910291 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4687695821275944, guid: 2554ae71634c4ee49889dce6264052f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 671910290}
 --- !u!4 &675410798
 Transform:
   m_ObjectHideFlags: 0
@@ -28759,9 +29343,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -30205,7 +30789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &725743966
 Transform:
   m_ObjectHideFlags: 0
@@ -31766,9 +32350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -31873,6 +32457,92 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &795873652
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1923764280}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.482
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+      propertyPath: m_RootOrder
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+      propertyPath: m_Name
+      value: Int_18_Wall_Hor_End_Right (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+  m_IsPrefabParent: 0
+--- !u!4 &795873653 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+  m_PrefabInternal: {fileID: 795873652}
+--- !u!1 &795873654 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 277fc93a9d78f8a458b137123eddd698, type: 3}
+  m_PrefabInternal: {fileID: 795873652}
+--- !u!114 &795873655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 795873654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!1001 &795993131
 Prefab:
   m_ObjectHideFlags: 0
@@ -32011,9 +32681,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -32446,9 +33116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -32994,12 +33664,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 836822891}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24, y: -2.193, z: -5.79}
+  m_LocalPosition: {x: 0.06, y: -2.193, z: -6.03}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1653096731}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 13
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &841727595
 GameObject:
@@ -34446,9 +35116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -34511,9 +35181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -34897,9 +35567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -34957,6 +35627,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 439279c3c74bd1b4ea7b4b1036c1bb21, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb02ef8a1f3fb8045b757f2c597e265c, type: 2}
+    - target: {fileID: 2300002, guid: 439279c3c74bd1b4ea7b4b1036c1bb21, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb02ef8a1f3fb8045b757f2c597e265c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 439279c3c74bd1b4ea7b4b1036c1bb21, type: 3}
   m_IsPrefabParent: 0
@@ -35151,9 +35829,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -35274,7 +35952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &920229131
 Transform:
   m_ObjectHideFlags: 0
@@ -35282,7 +35960,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 920229130}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.48, y: -1.8710938, z: -1.86}
+  m_LocalPosition: {x: -21.48, y: -1.8710938, z: -1.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1418736853}
@@ -39100,9 +39778,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -39208,9 +39886,117 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!1 &1027000103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1846493527090758, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1027000104}
+  - component: {fileID: 1027000106}
+  - component: {fileID: 1027000105}
+  - component: {fileID: 1027000107}
+  m_Layer: 0
+  m_Name: Int_7_Corner_Rect_D_L (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1027000104
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4401829701552316, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027000103}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.4, y: 0.9, z: -3.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1923764280}
+  m_RootOrder: 116
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1027000105
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23933333049240860, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027000103}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 90ffc30a20fe67b459a638e3ae94a8c8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1027000106
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33605818766473910, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027000103}
+  m_Mesh: {fileID: 4300000, guid: a6c84fee31f082d4bb6c699cbffecabb, type: 3}
+--- !u!114 &1027000107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027000103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -41004,9 +41790,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -42130,9 +42916,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -43035,9 +43821,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -43100,9 +43886,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -43224,9 +44010,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -43416,9 +44202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -43702,9 +44488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -43810,9 +44596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -43918,9 +44704,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -44251,7 +45037,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 08383afdf5e4c7f4aa3b1158056238b1, type: 2}
+      objectReference: {fileID: 2100000, guid: 2a4453da25b476a4bbdcbc385bbca642, type: 2}
     - target: {fileID: 114412146245590166, guid: 67f9c311798158b4d80ffba926b4f561,
         type: 2}
       propertyPath: _quads.Array.data[0]._mat
@@ -44472,9 +45258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -44615,9 +45401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -44809,6 +45595,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 1549527818239736, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
   m_IsPrefabParent: 0
@@ -44904,9 +45694,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -44999,9 +45789,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -45234,9 +46024,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -45389,9 +46179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -45475,7 +46265,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1176144
+  m_Name: pb_Mesh-4000
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -45672,9 +46462,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -46162,9 +46952,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -46318,6 +47108,222 @@ Transform:
   m_PrefabParentObject: {fileID: 4009066802412152, guid: 5df75964e3ef636458e062e152c09b48,
     type: 2}
   m_PrefabInternal: {fileID: 87586207}
+--- !u!1 &1207799940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1846493527090758, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1207799941}
+  - component: {fileID: 1207799943}
+  - component: {fileID: 1207799942}
+  - component: {fileID: 1207799944}
+  m_Layer: 0
+  m_Name: Int_7_Corner_Rect_D_L (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207799941
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4401829701552316, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207799940}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.4, y: 0.9, z: -0.39999986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1923764280}
+  m_RootOrder: 120
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1207799942
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23933333049240860, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207799940}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 90ffc30a20fe67b459a638e3ae94a8c8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1207799943
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33605818766473910, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207799940}
+  m_Mesh: {fileID: 4300000, guid: a6c84fee31f082d4bb6c699cbffecabb, type: 3}
+--- !u!114 &1207799944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207799940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!1 &1207930889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1187716283335710, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1207930890}
+  - component: {fileID: 1207930892}
+  - component: {fileID: 1207930891}
+  - component: {fileID: 1207930893}
+  m_Layer: 0
+  m_Name: Int_8_Corner_Rect_D_R (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207930890
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4079304577698530, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207930889}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.4, y: 0.9, z: -3.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1923764280}
+  m_RootOrder: 115
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1207930891
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23940870198530488, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207930889}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 90ffc30a20fe67b459a638e3ae94a8c8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1207930892
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33483583852458268, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207930889}
+  m_Mesh: {fileID: 4300000, guid: f3978969545b78b4cb62607be6e54f91, type: 3}
+--- !u!114 &1207930893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207930889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!114 &1209642999 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114323717623345728, guid: 49c120603d00a4399b8ff81e0b61f7b3,
@@ -46411,9 +47417,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -46476,9 +47482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -48462,9 +49468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -48527,9 +49533,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -48977,9 +49983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -49115,9 +50121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -49393,9 +50399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -49652,7 +50658,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 08383afdf5e4c7f4aa3b1158056238b1, type: 2}
+      objectReference: {fileID: 2100000, guid: 2a4453da25b476a4bbdcbc385bbca642, type: 2}
     - target: {fileID: 33708205005965494, guid: bd6a5ee791b065f4bb3e6d8bb451e954,
         type: 2}
       propertyPath: m_Mesh
@@ -50090,9 +51096,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -51382,9 +52388,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -51610,9 +52616,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -51932,9 +52938,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -52922,9 +53928,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -53062,9 +54068,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -53246,6 +54252,9 @@ Transform:
   - {fileID: 920229131}
   - {fileID: 408117626}
   - {fileID: 2130386222}
+  - {fileID: 671910291}
+  - {fileID: 123257789}
+  - {fileID: 138059519}
   - {fileID: 138172710}
   - {fileID: 588303431}
   - {fileID: 1676058295}
@@ -53477,9 +54486,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -53891,6 +54900,114 @@ MeshFilter:
   m_PrefabInternal: {fileID: 812823453}
   m_GameObject: {fileID: 1514998825}
   m_Mesh: {fileID: 4300000, guid: efd56215a0bd33a4bab8f8bb2ef165cb, type: 3}
+--- !u!1 &1516785161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1440960559406616, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1516785162}
+  - component: {fileID: 1516785164}
+  - component: {fileID: 1516785163}
+  - component: {fileID: 1516785165}
+  m_Layer: 0
+  m_Name: Int_13_Corner_Rect_U_R (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1516785162
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4819953147670942, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516785161}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.4, y: 0.9, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1923764280}
+  m_RootOrder: 118
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1516785163
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23832362650904336, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516785161}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 90ffc30a20fe67b459a638e3ae94a8c8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1516785164
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33077663399736438, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516785161}
+  m_Mesh: {fileID: 4300000, guid: a3efb95164555ca4696715fd3638eed1, type: 3}
+--- !u!114 &1516785165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516785161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!1 &1517591736
 GameObject:
   m_ObjectHideFlags: 0
@@ -53978,9 +55095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -54043,9 +55160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -54737,9 +55854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -55004,7 +56121,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1563991545}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0.11000013, z: -0.4300003}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
   m_Father: {fileID: 1570131738}
@@ -55345,12 +56462,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1570131737}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.65, y: -2.193, z: -5.79}
+  m_LocalPosition: {x: -10.02, y: -2.193, z: -6.03}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1563991546}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 14
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1574286015
 GameObject:
@@ -55820,9 +56937,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -56115,6 +57232,114 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1 &1610585849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1440960559406616, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1610585850}
+  - component: {fileID: 1610585852}
+  - component: {fileID: 1610585851}
+  - component: {fileID: 1610585853}
+  m_Layer: 0
+  m_Name: Int_13_Corner_Rect_U_R (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1610585850
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4819953147670942, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1610585849}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.4, y: 0.9, z: -2.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1923764280}
+  m_RootOrder: 114
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1610585851
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23832362650904336, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1610585849}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 90ffc30a20fe67b459a638e3ae94a8c8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1610585852
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33077663399736438, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1610585849}
+  m_Mesh: {fileID: 4300000, guid: a3efb95164555ca4696715fd3638eed1, type: 3}
+--- !u!114 &1610585853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1610585849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!1 &1612112730
 GameObject:
   m_ObjectHideFlags: 0
@@ -57144,9 +58369,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -57195,7 +58420,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1625056112}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: -0.51, y: -0.05, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
   m_Father: {fileID: 2141412365}
@@ -58179,9 +59404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -58422,9 +59647,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -58680,7 +59905,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653096730}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0.11, z: -0.43}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
   m_Father: {fileID: 836822892}
@@ -59139,9 +60364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -59501,7 +60726,7 @@ Transform:
   m_Children:
   - {fileID: 675410798}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 10
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1680322338
 GameObject:
@@ -59927,9 +61152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -60289,9 +61514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -60364,6 +61589,7 @@ GameObject:
   - component: {fileID: 1700002259}
   - component: {fileID: 1700002261}
   - component: {fileID: 1700002260}
+  - component: {fileID: 1700002262}
   m_Layer: 0
   m_Name: Int_23_Wall_Corner_U_R (1)
   m_TagString: Untagged
@@ -60428,6 +61654,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1700002258}
   m_Mesh: {fileID: 4300000, guid: 81e9f3e4ec7508740b02bca4506fad66, type: 3}
+--- !u!114 &1700002262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1700002258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!1 &1700416584 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: d5528bacaad7b6143ad36162c0433a11, type: 3}
@@ -60443,9 +61701,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -61073,9 +62331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -61181,9 +62439,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -61246,9 +62504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -61397,9 +62655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -63768,6 +65026,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: cb45ba344b2928742b3455b08db984ce, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb02ef8a1f3fb8045b757f2c597e265c, type: 2}
+    - target: {fileID: 2300000, guid: cb45ba344b2928742b3455b08db984ce, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb02ef8a1f3fb8045b757f2c597e265c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb45ba344b2928742b3455b08db984ce, type: 3}
   m_IsPrefabParent: 0
@@ -63935,6 +65201,114 @@ MonoBehaviour:
   easingOffBeatList: 1
   easingOnBeatList: 1
   onBeatScaleVector3: {x: 1, y: 1.35, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!1 &1766583213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1556435689501796, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1766583214}
+  - component: {fileID: 1766583216}
+  - component: {fileID: 1766583215}
+  - component: {fileID: 1766583217}
+  m_Layer: 0
+  m_Name: Int_12_Corner_Rect_U_L (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1766583214
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4107210244517808, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766583213}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.4, y: 0.9, z: -2.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1923764280}
+  m_RootOrder: 113
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1766583215
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23223836089280110, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766583213}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 90ffc30a20fe67b459a638e3ae94a8c8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1766583216
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33772447001822870, guid: 84cac196f00544344a0faf96f6dd1e3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766583213}
+  m_Mesh: {fileID: 4300000, guid: 48f87c9e243b8914196ec01179def127, type: 3}
+--- !u!114 &1766583217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766583213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 1
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1.1, z: 1}
   offBeatScaleVector3: {x: 1, y: 1, z: 1}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
@@ -64171,9 +65545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -72573,9 +73947,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -73243,9 +74617,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -73351,9 +74725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -73377,7 +74751,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-4044
+  m_Name: pb_Mesh-2026
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -73581,9 +74955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -75038,9 +76412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -75497,7 +76871,7 @@ Transform:
   m_Children:
   - {fileID: 489609677}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 12
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1917557298
 GameObject:
@@ -75958,6 +77332,16 @@ Transform:
   - {fileID: 789151742}
   - {fileID: 1371881443}
   - {fileID: 1553927578}
+  - {fileID: 516831750}
+  - {fileID: 795873653}
+  - {fileID: 1766583214}
+  - {fileID: 1610585850}
+  - {fileID: 1207930890}
+  - {fileID: 1027000104}
+  - {fileID: 384048336}
+  - {fileID: 1516785162}
+  - {fileID: 468466668}
+  - {fileID: 1207799941}
   m_Father: {fileID: 2059310332}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76173,9 +77557,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -76248,6 +77632,10 @@ Prefab:
     - target: {fileID: 4357362721605656, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.10000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549527818239736, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e4833ea78a06df4d97141529587b5d8, type: 2}
@@ -76560,9 +77948,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -76711,9 +78099,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -78116,9 +79504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -78462,9 +79850,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -79451,9 +80839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -79602,9 +80990,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -79645,12 +81033,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2037496955}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.65, y: -2.193, z: -2.79}
+  m_LocalPosition: {x: 0.12, y: -2.193, z: -3.67}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 597191941}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 17
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2038661757
 GameObject:
@@ -79696,9 +81084,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -79933,9 +81321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -79984,7 +81372,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2058717126}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: -0.46, y: -0.11, z: 0.43}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
   m_Father: {fileID: 521398177}
@@ -81297,9 +82685,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -81647,9 +83035,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -81893,7 +83281,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d12bccfd71adadc4e9286bed6c24aee0, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 1541034458887660, guid: 98feb1ba0a9977a4cb3ce77eefbced1a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64747621344362572, guid: 98feb1ba0a9977a4cb3ce77eefbced1a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 98feb1ba0a9977a4cb3ce77eefbced1a, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &2130386222 stripped
@@ -81931,7 +83324,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2130925835}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0.37}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
   m_Father: {fileID: 199602421}
@@ -82307,9 +83700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStates: 0
+  levelStates: 3
   playerStates: 0
-  satisfactionStates: 0
+  satisfactionStates: 4
   levelEvents: 04000000
   beatBhv: MusicBeat
   scaleEasing: 1
@@ -83322,7 +84715,7 @@ Transform:
   m_Children:
   - {fileID: 92634028}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 11
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2141412364
 GameObject:
@@ -83346,10 +84739,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2141412364}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.65, y: -2.193, z: -1.79}
+  m_LocalPosition: {x: -9.89, y: -2.193, z: -1.69}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1625056113}
   m_Father: {fileID: 1485290587}
-  m_RootOrder: 18
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
