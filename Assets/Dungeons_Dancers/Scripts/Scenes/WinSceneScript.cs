@@ -35,7 +35,7 @@ public class WinSceneScript : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Jump"))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         if(!DOTween.IsTweening("TweenSparkle")){
