@@ -33,6 +33,14 @@ public class UIController: MonoBehaviour {
     [SerializeField]
     private Image climaxUnlock;
 
+
+    [Header("Separators")]
+    [SerializeField]
+    private GameObject barEnd;
+    [SerializeField]
+    private GameObject[] separatorsObj = new GameObject[3];
+    private float barwidth;
+
     [Header("Win/Dead/Pause")]
     [SerializeField]
     private GameObject WinGo;
@@ -87,6 +95,12 @@ public class UIController: MonoBehaviour {
         pointsSlider.maxValue = gameManager.GetPoints(0, 0, 1);
         pointsSlider.value = gameManager.GetPoints(0,1,0);
         pointsText.text = gameManager.GetPoints(0,1,0).ToString();
+        barwidth = barEnd.transform.parent.transform.parent.GetComponent<RectTransform>().rect.width;
+        barEnd.transform.localPosition  = new Vector3(barwidth,barEnd.transform.localPosition.y, barEnd.transform.localPosition.z);
+
+        for (int i = 0; i < separatorsObj.Length; i++) {
+            separatorsObj[i].transform.localPosition =  new Vector3(gameManager.GetSatisfactionTrackPos(i+1) * (barwidth/100), separatorsObj[i].transform.localPosition.y, separatorsObj[i].transform.localPosition.z);
+        }
 	}
     void Update(){
         if (gameManager.GetGameStatus()) dungeonTimerText.text = gameManager.GetDungeonTime().ToString("F");
