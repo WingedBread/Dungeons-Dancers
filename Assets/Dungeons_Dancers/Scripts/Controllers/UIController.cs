@@ -91,11 +91,12 @@ public class UIController: MonoBehaviour {
         pointsText.text = gameManager.GetPoints(0,1,0).ToString();
 	}
     void Update(){
-		if(gameManager.GetGameStatus()) dungeonTimerText.text = gameManager.GetDungeonTime().ToString("F");
+        if (gameManager.GetGameStatus()) dungeonTimerText.text = gameManager.GetDungeonTime().ToString("F");
     }
 
     public void ResetUI()
     {
+        dungeonTimerText.text = gameManager.GetDungeonTime().ToString("F");
         pointsText.text = gameManager.GetPoints(0, 1, 0).ToString();
         pointsSlider.value = gameManager.GetPoints(0, 1, 0);
         WinGo.SetActive(false);
@@ -110,6 +111,7 @@ public class UIController: MonoBehaviour {
 
     public void DeadUI()
     {
+        dungeonTimerText.text = ("0.00");
         DeadGo.SetActive(true);
     }
 
@@ -204,14 +206,14 @@ public class UIController: MonoBehaviour {
     public void ClimaxUIBehaviour(int feverpoints, bool climax)
     {
         if(climax){
-            climaxLock.gameObject.SetActive(false);
             climaxUnlock.gameObject.SetActive(true);
+            climaxNumber.gameObject.SetActive(true);
             climaxNumber.text = feverpoints.ToString();
         } 
         else{
             climaxUnlock.gameObject.SetActive(false);
-            climaxLock.gameObject.SetActive(true);
             climaxNumber.text = feverpoints.ToString();
+            climaxNumber.gameObject.SetActive(false);
         }
     }
 
