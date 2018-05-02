@@ -26,13 +26,6 @@ public class SatisfactionController : MonoBehaviour {
     private float[] TracksPosition = new float[5];
     // --- End Afegit pel Curial --- //
 
-    [Header("Separators")]
-    [SerializeField]
-    private GameObject[] separatorsObj = new GameObject[3];
-    //Init 0
-    //End 600
-
-
     private int points;
     private int feverPoints;
 
