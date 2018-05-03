@@ -59,7 +59,11 @@ public class LevelEventsMaterial: MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        if (hasGlow) material.SetFloat("__MKGlowPower", glowPowerValue);
+        if (hasGlow)
+        {
+            material.SetFloat("__MKGlowPower", glowPowerValue);
+            Debug.Log("Glow Power " + material.GetFloat("__MKGlowPower"));
+        }
         if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
         for (int w = 0; w < levelEvents.Length; w++)
         {
