@@ -30,7 +30,10 @@ public class LevelEventsMaterial: MonoBehaviour {
     private float glowPowerValue;
 
     AudioClip[] auClip;
+
     [SerializeField]
+    private Color selectedColor;
+
     private Material material;
 
     [HideInInspector]
@@ -59,11 +62,8 @@ public class LevelEventsMaterial: MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        if (hasGlow)
-        {
-            material.SetFloat("__MKGlowPower", glowPowerValue);
-            Debug.Log("Glow Power " + material.GetFloat("__MKGlowPower"));
-        }
+        if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+
         if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
         for (int w = 0; w < levelEvents.Length; w++)
         {
