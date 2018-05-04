@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using SonicBloom.Koreo;
-using MK.Glow;
 
 [RequireComponent(typeof(Material))]
-public class LevelEventsMaterial: MonoBehaviour {
+public class LevelEventsMaterial_01: MonoBehaviour {
     private AudioSource audioSource;
     private GameManager gameManager;
 
@@ -23,13 +22,19 @@ public class LevelEventsMaterial: MonoBehaviour {
     public string beatBhv;
 
     [Space]
-    [Header("Has Glow(?)")]
+    [Header("Change Glow?")]
     [SerializeField]
     private bool hasGlow;
+    [Header("Change Color?")]
+    [SerializeField]
+    private bool hasColor;
     [SerializeField]
     private float glowPowerValue;
+    [Header("Duration")]
+    [SerializeField]
+    private float selectedDuration;
+    private float duration;
 
-    AudioClip[] auClip;
 
     [SerializeField]
     private Color selectedColor;
@@ -62,9 +67,9 @@ public class LevelEventsMaterial: MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+        if(hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+        if(hasColor) material.SetColor("_Color", selectedColor);
 
-        if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
         for (int w = 0; w < levelEvents.Length; w++)
         {
             if (levelEvents[w] == LevelEvents.BeatBehaviour) Koreographer.Instance.RegisterForEvents(beatBhv, BeatBehaviour);
@@ -145,9 +150,24 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 0])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+                    duration += 0.5f * Time.deltaTime;
+                    if (hasGlow)
+                    {
+                        Mathf.Lerp(material.GetFloat("_MKGlowPower"), glowPowerValue, duration);
+                        material.SetFloat("_MKGlowPower", glowPowerValue);
+                    }
+                    if (hasColor)
+                    {
+                        Mathf.Lerp(material.GetFloat("_MKGlowPower"), glowPowerValue, duration);
+                        material.SetColor("_Color", selectedColor);
+                    }
+
+                    if (duration >= selectedDuration)
+                    {
+                        eventPlaying = false;
+                        duration = 0;
+                    }
+
                 }
             }
         }
@@ -161,8 +181,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 1])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -176,8 +196,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 2])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow){} material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -191,8 +211,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 3])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -206,8 +226,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 4])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -221,8 +241,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 5])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -236,8 +256,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 6])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -251,8 +271,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 7])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if(hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -266,8 +286,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 8])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -281,8 +301,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 9])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -296,8 +316,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 10])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -311,8 +331,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 11])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -326,8 +346,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 12])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -342,8 +362,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 13])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -357,8 +377,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 14])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -372,8 +392,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 15])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -387,8 +407,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 16])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -402,8 +422,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 17])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -417,8 +437,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 18])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -432,8 +452,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 19])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -447,8 +467,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 20])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
@@ -462,8 +482,8 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 21])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
+                    if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
+                    if (hasColor) material.SetColor("_Color", selectedColor);
                     eventPlaying = false;
                 }
             }
