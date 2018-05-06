@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241284527079648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.25, z: 3.5}
+  m_LocalPosition: {x: -1.5, y: 0.25, z: 5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4410088019814606}
@@ -80,13 +80,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722337306490640}
-  m_LocalRotation: {x: -0.23911758, y: -0.099045746, z: -0.3696438, w: 0.89239913}
+  m_LocalRotation: {x: -0.39044833, y: -0.161729, z: -0.34682897, w: 0.8373192}
   m_LocalPosition: {x: 0, y: 0, z: 0.099999905}
-  m_LocalScale: {x: 0.45, y: 0.4500001, z: 0.60000014}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.45}
   m_Children: []
   m_Father: {fileID: 4410088019814606}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -30, y: 0, z: -45.000004}
+  m_LocalEulerAnglesHint: {x: -50, y: 0, z: -45.000004}
 --- !u!4 &4410088019814606
 Transform:
   m_ObjectHideFlags: 1
@@ -114,6 +114,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e868c93f308a77d4184fcab29c976cd8, type: 2}
   m_StaticBatchInfo:
@@ -167,10 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStates: 0
   playerStates: 0
-  satisfactionStates: 
+  satisfactionStates: 0
   levelEvents: 04000000
   beatBhv: MusicBeat
-  satisXEvent: 
   scaleEasing: 0
   moveEasing: 0
   rotationEasing: 1
