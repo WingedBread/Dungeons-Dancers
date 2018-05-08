@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using SonicBloom.Koreo;
-using MK.Glow;
 
 [RequireComponent(typeof(Material))]
-public class LevelEventsMaterial: MonoBehaviour {
+public class LevelEventsMaterial : MonoBehaviour
+{
     private AudioSource audioSource;
     private GameManager gameManager;
 
@@ -22,19 +22,11 @@ public class LevelEventsMaterial: MonoBehaviour {
     [EventID]
     public string beatBhv;
 
-    [Space]
-    [Header("Has Glow(?)")]
-    [SerializeField]
-    private bool hasGlow;
-    [SerializeField]
-    private float glowPowerValue;
-
-    AudioClip[] auClip;
 
     [SerializeField]
-    private Color selectedColor;
+    private Material[] materials;
 
-    private Material material;
+	private MeshRenderer mRenderer;
 
     [HideInInspector]
     public LevelStates managerLS;
@@ -45,32 +37,30 @@ public class LevelEventsMaterial: MonoBehaviour {
 
     bool eventPlaying = false;
 
-    public bool[,] activeLevelEvents = new bool [21,21];
+    public bool[,] activeLevelEvents = new bool[21, 21];
 
-	private void Awake()
-	{
+    private void Awake()
+    {
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        //gameManager.levelEventsAudios.Add(this);
-        for (int i = 0; i < levelEvents.Length; i++){
+		mRenderer = GetComponent<MeshRenderer>();
+        gameManager.levelEventsMaterials.Add(this);
+        for (int i = 0; i < levelEvents.Length; i++)
+        {
             for (int w = 0; w < 21; w++)
             {
-                activeLevelEvents[i,w] = false;
+                activeLevelEvents[i, w] = false;
             }
         }
-        material = this.GetComponent<MeshRenderer>().material;
     }
-	// Use this for initialization
-	void Start () 
-    {
-        if (hasGlow) material.SetFloat("_MKGlowPower", glowPowerValue);
-
-        if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
+    // Use this for initialization
+    void Start()
+	{
         for (int w = 0; w < levelEvents.Length; w++)
         {
             if (levelEvents[w] == LevelEvents.BeatBehaviour) Koreographer.Instance.RegisterForEvents(beatBhv, BeatBehaviour);
         }
         CheckActiveEvents();
-	}
+    }
 
     private void Update()
     {
@@ -79,7 +69,7 @@ public class LevelEventsMaterial: MonoBehaviour {
         EventContainerSatisStates();
     }
 
-	void EventContainerLevelStates()
+    void EventContainerLevelStates()
     {
         switch (levelStates)
         {
@@ -87,52 +77,54 @@ public class LevelEventsMaterial: MonoBehaviour {
                 eventPlaying = true;
                 break;
             case LevelStates.LevelStart:
-                if(levelStates == managerLS)eventPlaying = true;
+                if (levelStates == managerLS) eventPlaying = true;
                 break;
             case LevelStates.LevelPaused:
-                if (levelStates == managerLS)eventPlaying = true;
+                if (levelStates == managerLS) eventPlaying = true;
                 break;
             case LevelStates.LevelPlay:
                 break;
             case LevelStates.LevelEnd:
-                if (levelStates == managerLS)eventPlaying = true;
+                if (levelStates == managerLS) eventPlaying = true;
                 break;
         }
     }
 
-    void EventContainerPlayerStates(){
+    void EventContainerPlayerStates()
+    {
         switch (playerStates)
         {
             case PlayerStates.None:
                 break;
             case PlayerStates.Dancing:
-                if(playerStates == managerPS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
+                if (playerStates == managerPS && levelStates == LevelStates.LevelPlay) eventPlaying = true;
                 break;
             case PlayerStates.Hit:
-                if (playerStates == managerPS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
+                if (playerStates == managerPS && levelStates == LevelStates.LevelPlay) eventPlaying = true;
                 break;
             case PlayerStates.Succeed:
-                if (playerStates == managerPS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
+                if (playerStates == managerPS && levelStates == LevelStates.LevelPlay) eventPlaying = true;
                 break;
         }
     }
 
-    void EventContainerSatisStates(){
+    void EventContainerSatisStates()
+    {
         switch (satisfactionStates)
         {
             case SatisfactionStates.None:
                 break;
             case SatisfactionStates.SatisfactionLvl1:
-                if(satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
+                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay) eventPlaying = true;
                 break;
             case SatisfactionStates.SatisfactionLvl2:
-                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
+                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay) eventPlaying = true;
                 break;
             case SatisfactionStates.SatisfactionLvl3:
-                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
+                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay) eventPlaying = true;
                 break;
             case SatisfactionStates.SatisfactionClimax:
-                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay)eventPlaying = true;
+                if (satisfactionStates == managerSS && levelStates == LevelStates.LevelPlay) eventPlaying = true;
                 break;
         }
     }
@@ -140,14 +132,22 @@ public class LevelEventsMaterial: MonoBehaviour {
     #region Level Events Functions
     public void IntroStart()
     {
-        if (eventPlaying){
+        if (eventPlaying)
+        {
             for (int w = 0; w < levelEvents.Length; w++)
             {
                 if (activeLevelEvents[w, 0])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -161,9 +161,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 1])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -176,9 +183,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 2])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -191,9 +205,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 3])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -206,9 +227,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 4])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+						mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -221,9 +249,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 5])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -236,9 +271,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 6])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -251,9 +293,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 7])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -266,9 +315,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 8])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -281,9 +337,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 9])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -296,9 +359,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 10])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -311,9 +381,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 11])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -326,9 +403,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 12])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -342,9 +426,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 13])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -357,9 +448,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 14])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+                        eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -372,9 +470,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 15])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -387,9 +492,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 16])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -402,9 +514,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 17])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -417,9 +536,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 18])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -432,9 +558,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 19])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -447,9 +580,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 20])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -462,9 +602,16 @@ public class LevelEventsMaterial: MonoBehaviour {
             {
                 if (activeLevelEvents[w, 21])
                 {
-                    audioSource.clip = auClip[w];
-                    audioSource.Play();
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -493,7 +640,7 @@ public class LevelEventsMaterial: MonoBehaviour {
     {
         for (int w = 0; w < levelEvents.Length; w++)
         {
-            activeLevelEvents[w,(int)levelEvents[w]] = true;
+            activeLevelEvents[w, (int)levelEvents[w]] = true;
         }
     }
 }
