@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23118097746031326}
   - component: {fileID: 114877339501609936}
   - component: {fileID: 114348428677327342}
+  - component: {fileID: 114882861606004702}
   m_Layer: 0
   m_Name: Light Cube
   m_TagString: Untagged
@@ -546,3 +547,25 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114882861606004702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104203784922408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027738c8d00b34bfaa66c5b41bb05830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 0000000002000000
+  beatBhv: 
+  materials:
+  - {fileID: 2100000, guid: 97ccb85a4a9f5f54490a719eb8506d62, type: 2}
+  - {fileID: 2100000, guid: 154fa4419798df84b9db159bb220c965, type: 2}
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0

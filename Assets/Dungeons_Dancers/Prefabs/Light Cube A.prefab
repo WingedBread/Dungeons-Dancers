@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 23230428980570156}
   - component: {fileID: 114841775585839502}
   - component: {fileID: 114255036248095270}
+  - component: {fileID: 114737751115036782}
   m_Layer: 0
   m_Name: Light Cube
   m_TagString: Untagged
@@ -174,6 +175,28 @@ MonoBehaviour:
   offBeatRotationVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.05
   easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!114 &114737751115036782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435238096989628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027738c8d00b34bfaa66c5b41bb05830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 0000000002000000
+  beatBhv: 
+  materials:
+  - {fileID: 2100000, guid: 97ccb85a4a9f5f54490a719eb8506d62, type: 2}
+  - {fileID: 2100000, guid: 43a4508d14c075e4aa16cf434f9f6393, type: 2}
   managerLS: 0
   managerPS: 0
   managerSS: 0
