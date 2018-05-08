@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(InputController))]
 public class PlayerManager : MonoBehaviour
 {
+	[Header("Checkpoint Behaviour")]
+    [SerializeField]
+    private CheckpointBehaviour checkpointBhv;
 
     [Header("Game Manager")]
     [HideInInspector]
@@ -280,6 +283,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (spawnPosition != col.gameObject.transform.position) 
         {
+			if (gameManager.GetGameStatus()) StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject));
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
                 gameManager.levelEventsAudios[i].OnCheckpoint();;
