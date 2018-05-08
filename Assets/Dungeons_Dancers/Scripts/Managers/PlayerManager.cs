@@ -77,8 +77,16 @@ public class PlayerManager : MonoBehaviour
 
     void PlayerBeatAnimatorCheck()
     {
-        if (gameManager.GetRhythmActiveBeat() && !animator.GetBool("onBeat")) animator.SetBool("onBeat", true);
-        else if(!gameManager.GetRhythmActiveBeat() && animator.GetBool("onBeat")) animator.SetBool("onBeat", false);
+		if (gameManager.GetRhythmActiveBeat() && !animator.GetBool("onBeat"))
+		{
+			animator.SetBool("onBeat", true);
+			animator.SetBool("onHit", false);
+		}
+		else if (!gameManager.GetRhythmActiveBeat() && animator.GetBool("onBeat"))
+		{
+			animator.SetBool("onBeat", false);
+			animator.SetBool("onHit", false);
+		}
     }
 
     public void CorrectInput()
@@ -283,31 +291,36 @@ public class PlayerManager : MonoBehaviour
     {
         if (spawnPosition != col.gameObject.transform.position) 
         {
-			if (gameManager.GetGameStatus()) StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject));
-            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
-            {
-                gameManager.levelEventsAudios[i].OnCheckpoint();;
-            }
-			for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
-            {
-				gameManager.levelEventsMaterials[i].OnCheckpoint(); ;
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
-            {
-                gameManager.levelEventsEasing1[i].OnCheckpoint(); ;
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
-            {
-                gameManager.levelEventsEasing2[i].OnCheckpoint(); ;
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
-            {
-                gameManager.levelEventsEasing3[i].OnCheckpoint(); ;
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
-            {
-                gameManager.levelEventsEasing4[i].OnCheckpoint(); ;
-            }
+			if (gameManager.GetGameStatus())
+			{
+				StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject));
+				animator.SetBool("onHit", true);
+
+				for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+				{
+					gameManager.levelEventsAudios[i].OnCheckpoint(); ;
+				}
+				for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+				{
+					gameManager.levelEventsMaterials[i].OnCheckpoint(); ;
+				}
+				for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+				{
+					gameManager.levelEventsEasing1[i].OnCheckpoint(); ;
+				}
+				for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+				{
+					gameManager.levelEventsEasing2[i].OnCheckpoint(); ;
+				}
+				for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+				{
+					gameManager.levelEventsEasing3[i].OnCheckpoint(); ;
+				}
+				for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+				{
+					gameManager.levelEventsEasing4[i].OnCheckpoint(); ;
+				}
+			}
         }
 
         spawnPosition = col.gameObject.transform.position;
