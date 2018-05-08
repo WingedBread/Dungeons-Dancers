@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public List<LevelEventsEasing_03> levelEventsEasing3;
     [HideInInspector]
     public List<LevelEventsEasing_04> levelEventsEasing4;
+	[HideInInspector]
+	public List<LevelEventsMaterial> levelEventsMaterials;
 
     [Header("Player Manager")]
     [SerializeField]
@@ -68,6 +70,12 @@ public class GameManager : MonoBehaviour
             if (levelEventsAudios == null) Debug.Log("null audios");
             levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
             levelEventsAudios[i].IntroStart();
+        }
+		for (int i = 0; i < levelEventsMaterials.Count; i++)
+        {
+			if (levelEventsMaterials == null) Debug.Log("null material");
+			levelEventsMaterials[i].SetLevelState(LevelStates.LevelStart);
+			levelEventsMaterials[i].IntroStart();
         }
 
         for (int i = 0; i < levelEventsEasing1.Count; i++)
@@ -119,6 +127,10 @@ public class GameManager : MonoBehaviour
                 {
                     levelEventsAudios[i].TimeOver();
                 }
+				for (int i = 0; i < levelEventsMaterials.Count; i++)
+                {
+					levelEventsMaterials[i].TimeOver();
+                }
                 for (int i = 0; i < levelEventsEasing1.Count; i++)
                 {
                     levelEventsEasing1[i].TimeOver();
@@ -144,6 +156,10 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < levelEventsAudios.Count; i++)
                 {
                     levelEventsAudios[i].TimeNearOver();
+                }
+				for (int i = 0; i < levelEventsMaterials.Count; i++)
+                {
+					levelEventsMaterials[i].TimeNearOver();
                 }
                 for (int i = 0; i < levelEventsEasing1.Count; i++)
                 {
@@ -187,6 +203,12 @@ public class GameManager : MonoBehaviour
                 levelEventsAudios[i].IntroEnd();
                 levelEventsAudios[i].StartPlay();
             }
+			for (int i = 0; i < levelEventsMaterials.Count; i++)
+            {
+				levelEventsMaterials[i].SetLevelState(LevelStates.LevelPlay);
+				levelEventsMaterials[i].IntroEnd();
+				levelEventsMaterials[i].StartPlay();
+            }
             for (int i = 0; i < levelEventsEasing1.Count; i++)
             {
                 levelEventsEasing1[i].SetLevelState(LevelStates.LevelPlay);
@@ -227,6 +249,10 @@ public class GameManager : MonoBehaviour
                 {
                     levelEventsAudios[i].SetLevelState(LevelStates.LevelPaused);
                 }
+				for (int i = 0; i < levelEventsMaterials.Count; i++)
+                {
+					levelEventsMaterials[i].SetLevelState(LevelStates.LevelPaused);
+                }
                 for (int i = 0; i < levelEventsEasing1.Count; i++)
                 {
                     levelEventsEasing1[i].SetLevelState(LevelStates.LevelPaused);
@@ -253,6 +279,10 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < levelEventsAudios.Count; i++)
                 {
                     levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
+                }
+				for (int i = 0; i < levelEventsMaterials.Count; i++)
+                {
+					levelEventsMaterials[i].SetLevelState(LevelStates.LevelPlay);
                 }
                 for (int i = 0; i < levelEventsEasing1.Count; i++)
                 {
@@ -284,6 +314,11 @@ public class GameManager : MonoBehaviour
         {
             levelEventsAudios[i].SetLevelState(LevelStates.LevelEnd);
             levelEventsAudios[i].WinLevel();
+        }
+		for (int i = 0; i < levelEventsMaterials.Count; i++)
+        {
+			levelEventsMaterials[i].SetLevelState(LevelStates.LevelEnd);
+			levelEventsMaterials[i].WinLevel();
         }
         for (int i = 0; i < levelEventsEasing1.Count; i++)
         {
@@ -351,6 +386,10 @@ public class GameManager : MonoBehaviour
         {
             levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
         }
+		for (int i = 0; i < levelEventsMaterials.Count; i++)
+        {
+			levelEventsMaterials[i].SetLevelState(LevelStates.LevelStart);
+        }
         for (int i = 0; i < levelEventsEasing1.Count; i++)
         {
             levelEventsEasing1[i].SetLevelState(LevelStates.LevelStart);
@@ -404,6 +443,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < levelEventsAudios.Count; i++)
         {
             levelEventsAudios[i].Door();
+        }
+		for (int i = 0; i < levelEventsMaterials.Count; i++)
+        {
+			levelEventsMaterials[i].Door();
         }
         for (int i = 0; i < levelEventsEasing1.Count; i++)
         {

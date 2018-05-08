@@ -26,6 +26,8 @@ public class LevelEventsMaterial : MonoBehaviour
     [SerializeField]
     private Material[] materials;
 
+	private MeshRenderer mRenderer;
+
     [HideInInspector]
     public LevelStates managerLS;
     [HideInInspector]
@@ -40,7 +42,8 @@ public class LevelEventsMaterial : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        //gameManager.levelEventsAudios.Add(this);
+		mRenderer = GetComponent<MeshRenderer>();
+        gameManager.levelEventsMaterials.Add(this);
         for (int i = 0; i < levelEvents.Length; i++)
         {
             for (int w = 0; w < 21; w++)
@@ -51,7 +54,7 @@ public class LevelEventsMaterial : MonoBehaviour
     }
     // Use this for initialization
     void Start()
-    {
+	{
         for (int w = 0; w < levelEvents.Length; w++)
         {
             if (levelEvents[w] == LevelEvents.BeatBehaviour) Koreographer.Instance.RegisterForEvents(beatBhv, BeatBehaviour);
@@ -135,9 +138,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 0])
                 {
-                    if (this.GetComponent<Material>() == materials[0]) this.GetComponent<MeshRenderer>().material = materials[1];
-                    else if (this.GetComponent<Material>() == materials[1]) this.GetComponent<MeshRenderer>().material  = materials[0];
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -151,8 +161,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 1])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -165,8 +183,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 2])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -179,8 +205,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 3])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -193,8 +227,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 4])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+						mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -207,8 +249,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 5])
                 {
-                   
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -221,8 +271,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 6])
                 {
-                   
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -235,8 +293,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 7])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -249,8 +315,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 8])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -263,8 +337,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 9])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -277,8 +359,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 10])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -291,8 +381,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 11])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -305,8 +403,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 12])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -320,8 +426,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 13])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -334,8 +448,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 14])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+                        eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+                        eventPlaying = false;
+                    }
                 }
             }
         }
@@ -348,8 +470,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 15])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -362,8 +492,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 16])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -376,8 +514,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 17])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -390,8 +536,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 18])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -404,8 +558,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 19])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -418,8 +580,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 20])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }
@@ -432,8 +602,16 @@ public class LevelEventsMaterial : MonoBehaviour
             {
                 if (activeLevelEvents[w, 21])
                 {
-                    
-                    eventPlaying = false;
+					if (mRenderer.sharedMaterial == materials[0])
+                    {
+                        mRenderer.material = materials[1];
+						eventPlaying = false;
+                    }
+                    else if (mRenderer.sharedMaterial == materials[1])
+                    {
+                        mRenderer.material = materials[0];
+						eventPlaying = false;
+                    }
                 }
             }
         }

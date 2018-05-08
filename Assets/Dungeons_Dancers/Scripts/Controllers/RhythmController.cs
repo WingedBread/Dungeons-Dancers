@@ -103,6 +103,10 @@ public class RhythmController : MonoBehaviour
         {
             gameManager.levelEventsAudios[i].OnBeat();
         }
+		for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+        {
+			gameManager.levelEventsMaterials[i].OnBeat();
+        }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
             gameManager.levelEventsEasing1[i].OnBeat();
