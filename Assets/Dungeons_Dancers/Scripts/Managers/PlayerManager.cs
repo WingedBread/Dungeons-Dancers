@@ -293,7 +293,6 @@ public class PlayerManager : MonoBehaviour
         {
 			if (gameManager.GetGameStatus())
 			{
-				Debug.Log("gamestart");
 				StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject));
 				animator.SetBool("onCheckpoint", true);
 				animator.Play("Checkpoint");

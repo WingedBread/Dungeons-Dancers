@@ -18,6 +18,11 @@ public class CheckpointBehaviour : MonoBehaviour {
 	[SerializeField]
 	private Sprite checkpointPass;
 
+	[SerializeField]
+    private Sprite checkpointOld;
+
+	private List<GameObject> checkpoints = new List<GameObject>();
+
 	private List<GameObject> instantiatedObj = new List<GameObject>();
 
 	[Header("Checkpoint Stuff Duration:")]
@@ -39,12 +44,22 @@ public class CheckpointBehaviour : MonoBehaviour {
 		flashUI.gameObject.SetActive(true);
         rainbowMouth.SetActive(true);
         mobilePhone.SetActive(true);
-		//playAnim
 		flashUI.DOFade(0, duration);
 		Sequence s = DOTween.Sequence();
 		s.Append(mobilePhone.transform.GetChild(0).DOScale((mobilePhone.transform.GetChild(0).localScale * 3), duration/4));
 		s.Append(mobilePhone.transform.GetChild(0).DOScale(mobilePhone.transform.GetChild(0).localScale * 0, duration/3));
+
+		checkpoints.Add(currectcheckpoint);
+
 		currectcheckpoint.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = checkpointPass;
+
+		for (int w = 0; w < checkpoints.Count; w++)
+		{
+			if (checkpoints[w].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite == checkpointPass && checkpoints[w] != currectcheckpoint)
+			{
+				checkpoints[w].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = checkpointOld;
+			}
+		}
 
 		for (int i = 0; i < emojiParticles.transform.childCount; i++)
         {
