@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class MovingEnemyBehaviour : MonoBehaviour {
 
-    [Header("Moves Horizontally?")]
-    [SerializeField]
     private bool xAxis;
-    [Header("Initial Direction")]
-    [SerializeField]
-    private int direction = -1;
+    private int direction;
+	private Animator animator;
 
     [Header("Choose Trap Behaviour from 1-3")]
     [SerializeField]
@@ -20,33 +17,25 @@ public class MovingEnemyBehaviour : MonoBehaviour {
 
     private bool activeTrapEvent;
 
-    private void Start()
+	private GameObject[] enemyDirection;
+
+	private void Start()
+	{
+		animator = transform.GetChild(0).GetComponent<Animator>();
+		enemyDirection = GameObject.FindGameObjectsWithTag("EnemyDirection");
+		for (int i = 0; i < enemyDirection.Length; i++)
+		{
+			for (int w = 0; w < enemyDirection[i].transform.childCount; w++)
+			{
+				enemyDirection[i].transform.GetChild(w).GetComponent<SpriteRenderer>().enabled = false;
+			}
+
+		}
+	}
+	public void ActiveTrap()
     {
-        if (xAxis)
-        {
-            if(direction == 1)
-            {
-                SetRotation(1);
-            }
-            else if(direction == -1)
-            {
-                SetRotation(0);
-            }
-        }
-        else
-        {
-            if (direction == 1)
-            {
-                SetRotation(3);
-            }
-            else if (direction == -1)
-            {
-                SetRotation(2);
-            }
-        }
-    }
-    public void ActiveTrap()
-    {
+		activeTrapEvent = true;
+		animator.SetBool("isRun", activeTrapEvent);
         if (xAxis)
         {
             this.transform.position = new Vector3(this.transform.position.x + (direction), this.transform.position.y, this.transform.position.z);
@@ -55,12 +44,11 @@ public class MovingEnemyBehaviour : MonoBehaviour {
         {
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + (direction));
         }
-
-        activeTrapEvent = true;
     }
     public void DisableTrap()
     {
-        activeTrapEvent = false;
+		activeTrapEvent = false;
+		animator.SetBool("isRun", activeTrapEvent);
     }
 
     private IEnumerator ReturnIdle(float time)
@@ -68,6 +56,7 @@ public class MovingEnemyBehaviour : MonoBehaviour {
         yield return new WaitForSeconds(time);
         StopCoroutine("ReturnIdle");
     }
+
     public int GetTrapBehaviour()
     {
         return trapBehaviour;

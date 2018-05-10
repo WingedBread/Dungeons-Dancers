@@ -320,12 +320,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4538850251711468}
-  - component: {fileID: 136349900260124078}
-  - component: {fileID: 114212846380113928}
   - component: {fileID: 114012827352407334}
+  - component: {fileID: 54800038817632464}
+  - component: {fileID: 65373426875195362}
   m_Layer: 8
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1175,7 +1175,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1356233015490574}
-  m_LocalRotation: {x: 0.3799282, y: 0.59636784, z: 0.3799282, w: 0.59636784}
+  m_LocalRotation: {x: 0.27059805, y: 0.6532815, z: 0.27059805, w: 0.6532815}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
@@ -1183,7 +1183,7 @@ Transform:
   - {fileID: 4320624011841294}
   m_Father: {fileID: 4538850251711468}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 65}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 45}
 --- !u!4 &4111868164365702
 Transform:
   m_ObjectHideFlags: 1
@@ -1579,7 +1579,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1300567745086316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0, z: -0.5}
+  m_LocalPosition: {x: 3.5, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4106848273150330}
@@ -2135,6 +2135,33 @@ Transform:
   m_Father: {fileID: 4280073535279570}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54800038817632464
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1300567745086316}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
+--- !u!65 &65373426875195362
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1300567745086316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!95 &95034369212399754
 Animator:
   serializedVersion: 3
@@ -2152,6 +2179,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114012827352407334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2163,36 +2191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcc01e6b065149b99ae6c9bfcc33530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points:
-  - {fileID: 0}
-  - {fileID: 0}
   trapBehaviour: 1
   timeIdle: 0.25
---- !u!114 &114212846380113928
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1300567745086316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37d95bbab282e4ffca048e1bdb332cef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayLenght: 1
---- !u!136 &136349900260124078
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1300567745086316}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.39561176
-  m_Height: 1.7191612
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137464265057511082
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2206,6 +2206,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b9b12e1c91667aa49814ba84cf4c6202, type: 2}
   m_StaticBatchInfo:
@@ -2254,6 +2255,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: c302b28fe83d97c48b010f59aa3eaec0, type: 2}
   m_StaticBatchInfo:
@@ -2348,6 +2350,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b9b12e1c91667aa49814ba84cf4c6202, type: 2}
   m_StaticBatchInfo:
@@ -2396,6 +2399,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: c302b28fe83d97c48b010f59aa3eaec0, type: 2}
   m_StaticBatchInfo:
