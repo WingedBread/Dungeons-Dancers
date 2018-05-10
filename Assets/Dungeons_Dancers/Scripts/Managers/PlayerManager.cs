@@ -80,12 +80,12 @@ public class PlayerManager : MonoBehaviour
 		if (gameManager.GetRhythmActiveBeat() && !animator.GetBool("onBeat"))
 		{
 			animator.SetBool("onBeat", true);
-			animator.SetBool("onHit", false);
+			animator.SetBool("onCheckpoint", false);
 		}
 		else if (!gameManager.GetRhythmActiveBeat() && animator.GetBool("onBeat"))
 		{
 			animator.SetBool("onBeat", false);
-			animator.SetBool("onHit", false);
+			animator.SetBool("onCheckpoint", false);
 		}
     }
 
@@ -293,8 +293,10 @@ public class PlayerManager : MonoBehaviour
         {
 			if (gameManager.GetGameStatus())
 			{
+				Debug.Log("gamestart");
 				StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject));
-				animator.SetBool("onHit", true);
+				animator.SetBool("onCheckpoint", true);
+				animator.Play("Checkpoint");
 
 				for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
 				{
