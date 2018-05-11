@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using SonicBloom.Koreo;
 
 public class StaticTrapBehaviour : MonoBehaviour {
+
+	[Header("Choose Beat Behaviour")]
+    [EventID]
+    public string beatBhv;
+	private GameManager gameManager;
     
-    [Header("Choose Trap Behaviour from 1-3")]
-    [SerializeField]
-    private int trapBehaviour;
     [Header("Choose Trap Max Height")]
     [SerializeField]
     private Vector3 trapMaxHeight;
@@ -35,8 +38,18 @@ public class StaticTrapBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+		Koreographer.Instance.RegisterForEvents(beatBhv, BeatDetection);
         childSpikes = transform.GetChild(0).GetChild(0).gameObject;
 	}
+
+	void BeatDetection(KoreographyEvent evt)
+    {
+        if (gameManager.GetGameStatus())
+        {
+            if (!activeTrapEvent) ActiveTrap();
+        }
+    }
 	
     public void ActiveTrap()
     {
@@ -49,16 +62,8 @@ public class StaticTrapBehaviour : MonoBehaviour {
     {
         activeTrapEvent = false;
         childSpikes.transform.DOLocalMove(trapMinHeight, easingOffDuration, false);
-    }
-
-    public int GetTrapBehaviour(){
-        return trapBehaviour;
-    }
-
-    public bool GetActiveTrapEvent(){
-        return activeTrapEvent;
-    }
-
+    }   
+   
     private IEnumerator ColliderCoroutine()
     {
 		yield return new WaitForSeconds(easingOnDuration / colTime);
