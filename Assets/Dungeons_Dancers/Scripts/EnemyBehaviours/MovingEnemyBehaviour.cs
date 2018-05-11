@@ -1,16 +1,17 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using SonicBloom.Koreo;
 
 public class MovingEnemyBehaviour : MonoBehaviour {
 
     private bool xAxis;
     private int direction;
 	private Animator animator;
+	private GameManager gameManager;
+    [Header ("Choose Beat Behaviour")]
+	[EventID]
+    public string beatBhv;
 
-    [Header("Choose Trap Behaviour from 1-3")]
-    [SerializeField]
-    private int trapBehaviour;
     [Header("Choose Idle Return Time")]
     [SerializeField]
     private float timeIdle = 0.25f;
@@ -21,8 +22,11 @@ public class MovingEnemyBehaviour : MonoBehaviour {
 
 	private void Start()
 	{
+		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 		animator = transform.GetChild(0).GetComponent<Animator>();
 		enemyDirection = GameObject.FindGameObjectsWithTag("EnemyDirection");
+		Koreographer.Instance.RegisterForEvents(beatBhv, BeatDetection);
+        
 		for (int i = 0; i < enemyDirection.Length; i++)
 		{
 			for (int w = 0; w < enemyDirection[i].transform.childCount; w++)
@@ -32,41 +36,42 @@ public class MovingEnemyBehaviour : MonoBehaviour {
 
 		}
 	}
-	public void ActiveTrap()
+    
+	void BeatDetection(KoreographyEvent evt)
+	{
+		if(gameManager.GetGameStatus())
+		{
+			if(!activeTrapEvent) ActiveTrap();
+		}
+	}
+
+    void ActiveTrap()
     {
 		activeTrapEvent = true;
 		animator.SetBool("isRun", activeTrapEvent);
         if (xAxis)
         {
             this.transform.position = new Vector3(this.transform.position.x + (direction), this.transform.position.y, this.transform.position.z);
+			StartCoroutine("ReturnIdle");
         }
         else
         {
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + (direction));
+			StartCoroutine("ReturnIdle");
         }
     }
-    public void DisableTrap()
+    void DisableTrap()
     {
 		activeTrapEvent = false;
 		animator.SetBool("isRun", activeTrapEvent);
     }
 
-    private IEnumerator ReturnIdle(float time)
+    private IEnumerator ReturnIdle()
     {
-        yield return new WaitForSeconds(time);
+		yield return new WaitForSeconds(timeIdle);
+		DisableTrap();
         StopCoroutine("ReturnIdle");
-    }
-
-    public int GetTrapBehaviour()
-    {
-        return trapBehaviour;
-    }
-
-    public bool GetActiveTrapEvent()
-    {
-        return activeTrapEvent;
-    }
-
+    }   
     void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag == "EnemyDirection")
@@ -98,9 +103,9 @@ public class MovingEnemyBehaviour : MonoBehaviour {
         }
     }
 
-    void SetRotation(int direction)
+    void SetRotation(int Direction)
     {
-        switch (direction)
+        switch (Direction)
         {
             case 0: //LEFT
                 transform.GetChild(0).rotation = Quaternion.Euler(0, 90, 45);

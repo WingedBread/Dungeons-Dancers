@@ -8,7 +8,6 @@ public class RhythmController : MonoBehaviour
 {
     [Header("Managers")]
     private GameManager gameManager;
-    private EnemyManager enemyManager;
     [SerializeField]
     private DebugController debugController;
     private MultiMusicPlayer multiMusic;
@@ -32,7 +31,6 @@ public class RhythmController : MonoBehaviour
     {
         multiMusic = GameObject.FindWithTag("MusicPlayer").GetComponent<MultiMusicPlayer>();
         gameManager = GetComponent<GameManager>();
-        enemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<EnemyManager>();
         StartCoroutine(IntroDelayCoroutine(introTime));
     }
 
@@ -56,9 +54,6 @@ public class RhythmController : MonoBehaviour
     {
         Koreographer.Instance.RegisterForEventsWithTime("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.RegisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
-        Koreographer.Instance.RegisterForEvents("Trap1Event", StaticTrap1BeatBehaviour);
-        Koreographer.Instance.RegisterForEvents("Trap2Event", StaticTrap2BeatBehaviour);
-        Koreographer.Instance.RegisterForEvents("Trap3Event", StaticTrap3BeatBehaviour);
     }
 
     private void StopRhythm()
@@ -66,9 +61,6 @@ public class RhythmController : MonoBehaviour
         multiMusic.Stop();
         Koreographer.Instance.UnregisterForEvents("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.UnregisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
-        Koreographer.Instance.UnregisterForEvents("Trap1Event", StaticTrap1BeatBehaviour);
-        Koreographer.Instance.UnregisterForEvents("Trap2Event", StaticTrap2BeatBehaviour);
-        Koreographer.Instance.UnregisterForEvents("Trap3Event", StaticTrap3BeatBehaviour);
     }
 
     void IntroBehaviour(KoreographyEvent kIntroEvent)
@@ -135,19 +127,6 @@ public class RhythmController : MonoBehaviour
         {
             activePlayerBeatEvent = false;
         }
-    }
-
-    void StaticTrap1BeatBehaviour(KoreographyEvent kTrap1Event)
-    {
-        enemyManager.TrapEvent1Behaviour();
-    }
-    void StaticTrap2BeatBehaviour(KoreographyEvent kTrap2Event)
-    {
-        enemyManager.TrapEvent2Behaviour();
-    }
-    void StaticTrap3BeatBehaviour(KoreographyEvent kTrap3Event)
-    {
-        enemyManager.TrapEvent3Behaviour();
     }
 
     void CalculateTiming(int sampleTime, KoreographyEvent kCalcEvent)
