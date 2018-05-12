@@ -13,19 +13,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Bool_keys:
   - pbIconGUI
+  - pb_MeshImporter::quads
+  - pb_MeshImporter::smoothing
+  - pbObjExportRightHanded
+  - pbObjApplyTransform
+  - pbObjExportCopyTextures
+  - pbObjExportVertexColors
+  - pbObjTextureOffsetScale
+  - pbObjQuads
+  - pbExportAsGroup
+  - pbCollapseVertexToFirst
   m_Int_keys:
   - pbHandleAlignment
+  - pbDefaultEditLevel
+  - pbDefaultSelectionMode
+  - pb_GIWorkflowMode
+  - pbExtrudeMethod
   m_Float_keys:
   - pbEditorScroll.x
   - pbEditorScroll.y
-  m_String_keys: []
+  - pb_MeshImporter::smoothingThreshold
+  - pbExtrudeDistance
+  - pbBevelAmount
+  m_String_keys:
+  - pbCurrentMaterialPalette
   m_Color_keys: []
   m_Material_keys: []
-  m_Bool_values: 01
-  m_Int_values: 00000000
+  m_Bool_values: 0001010100000000000001
+  m_Int_values: 0000000000000000020000000100000001000000
   m_Float_values:
   - 0
   - 0
-  m_String_values: []
+  - 0.0001
+  - 0.05
+  - 0.1
+  m_String_values:
+  - Assets/ProBuilder Data/Default Material Palette.asset
   m_Color_values: []
   m_Material_values: []
