@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
 
     private int currentLevelState = 0;
 
+	[SerializeField]
+	private float winTime = 1f; 
+
     [SerializeField]
     private DebugController debugController;
 
@@ -346,8 +349,13 @@ public class GameManager : MonoBehaviour
         auController.MuteSound();
         //StartCoroutine(Reset());
         PlayerPrefs.SetInt("HighScoreLVL1", playerManager.GetCoins());
-        SceneManager.LoadScene(2);
+		StartCoroutine(WinNextScene(winTime));
     }
+
+	IEnumerator WinNextScene(float time){
+		yield return new WaitForSeconds(time);
+		SceneManager.LoadScene(2);
+	}
 
     public void Dead()
     {

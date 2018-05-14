@@ -68,6 +68,7 @@ public class PlayerManager : MonoBehaviour
         mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
         spawnPosition = transform.position;
         spawnInitPosition = transform.position;
+		animator.SetBool("onWin", false);
     }
 
     void Update()
@@ -185,6 +186,8 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.levelEventsEasing4[i].SetPlayerState(PlayerStates.Succeed);
         }
+		animator.SetBool("onWin", true);
+		inputController.SetRotation(2);
         gameManager.Win();
     }
 
@@ -294,6 +297,7 @@ public class PlayerManager : MonoBehaviour
 			if (gameManager.GetGameStatus())
 			{
 				StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject));
+				inputController.SetRotation(2);
 				animator.SetBool("onCheckpoint", true);
 				animator.Play("Checkpoint");
 
@@ -363,7 +367,6 @@ public class PlayerManager : MonoBehaviour
             transform.position = spawnInitPosition;
             transform.parent.GetChild(1).position = spawnInitPosition;
             spawnPosition = spawnInitPosition;
-            inputController.SetRotation(1);
             for (int i = 0; i < collectibles.Count; i++)
             {
                 collectibles[i].SetActive(true);
@@ -401,8 +404,6 @@ public class PlayerManager : MonoBehaviour
             gameManager.Respawn();
             transform.position = spawnPosition;
             transform.parent.GetChild(1).position = spawnPosition;
-            if (spawnPosition != spawnInitPosition) inputController.SetRotation(2);
-            else inputController.SetRotation(1);
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
                 gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Dancing);
