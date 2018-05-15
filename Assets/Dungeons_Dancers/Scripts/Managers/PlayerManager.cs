@@ -196,7 +196,7 @@ public class PlayerManager : MonoBehaviour
 		animator.SetBool("onWin", true);
 		inputController.SetRotation(2);
         gameManager.Win();
-		StartCoroutine(winBhv.OnWin(this.transform));
+		winBhv.OnWin(this.transform);
     }
 
     public void TrapBehaviour()
