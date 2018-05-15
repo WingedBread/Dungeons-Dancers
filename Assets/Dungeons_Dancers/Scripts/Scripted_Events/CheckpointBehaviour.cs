@@ -6,18 +6,22 @@ using DG.Tweening;
 
 public class CheckpointBehaviour : MonoBehaviour {
 
+	[Header("Emoji Particles")]
 	[SerializeField]
 	private GameObject emojiParticles;
+	[Header("UI Flash Image")]
 	[SerializeField]
 	private Image flashUI;
+	[Space]
+	[Header("Player Stuff:")]
 	[SerializeField]
 	private GameObject rainbowMouth;
 	[SerializeField]
 	private GameObject mobilePhone;
 
+	[Header("Chekpoint Sprites:")]
 	[SerializeField]
 	private Sprite checkpointPass;
-
 	[SerializeField]
     private Sprite checkpointOld;
 

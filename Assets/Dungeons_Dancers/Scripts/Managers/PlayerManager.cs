@@ -8,7 +8,11 @@ public class PlayerManager : MonoBehaviour
 {
 	[Header("Checkpoint Behaviour")]
     [SerializeField]
-    private CheckpointBehaviour checkpointBhv;
+	private GameObject scriptedEvents;
+
+	private CheckpointBehaviour checkpointBhv;
+	private WinBehaviour winBhv;
+	private LoseBehaviour loseBhv;
 
     [Header("Game Manager")]
     [HideInInspector]
@@ -66,6 +70,9 @@ public class PlayerManager : MonoBehaviour
         collectiblesController = GetComponent<CollectiblesController>();
         animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
+		checkpointBhv = scriptedEvents.GetComponent<CheckpointBehaviour>();
+		winBhv = scriptedEvents.GetComponent<WinBehaviour>();
+		loseBhv = scriptedEvents.GetComponent<LoseBehaviour>();
         spawnPosition = transform.position;
         spawnInitPosition = transform.position;
 		animator.SetBool("onWin", false);
@@ -189,6 +196,7 @@ public class PlayerManager : MonoBehaviour
 		animator.SetBool("onWin", true);
 		inputController.SetRotation(2);
         gameManager.Win();
+		StartCoroutine(winBhv.OnWin(this.transform));
     }
 
     public void TrapBehaviour()
