@@ -72,8 +72,8 @@ public class WinBehaviour : MonoBehaviour {
 		done[1] = false;
 		winParticles.SetActive(false);
 		yield return new WaitForSeconds(particlesDelayDuration);
-		Instantiate(winParticles, player);
 		winParticles.SetActive(true);
+		Instantiate(winParticles, player);
 		yield return new WaitForSeconds(particlesDuration);
 		done[1] = true;
 		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(2);
