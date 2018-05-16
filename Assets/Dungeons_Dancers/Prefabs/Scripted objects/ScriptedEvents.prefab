@@ -55,8 +55,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerEasing: 0
   playerDuration: 1.5
+  delayDuration: 0
   duration: 3
-  playerEndPos: {x: 0, y: 0, z: 0}
+  playerEndPos: {fileID: 0}
+  offMaterial: {fileID: 2100000, guid: a43b132b296f1014182d1ad9f6aa91c2, type: 2}
+  onMaterial: {fileID: 2100000, guid: a1398f7242851a5488707183a3c73a65, type: 2}
+  parentFloor: {fileID: 0}
 --- !u!114 &114055920149173610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,10 +75,14 @@ MonoBehaviour:
   winParticles: {fileID: 1320840946574876, guid: 5b67c574820634b80bf8a23f67b70714,
     type: 2}
   cameraEasing: 33
-  cameraDuration: 1.5
   lightsParent: {fileID: 0}
-  duration: 5
-  cameraEndPos: {x: 6.5, y: 5, z: -2.5}
+  cameraEndPos: {fileID: 0}
+  cameraDelayDuration: 1
+  particlesDelayDuration: 2
+  lightsDelayDuration: 1.5
+  cameraDuration: 2
+  particlesDuration: 3
+  lightsDuration: 1
 --- !u!114 &114830387879534678
 MonoBehaviour:
   m_ObjectHideFlags: 1

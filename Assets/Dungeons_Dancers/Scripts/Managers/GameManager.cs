@@ -357,15 +357,7 @@ public class GameManager : MonoBehaviour
             rhythmController.SetRhythm(false);
             auController.MuteSound();
             uiController.DeadUI();
-            StartCoroutine(Reset());
-        }
-    }
-
-    public void Respawn()
-    {
-        if (!godMode)
-        {
-
+            playerManager.Lose();
         }
     }
 

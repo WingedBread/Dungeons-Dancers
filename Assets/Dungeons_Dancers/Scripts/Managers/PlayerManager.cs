@@ -199,6 +199,11 @@ public class PlayerManager : MonoBehaviour
 		winBhv.OnWin(this.transform);
     }
 
+    public void Lose()
+    {
+        StartCoroutine(loseBhv.OnLose(this));
+    }
+
     public void TrapBehaviour()
     {
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
@@ -409,7 +414,6 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            gameManager.Respawn();
             transform.position = spawnPosition;
             transform.parent.GetChild(1).position = spawnPosition;
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
