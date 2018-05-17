@@ -73,4 +73,11 @@ public class StaticTrapBehaviour : MonoBehaviour {
         StopCoroutine("ColliderCoroutine");
 
     }
+
+	public int GetActiveTrap()
+	{
+		if (activeTrapEvent)
+			return 1;
+		else return 0;
+	}
 }
