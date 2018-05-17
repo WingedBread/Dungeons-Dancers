@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4402301263322002}
   - component: {fileID: 114465538579891040}
-  - component: {fileID: 114010897920306332}
   - component: {fileID: 114900148467647364}
   - component: {fileID: 114741590115779246}
   - component: {fileID: 114733501602363238}
@@ -58,7 +57,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 243231272576841636, guid: 3fbdfdf39ccae4f2f973f379732c21d4,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -77,71 +76,72 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114010897920306332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1212218855684012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6087528668e1b4a45b47249c1f24f903, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelEventsEvt: []
-  levelStatesEvt: []
-  playerStatesEvt: []
 --- !u!114 &114332231184415648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,17 +160,23 @@ MonoBehaviour:
   keysImages:
   - {fileID: 0}
   - {fileID: 0}
+  climaxNumber: {fileID: 0}
+  climaxUnlock: {fileID: 0}
+  barEnd: {fileID: 0}
+  separatorsObj:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   WinGo: {fileID: 0}
-  DeadGo: {fileID: 0}
   PauseGo: {fileID: 0}
   pointsSlider: {fileID: 0}
   sliderText: {fileID: 0}
   sliderAccuracyText: {fileID: 0}
   finalIntro: GO!!
-  sliderFirst: Begginner...
-  sliderSecond: Halfway!
-  sliderThird: Almost there!!!
-  sliderFourth: FEEEEVEEER!!!
+  sliderFirst: --
+  sliderSecond: --
+  sliderThird: --
+  sliderFourth: --
   accuracySoon: GREAT
   accuracyPerfect: PERFECT
   accuracyLate: GOOD
@@ -188,7 +194,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88cbf28bd2db4619af9c2aa0a7e381e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSetup: {fileID: 114010897920306332}
+  levelEventsAudios: []
+  levelEventsEasing1: []
+  levelEventsEasing2: []
+  levelEventsEasing3: []
+  levelEventsEasing4: []
+  levelEventsMaterials: []
   playerManager: {fileID: 0}
   godMode: 0
   initDungeonTimer: 60
@@ -207,16 +218,12 @@ MonoBehaviour:
   transitionTime: 0
   auMixSnaps:
   - {fileID: 245452272048410324, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
+  - {fileID: 245798015667176646, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
   - {fileID: 24500006, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
   - {fileID: 245339632840268526, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
   - {fileID: 245593961249538820, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
   - {fileID: 245317087575189190, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
-  introClip: {fileID: 8300000, guid: e1cb00d440947422d952c04e785fee2f, type: 3}
-  coinClip: {fileID: 8300000, guid: f0e7c37c1b7904893899a91f54ff75a4, type: 3}
-  keyClip: {fileID: 8300000, guid: 594799164e3124510ab73464f9ec0ac6, type: 3}
-  endLeveClip: {fileID: 8300000, guid: aa1363ea1ef7645fc92fc7a27c8fd258, type: 3}
-  retryClip: {fileID: 8300000, guid: a8fd20010fbad4463b15ebc250fd46bb, type: 3}
-  doorClip: {fileID: 8300000, guid: 004db17fbe1e0457c8358e36fc4cc5f9, type: 3}
+  introClip: {fileID: 8300000, guid: 8be575703c68a694dbc58e73f55f8c41, type: 3}
 --- !u!114 &114741590115779246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,7 +235,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8f3194c4b144c169d30e857d5ed58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setupValues: {fileID: 11400000, guid: 01b9c8ec0459a4f95bac721c9960eaa3, type: 2}
+  initPoints: 10
+  ScoreGood: 1
+  ScoreGreat: 2
+  ScorePerfect: 3
+  ScoreBad: 3
+  ClimaxMaxFails: 2
+  TracksPosition:
+  - 0
+  - 10
+  - 33.333
+  - 66.666
+  - 100
 --- !u!114 &114900148467647364
 MonoBehaviour:
   m_ObjectHideFlags: 1
