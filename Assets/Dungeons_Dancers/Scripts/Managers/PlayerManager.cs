@@ -410,6 +410,7 @@ public class PlayerManager : MonoBehaviour
             {
                 gameManager.levelEventsEasing4[i].SetPlayerState(PlayerStates.Dancing);
             }
+            gameManager.GameDeadReset();
             StopCoroutine("ResetPlayer");
         }
         else

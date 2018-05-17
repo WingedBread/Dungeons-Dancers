@@ -45,8 +45,6 @@ public class UIController: MonoBehaviour {
     [SerializeField]
     private GameObject WinGo;
     [SerializeField]
-    private GameObject DeadGo;
-    [SerializeField]
     private GameObject PauseGo;
 
     [Header("Slider")]
@@ -112,7 +110,6 @@ public class UIController: MonoBehaviour {
         pointsText.text = gameManager.GetPoints(0, 1, 0).ToString();
         pointsSlider.value = gameManager.GetPoints(0, 1, 0);
         WinGo.SetActive(false);
-        DeadGo.SetActive(false);
         PauseGo.SetActive(false);
     }
 
@@ -124,7 +121,6 @@ public class UIController: MonoBehaviour {
     public void DeadUI()
     {
         dungeonTimerText.text = ("0.00");
-        DeadGo.SetActive(true);
     }
 
     public void PauseUI(){

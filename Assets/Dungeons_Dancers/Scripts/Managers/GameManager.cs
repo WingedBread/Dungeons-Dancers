@@ -368,10 +368,8 @@ public class GameManager : MonoBehaviour
         StopCoroutine("WaitForKeyDown");
     }
 
-    private IEnumerator Reset()
+    public void GameDeadReset()
     {
-        yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
-        StartCoroutine(playerManager.ResetPlayer(true));
         dungeonTimer = initDungeonTimer;
         flagTimeNearOver = true;
         for (int i = 0; i < levelEventsAudios.Count; i++)
