@@ -16,7 +16,9 @@ public class LoseBehaviour : MonoBehaviour {
 
     [Header("Fade Easing Duration:")]
     [SerializeField]
-    float fadeDuration =3f;
+    float fadeFaceDuration = 3f;
+    [SerializeField]
+    float fadeFondoDuration = 6f;
 
     [Header("Lose Stuff Duration:")]
     [SerializeField]
@@ -67,8 +69,8 @@ public class LoseBehaviour : MonoBehaviour {
              
         yield return new WaitForSeconds(duration);
         loseUI.SetActive(true);
-        loseUIFondo.DOFade(1, (fadeDuration/2));
-        loseUIFace.DOFade(1, fadeDuration).OnComplete(() => ActivateUI(true));
+        loseUIFace.DOFade(1, (fadeFaceDuration));
+        loseUIFondo.DOFade(1, fadeFondoDuration).OnComplete(() => ActivateUI(true));
         player.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetBool("onLose", false);
 	}
 
