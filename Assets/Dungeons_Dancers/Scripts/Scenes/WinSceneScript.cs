@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -45,4 +46,9 @@ public class WinSceneScript : MonoBehaviour {
             sparkles.transform.GetChild(i).DOLocalMove(ogSparklePos[i], duration).SetId("TweenSparkle");
         }
     }
+    public void SelectScene(int i)
+    {
+        SceneManager.LoadScene(i);
+    }
+
 }

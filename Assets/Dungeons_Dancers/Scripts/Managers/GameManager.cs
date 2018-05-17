@@ -533,5 +533,10 @@ public class GameManager : MonoBehaviour
         uiController.ClimaxUIBehaviour(feverpoints, climax);
     }
 
+    public void SelectScene(int i)
+    {
+        SceneManager.LoadScene(i);
+    }
+
     #endregion
 }
