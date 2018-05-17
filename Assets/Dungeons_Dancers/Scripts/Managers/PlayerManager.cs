@@ -378,6 +378,7 @@ public class PlayerManager : MonoBehaviour
         if (dead)
         {
             transform.position = spawnInitPosition;
+            inputController.SetRotation(1);
             transform.parent.GetChild(1).position = spawnInitPosition;
             spawnPosition = spawnInitPosition;
             for (int i = 0; i < collectibles.Count; i++)

@@ -63,7 +63,7 @@ public class LoseBehaviour : MonoBehaviour {
             parentFloor.transform.GetChild(i).GetComponent<MeshRenderer>().material = offMaterial;
         }
         yield return new WaitForSeconds(delayDuration);
-
+        player.transform.GetChild(0).localRotation = Quaternion.Euler(0, 90, 0);
         player.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetBool("onLose", true);
         player.gameObject.transform.DOMove(playerEndPos.position, playerDuration).SetEase(playerEasing);
              
