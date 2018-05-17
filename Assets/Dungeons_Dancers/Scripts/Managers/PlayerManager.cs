@@ -199,6 +199,11 @@ public class PlayerManager : MonoBehaviour
 		winBhv.OnWin(this.transform);
     }
 
+    public void Lose()
+    {
+        StartCoroutine(loseBhv.OnLose(this));
+    }
+
     public void TrapBehaviour()
     {
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
@@ -373,6 +378,7 @@ public class PlayerManager : MonoBehaviour
         if (dead)
         {
             transform.position = spawnInitPosition;
+            inputController.SetRotation(1);
             transform.parent.GetChild(1).position = spawnInitPosition;
             spawnPosition = spawnInitPosition;
             for (int i = 0; i < collectibles.Count; i++)
@@ -405,11 +411,11 @@ public class PlayerManager : MonoBehaviour
             {
                 gameManager.levelEventsEasing4[i].SetPlayerState(PlayerStates.Dancing);
             }
+            gameManager.GameDeadReset();
             StopCoroutine("ResetPlayer");
         }
         else
         {
-            gameManager.Respawn();
             transform.position = spawnPosition;
             transform.parent.GetChild(1).position = spawnPosition;
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)

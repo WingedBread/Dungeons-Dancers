@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 
 
@@ -33,11 +32,6 @@ public class WinSceneScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Jump"))
-        {
-            SceneManager.LoadScene(1);
-        }
-
         if(!DOTween.IsTweening("TweenSparkle")){
             highscore.gameObject.SetActive(true);
 
