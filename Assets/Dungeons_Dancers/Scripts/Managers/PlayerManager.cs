@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof(CollectiblesController))]
+[RequireComponent(typeof(InputFeedbackController))]
 [RequireComponent(typeof(InputController))]
 public class PlayerManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Controllers")]
     private InputController inputController;
     private CollectiblesController collectiblesController;
+    private InputFeedbackController inputFeedback;
 
     private Material mat;
 
@@ -67,6 +69,7 @@ public class PlayerManager : MonoBehaviour
             gameManager.levelEventsEasing4[i].SetPlayerState(PlayerStates.Dancing);
         }
         inputController = GetComponent<InputController>();
+        inputFeedback = GetComponent<InputFeedbackController>();
         collectiblesController = GetComponent<CollectiblesController>();
         animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
@@ -124,6 +127,7 @@ public class PlayerManager : MonoBehaviour
             gameManager.levelEventsEasing4[i].GoodMove();
         }
         mat.color = Color.green;
+        inputFeedback.CorrectFeedbackBehaviour();
         gameManager.AddPoint();
         StartCoroutine(ReturnIdle());
     }
@@ -155,6 +159,7 @@ public class PlayerManager : MonoBehaviour
             gameManager.levelEventsEasing4[i].WrongMove();
         }
         mat.color = Color.red;
+        inputFeedback.IncorrectFeedbackBehaviour();
         gameManager.RemovePoint();
         StartCoroutine(ReturnIdle());
     }

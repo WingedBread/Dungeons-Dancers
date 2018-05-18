@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
         for (int i = 0; i < levelEventsAudios.Count; i++)
         {
             if (levelEventsAudios == null) Debug.Log("null audios");
