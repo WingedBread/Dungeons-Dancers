@@ -23,7 +23,10 @@ public class InputFeedbackController : MonoBehaviour {
 
     string moveText;
 
+    [SerializeField]
     GameObject instantiatedGO;
+
+    GameObject[] trailGO;
 
 
 
