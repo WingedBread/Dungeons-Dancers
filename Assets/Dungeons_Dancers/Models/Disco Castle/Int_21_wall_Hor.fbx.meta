@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: ad74c980093909343b13a574c28dde58
-timeCreated: 1524835289
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -11,7 +9,13 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Int_21_Wall_Hor
-  externalObjects: {}
+    4300002: Int_21_Wall_Hor1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: a6909a19dee2e0440b5370ed0198e25b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -30,6 +34,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
