@@ -33,16 +33,18 @@ public class CheckpointBehaviour : MonoBehaviour {
 	[SerializeField]
 	float duration = 0.5f; //TODO: Beat Duration
 
-    
-	//Use this for initialization
-	void Start () 
+    [SerializeField]
+    PlayerManager player;
+
+    //Use this for initialization
+    void Start () 
 	{
 		flashUI.gameObject.SetActive(false);
 		rainbowMouth.SetActive(false);
 		mobilePhone.SetActive(false);
 	}
-	
-    public IEnumerator OnCheckpoint(GameObject currectcheckpoint, PlayerManager player)
+
+    public IEnumerator OnCheckpoint(GameObject currectcheckpoint)
 	{
 		instantiatedObj.Add((GameObject)Instantiate(emojiParticles, currectcheckpoint.transform));
 		flashUI.gameObject.SetActive(true);
@@ -69,26 +71,30 @@ public class CheckpointBehaviour : MonoBehaviour {
         {
             emojiParticles.transform.GetChild(i).GetComponent<ParticleSystem>().Play();
         }
-
 		yield return new WaitForSeconds(duration);
 
-		for (int i = 0; i < emojiParticles.transform.childCount; i++)
+        ResetCheckpoint();
+	}
+
+    public void ResetCheckpoint(){
+
+        for (int i = 0; i < emojiParticles.transform.childCount; i++)
         {
-			emojiParticles.transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+            emojiParticles.transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
 
-		for (int w = 0; w < instantiatedObj.Count; w++)
-		{
-			Destroy(instantiatedObj[w]);
-		}
+        for (int w = 0; w < instantiatedObj.Count; w++)
+        {
+            Destroy(instantiatedObj[w]);
+        }
 
         player.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetBool("onCheckpoint", false);
 
         flashUI.gameObject.SetActive(false);
-		mobilePhone.transform.GetChild(0).localScale = new Vector3(0.1f, 0.1f, 0.1f);
-		flashUI.color = Color.white;
+        mobilePhone.transform.GetChild(0).localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        flashUI.color = Color.white;
         rainbowMouth.SetActive(false);
         mobilePhone.SetActive(false);
-		StopCoroutine("OnCheckpoint");
-	}
+        StopCoroutine("OnCheckpoint");
+    }
 }

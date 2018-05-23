@@ -23,7 +23,7 @@ public class InputFeedbackController : MonoBehaviour {
     ParticleSystem textParticle;
     ParticleSystem lightParticle;
 
-    [Header("Text Particle Texts & Particle Intensity")]
+    [Header("Particle Texts & Particle Intensity")]
     [SerializeField]
     string goodText;
     [SerializeField]
@@ -39,14 +39,11 @@ public class InputFeedbackController : MonoBehaviour {
 
     Text particleText;
 
-
     List<GameObject> correctTrail = new List<GameObject>();
     List<GameObject> incorrectTrail = new List<GameObject>();
 
-
     private GameObject correctGO;
     private GameObject incorrectGO;
-
 
 	// Use this for initialization
 	void Start () {
@@ -99,9 +96,9 @@ public class InputFeedbackController : MonoBehaviour {
         incorrectGO.transform.position = new Vector3(transform.position.x, incorrectGO.transform.position.y, transform.position.z);
 
         FadeOut(incorrectGO, false);
+
         for (int i = 0; i < correctTrail.Count; i++){
             Destroy(correctTrail[i]);
-            //StartCoroutine - Easing Fade Incorrect
             if (i == (correctTrail.Count - 1)) correctTrail.Clear();
         }
 
@@ -112,6 +109,10 @@ public class InputFeedbackController : MonoBehaviour {
     void FadeOut(GameObject go, bool correct)
     {
         if(correct) go.GetComponent<SpriteRenderer>().DOFade(0, correctSpriteDuartion);
-        else go.GetComponent<SpriteRenderer>().DOFade(0, incorrectSpriteDuartion);
+        else
+        {
+            go.GetComponent<SpriteRenderer>().DOFade(0, incorrectSpriteDuartion);
+            incorrectTrail.Clear();
+        } 
     }
 }

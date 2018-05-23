@@ -100,6 +100,7 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator CorrectInput()
     {
+        checkpointBhv.ResetCheckpoint();
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
             gameManager.levelEventsAudios[i].GoodMove();
@@ -136,6 +137,7 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator IncorrectInput()
     {
+        checkpointBhv.ResetCheckpoint();
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
             gameManager.levelEventsAudios[i].WrongMove();
@@ -212,6 +214,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Lose()
     {
+        checkpointBhv.ResetCheckpoint();
         StartCoroutine(loseBhv.OnLose(this));
     }
 
@@ -322,7 +325,7 @@ public class PlayerManager : MonoBehaviour
 			{
 				inputController.SetRotation(2);
 				animator.SetBool("onCheckpoint", true);
-                StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject, this));
+                StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject));
 				animator.Play("Checkpoint");
 
 				for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
