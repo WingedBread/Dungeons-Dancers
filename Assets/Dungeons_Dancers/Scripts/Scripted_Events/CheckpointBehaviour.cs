@@ -42,7 +42,7 @@ public class CheckpointBehaviour : MonoBehaviour {
 		mobilePhone.SetActive(false);
 	}
 	
-	public IEnumerator OnCheckpoint(GameObject currectcheckpoint)
+    public IEnumerator OnCheckpoint(GameObject currectcheckpoint, PlayerManager player)
 	{
 		instantiatedObj.Add((GameObject)Instantiate(emojiParticles, currectcheckpoint.transform));
 		flashUI.gameObject.SetActive(true);
@@ -81,7 +81,9 @@ public class CheckpointBehaviour : MonoBehaviour {
 		{
 			Destroy(instantiatedObj[w]);
 		}
-       
+
+        player.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetBool("onCheckpoint", false);
+
         flashUI.gameObject.SetActive(false);
 		mobilePhone.transform.GetChild(0).localScale = new Vector3(0.1f, 0.1f, 0.1f);
 		flashUI.color = Color.white;

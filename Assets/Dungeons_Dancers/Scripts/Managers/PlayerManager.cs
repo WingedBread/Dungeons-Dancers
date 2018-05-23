@@ -91,16 +91,14 @@ public class PlayerManager : MonoBehaviour
 		if (gameManager.GetRhythmActiveBeat() && !animator.GetBool("onBeat"))
 		{
 			animator.SetBool("onBeat", true);
-			animator.SetBool("onCheckpoint", false);
 		}
 		else if (!gameManager.GetRhythmActiveBeat() && animator.GetBool("onBeat"))
 		{
 			animator.SetBool("onBeat", false);
-			animator.SetBool("onCheckpoint", false);
 		}
     }
 
-    public void CorrectInput()
+    public IEnumerator CorrectInput()
     {
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
@@ -127,12 +125,16 @@ public class PlayerManager : MonoBehaviour
             gameManager.levelEventsEasing4[i].GoodMove();
         }
         mat.color = Color.green;
-        inputFeedback.CorrectFeedbackBehaviour();
         gameManager.AddPoint();
         StartCoroutine(ReturnIdle());
+        while (inputController.GetEasingEnd() == false)
+        {
+            yield return null;
+        }
+        inputFeedback.CorrectFeedbackBehaviour();
     }
 
-    public void IncorrectInput()
+    public IEnumerator IncorrectInput()
     {
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
@@ -159,9 +161,13 @@ public class PlayerManager : MonoBehaviour
             gameManager.levelEventsEasing4[i].WrongMove();
         }
         mat.color = Color.red;
-        inputFeedback.IncorrectFeedbackBehaviour();
         gameManager.RemovePoint();
         StartCoroutine(ReturnIdle());
+        while (inputController.GetEasingEnd() == false)
+        {
+            yield return null;
+        }
+        inputFeedback.IncorrectFeedbackBehaviour();
     }
 
     public IEnumerator ReturnIdle()
@@ -314,9 +320,9 @@ public class PlayerManager : MonoBehaviour
         {
 			if (gameManager.GetGameStatus())
 			{
-				StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject));
 				inputController.SetRotation(2);
 				animator.SetBool("onCheckpoint", true);
+                StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject, this));
 				animator.Play("Checkpoint");
 
 				for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
@@ -382,6 +388,7 @@ public class PlayerManager : MonoBehaviour
 
         if (dead)
         {
+            animator.SetBool("onLose", false);
             transform.position = spawnInitPosition;
             inputController.SetRotation(1);
             transform.parent.GetChild(1).position = spawnInitPosition;

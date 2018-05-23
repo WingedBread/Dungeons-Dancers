@@ -79,8 +79,8 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
-                else playerManager.IncorrectInput();
+                if (playerManager.gameManager.GetRhythmActiveInput()) StartCoroutine(playerManager.CorrectInput());
+                else StartCoroutine(playerManager.IncorrectInput());
             }
         }
 
@@ -101,8 +101,8 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
-                else playerManager.IncorrectInput();
+                if (playerManager.gameManager.GetRhythmActiveInput()) StartCoroutine(playerManager.CorrectInput());
+                else StartCoroutine(playerManager.IncorrectInput());
             }
         }
 
@@ -122,8 +122,8 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
-                else playerManager.IncorrectInput();
+                if (playerManager.gameManager.GetRhythmActiveInput()) StartCoroutine(playerManager.CorrectInput());
+                else StartCoroutine(playerManager.IncorrectInput());
             }
         }
 
@@ -143,8 +143,8 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (playerManager.gameManager.GetRhythmActiveInput()) playerManager.CorrectInput();
-                else playerManager.IncorrectInput();
+                if (playerManager.gameManager.GetRhythmActiveInput()) StartCoroutine(playerManager.CorrectInput());
+                else StartCoroutine(playerManager.IncorrectInput());
             }
         }
         else inputFlag = true;

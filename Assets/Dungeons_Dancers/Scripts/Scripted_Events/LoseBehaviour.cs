@@ -24,7 +24,7 @@ public class LoseBehaviour : MonoBehaviour {
     [SerializeField]
     float delayDuration = 0;
     [SerializeField]
-    float duration = 3f;
+    float delayFade = 3f;
 
     [SerializeField]
     Transform playerEndPos;
@@ -67,11 +67,10 @@ public class LoseBehaviour : MonoBehaviour {
         player.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetBool("onLose", true);
         player.gameObject.transform.DOMove(playerEndPos.position, playerDuration).SetEase(playerEasing);
              
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(delayFade);
         loseUI.SetActive(true);
         loseUIFace.DOFade(1, (fadeFaceDuration));
         loseUIFondo.DOFade(1, fadeFondoDuration).OnComplete(() => ActivateUI(true));
-        player.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetBool("onLose", false);
 	}
 
     public void Restart(){
