@@ -97,41 +97,7 @@ public class SatisfactionController : MonoBehaviour {
 
     void PointEvents()
     {
-        if (points <= TracksPosition[1] && pointsflag != 0)
-        {
-            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
-            {
-                gameManager.levelEventsAudios[i].SatisfactionZero();
-                gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.None);
-            }
-			for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
-            {
-				gameManager.levelEventsMaterials[i].SatisfactionZero();
-				gameManager.levelEventsMaterials[i].SetSatisfactionState(SatisfactionStates.None);
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
-            {
-                gameManager.levelEventsEasing1[i].SatisfactionZero();
-                gameManager.levelEventsEasing1[i].SetSatisfactionState(SatisfactionStates.None);
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
-            {
-                gameManager.levelEventsEasing2[i].SatisfactionZero();
-                gameManager.levelEventsEasing2[i].SetSatisfactionState(SatisfactionStates.None);
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
-            {
-                gameManager.levelEventsEasing3[i].SatisfactionZero();
-                gameManager.levelEventsEasing3[i].SetSatisfactionState(SatisfactionStates.None);
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
-            {
-                gameManager.levelEventsEasing4[i].SatisfactionZero();
-                gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.None);
-            }
-            pointsflag = 0;
-        }
-        else if (points < TracksPosition[2]  && points > TracksPosition[1] && pointsflag != 1) 
+        if (points < TracksPosition[2]  && points > TracksPosition[0] && pointsflag != 1) 
         { 
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -282,6 +248,36 @@ public class SatisfactionController : MonoBehaviour {
         {
             points = points - ScoreBad;
             if (points <= TracksPosition[0]) {
+                for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+                {
+                    gameManager.levelEventsAudios[i].SatisfactionZero();
+                    gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.None);
+                }
+                for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+                {
+                    gameManager.levelEventsMaterials[i].SatisfactionZero();
+                    gameManager.levelEventsMaterials[i].SetSatisfactionState(SatisfactionStates.None);
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+                {
+                    gameManager.levelEventsEasing1[i].SatisfactionZero();
+                    gameManager.levelEventsEasing1[i].SetSatisfactionState(SatisfactionStates.None);
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+                {
+                    gameManager.levelEventsEasing2[i].SatisfactionZero();
+                    gameManager.levelEventsEasing2[i].SetSatisfactionState(SatisfactionStates.None);
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+                {
+                    gameManager.levelEventsEasing3[i].SatisfactionZero();
+                    gameManager.levelEventsEasing3[i].SetSatisfactionState(SatisfactionStates.None);
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+                {
+                    gameManager.levelEventsEasing4[i].SatisfactionZero();
+                    gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.None);
+                }
                 gameManager.Dead();
                 points = (int)TracksPosition[0];
             }

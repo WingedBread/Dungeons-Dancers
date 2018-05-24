@@ -63,7 +63,7 @@ public class WinBehaviour : MonoBehaviour {
 		mainCamera.gameObject.transform.DOMove(cameraEndPos.position, cameraDuration).SetEase(cameraEasing);
 		yield return new WaitForSeconds(cameraDuration);
 		done[0] = true;
-		if(done[0] && done[1] && done[2]) SceneManager.LoadScene(2);
+		if(done[0] && done[1] && done[2]) SceneManager.LoadScene(3);
 		StopCoroutine("CameraCoroutine");
 	}
     
@@ -76,7 +76,7 @@ public class WinBehaviour : MonoBehaviour {
 		Instantiate(winParticles, player);
 		yield return new WaitForSeconds(particlesDuration);
 		done[1] = true;
-		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(2);
+		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(3);
 		StopCoroutine("ParticlesCoroutine");
     }
 
@@ -88,7 +88,7 @@ public class WinBehaviour : MonoBehaviour {
 		lightsParent.SetActive(true);
 		yield return new WaitForSeconds(lightsDuration);
 		done[2] = true;
-		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(2);
+		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(3);
 		StopCoroutine("LightsCoroutine");
     }
 }
