@@ -26,17 +26,18 @@ public class LoseBehaviour : MonoBehaviour {
     [SerializeField]
     float delayFade = 3f;
 
+    [Header("Player Final Position")]
     [SerializeField]
     Transform playerEndPos;
 
-    [SerializeField]
-    private Material offMaterial;
-    [SerializeField]
-    private Material onMaterial;
+    //[SerializeField]
+    //private GameObject parentFloor;
 
+    [Header("Particle System Lose")]
     [SerializeField]
-    private GameObject parentFloor;
+    private GameObject loseParticleSystem;
 
+    [Header("UI Lose Screen")]
     [SerializeField]
     private GameObject loseUI;
 
@@ -44,6 +45,10 @@ public class LoseBehaviour : MonoBehaviour {
     private Image loseUIFace;
 
     private PlayerManager player;
+
+    private AudioSource audioSource;
+
+    private GameObject instantiatedGO;
 
     private void Start()
     {
@@ -58,11 +63,17 @@ public class LoseBehaviour : MonoBehaviour {
         ActivateUI(false);
         player = playerM;
 
-        for (int i = 0; i < parentFloor.transform.childCount; i++)
-        {
-            parentFloor.transform.GetChild(i).GetComponent<MeshRenderer>().material = offMaterial;
-        }
+        //for (int i = 0; i < parentFloor.transform.childCount; i++)
+        //{
+        //    parentFloor.transform.GetChild(i).GetComponent<MeshRenderer>().material = offMaterial;
+        //}
+
         yield return new WaitForSeconds(delayDuration);
+        instantiatedGO = Instantiate(loseParticleSystem, transform.parent);
+        instantiatedGO.transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        //instantiatedGO.GetComponent<ParticleSystem>().Play();
+        //instantiatedGO.transform.GetChild(0).GetComponent<AudioSource>().Play();
+
         player.transform.GetChild(0).localRotation = Quaternion.Euler(0, 120, 0);
         player.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetBool("onLose", true);
         player.gameObject.transform.DOMove(playerEndPos.position, playerDuration).SetEase(playerEasing);
@@ -76,10 +87,11 @@ public class LoseBehaviour : MonoBehaviour {
     public void Restart(){
         
         StartCoroutine(player.ResetPlayer(true));
-        for (int i = 0; i < parentFloor.transform.childCount; i++)
-        {
-            parentFloor.transform.GetChild(i).GetComponent<MeshRenderer>().material = onMaterial;
-        }
+        Destroy(instantiatedGO);
+        //for (int i = 0; i < parentFloor.transform.childCount; i++)
+        //{
+        //    parentFloor.transform.GetChild(i).GetComponent<MeshRenderer>().material = onMaterial;
+        //}
     }
 
     void ActivateUI(bool active){

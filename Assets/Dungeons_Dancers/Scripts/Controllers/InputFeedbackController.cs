@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 
 public class InputFeedbackController : MonoBehaviour {
@@ -20,37 +18,25 @@ public class InputFeedbackController : MonoBehaviour {
     [SerializeField]
     float incorrectSpriteDuartion = 0.5f;
 
-    ParticleSystem textParticle;
-    ParticleSystem lightParticle;
+    [SerializeField]
+    GameObject goodTextParticle;
+    [SerializeField]
+    GameObject greatTextParticle;
+    [SerializeField]
+    GameObject perfectTextParticle;
 
-    [Header("Particle Texts & Particle Intensity")]
-    [SerializeField]
-    string goodText;
-    [SerializeField]
-    float goodIntensity = 10f;
-    [SerializeField]
-    string greatText;
-    [SerializeField]
-    float greatIntensity = 15f;
-    [SerializeField]
-    string perfectText;
-    [SerializeField]
-    float perfectIntensity = 30f;
-
-    Text particleText;
+    List<GameObject> instantiatedParticlesGO = new List<GameObject>();
 
     List<GameObject> correctTrail = new List<GameObject>();
     List<GameObject> incorrectTrail = new List<GameObject>();
 
     private GameObject correctGO;
     private GameObject incorrectGO;
+    private GameObject particlesGO;
 
 	// Use this for initialization
 	void Start () {
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        textParticle = transform.GetChild(1).GetChild(0).GetComponent<ParticleSystem>();
-        lightParticle = transform.GetChild(1).GetChild(1).GetComponent<ParticleSystem>();
-        particleText = transform.parent.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>();
 	}
 	
     public void CorrectFeedbackBehaviour()
@@ -58,31 +44,28 @@ public class InputFeedbackController : MonoBehaviour {
         correctTrail.Add((GameObject)Instantiate(correctFloorSprite, transform.parent.parent));
         correctGO = correctTrail[correctTrail.Count - 1];
         correctGO.transform.position = new Vector3(transform.position.x, correctGO.transform.position.y, transform.position.z);
-        textParticle.Play();
-        lightParticle.Play();
+
+
         //Easing Fade Out Correct
         switch(gameManager.GetRhythmAccuracy())
         {
             case 0: //Good
-                particleText.text = goodText;
-                var emissionGood = lightParticle.emission;
-                var rateGood = emissionGood.rateOverTime;
-                rateGood.constantMax = goodIntensity;
-                emissionGood.rateOverTime = rateGood;
+                instantiatedParticlesGO.Add((GameObject)Instantiate(goodTextParticle, transform.parent.parent));
+                particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
+                particlesGO.transform.position = new Vector3(transform.position.x, goodTextParticle.transform.position.y, transform.position.z);
+                particlesGO.GetComponent<ParticleSystem>().Play();
                 break;
             case 1: //Perfect
-                particleText.text = perfectText;
-                var emissionPerfect = lightParticle.emission;
-                var ratePerfect = emissionPerfect.rateOverTime;
-                ratePerfect.constantMax = perfectIntensity;
-                emissionPerfect.rateOverTime = ratePerfect;
+                instantiatedParticlesGO.Add((GameObject)Instantiate(perfectTextParticle, transform.parent.parent));
+                particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
+                particlesGO.transform.position = new Vector3(transform.position.x, perfectTextParticle.transform.position.y, transform.position.z);
+                particlesGO.GetComponent<ParticleSystem>().Play();
                 break;
             case 2: //Great
-                particleText.text = greatText;
-                var emissionGreat = lightParticle.emission;
-                var rateGreat = emissionGreat.rateOverTime;
-                rateGreat.constantMax = greatIntensity;
-                emissionGreat.rateOverTime = rateGreat;
+                instantiatedParticlesGO.Add((GameObject)Instantiate(greatTextParticle, transform.parent.parent));
+                particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
+                particlesGO.transform.position = new Vector3(transform.position.x, greatTextParticle.transform.position.y, transform.position.z);
+                particlesGO.GetComponent<ParticleSystem>().Play();
                 break;
         }
 
@@ -97,22 +80,52 @@ public class InputFeedbackController : MonoBehaviour {
 
         FadeOut(incorrectGO, false);
 
-        for (int i = 0; i < correctTrail.Count; i++){
-            Destroy(correctTrail[i]);
-            if (i == (correctTrail.Count - 1)) correctTrail.Clear();
-        }
-
-        textParticle.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
-        lightParticle.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 
     void FadeOut(GameObject go, bool correct)
     {
-        if(correct) go.GetComponent<SpriteRenderer>().DOFade(0, correctSpriteDuartion);
+        if(correct)
+        {
+            go.GetComponent<SpriteRenderer>().DOFade(0, correctSpriteDuartion).OnComplete(() => DestroyStuff(go, correct));
+        }
         else
         {
-            go.GetComponent<SpriteRenderer>().DOFade(0, incorrectSpriteDuartion);
+            go.GetComponent<SpriteRenderer>().DOFade(0, incorrectSpriteDuartion).OnComplete(() => DestroyStuff(go, correct));
             incorrectTrail.Clear();
-        } 
+        }
+    }
+
+    void DestroyStuff(GameObject go, bool correct){
+
+        if (correct)
+        {
+            for (int i = 0; i < correctTrail.Count; i++)
+            {
+                if (go == correctTrail[i])
+                {
+                    Destroy(instantiatedParticlesGO[i]);
+                }
+            }
+            Destroy(go);
+        }
+        else
+        {
+            Destroy(go);
+
+            for (int i = 0; i < correctTrail.Count; i++)
+            {
+                Destroy(correctTrail[i]);
+                if (i == (correctTrail.Count - 1))
+                {
+                    correctTrail.Clear();
+
+                    for (int w = 0; w < instantiatedParticlesGO.Count; w++)
+                    {
+                        Destroy(instantiatedParticlesGO[w]);
+                        if (w == (instantiatedParticlesGO.Count - 1)) instantiatedParticlesGO.Clear();
+                    }
+                }
+            }
+        }
     }
 }

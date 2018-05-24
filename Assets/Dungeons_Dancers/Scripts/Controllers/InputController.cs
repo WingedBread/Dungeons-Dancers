@@ -11,6 +11,16 @@ public class InputController : MonoBehaviour
     [Header("Raycast Collisons")]
     private PlayerCollisions playerCollision;
 
+    [Header("Player Rotations")]
+    [SerializeField]
+    private Vector3 _rotationUP = new Vector3(45, 0, 0);
+    [SerializeField]
+    private Vector3 _rotationDOWN = new Vector3(-45, 180, 0);
+    [SerializeField]
+    private Vector3 _rotationLEFT = new Vector3(0, -90, -45);
+    [SerializeField]
+    private Vector3 _rotationRIGHT = new Vector3(0, 90, 45);
+
     [Header("Player Speed")]
     [SerializeField]
     private float speed = 1f;
@@ -46,12 +56,22 @@ public class InputController : MonoBehaviour
 
     private int playerDirection;
 
+    private Quaternion rotationUP;
+    private Quaternion rotationDOWN;
+    private Quaternion rotationLEFT;
+    private Quaternion rotationRIGHT;
+
+
 	// Use this for initialization
 	void Start () 
     {
         playerManager = GetComponent<PlayerManager>();
         playerCollision = transform.parent.GetChild(1).GetComponent<PlayerCollisions>();
         playerChild = this.transform.GetChild(0).transform;
+        rotationUP = Quaternion.Euler(_rotationUP.x, _rotationUP.y, _rotationUP.z);
+        rotationDOWN = Quaternion.Euler(_rotationDOWN.x, _rotationDOWN.y, _rotationDOWN.z);
+        rotationLEFT = Quaternion.Euler(_rotationLEFT.x, _rotationLEFT.y, _rotationLEFT.z);
+        rotationRIGHT = Quaternion.Euler(_rotationRIGHT.x, _rotationRIGHT.y, _rotationRIGHT.z);
 
 	}
 	
@@ -74,7 +94,7 @@ public class InputController : MonoBehaviour
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration/2, false));
                 s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
                 transform.parent.GetChild(1).transform.position = new Vector3(transform.parent.GetChild(1).transform.position.x - speed, transform.parent.GetChild(1).transform.position.y, transform.parent.GetChild(1).transform.position.z);
-                playerChild.rotation = Quaternion.Euler(0, -90, -45);
+                playerChild.rotation = rotationLEFT;
                 playerDirection = 0;
                 inputFlag = false;
                 easingBool = false;
@@ -96,7 +116,7 @@ public class InputController : MonoBehaviour
                 s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
                 transform.parent.GetChild(1).transform.position = new Vector3(transform.parent.GetChild(1).transform.position.x + speed, transform.parent.GetChild(1).transform.position.y, transform.parent.GetChild(1).transform.position.z);
 
-                playerChild.rotation = Quaternion.Euler(0, 90, 45);
+                playerChild.rotation = rotationRIGHT;
                 playerDirection = 1;
                 inputFlag = false;
                 easingBool = false;
@@ -117,7 +137,7 @@ public class InputController : MonoBehaviour
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
                 s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
                 transform.parent.GetChild(1).transform.position = new Vector3(transform.parent.GetChild(1).transform.position.x, transform.parent.GetChild(1).transform.position.y, transform.parent.GetChild(1).transform.position.z - speed);
-                playerChild.rotation = Quaternion.Euler(-45, 180, 0);
+                playerChild.rotation = rotationDOWN;
                 playerDirection = 2;
                 inputFlag = false;
                 easingBool = false;
@@ -138,7 +158,7 @@ public class InputController : MonoBehaviour
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false));
                 s.Insert(easingSpeedDuration / 2, transform.GetChild(0).GetChild(0).DOLocalMoveY(0.1f, easingSpeedDuration / 2, false));
                 transform.parent.GetChild(1).transform.position = new Vector3(transform.parent.GetChild(1).transform.position.x, transform.parent.GetChild(1).transform.position.y, transform.parent.GetChild(1).transform.position.z + speed);
-                playerChild.rotation = Quaternion.Euler(45, 0, 0);
+                playerChild.rotation = rotationUP;
                 playerDirection = 3;
                 inputFlag = false;
                 easingBool = false;
@@ -157,16 +177,16 @@ public class InputController : MonoBehaviour
         switch (direction)
         {
             case 0: //LEFT
-                playerChild.rotation = Quaternion.Euler(0, -90, -45);
+                playerChild.rotation = rotationLEFT;
                 break;
             case 1: //RIGHT
-                playerChild.rotation = Quaternion.Euler(0, 90, 45);
+                playerChild.rotation = rotationRIGHT;
                 break;
             case 2: //DOWN
-                playerChild.rotation = Quaternion.Euler(-45, 180, 0);
+                playerChild.rotation = rotationDOWN;
                 break;
             case 3: //UP
-                playerChild.rotation = Quaternion.Euler(45, 0, 0);
+                playerChild.rotation = rotationUP;
                 break;
         }
     }
