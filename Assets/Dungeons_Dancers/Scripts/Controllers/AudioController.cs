@@ -24,6 +24,7 @@ public class AudioController : MonoBehaviour {
 	void Start () {
         audioSource = GetComponent<AudioSource>();
         gameManager = GetComponent<GameManager>();
+        auMixSnaps[1].TransitionTo(transitionTime); 
 	}
 	
     public void PointsSnapshotCheck()
