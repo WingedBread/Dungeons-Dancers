@@ -80,6 +80,13 @@ public class InputFeedbackController : MonoBehaviour {
 
         FadeOut(incorrectGO, false);
 
+        for (int i = 0; i < correctTrail.Count; i++)
+        {
+            Destroy(correctTrail[i]);
+            if (i == (correctTrail.Count - 1)) correctTrail.Clear();
+        }
+
+
     }
 
     void FadeOut(GameObject go, bool correct)
@@ -112,20 +119,12 @@ public class InputFeedbackController : MonoBehaviour {
         {
             Destroy(go);
 
-            for (int i = 0; i < correctTrail.Count; i++)
+            for (int w = 0; w < instantiatedParticlesGO.Count; w++)
             {
-                Destroy(correctTrail[i]);
-                if (i == (correctTrail.Count - 1))
-                {
-                    correctTrail.Clear();
-
-                    for (int w = 0; w < instantiatedParticlesGO.Count; w++)
-                    {
-                        Destroy(instantiatedParticlesGO[w]);
-                        if (w == (instantiatedParticlesGO.Count - 1)) instantiatedParticlesGO.Clear();
-                    }
-                }
+                Destroy(instantiatedParticlesGO[w]);
+                if (w == (instantiatedParticlesGO.Count - 1)) instantiatedParticlesGO.Clear();
             }
+
         }
     }
 }
