@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1130431554706402}
   m_LocalRotation: {x: 0.649448, y: 0, z: 0, w: 0.760406}
-  m_LocalPosition: {x: -0.33, y: 18.88, z: -3.1}
+  m_LocalPosition: {x: 0, y: 14.96, z: -2.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4537225692150812}
@@ -111,12 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cbe5b16977424c8b83e529dc1330b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEasing: 1
-  playerDuration: 2
-  fadeFaceDuration: 4
-  fadeFondoDuration: 5
-  delayDuration: 0
-  delayFade: 3
+  playerEasing: 18
+  playerDuration: 0.25
+  fadeFaceDuration: 0.1
+  fadeFondoDuration: 0.4
+  delayDuration: 0.5
+  delayFade: 1
   playerEndPos: {fileID: 4799014324154232}
   loseParticleSystem: {fileID: 1633069917857530, guid: b85d2c57a28f742f0a4e6eabf7d8568d,
     type: 2}
@@ -137,12 +137,12 @@ MonoBehaviour:
   cameraEasing: 20
   lightsParent: {fileID: 0}
   cameraEndPos: {fileID: 0}
-  cameraDelayDuration: 1
-  particlesDelayDuration: 2
-  lightsDelayDuration: 1.5
+  cameraDelayDuration: 0.5
+  particlesDelayDuration: 0.5
+  lightsDelayDuration: 0.5
   cameraDuration: 0.5
   particlesDuration: 3
-  lightsDuration: 1
+  lightsDuration: 0.5
 --- !u!114 &114830387879534678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,5 +161,5 @@ MonoBehaviour:
   mobilePhone: {fileID: 0}
   checkpointPass: {fileID: 21300000, guid: 5bf27d9a625ed45658a4f9bb0772093e, type: 3}
   checkpointOld: {fileID: 21300000, guid: b02200a422ecf4c0dba8c86c92c38d63, type: 3}
-  duration: 1
+  duration: 0.75
   player: {fileID: 0}
