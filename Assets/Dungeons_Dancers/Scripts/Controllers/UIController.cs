@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController: MonoBehaviour {
 
@@ -10,24 +11,24 @@ public class UIController: MonoBehaviour {
 
     [Header("Dungeon Timer")]
     [SerializeField]
-    private Text dungeonTimerText;
+    private TextMeshProUGUI dungeonTimerText;
     [Header("Intro")]
     [SerializeField]
-    private Text introText;
+    private TextMeshProUGUI introText;
 
     [Header("Points")]
     [SerializeField]
-    private Text pointsText;
+    private TextMeshProUGUI pointsText;
     [Header("Coins")]
     [SerializeField]
-    private Text coinsText;
+    private TextMeshProUGUI coinsText;
     [Header("Keys")]
     [SerializeField]
     private Image[] keysImages = new Image[2];
 
     [Header("Climax Number")]
     [SerializeField]
-    private Text climaxNumber;
+    private TextMeshProUGUI climaxNumber;
 
     [Header("Climax Locks")]
     [SerializeField]
@@ -50,9 +51,9 @@ public class UIController: MonoBehaviour {
     [Header("Slider")]
     public Slider pointsSlider;
     [SerializeField]
-    private Text sliderText;
+    private TextMeshProUGUI sliderText;
     [SerializeField]
-    private Text sliderAccuracyText;
+    private TextMeshProUGUI sliderAccuracyText;
 
     #region Editor Text
     [Header("Intro Text")]
@@ -226,7 +227,7 @@ public class UIController: MonoBehaviour {
     }
 
 
-    private IEnumerator DeactivatorUI(Text text, float time)
+    private IEnumerator DeactivatorUI(TextMeshProUGUI text, float time)
     {
         yield return new WaitForSeconds(time);
         text.gameObject.SetActive(false);
