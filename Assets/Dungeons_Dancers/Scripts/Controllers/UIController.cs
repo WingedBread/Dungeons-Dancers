@@ -16,7 +16,7 @@ public class UIController: MonoBehaviour {
     [SerializeField]
     private TextMeshProUGUI introText;
 
-    [Header("Points")]
+    [Header("SatisDebug")]
     [SerializeField]
     private TextMeshProUGUI pointsText;
     [Header("Coins")]
