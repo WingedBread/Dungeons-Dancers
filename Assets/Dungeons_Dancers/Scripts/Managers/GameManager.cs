@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
 	[HideInInspector]
 	public List<LevelEventsMaterial> levelEventsMaterials;
 
+	[Header("FPS Settings")]
+	[SerializeField]
+	private bool _allowFpsCap;
+	[SerializeField]
+	private int _fpsApplication;
+
     [Header("Player Manager")]
     [SerializeField]
     private PlayerManager playerManager;
@@ -45,7 +51,7 @@ public class GameManager : MonoBehaviour
     [Header("Time Section")]
     [Header("Dungeon Timer in Seconds")]
     [SerializeField]
-    private float initDungeonTimer = 60f;
+	private float initDungeonTimer = 60f;
     private float dungeonTimer;
 
     private int currentLevelState = 0;
@@ -54,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 60;
+		if(_allowFpsCap) Application.targetFrameRate = _fpsApplication;
         //DontDestroyOnLoad(this.gameObject);
     }
 
