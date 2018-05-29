@@ -26,9 +26,9 @@ public class GameManager : MonoBehaviour
 
 	[Header("FPS Settings")]
 	[SerializeField]
-	private bool _allowFpsCap;
+	private bool _allowFpsCap = false;
 	[SerializeField]
-	private int _fpsApplication;
+	private int _fpsApplication = 0;
 
     [Header("Player Manager")]
     [SerializeField]
