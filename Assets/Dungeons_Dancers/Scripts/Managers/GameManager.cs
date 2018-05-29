@@ -50,10 +50,6 @@ public class GameManager : MonoBehaviour
 
     private int currentLevelState = 0;
 
-    [SerializeField]
-    private DebugController debugController;
-
-
     bool flagTimeNearOver = true;
 
     private void Awake()

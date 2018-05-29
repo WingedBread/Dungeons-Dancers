@@ -61,6 +61,9 @@ public class InputController : MonoBehaviour
     private Quaternion rotationLEFT;
     private Quaternion rotationRIGHT;
 
+    [SerializeField]
+    private bool debugEnable = false;
+
 
 	// Use this for initialization
 	void Start () 
@@ -79,7 +82,7 @@ public class InputController : MonoBehaviour
 	void Update () 
     {
         if (!blockPlayer) PlayerMoveInput();
-        debugController.InputPlayerDebug(inputFlag);
+        if(debugEnable) debugController.InputPlayerDebug(inputFlag);
 	}
 
     void PlayerMoveInput()

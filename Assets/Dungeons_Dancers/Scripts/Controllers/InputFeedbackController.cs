@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class InputFeedbackController : MonoBehaviour {
     
@@ -12,11 +13,17 @@ public class InputFeedbackController : MonoBehaviour {
     [SerializeField]
     GameObject incorrectFloorSprite;
 
-    [Header("Duration Fade Sprites")]
+    [Header("Duration Fade")]
     [SerializeField]
-    float correctSpriteDuartion = 0.5f;
+    float correctSpriteDuration = 0.5f;
     [SerializeField]
-    float incorrectSpriteDuartion = 0.5f;
+    float incorrectSpriteDuration = 0.5f;
+    [SerializeField]
+    float textDuration = 0.5f;
+
+    [Header("Text Easing")]
+    [SerializeField]
+    Ease textEasing;
 
     [SerializeField]
     GameObject goodTextParticle;
@@ -30,6 +37,10 @@ public class InputFeedbackController : MonoBehaviour {
     List<GameObject> correctTrail = new List<GameObject>();
     List<GameObject> incorrectTrail = new List<GameObject>();
 
+
+    TextMeshPro greatText;
+    TextMeshPro goodText;
+    TextMeshPro perfectText;
     private GameObject correctGO;
     private GameObject incorrectGO;
     private GameObject particlesGO;
@@ -52,20 +63,27 @@ public class InputFeedbackController : MonoBehaviour {
             case 0: //Good
                 instantiatedParticlesGO.Add((GameObject)Instantiate(goodTextParticle, transform.parent.parent));
                 particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
+                goodText = particlesGO.GetComponent<TextMeshPro>();
                 particlesGO.transform.position = new Vector3(transform.position.x, goodTextParticle.transform.position.y, transform.position.z);
-                particlesGO.GetComponent<ParticleSystem>().Play();
+                goodText.DOFade(0, textDuration).SetEase(textEasing);
+                particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z+1), textDuration);
+
                 break;
             case 1: //Perfect
                 instantiatedParticlesGO.Add((GameObject)Instantiate(perfectTextParticle, transform.parent.parent));
                 particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
+                perfectText = particlesGO.GetComponent<TextMeshPro>();
                 particlesGO.transform.position = new Vector3(transform.position.x, perfectTextParticle.transform.position.y, transform.position.z);
-                particlesGO.GetComponent<ParticleSystem>().Play();
+                perfectText.DOFade(0, textDuration).SetEase(textEasing);
+                particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z + 1), textDuration);
                 break;
             case 2: //Great
                 instantiatedParticlesGO.Add((GameObject)Instantiate(greatTextParticle, transform.parent.parent));
                 particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
+                greatText = particlesGO.GetComponent<TextMeshPro>();
                 particlesGO.transform.position = new Vector3(transform.position.x, greatTextParticle.transform.position.y, transform.position.z);
-                particlesGO.GetComponent<ParticleSystem>().Play();
+                greatText.DOFade(0, textDuration).SetEase(textEasing);
+                particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z + 1), textDuration);
                 break;
         }
 
@@ -93,11 +111,11 @@ public class InputFeedbackController : MonoBehaviour {
     {
         if(correct)
         {
-            go.GetComponent<SpriteRenderer>().DOFade(0, correctSpriteDuartion).OnComplete(() => DestroyStuff(go, correct));
+            go.GetComponent<SpriteRenderer>().DOFade(0, correctSpriteDuration).OnComplete(() => DestroyStuff(go, correct));
         }
         else
         {
-            go.GetComponent<SpriteRenderer>().DOFade(0, incorrectSpriteDuartion).OnComplete(() => DestroyStuff(go, correct));
+            go.GetComponent<SpriteRenderer>().DOFade(0, incorrectSpriteDuration).OnComplete(() => DestroyStuff(go, correct));
             incorrectTrail.Clear();
         }
     }

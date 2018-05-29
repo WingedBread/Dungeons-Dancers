@@ -37,8 +37,8 @@ public class PlayerManager : MonoBehaviour
     private Vector3 spawnInitPosition;
     private List<GameObject> collectibles = new List<GameObject>();
 
-    [SerializeField]
-    private DebugController debugController;
+
+
 
     // Use this for initialization
     void Start()
@@ -330,27 +330,27 @@ public class PlayerManager : MonoBehaviour
 
 				for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
 				{
-					gameManager.levelEventsAudios[i].OnCheckpoint(); ;
+					gameManager.levelEventsAudios[i].OnCheckpoint();
 				}
 				for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
 				{
-					gameManager.levelEventsMaterials[i].OnCheckpoint(); ;
+					gameManager.levelEventsMaterials[i].OnCheckpoint();
 				}
 				for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
 				{
-					gameManager.levelEventsEasing1[i].OnCheckpoint(); ;
+					gameManager.levelEventsEasing1[i].OnCheckpoint();
 				}
 				for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
 				{
-					gameManager.levelEventsEasing2[i].OnCheckpoint(); ;
+					gameManager.levelEventsEasing2[i].OnCheckpoint();
 				}
 				for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
 				{
-					gameManager.levelEventsEasing3[i].OnCheckpoint(); ;
+					gameManager.levelEventsEasing3[i].OnCheckpoint();
 				}
 				for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
 				{
-					gameManager.levelEventsEasing4[i].OnCheckpoint(); ;
+					gameManager.levelEventsEasing4[i].OnCheckpoint();
 				}
 			}
         }

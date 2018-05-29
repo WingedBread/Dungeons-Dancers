@@ -26,6 +26,8 @@ public class RhythmController : MonoBehaviour
     private bool activePlayerBeatEvent;
     private int lastEndSample;
 
+    [SerializeField]
+    private bool debugEnable;
     // Use this for initialization
     void Start()
     {
@@ -71,10 +73,14 @@ public class RhythmController : MonoBehaviour
 
     void PlayerInputBehaviour(KoreographyEvent kInputEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)
     {
-        debugController.RhythmStartSpanDebug(kInputEvent.StartSample);
-        debugController.RhythmEndSpanDebug(kInputEvent.EndSample);
-        debugController.RhythmDurationSpanDebug(kInputEvent.EndSample - kInputEvent.StartSample);
-        debugController.SetHitTime(sampleTime);
+        if (debugEnable) 
+        {
+            debugController.RhythmStartSpanDebug(kInputEvent.StartSample);
+            debugController.RhythmEndSpanDebug(kInputEvent.EndSample);
+            debugController.RhythmDurationSpanDebug(kInputEvent.EndSample - kInputEvent.StartSample);
+            debugController.SetHitTime(sampleTime);
+        }
+
 
         if(gameManager.GetPlayerInputFlag()) CalculateTiming(sampleTime, kInputEvent);
 
@@ -116,9 +122,13 @@ public class RhythmController : MonoBehaviour
             gameManager.levelEventsEasing4[i].OnBeat();
         }
 
-        debugController.RhythmBeatPlayerDebug(kBeatEvent.StartSample);
-        debugController.RhythmBeatDurationDebug(kBeatEvent.StartSample - lastEndSample);
+        if (debugEnable)
+        {
+            debugController.RhythmBeatPlayerDebug(kBeatEvent.StartSample);
+            debugController.RhythmBeatDurationDebug(kBeatEvent.StartSample - lastEndSample);
+        }
         lastEndSample = kBeatEvent.EndSample;
+
         if (!activePlayerBeatEvent)
         {
             activePlayerBeatEvent = true;
