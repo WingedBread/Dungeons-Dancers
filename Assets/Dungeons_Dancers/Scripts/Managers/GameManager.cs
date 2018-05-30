@@ -508,6 +508,10 @@ public class GameManager : MonoBehaviour
         return playerManager.GetPlayerInputFlag();
     }
 
+    public float GetInitDungeonTime(){
+        return initDungeonTimer;
+    }
+
     public float GetDungeonTime()
     {
         return dungeonTimer;

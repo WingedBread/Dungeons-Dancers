@@ -9,20 +9,22 @@ public class TimerBar : MonoBehaviour {
 	private float initTimer;
 	private float timerBarWidth;
 
-	[SerializeField]
-	private GameObject TimerBarObject;
+    private string gameManagerText = "GameManager";
 
-	// Use this for initialization
-	void Start () {
-		initTimerWidth = TimerBarObject.transform.localScale.x;
-		initTimer = 60f; //gameManager.GetDungeonTime ();
-		gameManager = GetComponent<GameManager>();
+    private void Awake()
+    {
+        gameManager = GameObject.FindWithTag(gameManagerText).GetComponent<GameManager>();
+    }
+    // Use this for initialization
+    void Start () {
+		initTimerWidth = this.transform.localScale.x;
+        initTimer = gameManager.GetInitDungeonTime();
 		timerBarWidth = (gameManager.GetDungeonTime()*initTimerWidth)/initTimer;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		timerBarWidth = (gameManager.GetDungeonTime()*initTimerWidth)/initTimer;
-		TimerBarObject.transform.localScale = new Vector3(timerBarWidth,0.3f,1f);
+		this.transform.localScale = new Vector3(timerBarWidth,0.3f,1f);
 	}
 }
