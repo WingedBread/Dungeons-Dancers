@@ -107,8 +107,9 @@ public class MovingEnemyBehaviour : MonoBehaviour {
     {
         switch (Direction)
         {
+		/* For Placeholder skeleton
             case 0: //LEFT
-                transform.GetChild(0).rotation = Quaternion.Euler(0, 90, 45);
+				transform.GetChild(0).rotation = Quaternion.Euler(0, 90, 45);
                 break;
             case 1: //RIGHT
                 transform.GetChild(0).rotation = Quaternion.Euler(0, -90, -45);
@@ -119,6 +120,19 @@ public class MovingEnemyBehaviour : MonoBehaviour {
             case 3: //UP
                 transform.GetChild(0).rotation = Quaternion.Euler(-45, 180, 0);
                 break;
+		*/ // Ivan's skeleton. It shouldn't be hardoded but like the player.
+			case 0: //LEFT
+				transform.GetChild(0).rotation = Quaternion.Euler(0, -90, -45);
+				break;
+			case 1: //RIGHT
+				transform.GetChild(0).rotation = Quaternion.Euler(0, 90, 45);
+				break;
+			case 2: //DOWN
+				transform.GetChild(0).rotation = Quaternion.Euler(-45, 180, 0);
+				break;
+			case 3: //UP
+				transform.GetChild(0).rotation = Quaternion.Euler(45, 0, 0);
+				break;
         }
     }
 }
