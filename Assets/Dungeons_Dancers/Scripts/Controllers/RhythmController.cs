@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SonicBloom.Koreo;
 using SonicBloom.Koreo.Players;
@@ -26,6 +25,15 @@ public class RhythmController : MonoBehaviour
     private bool activePlayerBeatEvent;
     private int lastEndSample;
 
+    [Header("FMOD")]
+    [SerializeField]
+    private bool fmod_enabled = false;
+    [SerializeField]
+    FMOD_Marker_Test fMOD_marker;
+    [SerializeField]
+    FMODUnity.StudioEventEmitter emitter;
+
+
     [SerializeField]
     private bool debugEnable;
     // Use this for initialization
@@ -38,12 +46,13 @@ public class RhythmController : MonoBehaviour
 
     private IEnumerator IntroDelayCoroutine(int time){
         yield return new WaitForSeconds(time);
+        if(fmod_enabled)fMOD_marker.multiPlay = true;
         StartIntroRhythm();
 		StopCoroutine ("IntroDelayCoroutine");
     }
     private void StartIntroRhythm()
     {
-        multiMusic.Play();
+        if(!fmod_enabled)multiMusic.Play();
         Koreographer.Instance.RegisterForEvents("IntroEvent", IntroBehaviour);
     }
     private void StopIntroRhythm()
@@ -61,6 +70,7 @@ public class RhythmController : MonoBehaviour
     private void StopRhythm()
     {
         multiMusic.Stop();
+        if(fmod_enabled)emitter.Stop();
         Koreographer.Instance.UnregisterForEvents("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.UnregisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
     }
