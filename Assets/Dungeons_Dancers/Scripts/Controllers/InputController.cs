@@ -64,6 +64,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private bool debugEnable = false;
 
+    string[] directions = {"Horizontal", "Vertical"};
+
 
 	// Use this for initialization
 	void Start () 
@@ -88,7 +90,7 @@ public class InputController : MonoBehaviour
     void PlayerMoveInput()
     {
         //LEFT
-        if (Equals(Input.GetAxisRaw("Horizontal"), -1f))
+        if (Equals(Input.GetAxisRaw(directions[0]), -1f))
         {
             if (!playerCollision.LeftCollision() && inputFlag && easingBool) 
             {
@@ -108,7 +110,7 @@ public class InputController : MonoBehaviour
         }
 
         //RIGHT
-        else if (Equals(Input.GetAxisRaw("Horizontal"), 1f))
+        else if (Equals(Input.GetAxisRaw(directions[0]), 1f))
         {
             
             if (!playerCollision.RightCollision() && inputFlag && easingBool)
@@ -130,7 +132,7 @@ public class InputController : MonoBehaviour
         }
 
         //DOWN
-        else if (Equals(Input.GetAxisRaw("Vertical"), -1f))
+        else if (Equals(Input.GetAxisRaw(directions[1]), -1f))
         {
             
             if (!playerCollision.DownCollision() && inputFlag && easingBool)
@@ -151,7 +153,7 @@ public class InputController : MonoBehaviour
         }
 
         //UP
-        else if (Equals(Input.GetAxisRaw("Vertical"), 1f))
+        else if (Equals(Input.GetAxisRaw(directions[1]), 1f))
         {
             
             if (!playerCollision.UpCollision() && inputFlag && easingBool)
