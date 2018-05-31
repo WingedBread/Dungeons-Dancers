@@ -36,7 +36,7 @@ public class MenuSceneScript : MonoBehaviour {
 
 	private void Awake()
 	{
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
 	}
 	// Use this for initialization
 	void Start () {
