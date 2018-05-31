@@ -19,12 +19,12 @@ public class TimerBar : MonoBehaviour {
     void Start () {
 		initTimerWidth = this.transform.localScale.x;
         initTimer = gameManager.GetInitDungeonTime();
-		timerBarWidth = (gameManager.GetDungeonTime()*initTimerWidth)/initTimer;
+		timerBarWidth = (gameManager.GetDungeonTime()*this.transform.localScale.x)/initTimer;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		timerBarWidth = (gameManager.GetDungeonTime()*initTimerWidth)/initTimer;
-		this.transform.localScale = new Vector3(timerBarWidth,0.3f,1f);
+		this.transform.localScale = new Vector3(timerBarWidth,this.transform.localScale.y,this.transform.localScale.z);
 	}
 }
