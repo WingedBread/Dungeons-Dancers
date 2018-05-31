@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4799014324154232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerLosePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1130431554706402}
   m_LocalRotation: {x: 0.649448, y: 0, z: 0, w: 0.760406}
-  m_LocalPosition: {x: 0, y: 14.96, z: -2.2}
+  m_LocalPosition: {x: 0, y: 15.3, z: -2.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4537225692150812}
@@ -111,12 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cbe5b16977424c8b83e529dc1330b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEasing: 18
-  playerDuration: 0.25
+  playerEasing: 8
+  playerDuration: 0.4
   fadeFaceDuration: 0.1
   fadeFondoDuration: 0.4
-  delayDuration: 0.5
-  delayFade: 1
+  delayDuration: 0.25
+  delayFade: 1.25
   playerEndPos: {fileID: 4799014324154232}
   loseParticleSystem: {fileID: 1633069917857530, guid: b85d2c57a28f742f0a4e6eabf7d8568d,
     type: 2}
@@ -134,15 +134,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winParticles: {fileID: 1320840946574876, guid: 5b67c574820634b80bf8a23f67b70714,
     type: 2}
-  cameraEasing: 20
+  cameraEasing: 18
   lightsParent: {fileID: 0}
   cameraEndPos: {fileID: 0}
   cameraDelayDuration: 0.5
-  particlesDelayDuration: 0.5
-  lightsDelayDuration: 0.5
-  cameraDuration: 0.5
-  particlesDuration: 3
-  lightsDuration: 0.5
+  particlesDelayDuration: 1.5
+  lightsDelayDuration: 1
+  cameraDuration: 1
+  particlesDuration: 5
+  lightsDuration: 1
 --- !u!114 &114830387879534678
 MonoBehaviour:
   m_ObjectHideFlags: 1
