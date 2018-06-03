@@ -20,12 +20,35 @@ public class MovingEnemyBehaviour : MonoBehaviour {
 
 	private GameObject[] enemyDirection;
 
+    private string playerBeatEvent = "PlayerBeatEvent";
+
+    [Header("Skeleton Rotations")]
+    [SerializeField]
+    private Vector3 _rotationUP = new Vector3(45, 0, 0);
+    [SerializeField]
+    private Vector3 _rotationDOWN = new Vector3(-45, 180, 0);
+    [SerializeField]
+    private Vector3 _rotationLEFT = new Vector3(0, -90, -45);
+    [SerializeField]
+    private Vector3 _rotationRIGHT = new Vector3(0, 90, 45);
+
+    private Quaternion rotationUP;
+    private Quaternion rotationDOWN;
+    private Quaternion rotationLEFT;
+    private Quaternion rotationRIGHT;
+
 	private void Start()
 	{
 		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 		animator = transform.GetChild(0).GetComponent<Animator>();
 		enemyDirection = GameObject.FindGameObjectsWithTag("EnemyDirection");
 		Koreographer.Instance.RegisterForEvents(beatBhv, BeatDetection);
+        Koreographer.Instance.RegisterForEvents(playerBeatEvent, AnimDetector);
+        rotationUP = Quaternion.Euler(_rotationUP.x, _rotationUP.y, _rotationUP.z);
+        rotationDOWN = Quaternion.Euler(_rotationDOWN.x, _rotationDOWN.y, _rotationDOWN.z);
+        rotationLEFT = Quaternion.Euler(_rotationLEFT.x, _rotationLEFT.y, _rotationLEFT.z);
+        rotationRIGHT = Quaternion.Euler(_rotationRIGHT.x, _rotationRIGHT.y, _rotationRIGHT.z);
+
         
 		for (int i = 0; i < enemyDirection.Length; i++)
 		{
@@ -45,10 +68,19 @@ public class MovingEnemyBehaviour : MonoBehaviour {
 		}
 	}
 
+    void AnimDetector(KoreographyEvent evt)
+    {
+        if (gameManager.GetGameStatus())
+        {
+            if (gameManager.GetRhythmActiveBeat()) animator.SetBool("isRun", activeTrapEvent);
+            else animator.SetBool("isRun", activeTrapEvent);
+        }
+    }
+
     void ActiveTrap()
     {
 		activeTrapEvent = true;
-		animator.SetBool("isRun", activeTrapEvent);
+		
         if (xAxis)
         {
             this.transform.position = new Vector3(this.transform.position.x + (direction), this.transform.position.y, this.transform.position.z);
@@ -63,7 +95,6 @@ public class MovingEnemyBehaviour : MonoBehaviour {
     void DisableTrap()
     {
 		activeTrapEvent = false;
-		animator.SetBool("isRun", activeTrapEvent);
     }
 
     private IEnumerator ReturnIdle()
@@ -107,32 +138,18 @@ public class MovingEnemyBehaviour : MonoBehaviour {
     {
         switch (Direction)
         {
-		/* For Placeholder skeleton
             case 0: //LEFT
-				transform.GetChild(0).rotation = Quaternion.Euler(0, 90, 45);
+                transform.rotation = rotationLEFT;
                 break;
             case 1: //RIGHT
-                transform.GetChild(0).rotation = Quaternion.Euler(0, -90, -45);
+                transform.rotation = rotationRIGHT;
                 break;
             case 2: //DOWN
-                transform.GetChild(0).rotation = Quaternion.Euler(45, 0, 0);
+                transform.rotation = rotationDOWN;
                 break;
             case 3: //UP
-                transform.GetChild(0).rotation = Quaternion.Euler(-45, 180, 0);
+                transform.rotation = rotationUP;
                 break;
-		*/ // Ivan's skeleton. It shouldn't be hardoded but like the player.
-			case 0: //LEFT
-				transform.GetChild(0).rotation = Quaternion.Euler(0, -90, -45);
-				break;
-			case 1: //RIGHT
-				transform.GetChild(0).rotation = Quaternion.Euler(0, 90, 45);
-				break;
-			case 2: //DOWN
-				transform.GetChild(0).rotation = Quaternion.Euler(-45, 180, 0);
-				break;
-			case 3: //UP
-				transform.GetChild(0).rotation = Quaternion.Euler(45, 0, 0);
-				break;
         }
     }
 }
