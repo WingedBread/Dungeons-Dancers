@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4988924102987610}
   - component: {fileID: 108974694134957174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2690,7 +2690,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358448160407722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 0, z: 2.5}
+  m_LocalPosition: {x: -7.5, y: 0, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4619361258338634}
@@ -3721,7 +3721,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 12
-  m_Range: 2.14
+  m_Range: 2.67
   m_SpotAngle: 78
   m_CookieSize: 10
   m_Shadows:
@@ -3767,6 +3767,7 @@ MonoBehaviour:
   easingSpeedList: 1
   easingSpeedDuration: 0.1
   easingJumpList: 1
+  debugEnable: 0
 --- !u!114 &114071975496417554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3831,7 +3832,7 @@ MonoBehaviour:
   doors: []
   doorMaterial:
   - {fileID: 2100000, guid: a19c7a62f5a8ef74780b320ac0dee83b, type: 2}
-  - {fileID: 2100000, guid: 08383afdf5e4c7f4aa3b1158056238b1, type: 2}
+  - {fileID: 0}
 --- !u!114 &114790033956202444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3846,7 +3847,6 @@ MonoBehaviour:
   scriptedEvents: {fileID: 0}
   gameManager: {fileID: 0}
   timeIdle: 0.5
-  debugController: {fileID: 0}
 --- !u!137 &137609797275863932
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

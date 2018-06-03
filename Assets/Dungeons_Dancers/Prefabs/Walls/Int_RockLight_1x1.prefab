@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 33049431189828250}
   - component: {fileID: 114283001244694954}
   - component: {fileID: 114750630873246306}
+  - component: {fileID: 114284248291187732}
   m_Layer: 0
   m_Name: Int_RockLight_1x1
   m_TagString: Untagged
@@ -38,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1730110894765490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: 13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.974, y: 0.47, z: 12.112}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,7 +53,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1730110894765490}
   m_Enabled: 1
   m_CastShadows: 2
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -2049,6 +2050,28 @@ MonoBehaviour:
   - x: 19
     y: 12
   m_selectedTriangles: 10000000110000000f0000000e0000000d0000000c0000001300000012000000
+--- !u!114 &114284248291187732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730110894765490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027738c8d00b34bfaa66c5b41bb05830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 0000000002000000
+  beatBhv: 
+  materials:
+  - {fileID: 2100000, guid: 0361de0aca1d2c24dbb05487cb90410e, type: 2}
+  - {fileID: 2100000, guid: fefedc837ed534a17a28f8a2ac4f3e62, type: 2}
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!114 &114750630873246306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2070,8 +2093,8 @@ MonoBehaviour:
   rotationEasing: 0
   easingOffBeatList: 1
   easingOnBeatList: 1
-  onBeatScaleVector3: {x: 1, y: 1.25, z: 1}
-  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatScaleVector3: {x: 0.8, y: 1, z: 0.8}
+  offBeatScaleVector3: {x: 0.8, y: 0.8, z: 0.8}
   onBeatPositionVector3: {x: 0, y: 0, z: 0}
   offBeatPositionVector3: {x: 0, y: 0, z: 0}
   onBeatRotationVector3: {x: 0, y: 0, z: 0}

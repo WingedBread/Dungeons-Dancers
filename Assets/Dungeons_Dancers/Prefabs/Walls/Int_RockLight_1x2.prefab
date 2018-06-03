@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 33828467350903884}
   - component: {fileID: 114236520882703674}
   - component: {fileID: 114674925231271678}
+  - component: {fileID: 114837252112622592}
   m_Layer: 0
   m_Name: Int_RockLight_1x2
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1663631351017020}
   m_Enabled: 1
   m_CastShadows: 2
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -2865,6 +2866,28 @@ MonoBehaviour:
   offBeatRotationVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.05
   easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!114 &114837252112622592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1663631351017020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027738c8d00b34bfaa66c5b41bb05830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 0000000002000000
+  beatBhv: 
+  materials:
+  - {fileID: 2100000, guid: 0361de0aca1d2c24dbb05487cb90410e, type: 2}
+  - {fileID: 2100000, guid: fefedc837ed534a17a28f8a2ac4f3e62, type: 2}
   managerLS: 0
   managerPS: 0
   managerSS: 0
