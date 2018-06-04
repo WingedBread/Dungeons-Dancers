@@ -33725,7 +33725,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.6381294, g: 0.5330188, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -41840,6 +41840,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1871412248 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4764451681758860, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+    type: 2}
+  m_PrefabInternal: {fileID: 1871412247}
+--- !u!4 &1871412249 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4188175226661370, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+    type: 2}
+  m_PrefabInternal: {fileID: 1871412247}
 --- !u!1 &1885204610
 GameObject:
   m_ObjectHideFlags: 0
@@ -42877,6 +42887,16 @@ Prefab:
       propertyPath: TracksPosition.Array.data[3]
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisBar3D.Array.data[0]
+      value: 
+      objectReference: {fileID: 1871412248}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisBar3D.Array.data[1]
+      value: 
+      objectReference: {fileID: 1871412249}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
   m_IsPrefabParent: 0
@@ -43504,61 +43524,6 @@ Prefab:
     - target: {fileID: 4516082727109718, guid: 6312a0c4ac70add41a90c54fa38b340c, type: 2}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 82826900615749988, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: panLevelCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82826900615749988, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114167473298603538, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82904597097124572, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: panLevelCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82904597097124572, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82692014863244148, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: panLevelCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82692014863244148, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114360242839496432, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82268806129691414, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: panLevelCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82268806129691414, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114777336249909756, guid: 6312a0c4ac70add41a90c54fa38b340c,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6312a0c4ac70add41a90c54fa38b340c, type: 2}

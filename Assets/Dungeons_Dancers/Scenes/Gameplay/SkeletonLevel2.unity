@@ -42732,21 +42732,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: keysImages.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: satisbar3d.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: satisBar3D.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -42779,25 +42764,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1212218855684012, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465538579891040, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: playerManager
-      value: 
-      objectReference: {fileID: 1896864767}
-    - target: {fileID: 114465538579891040, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: debugController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905625918851408, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: debugController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
         type: 2}
       propertyPath: dungeonTimerText
@@ -42808,6 +42774,16 @@ Prefab:
       propertyPath: introText
       value: 
       objectReference: {fileID: 1378685911}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisBar3D.Array.data[0]
+      value: 
+      objectReference: {fileID: 1871412249}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisBar3D.Array.data[1]
+      value: 
+      objectReference: {fileID: 1871412248}
     - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
         type: 2}
       propertyPath: pointsText
@@ -42875,54 +42851,9 @@ Prefab:
       objectReference: {fileID: 1378685913}
     - target: {fileID: 114465538579891040, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
         type: 2}
-      propertyPath: initDungeonTimer
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465538579891040, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: _fpsApplication
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: finalIntro
-      value: GO!
-      objectReference: {fileID: 0}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: initPoints
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: TracksPosition.Array.data[2]
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: TracksPosition.Array.data[3]
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: satisbar3d.Array.data[0]
+      propertyPath: playerManager
       value: 
-      objectReference: {fileID: 1871412249}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: satisbar3d.Array.data[1]
-      value: 
-      objectReference: {fileID: 1871412248}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: satisBar3D.Array.data[0]
-      value: 
-      objectReference: {fileID: 1871412249}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: satisBar3D.Array.data[1]
-      value: 
-      objectReference: {fileID: 1871412248}
+      objectReference: {fileID: 1896864767}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
   m_IsPrefabParent: 0
