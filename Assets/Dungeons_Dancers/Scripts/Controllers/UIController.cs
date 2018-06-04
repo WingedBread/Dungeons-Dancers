@@ -20,7 +20,7 @@ public class UIController: MonoBehaviour {
     [SerializeField]
     Transform[] satisBar3D = new Transform[2];
     private float[] satisBarHeight = new float[2];
-    private float hardcodedBarLenght = 100;
+    private float[] initsatisHeight = new float[2];
 
     [Header("SatisDebug")]
     [SerializeField]
@@ -105,6 +105,11 @@ public class UIController: MonoBehaviour {
         for (int i = 0; i < separatorsObj.Length; i++) {
             separatorsObj[i].transform.localPosition =  new Vector3(gameManager.GetSatisfactionTrackPos(i+1) * (barwidth/100), separatorsObj[i].transform.localPosition.y, separatorsObj[i].transform.localPosition.z);
         }
+
+        for (int i = 0; i < satisBar3D.Length; i++)
+        {
+            initsatisHeight[i] = satisBar3D[i].localScale.y * 100;
+        }
 	}
     void Update(){
         if (gameManager.GetGameStatus()) dungeonTimerText.text = gameManager.GetDungeonTime().ToString("F");
@@ -153,7 +158,7 @@ public class UIController: MonoBehaviour {
     {
         for(int i = 0; i< satisBar3D.Length; i++)
         {
-            satisBarHeight[i] = (gameManager.GetPoints(0, 1, 0)/ hardcodedBarLenght);
+            satisBarHeight[i] = (gameManager.GetPoints(0, 1, 0) / initsatisHeight[i]);
             satisBar3D[i].transform.localScale = new Vector3(satisBar3D[i].transform.localScale.x, satisBarHeight[i], satisBar3D[i].transform.localScale.z);
         }
     }
