@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadedKoreography: []
-  eventDelayInSeconds: 0
+  eventDelayInSeconds: 1
 --- !u!4 &1618176
 Transform:
   m_ObjectHideFlags: 0
@@ -41544,9 +41544,29 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 4.07
       objectReference: {fileID: 0}
+    - target: {fileID: 23584442548603408, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 595c7c43284f12b4e998e82562d3dd71, type: 2}
+    - target: {fileID: 23264392827383904, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 595c7c43284f12b4e998e82562d3dd71, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1871412248 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4764451681758860, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+    type: 2}
+  m_PrefabInternal: {fileID: 1871412247}
+--- !u!4 &1871412249 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4188175226661370, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+    type: 2}
+  m_PrefabInternal: {fileID: 1871412247}
 --- !u!1 &1885204610
 GameObject:
   m_ObjectHideFlags: 0
@@ -42428,6 +42448,16 @@ Prefab:
       propertyPath: keysImages.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisbar3d.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisBar3D.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -42584,6 +42614,26 @@ Prefab:
       propertyPath: TracksPosition.Array.data[3]
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisbar3d.Array.data[0]
+      value: 
+      objectReference: {fileID: 1871412249}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisbar3d.Array.data[1]
+      value: 
+      objectReference: {fileID: 1871412248}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisBar3D.Array.data[0]
+      value: 
+      objectReference: {fileID: 1871412249}
+    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: satisBar3D.Array.data[1]
+      value: 
+      objectReference: {fileID: 1871412248}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
   m_IsPrefabParent: 0

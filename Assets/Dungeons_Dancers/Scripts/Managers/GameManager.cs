@@ -469,6 +469,7 @@ public class GameManager : MonoBehaviour
 
         else return 0;
     }
+
     public bool GetPlayerBlock()
     {
         return playerManager.GetBlock();

@@ -16,6 +16,12 @@ public class UIController: MonoBehaviour {
     [SerializeField]
     private TextMeshProUGUI introText;
 
+    [Header("New Satis Bar")]
+    [SerializeField]
+    Transform[] satisBar3D = new Transform[2];
+    private float[] satisBarHeight = new float[2];
+    private float hardcodedBarLenght = 100;
+
     [Header("SatisDebug")]
     [SerializeField]
     private TextMeshProUGUI pointsText;
@@ -33,7 +39,6 @@ public class UIController: MonoBehaviour {
     [Header("Climax Locks")]
     [SerializeField]
     private Image climaxUnlock;
-
 
     [Header("Separators")]
     [SerializeField]
@@ -129,40 +134,51 @@ public class UIController: MonoBehaviour {
     }
 
     public void RemovePointUI(){
+        Update3DSatisBar();
         pointsText.text = gameManager.GetPoints(0, 1, 0).ToString();
         pointsSlider.value = gameManager.GetPoints(0, 1, 0);
         PointsSliderChecker();
     }
 
     public void AddPointUI(){
+        Update3DSatisBar();
         AccuracySliderCheck();
         pointsText.text = gameManager.GetPoints(0, 1, 0).ToString();
         pointsSlider.value = gameManager.GetPoints(0, 1, 0);
         PointsSliderChecker();
     }
 
+
+    private void Update3DSatisBar()
+    {
+        for(int i = 0; i< satisBar3D.Length; i++)
+        {
+            satisBarHeight[i] = (gameManager.GetPoints(0, 1, 0)/ hardcodedBarLenght);
+            satisBar3D[i].transform.localScale = new Vector3(satisBar3D[i].transform.localScale.x, satisBarHeight[i], satisBar3D[i].transform.localScale.z);
+        }
+    }
+
     private void PointsSliderChecker()
     {
-
-        if (gameManager.GetPoints(0, 1, 0) == 15 || gameManager.GetPoints(0, 1, 0) == 16)
+        if (gameManager.GetPoints(0, 1, 0) == gameManager.GetSatisfactionTrackPos(1) || gameManager.GetPoints(0, 1, 0) == (gameManager.GetSatisfactionTrackPos(1) + 1))
         {
             sliderText.text = sliderFirst;
             sliderText.gameObject.SetActive(true);
             StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
         }
-        else if (gameManager.GetPoints(0, 1, 0) == 30 || gameManager.GetPoints(0, 1, 0) == 31)
+        else if (gameManager.GetPoints(0, 1, 0) == gameManager.GetSatisfactionTrackPos(2) || gameManager.GetPoints(0, 1, 0) == (gameManager.GetSatisfactionTrackPos(2) + 1))
         {
             sliderText.text = sliderSecond;
             sliderText.gameObject.SetActive(true);
             StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
         }
-        else if (gameManager.GetPoints(0, 1, 0) == 45 || gameManager.GetPoints(0, 1, 0) == 46)
+        else if (gameManager.GetPoints(0, 1, 0) == gameManager.GetSatisfactionTrackPos(3) || gameManager.GetPoints(0, 1, 0) == (gameManager.GetSatisfactionTrackPos(3) + 1))
         {
             sliderText.text = sliderThird;
             sliderText.gameObject.SetActive(true);
             StartCoroutine(DeactivatorUI(sliderText, sliderTextTime));
         }
-        else if (gameManager.GetPoints(0, 1, 0) == 60)
+        else if (gameManager.GetPoints(0, 1, 0) == gameManager.GetSatisfactionTrackPos(4))
         {
             sliderText.text = sliderFourth;
             sliderText.gameObject.SetActive(true);
