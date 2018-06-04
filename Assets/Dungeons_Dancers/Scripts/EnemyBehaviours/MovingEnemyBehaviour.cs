@@ -72,8 +72,8 @@ public class MovingEnemyBehaviour : MonoBehaviour {
     {
         if (gameManager.GetGameStatus())
         {
-            if (gameManager.GetRhythmActiveBeat()) animator.SetBool("isRun", activeTrapEvent);
-            else animator.SetBool("isRun", activeTrapEvent);
+            if (gameManager.GetRhythmActiveBeat()) animator.SetBool("isRun", true);
+            else animator.SetBool("isRun", false);
         }
     }
 
@@ -139,16 +139,16 @@ public class MovingEnemyBehaviour : MonoBehaviour {
         switch (Direction)
         {
             case 0: //LEFT
-                transform.rotation = rotationLEFT;
+                transform.GetChild(0).rotation = rotationLEFT;
                 break;
             case 1: //RIGHT
-                transform.rotation = rotationRIGHT;
+                transform.GetChild(0).rotation = rotationRIGHT;
                 break;
             case 2: //DOWN
-                transform.rotation = rotationDOWN;
+                transform.GetChild(0).rotation = rotationDOWN;
                 break;
             case 3: //UP
-                transform.rotation = rotationUP;
+                transform.GetChild(0).rotation = rotationUP;
                 break;
         }
     }
