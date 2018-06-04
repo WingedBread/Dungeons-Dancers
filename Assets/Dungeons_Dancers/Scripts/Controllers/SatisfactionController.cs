@@ -292,6 +292,39 @@ public class SatisfactionController : MonoBehaviour {
             feverPoints = ClimaxMaxFails;
             gameManager.ClimaxUIBehaviour(feverPoints, false);
         }
+
+        else
+        {
+            switch (gameManager.GetRhythmAccuracy())
+            {
+                case 1:
+                    for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+                    {
+                        gameManager.levelEventsAudios[i].PerfectMove();
+                    }
+                    for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+                    {
+                        gameManager.levelEventsMaterials[i].PerfectMove();
+                    }
+                    for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+                    {
+                        gameManager.levelEventsEasing1[i].PerfectMove();
+                    }
+                    for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+                    {
+                        gameManager.levelEventsEasing2[i].PerfectMove();
+                    }
+                    for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+                    {
+                        gameManager.levelEventsEasing3[i].PerfectMove();
+                    }
+                    for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+                    {
+                        gameManager.levelEventsEasing4[i].PerfectMove();
+                    }
+                    break;
+            }
+        }
     }
 
     public void ResetSatisfaction(){

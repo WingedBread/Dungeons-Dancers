@@ -33,6 +33,7 @@ public class InputFeedbackController : MonoBehaviour {
     GameObject perfectTextParticle;
 
     List<GameObject> instantiatedParticlesGO = new List<GameObject>();
+    List<GameObject> instantiatedChildrenParticlesGO = new List<GameObject>();
 
     List<GameObject> correctTrail = new List<GameObject>();
     List<GameObject> incorrectTrail = new List<GameObject>();
@@ -44,6 +45,7 @@ public class InputFeedbackController : MonoBehaviour {
     private GameObject correctGO;
     private GameObject incorrectGO;
     private GameObject particlesGO;
+    private GameObject childGO;
 
 	// Use this for initialization
 	void Start () {
@@ -66,6 +68,9 @@ public class InputFeedbackController : MonoBehaviour {
                 goodText = particlesGO.GetComponent<TextMeshPro>();
                 particlesGO.transform.position = new Vector3(transform.position.x, goodTextParticle.transform.position.y, transform.position.z);
                 goodText.DOFade(0, textDuration).SetEase(textEasing);
+                childGO = particlesGO.transform.GetChild(0).gameObject;
+                instantiatedChildrenParticlesGO.Add(childGO);
+                particlesGO.transform.DetachChildren();
                 particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z+1), textDuration);
 
                 break;
@@ -75,6 +80,9 @@ public class InputFeedbackController : MonoBehaviour {
                 perfectText = particlesGO.GetComponent<TextMeshPro>();
                 particlesGO.transform.position = new Vector3(transform.position.x, perfectTextParticle.transform.position.y, transform.position.z);
                 perfectText.DOFade(0, textDuration).SetEase(textEasing);
+                childGO = particlesGO.transform.GetChild(0).gameObject;
+                instantiatedChildrenParticlesGO.Add(childGO);
+                particlesGO.transform.DetachChildren();
                 particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z + 1), textDuration);
                 break;
             case 2: //Great
@@ -83,6 +91,9 @@ public class InputFeedbackController : MonoBehaviour {
                 greatText = particlesGO.GetComponent<TextMeshPro>();
                 particlesGO.transform.position = new Vector3(transform.position.x, greatTextParticle.transform.position.y, transform.position.z);
                 greatText.DOFade(0, textDuration).SetEase(textEasing);
+                childGO = particlesGO.transform.GetChild(0).gameObject;
+                instantiatedChildrenParticlesGO.Add(childGO);
+                particlesGO.transform.DetachChildren();
                 particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z + 1), textDuration);
                 break;
         }
@@ -129,6 +140,7 @@ public class InputFeedbackController : MonoBehaviour {
                 if (go == correctTrail[i])
                 {
                     Destroy(instantiatedParticlesGO[i]);
+                    Destroy(instantiatedChildrenParticlesGO[i]);
                 }
             }
             Destroy(go);
@@ -140,7 +152,12 @@ public class InputFeedbackController : MonoBehaviour {
             for (int w = 0; w < instantiatedParticlesGO.Count; w++)
             {
                 Destroy(instantiatedParticlesGO[w]);
-                if (w == (instantiatedParticlesGO.Count - 1)) instantiatedParticlesGO.Clear();
+                Destroy(instantiatedChildrenParticlesGO[w]);
+                if (w == (instantiatedParticlesGO.Count - 1))
+                {
+                    instantiatedParticlesGO.Clear();
+                    instantiatedChildrenParticlesGO.Clear();
+                }
             }
 
         }
