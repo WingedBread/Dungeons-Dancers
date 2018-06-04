@@ -39,8 +39,7 @@ public class SatisfactionController : MonoBehaviour {
     }
 	void Start () {
         gameManager = GetComponent<GameManager>();
-        PointEvents();
-	}
+    }
 	
     public void AddPoint()
     {
@@ -98,7 +97,7 @@ public class SatisfactionController : MonoBehaviour {
     void PointEvents()
     {
         if (points < TracksPosition[2]  && points > TracksPosition[0] && pointsflag != 1) 
-        { 
+        {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
                 gameManager.levelEventsAudios[i].SatisfactionLvl1();
