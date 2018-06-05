@@ -39,6 +39,9 @@ public class WinBehaviour : MonoBehaviour {
 	[SerializeField]
     float lightsDuration = 1.5f;
 
+	[Header("Travel to Scene")]
+	[SerializeField]
+	private int sceneNum = 3;
 	bool[] done = new bool[3];
 
 	private Vector3 ogMainCameraPosition;
@@ -63,7 +66,7 @@ public class WinBehaviour : MonoBehaviour {
 		mainCamera.gameObject.transform.DOMove(cameraEndPos.position, cameraDuration).SetEase(cameraEasing);
 		yield return new WaitForSeconds(cameraDuration);
 		done[0] = true;
-		if(done[0] && done[1] && done[2]) SceneManager.LoadScene(3);
+		if(done[0] && done[1] && done[2]) SceneManager.LoadScene(sceneNum);
 		StopCoroutine("CameraCoroutine");
 	}
     
@@ -76,7 +79,7 @@ public class WinBehaviour : MonoBehaviour {
 		Instantiate(winParticles, player);
 		yield return new WaitForSeconds(particlesDuration);
 		done[1] = true;
-		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(3);
+		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(sceneNum);
 		StopCoroutine("ParticlesCoroutine");
     }
 
@@ -88,7 +91,7 @@ public class WinBehaviour : MonoBehaviour {
 		lightsParent.SetActive(true);
 		yield return new WaitForSeconds(lightsDuration);
 		done[2] = true;
-		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(3);
+		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(sceneNum);
 		StopCoroutine("LightsCoroutine");
     }
 }
