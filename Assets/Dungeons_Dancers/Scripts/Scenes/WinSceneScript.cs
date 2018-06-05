@@ -22,7 +22,8 @@ public class WinSceneScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         highscore.gameObject.SetActive(false);
-        highscore.text = PlayerPrefs.GetInt("HighScoreLVL1").ToString();
+        highscore.text = PlayerPrefs.GetInt("TotalScore").ToString();
+
         for (int i = 0; i < sparkles.transform.childCount; i++)
         {
             ogSparklePos[i] = sparkles.transform.GetChild(i).localPosition;
@@ -48,7 +49,7 @@ public class WinSceneScript : MonoBehaviour {
     }
     public void SelectScene(int i)
     {
+        PlayerPrefs.SetInt("TotalScore", 0);
         SceneManager.LoadScene(i);
     }
-
 }

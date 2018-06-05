@@ -94,7 +94,7 @@ public class SatisfactionController : MonoBehaviour {
         }
     }
 
-    void PointEvents()
+    public void PointEvents()
     {
         if (points < TracksPosition[2]  && points > TracksPosition[0] && pointsflag != 1) 
         {

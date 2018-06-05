@@ -101,7 +101,6 @@ public class UIController: MonoBehaviour {
         pointsText.text = gameManager.GetPoints(0,1,0).ToString();
         barwidth = barEnd.transform.parent.transform.parent.GetComponent<RectTransform>().rect.width;
         barEnd.transform.localPosition  = new Vector3(barwidth,barEnd.transform.localPosition.y, barEnd.transform.localPosition.z);
-
         for (int i = 0; i < separatorsObj.Length; i++) {
             separatorsObj[i].transform.localPosition =  new Vector3(gameManager.GetSatisfactionTrackPos(i+1) * (barwidth/100), separatorsObj[i].transform.localPosition.y, separatorsObj[i].transform.localPosition.z);
         }
@@ -110,7 +109,8 @@ public class UIController: MonoBehaviour {
         {
             initsatisHeight[i] = satisBar3D[i].localScale.y * 100;
         }
-	}
+        Update3DSatisBar();
+    }
     void Update(){
         if (gameManager.GetGameStatus()) dungeonTimerText.text = gameManager.GetDungeonTime().ToString("F");
     }

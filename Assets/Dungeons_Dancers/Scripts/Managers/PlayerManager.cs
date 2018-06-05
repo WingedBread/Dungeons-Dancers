@@ -37,9 +37,6 @@ public class PlayerManager : MonoBehaviour
     private Vector3 spawnInitPosition;
     private List<GameObject> collectibles = new List<GameObject>();
 
-
-
-
     // Use this for initialization
     void Start()
     {
@@ -367,6 +364,7 @@ public class PlayerManager : MonoBehaviour
     public int GetCoins(){
         return collectiblesController.GetCoins(gameManager.GetSatisfactionFever());
     }
+
     public void SetBlock(bool Block)
     {
         inputController.SetInputBlock(Block);

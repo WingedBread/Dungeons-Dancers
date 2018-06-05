@@ -239,6 +239,7 @@ public class GameManager : MonoBehaviour
             gameStart = true;
             rhythmController.SetIntroRhythm(false);
             rhythmController.SetRhythm(true);
+            satisController.PointEvents();
         }
     }
 
@@ -347,8 +348,8 @@ public class GameManager : MonoBehaviour
         rhythmController.SetRhythm(false);
         uiController.WinUI();
         auController.MuteSound();
-        //StartCoroutine(Reset());
-        PlayerPrefs.SetInt("HighScoreLVL1", playerManager.GetCoins());
+        PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore") + playerManager.GetCoins());
+        //Debug.Log("TotalScore  " + PlayerPrefs.GetInt("TotalScore"));
     }
    
 

@@ -34,12 +34,9 @@ public class MenuSceneScript : MonoBehaviour {
     [EventID]
     public string eventID_spot4;
 
-	private void Awake()
-	{
-        //Application.targetFrameRate = 60;
-	}
 	// Use this for initialization
 	void Start () {
+        PlayerPrefs.SetInt("TotalScore", 0);
         splayer = GetComponent<SimpleMusicPlayer>();
         Koreographer.Instance.RegisterForEvents(eventID_text, FadeText);
         Koreographer.Instance.RegisterForEvents(eventID_spot1, FadeSpot1);
