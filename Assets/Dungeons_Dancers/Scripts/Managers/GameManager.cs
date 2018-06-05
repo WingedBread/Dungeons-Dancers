@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
         introController = GetComponent<IntroController>();
         dungeonTimer = initDungeonTimer;
         SetIntroCounter(0);
+        uiController.CoinsUI(0);
     }
 
     void Update()
