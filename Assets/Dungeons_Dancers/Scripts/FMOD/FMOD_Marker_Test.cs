@@ -22,8 +22,12 @@ class FMOD_Marker_Test : MonoBehaviour
     FMOD.Studio.EVENT_CALLBACK beatCallback;
     FMOD.Studio.EventInstance musicInstance;
 
+    [SerializeField]
+    private SatisfactionController satisController;
+
     public MultiMusicPlayer musicPlayer;
-    public bool multiPlay = false;
+    [HideInInspector]
+    public bool koreoWithFmod = false;
 
     void Start()
     {
@@ -39,7 +43,6 @@ class FMOD_Marker_Test : MonoBehaviour
         timelineHandle = GCHandle.Alloc(timelineInfo, GCHandleType.Pinned);
         // Pass the object through the userdata of the instance
         musicInstance.setUserData(GCHandle.ToIntPtr(timelineHandle));
-
         musicInstance.setCallback(beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
         musicInstance.start();
     }
@@ -50,12 +53,16 @@ class FMOD_Marker_Test : MonoBehaviour
         musicInstance.release();
         timelineHandle.Free();
     }
+
+    private void Update()
+    {
+        musicInstance.setParameterValue("Satisfaction", satisController.GetSatisfactionPoints(0, 1, 0));
+    }
     private void FixedUpdate()
     {
-        if ((string)timelineInfo.lastMarker == "Click" && multiPlay){
+        if ((string)timelineInfo.lastMarker == "Click" && koreoWithFmod){
             musicPlayer.Play();
-            multiPlay = false;
-            
+            koreoWithFmod = false;
         }
     }
     void OnGUI()

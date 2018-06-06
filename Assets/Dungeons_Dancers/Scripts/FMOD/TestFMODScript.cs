@@ -13,6 +13,6 @@ public class TestFMODScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-        emitter.SetParameter ("Satisfaction", satisController.GetSatisfactionPoints(0,1,0));
+        emitter.SetParameter("Satisfaction", satisController.GetSatisfactionPoints(0, 1, 0));
 	}
 }

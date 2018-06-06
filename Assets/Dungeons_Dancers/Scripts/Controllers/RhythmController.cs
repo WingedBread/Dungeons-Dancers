@@ -30,8 +30,6 @@ public class RhythmController : MonoBehaviour
     private bool fmod_enabled = false;
     [SerializeField]
     FMOD_Marker_Test fMOD_marker;
-    [SerializeField]
-    FMODUnity.StudioEventEmitter emitter;
 
 
     [SerializeField]
@@ -46,7 +44,7 @@ public class RhythmController : MonoBehaviour
 
     private IEnumerator IntroDelayCoroutine(int time){
         yield return new WaitForSeconds(time);
-        if(fmod_enabled)fMOD_marker.multiPlay = true;
+        if(fmod_enabled)fMOD_marker.koreoWithFmod = true;
         StartIntroRhythm();
 		StopCoroutine ("IntroDelayCoroutine");
     }
@@ -70,7 +68,6 @@ public class RhythmController : MonoBehaviour
     private void StopRhythm()
     {
         multiMusic.Stop();
-        if(fmod_enabled)emitter.Stop();
         Koreographer.Instance.UnregisterForEvents("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.UnregisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
     }
