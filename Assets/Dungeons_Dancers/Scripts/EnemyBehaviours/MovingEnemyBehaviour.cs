@@ -152,4 +152,11 @@ public class MovingEnemyBehaviour : MonoBehaviour {
                 break;
         }
     }
+
+    public int GetActiveTrap()
+    {
+        if (activeTrapEvent)
+            return 1;
+        else return 0;
+    }
 }

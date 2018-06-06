@@ -54,6 +54,13 @@ class FMOD_Marker_Test : MonoBehaviour
         timelineHandle.Free();
     }
 
+    private void OnApplicationQuit()
+    {
+        musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        musicInstance.release();
+        timelineHandle.Free();
+    }
+
     private void Update()
     {
         musicInstance.setParameterValue("Satisfaction", satisController.GetSatisfactionPoints(0, 1, 0));
