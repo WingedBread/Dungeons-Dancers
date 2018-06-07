@@ -25,4 +25,19 @@ public class TestFMODScript_Skeleton : MonoBehaviour {
             //Stop When 0 Emitter -- Create Instance
         }
 	}
+
+    void OnDestroy()
+    {
+        UnloadFMOD();
+    }
+
+    public void UnloadFMOD()
+    {
+        emitter.Stop();
+    }
+
+    void OnApplicationQuit()
+    {
+        UnloadFMOD();
+    }
 }

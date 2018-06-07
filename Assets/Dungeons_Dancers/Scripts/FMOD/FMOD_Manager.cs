@@ -2,10 +2,9 @@
 using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
-
 using SonicBloom.Koreo.Players;
 
-class FMOD_Marker_Test : MonoBehaviour
+class FMOD_Manager : MonoBehaviour
 {
     // Variables that are modified in the callback need to be part of a seperate class.
     // This class needs to be ‘blittable’ otherwise it can’t be pinned in memory.
@@ -29,6 +28,16 @@ class FMOD_Marker_Test : MonoBehaviour
     [HideInInspector]
     public bool koreoWithFmod = false;
 
+    string instanceEvent = "event:/Songs/World_01/Song_01";
+    string lastMarker = "Click";
+    string satisfactionParameter = "Satisfaction";
+
+    [Header("Emitters")]
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter[] emitterTrap = new FMODUnity.StudioEventEmitter[5];
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter emitterSkeleton;
+
     void Start()
     {
         timelineInfo = new TimelineInfo();
@@ -37,7 +46,7 @@ class FMOD_Marker_Test : MonoBehaviour
         // by the garbage collected while it's being used
         beatCallback = new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback);
 
-        musicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Songs/World_01/Song_01");
+        musicInstance = FMODUnity.RuntimeManager.CreateInstance(instanceEvent);
 
         // Pin the class that will store the data modified during the callback
         timelineHandle = GCHandle.Alloc(timelineInfo, GCHandleType.Pinned);
@@ -49,32 +58,33 @@ class FMOD_Marker_Test : MonoBehaviour
 
     void OnDestroy()
     {
-        musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        musicInstance.release();
-        timelineHandle.Free();
+        UnloadFMOD();
     }
 
-    private void OnApplicationQuit()
+    public void UnloadFMOD()
     {
+        emitterSkeleton.Stop();
+        for(int i = 0; i < emitterTrap.Length; i++) emitterTrap[i].Stop();
         musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         musicInstance.release();
-        timelineHandle.Free();
+        timelineHandle.Free(); 
+    }
+
+    void OnApplicationQuit()
+    {
+        UnloadFMOD();
     }
 
     private void Update()
     {
-        musicInstance.setParameterValue("Satisfaction", satisController.GetSatisfactionPoints(0, 1, 0));
+        musicInstance.setParameterValue(satisfactionParameter, satisController.GetSatisfactionPoints(0, 1, 0));
     }
     private void FixedUpdate()
     {
-        if ((string)timelineInfo.lastMarker == "Click" && koreoWithFmod){
+        if ((string)timelineInfo.lastMarker == lastMarker && koreoWithFmod){
             musicPlayer.Play();
             koreoWithFmod = false;
         }
-    }
-    void OnGUI()
-    {
-        GUILayout.Box(String.Format("Current Bar = {0}, Last Marker = {1}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker));
     }
 
     [AOT.MonoPInvokeCallback(typeof(FMOD.Studio.EVENT_CALLBACK))]
