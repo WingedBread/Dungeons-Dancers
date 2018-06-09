@@ -177,7 +177,8 @@ public class LevelEventsEasing_04 : MonoBehaviour {
     #region Level Events Functions
     public void IntroStart()
     {
-        if (eventPlaying){
+        if (eventPlaying)
+        {
             for (int w = 0; w < levelEvents.Length; w++)
             {
                 if (activeLevelEvents[w, 0])
@@ -185,24 +186,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -222,27 +223,27 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList)); ;
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
-                }   
+                }
             }
         }
     }
@@ -257,24 +258,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -292,24 +293,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -327,24 +328,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -362,24 +363,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -397,24 +398,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -432,24 +433,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -467,24 +468,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -502,24 +503,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -534,27 +535,27 @@ public class LevelEventsEasing_04 : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 10])
                 {
-                    if(scaleEasing)
+                    if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -572,24 +573,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -607,24 +608,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -643,24 +644,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -678,24 +679,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -713,24 +714,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -748,24 +749,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -783,24 +784,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -818,24 +819,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -853,24 +854,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -888,24 +889,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }
@@ -923,24 +924,24 @@ public class LevelEventsEasing_04 : MonoBehaviour {
                     if (scaleEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (moveEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration));
-                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration));
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
 
                     if (rotationEasing)
                     {
                         Sequence s = DOTween.Sequence();
-                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration));
-                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration));
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
                         eventPlaying = false;
                     }
                 }

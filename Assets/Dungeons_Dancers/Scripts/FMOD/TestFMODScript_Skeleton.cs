@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using FMODUnity;
 
 public class TestFMODScript_Skeleton : MonoBehaviour {
 	
@@ -6,7 +7,7 @@ public class TestFMODScript_Skeleton : MonoBehaviour {
     private MovingEnemyBehaviour enemyBehaviour;
 
 	[SerializeField]
-	FMODUnity.StudioEventEmitter emitter;
+	StudioEventEmitter emitter;
 
     bool justOnce = true;
 
@@ -26,18 +27,8 @@ public class TestFMODScript_Skeleton : MonoBehaviour {
         }
 	}
 
-    void OnDestroy()
-    {
-        UnloadFMOD();
-    }
-
     public void UnloadFMOD()
     {
         emitter.Stop();
-    }
-
-    void OnApplicationQuit()
-    {
-        UnloadFMOD();
     }
 }

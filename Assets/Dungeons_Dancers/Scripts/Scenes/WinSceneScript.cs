@@ -44,7 +44,7 @@ public class WinSceneScript : MonoBehaviour {
     void SparkleAnim(){
         for (int i = 0; i < sparkles.transform.childCount; i++){
             
-            sparkles.transform.GetChild(i).DOLocalMove(ogSparklePos[i], duration).SetId("TweenSparkle");
+            sparkles.transform.GetChild(i).DOLocalMove(ogSparklePos[i], duration).SetId("TweenSparkle").SetEase(initSparkleEase);
         }
     }
     public void SelectScene(int i)

@@ -65,15 +65,15 @@ public class EasingAssetsController : MonoBehaviour {
         if (scaleEasing)
         {
             Sequence s = DOTween.Sequence();
-            s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration));
-            s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration));
+            s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration)).SetEase(easingOnBeatList);
+            s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration)).SetEase(easingOffBeatList);
         }
 
         if (moveEasing)
         {
             Sequence s = DOTween.Sequence();
-            s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration));
-            s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration));
+            s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration)).SetEase(easingOnBeatList);
+            s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration)).SetEase(easingOffBeatList);
         }
     }
 }

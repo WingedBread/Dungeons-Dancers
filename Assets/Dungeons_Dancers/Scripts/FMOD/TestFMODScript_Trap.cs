@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using FMODUnity;
 
 public class TestFMODScript_Trap : MonoBehaviour {
 	
@@ -8,7 +7,7 @@ public class TestFMODScript_Trap : MonoBehaviour {
 	private StaticTrapBehaviour trapBhv;
 
 	[SerializeField]
-	FMODUnity.StudioEventEmitter emitter;
+	StudioEventEmitter emitter;
 
     bool justOnce = true;
 

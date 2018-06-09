@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using SonicBloom.Koreo.Players;
+using FMODUnity;
+
 
 class FMOD_Manager : MonoBehaviour
 {
@@ -34,9 +35,9 @@ class FMOD_Manager : MonoBehaviour
 
     [Header("Emitters")]
     [SerializeField]
-    private FMODUnity.StudioEventEmitter[] emitterTrap = new FMODUnity.StudioEventEmitter[5];
+    private StudioEventEmitter[] emitterTrap = new StudioEventEmitter[5];
     [SerializeField]
-    private FMODUnity.StudioEventEmitter emitterSkeleton;
+    private StudioEventEmitter emitterSkeleton;
 
     void Start()
     {

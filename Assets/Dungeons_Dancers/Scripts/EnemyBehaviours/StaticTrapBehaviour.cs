@@ -55,13 +55,13 @@ public class StaticTrapBehaviour : MonoBehaviour {
     {
         activeTrapEvent = true;
         StartCoroutine(ColliderCoroutine());
-        childSpikes.transform.DOLocalMove(trapMaxHeight, easingOnDuration, false).OnComplete(DisableTrap);
+        childSpikes.transform.DOLocalMove(trapMaxHeight, easingOnDuration, false).OnComplete(DisableTrap).SetEase(easingList);
     }
 
     public void DisableTrap()
     {
         activeTrapEvent = false;
-        childSpikes.transform.DOLocalMove(trapMinHeight, easingOffDuration, false);
+        childSpikes.transform.DOLocalMove(trapMinHeight, easingOffDuration, false).SetEase(easingList);
     }   
    
     private IEnumerator ColliderCoroutine()
