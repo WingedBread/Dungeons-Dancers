@@ -6,11 +6,25 @@ using UnityEngine.UI;
 
 public class LoseBehaviour : MonoBehaviour {
 
-    [Header("Player Easing")]
+	// --- Curial add: ScreenShake ---
+	private Camera mainCamera; 
+	[Header("Camera shake")]
+	[SerializeField]
+	private Vector3 ShakeRotationStrenght = new Vector3 (0, 20, 0);
+	[SerializeField]
+	float ShakeDuration = 0.25f;
+	[SerializeField]
+	int ShakeVibration = 1;
+	[SerializeField]
+	float Randomness = 0;
+	[SerializeField]
+	bool FadeOut = true;
+	// -------------------------------
+
+    [Header("Player Kick out Easing")]
     [SerializeField]
     private Ease playerEasing;
-
-    [Header("Player Easing Duration:")]
+    //[Header("Player Easing Duration:")]
     [SerializeField]
     float playerDuration = 1.5f;
 
@@ -49,6 +63,7 @@ public class LoseBehaviour : MonoBehaviour {
 
     private void Start()
     {
+		mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>(); // Curial add: ScreenShake
         loseUIFondo = loseUI.transform.GetChild(0).GetComponent<Image>();
         loseUIFace = loseUI.transform.GetChild(1).GetComponent<Image>();
     }
@@ -59,6 +74,7 @@ public class LoseBehaviour : MonoBehaviour {
         loseUIFace.color = new Vector4(255, 0, 0, 0);
         ActivateUI(false);
         player = playerM;
+		mainCamera.gameObject.transform.DOShakeRotation(ShakeDuration, ShakeRotationStrenght, ShakeVibration, Randomness, FadeOut); // Curial add: ScreenShake
 
         yield return new WaitForSeconds(delayDuration);
         instantiatedGO = Instantiate(loseParticleSystem, transform.parent);

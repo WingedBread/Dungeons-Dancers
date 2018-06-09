@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1130431554706402}
   m_LocalRotation: {x: 0.649448, y: 0, z: 0, w: 0.760406}
-  m_LocalPosition: {x: -0.5, y: 15.34, z: -1.99}
+  m_LocalPosition: {x: -0.45, y: 15.4, z: -1.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4537225692150812}
@@ -111,12 +111,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cbe5b16977424c8b83e529dc1330b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEasing: 8
-  playerDuration: 0.4
-  fadeFaceDuration: 0.1
-  fadeFondoDuration: 0.4
-  delayDuration: 0.25
-  delayFade: 1.25
+  ShakeRotationStrenght: {x: 0, y: 10, z: 0}
+  ShakeDuration: 0.5
+  ShakeVibration: 15
+  Randomness: 0
+  FadeOut: 1
+  playerEasing: 24
+  playerDuration: 0.5
+  fadeFaceDuration: 1
+  fadeFondoDuration: 0.1
+  delayDuration: 0.5
+  delayFade: 0.5
   playerEndPos: {fileID: 4799014324154232}
   loseParticleSystem: {fileID: 1633069917857530, guid: b85d2c57a28f742f0a4e6eabf7d8568d,
     type: 2}
@@ -143,7 +148,7 @@ MonoBehaviour:
   cameraDuration: 1
   particlesDuration: 1.5
   lightsDuration: 1
-  sceneNum: 3
+  sceneNum: 2
 --- !u!114 &114830387879534678
 MonoBehaviour:
   m_ObjectHideFlags: 1
