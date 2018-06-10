@@ -20,23 +20,23 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  m_AmbientSkyColor: {r: 0.43529412, g: 0.5647059, b: 0.54901963, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientIntensity: 2
-  m_AmbientMode: 4
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: aab54bd1005a2544fa8bc6347fd22f58, type: 2}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
-  m_CustomReflection: {fileID: 0}
+  m_ReflectionIntensity: 0.6
+  m_CustomReflection: {fileID: 8900000, guid: 71a27688c583343e6a13cf013dc02264, type: 3}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
@@ -5035,6 +5035,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 239073079}
   m_Mesh: {fileID: 4300002, guid: ad74c980093909343b13a574c28dde58, type: 3}
+--- !u!4 &243467777 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4164585472328046, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+    type: 2}
+  m_PrefabInternal: {fileID: 1871412247}
 --- !u!1001 &244039933
 Prefab:
   m_ObjectHideFlags: 0
@@ -10223,6 +10228,23 @@ Prefab:
     - target: {fileID: 4259769439146530, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
       propertyPath: m_LocalPosition.z
       value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780976611636098, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043249994024796, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531811217809384, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108286870742312068, guid: c3bd0e8e9f99b64459522da1fcc02a5d,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
@@ -28356,7 +28378,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-38314
+  m_Name: pb_Mesh-767968
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -37412,16 +37434,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 20157844418958630, guid: da70f3539cacc574d8e14966e474df8a,
-        type: 2}
-      propertyPath: field of view
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 20388084868015106, guid: da70f3539cacc574d8e14966e474df8a,
-        type: 2}
-      propertyPath: field of view
-      value: 40
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da70f3539cacc574d8e14966e474df8a, type: 2}
   m_IsPrefabParent: 0
@@ -42343,30 +42355,9 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1192678318}
-    - target: {fileID: 4282030490265888, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -8.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282030490265888, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 4138853980749028, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 6.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4138853980749028, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 4.07
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1871412248 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4764451681758860, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
-    type: 2}
-  m_PrefabInternal: {fileID: 1871412247}
 --- !u!4 &1871412249 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4188175226661370, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
@@ -43413,7 +43404,7 @@ Prefab:
         type: 2}
       propertyPath: satisBar3D.Array.data[0]
       value: 
-      objectReference: {fileID: 1871412248}
+      objectReference: {fileID: 243467777}
     - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
         type: 2}
       propertyPath: satisBar3D.Array.data[1]

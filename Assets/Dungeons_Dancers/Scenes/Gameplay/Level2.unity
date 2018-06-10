@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  m_AmbientSkyColor: {r: 0.43529412, g: 0.5647059, b: 0.54901963, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientIntensity: 2
-  m_AmbientMode: 4
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: aab54bd1005a2544fa8bc6347fd22f58, type: 2}
   m_HaloStrength: 0.5
@@ -32,13 +32,13 @@ RenderSettings:
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
-  m_CustomReflection: {fileID: 0}
+  m_ReflectionIntensity: 0.6
+  m_CustomReflection: {fileID: 8900000, guid: 71a27688c583343e6a13cf013dc02264, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0.6}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3795,6 +3795,23 @@ Prefab:
     - target: {fileID: 4014946257179314, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780976611636098, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108286870742312068, guid: c3bd0e8e9f99b64459522da1fcc02a5d,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531811217809384, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043249994024796, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
@@ -8914,11 +8931,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4357362721605656, guid: 2e4833ea78a06df4d97141529587b5d8,
     type: 2}
   m_PrefabInternal: {fileID: 450056851}
---- !u!4 &453013895 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4764451681758860, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
-    type: 2}
-  m_PrefabInternal: {fileID: 1871412247}
 --- !u!1001 &453451307
 Prefab:
   m_ObjectHideFlags: 0
@@ -46589,6 +46601,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1874619595 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4164585472328046, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+    type: 2}
+  m_PrefabInternal: {fileID: 1871412247}
 --- !u!1 &1885204610
 GameObject:
   m_ObjectHideFlags: 0
@@ -47842,7 +47859,7 @@ Prefab:
         type: 2}
       propertyPath: satisBar3D.Array.data[0]
       value: 
-      objectReference: {fileID: 453013895}
+      objectReference: {fileID: 1874619595}
     - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
         type: 2}
       propertyPath: satisBar3D.Array.data[1]
@@ -49826,8 +49843,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2027595488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.251, y: 2.1679688, z: -1.1220703}
-  m_LocalScale: {x: 0.3, y: 0.5, z: 6}
+  m_LocalPosition: {x: -5.251, y: 2.1679688, z: -0.12}
+  m_LocalScale: {x: 0.3, y: 0.5, z: 4}
   m_Children: []
   m_Father: {fileID: 2007018447}
   m_RootOrder: 4
@@ -51493,8 +51510,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2128958779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.240999, y: 2.1679688, z: -6.0820704}
-  m_LocalScale: {x: 0.3, y: 0.5, z: 1.5}
+  m_LocalPosition: {x: -5.240999, y: 2.1679688, z: -4.67}
+  m_LocalScale: {x: 0.3, y: 0.5, z: 3}
   m_Children: []
   m_Father: {fileID: 2007018447}
   m_RootOrder: 5
