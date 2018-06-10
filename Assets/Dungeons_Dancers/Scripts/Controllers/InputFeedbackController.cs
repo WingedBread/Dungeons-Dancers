@@ -18,13 +18,24 @@ public class InputFeedbackController : MonoBehaviour {
     float correctSpriteDuration = 0.5f;
     [SerializeField]
     float incorrectSpriteDuration = 0.5f;
-    [SerializeField]
-    float textDuration = 0.5f;
 
     [Header("Text Easing")]
     [SerializeField]
-    Ease textEasing;
+    Ease fadeEasing;
+	[SerializeField]
+	Ease moveEasing;
+	[SerializeField]
+	float moveDistance = 0.5f;
+	[SerializeField]
+	Ease scaleEasing;
+	[SerializeField]
+	float maxScale = 1f;
+	[SerializeField]
+	float scaleDuration = 0.25f;
+	[SerializeField]
+	float easeDuration = 0.5f;
 
+	[Header("Text Objects")]
     [SerializeField]
     GameObject goodTextParticle;
     [SerializeField]
@@ -67,11 +78,12 @@ public class InputFeedbackController : MonoBehaviour {
                 particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
                 goodText = particlesGO.GetComponent<TextMeshPro>();
                 particlesGO.transform.position = new Vector3(transform.position.x, goodTextParticle.transform.position.y, transform.position.z);
-                goodText.DOFade(0, textDuration).SetEase(textEasing);
+				goodText.DOFade(0, easeDuration).SetEase(fadeEasing);
                 childGO = particlesGO.transform.GetChild(0).gameObject;
                 instantiatedChildrenParticlesGO.Add(childGO);
                 particlesGO.transform.DetachChildren();
-                particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z+1), textDuration).SetEase(textEasing);
+				particlesGO.transform.DOScale(maxScale, scaleDuration).SetEase(scaleEasing);
+				particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z+ moveDistance), easeDuration).SetEase(moveEasing);
 
                 break;
             case 1: //Perfect
@@ -79,22 +91,24 @@ public class InputFeedbackController : MonoBehaviour {
                 particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
                 perfectText = particlesGO.GetComponent<TextMeshPro>();
                 particlesGO.transform.position = new Vector3(transform.position.x, perfectTextParticle.transform.position.y, transform.position.z);
-                perfectText.DOFade(0, textDuration).SetEase(textEasing);
+				perfectText.DOFade(0, easeDuration).SetEase(fadeEasing);
                 childGO = particlesGO.transform.GetChild(0).gameObject;
                 instantiatedChildrenParticlesGO.Add(childGO);
                 particlesGO.transform.DetachChildren();
-                particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z + 1), textDuration).SetEase(textEasing);
+				particlesGO.transform.DOScale(maxScale, scaleDuration).SetEase(scaleEasing);
+				particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z + moveDistance), easeDuration).SetEase(moveEasing);
                 break;
             case 2: //Great
                 instantiatedParticlesGO.Add((GameObject)Instantiate(greatTextParticle, transform.parent.parent));
                 particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
                 greatText = particlesGO.GetComponent<TextMeshPro>();
                 particlesGO.transform.position = new Vector3(transform.position.x, greatTextParticle.transform.position.y, transform.position.z);
-                greatText.DOFade(0, textDuration).SetEase(textEasing);
+				greatText.DOFade(0, easeDuration).SetEase(fadeEasing);
                 childGO = particlesGO.transform.GetChild(0).gameObject;
                 instantiatedChildrenParticlesGO.Add(childGO);
                 particlesGO.transform.DetachChildren();
-                particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z + 1), textDuration).SetEase(textEasing);
+				particlesGO.transform.DOScale(maxScale, scaleDuration).SetEase(scaleEasing);
+				particlesGO.transform.DOMove(new Vector3(particlesGO.transform.localPosition.x, particlesGO.transform.localPosition.y, particlesGO.transform.localPosition.z + moveDistance), easeDuration).SetEase(moveEasing);
                 break;
         }
 
