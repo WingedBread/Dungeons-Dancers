@@ -39,7 +39,8 @@ class FMOD_Manager : MonoBehaviour
     [SerializeField]
     private StudioEventEmitter emitterSkeleton;
 
-    void Start()
+    //void Start()
+	void Awake()
     {
         timelineInfo = new TimelineInfo();
 
@@ -55,6 +56,7 @@ class FMOD_Manager : MonoBehaviour
         musicInstance.setUserData(GCHandle.ToIntPtr(timelineHandle));
         musicInstance.setCallback(beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
         musicInstance.start();
+		//musicPlayer.Play();
     }
 
     void OnDestroy()
@@ -78,12 +80,13 @@ class FMOD_Manager : MonoBehaviour
 
     private void Update()
     {
-        musicInstance.setParameterValue(satisfactionParameter, satisController.GetSatisfactionPoints(0, 1, 0));
+//        musicInstance.setParameterValue(satisfactionParameter, satisController.GetSatisfactionPoints(0, 1, 0));
+		musicInstance.setParameterValue(satisfactionParameter, 0);
     }
     private void FixedUpdate()
     {
         if ((string)timelineInfo.lastMarker == lastMarker && koreoWithFmod){
-            musicPlayer.Play();
+            //musicPlayer.Play();
             koreoWithFmod = false;
         }
     }
