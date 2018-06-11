@@ -3813,6 +3813,36 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114617816703282586, guid: c3bd0e8e9f99b64459522da1fcc02a5d,
+        type: 2}
+      propertyPath: easingOnDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114617816703282586, guid: c3bd0e8e9f99b64459522da1fcc02a5d,
+        type: 2}
+      propertyPath: easingOffDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114018500732621516, guid: c3bd0e8e9f99b64459522da1fcc02a5d,
+        type: 2}
+      propertyPath: easingOnDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114018500732621516, guid: c3bd0e8e9f99b64459522da1fcc02a5d,
+        type: 2}
+      propertyPath: easingOffDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114996259195765068, guid: c3bd0e8e9f99b64459522da1fcc02a5d,
+        type: 2}
+      propertyPath: easingOnDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114996259195765068, guid: c3bd0e8e9f99b64459522da1fcc02a5d,
+        type: 2}
+      propertyPath: easingOffDuration
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
   m_IsPrefabParent: 0
@@ -31439,7 +31469,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-137296
+  m_Name: pb_Mesh-953068
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -41029,11 +41059,6 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
---- !u!4 &1641706390 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4188175226661370, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
-    type: 2}
-  m_PrefabInternal: {fileID: 1871412247}
 --- !u!43 &1651678960
 Mesh:
   m_ObjectHideFlags: 0
@@ -46603,9 +46628,19 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1192678318}
+    - target: {fileID: 23959256729824882, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47bb0ce13cd9c29479c5ca7852247fc1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1871412248 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4403406284814840, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
+    type: 2}
+  m_PrefabInternal: {fileID: 1871412247}
 --- !u!4 &1874619595 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4164585472328046, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
@@ -47864,12 +47899,12 @@ Prefab:
         type: 2}
       propertyPath: satisBar3D.Array.data[0]
       value: 
-      objectReference: {fileID: 1874619595}
+      objectReference: {fileID: 1871412248}
     - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
         type: 2}
       propertyPath: satisBar3D.Array.data[1]
       value: 
-      objectReference: {fileID: 1641706390}
+      objectReference: {fileID: 1874619595}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
   m_IsPrefabParent: 0
