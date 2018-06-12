@@ -1410,7 +1410,6 @@ GameObject:
   - component: {fileID: 114071975496417554}
   - component: {fileID: 114064524347322830}
   - component: {fileID: 114641213162055968}
-  - component: {fileID: 114245028767444606}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -4603,7 +4602,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358448160407722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 0, z: 0.5}
+  m_LocalPosition: {x: -7.5, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4619361258338634}
@@ -6358,6 +6357,7 @@ MonoBehaviour:
     type: 2}
   correctSpriteDuration: 3
   incorrectSpriteDuration: 1
+  textAppearTime: 0
   fadeEasing: 1
   moveEasing: 18
   moveDistance: 0.5
@@ -6383,18 +6383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayLenght: 1
---- !u!114 &114245028767444606
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439201233519262}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ListenerNumber: 0
 --- !u!114 &114641213162055968
 MonoBehaviour:
   m_ObjectHideFlags: 1
