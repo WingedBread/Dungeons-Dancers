@@ -32,6 +32,11 @@ public class MovingEnemyBehaviour : MonoBehaviour {
     [SerializeField]
     private Vector3 _rotationRIGHT = new Vector3(0, 90, 45);
 
+    [Header("Set Init Direction")]
+    [Header("0-NULL 1-UP  2-DOWN 3-RIGHT 4-LEFT")]
+    [SerializeField]
+    private int initDirection = 0;
+
     private Quaternion rotationUP;
     private Quaternion rotationDOWN;
     private Quaternion rotationLEFT;
@@ -49,6 +54,32 @@ public class MovingEnemyBehaviour : MonoBehaviour {
         rotationLEFT = Quaternion.Euler(_rotationLEFT.x, _rotationLEFT.y, _rotationLEFT.z);
         rotationRIGHT = Quaternion.Euler(_rotationRIGHT.x, _rotationRIGHT.y, _rotationRIGHT.z);
 
+        if (initDirection != 0)
+        {
+            switch (initDirection)
+            {
+                case 1: //UP
+                    direction = 1;
+                    SetRotation(3);
+                    xAxis = false;
+                    break;
+                case 2: //DOWN
+                    direction = -1;
+                    SetRotation(2);
+                    xAxis = false;
+                    break;
+                case 3: //RIGHT
+                    direction = 1;
+                    SetRotation(1);
+                    xAxis = true;
+                    break;
+                case 4: //LEFT
+                    direction = -1;
+                    SetRotation(0);
+                    xAxis = true;
+                    break;
+            }
+        }
         
 		for (int i = 0; i < enemyDirection.Length; i++)
 		{
