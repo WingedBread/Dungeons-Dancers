@@ -41,6 +41,11 @@ class FMOD_Manager : MonoBehaviour
 
 	void Awake()
     {
+        LoadFMOD();
+    }
+
+    public void LoadFMOD()
+    {
         timelineInfo = new TimelineInfo();
 
         // Explicitly create the delegate object and assign it to a member so it doesn't get freed
@@ -54,7 +59,17 @@ class FMOD_Manager : MonoBehaviour
         // Pass the object through the userdata of the instance
         musicInstance.setUserData(GCHandle.ToIntPtr(timelineHandle));
         musicInstance.setCallback(beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
+        //musicInstance.start();
+    }
+
+    public void StartFMOD()
+    {
         musicInstance.start();
+    }
+
+    public void StopFMOD()
+    {
+        musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     void OnDestroy()
@@ -62,15 +77,14 @@ class FMOD_Manager : MonoBehaviour
         UnloadFMOD();
     }
 
-    public void UnloadFMOD()
+    void UnloadFMOD()
     {
         for (int w = 0; w < emitterSkeleton.Length; w++) emitterSkeleton[w].Stop();
         for(int i = 0; i < emitterTrap.Length; i++) emitterTrap[i].Stop();
         musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         musicInstance.release();
-        timelineHandle.Free(); 
+        timelineHandle.Free();
     }
-
     void OnApplicationQuit()
     {
         UnloadFMOD();

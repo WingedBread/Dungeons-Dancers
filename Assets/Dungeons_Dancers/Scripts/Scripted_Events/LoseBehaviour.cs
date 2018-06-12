@@ -91,7 +91,6 @@ public class LoseBehaviour : MonoBehaviour {
 	}
 
     public void Restart(){
-        
         StartCoroutine(player.ResetPlayer(true));
         Destroy(instantiatedGO);
     }
