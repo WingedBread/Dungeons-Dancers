@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 1618176}
   - component: {fileID: 1618175}
   - component: {fileID: 1618174}
-  - component: {fileID: 1618177}
   m_Layer: 0
   m_Name: Music Player
   m_TagString: MusicPlayer
@@ -199,30 +198,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1618177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1618173}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: event:/Songs/World_01/Song_01
-  PlayEvent: 1
-  StopEvent: 0
-  CollisionTag: 
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params:
-  - Name: Satisfaction
-    Value: 0
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
 --- !u!1001 &7217895
 Prefab:
   m_ObjectHideFlags: 0
@@ -7779,11 +7754,6 @@ Transform:
   m_Father: {fileID: 2007018447}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &380120218 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1118262288163850, guid: e62773b0a38b38f4f904f14c8feaf207,
-    type: 2}
-  m_PrefabInternal: {fileID: 1913945682}
 --- !u!1 &380840205
 GameObject:
   m_ObjectHideFlags: 0
@@ -29364,7 +29334,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1118180994
 Prefab:
@@ -35021,11 +34991,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4156350052105842, guid: bd6a5ee791b065f4bb3e6d8bb451e954,
     type: 2}
   m_PrefabInternal: {fileID: 1360150342}
---- !u!4 &1361930709 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4498370840140358, guid: e62773b0a38b38f4f904f14c8feaf207,
-    type: 2}
-  m_PrefabInternal: {fileID: 1913945682}
 --- !u!1001 &1365736772
 Prefab:
   m_ObjectHideFlags: 0
@@ -37860,46 +37825,6 @@ Transform:
   m_Father: {fileID: 1280374258}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1458006545
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1458006547}
-  - component: {fileID: 1458006546}
-  m_Layer: 0
-  m_Name: fmod_test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1458006546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1458006545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bba72817e51c784d83498af4d8644bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1458006547
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1458006545}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1458218809
 GameObject:
   m_ObjectHideFlags: 0
@@ -40260,6 +40185,11 @@ Prefab:
       propertyPath: scriptedEvents
       value: 
       objectReference: {fileID: 1596110920}
+    - target: {fileID: 114071975496417554, guid: b232df0317a244d7bbd62de247f3daa8,
+        type: 2}
+      propertyPath: textAppearTime
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b232df0317a244d7bbd62de247f3daa8, type: 2}
   m_IsPrefabParent: 0
@@ -42353,12 +42283,12 @@ Prefab:
         type: 2}
       propertyPath: lightsParent
       value: 
-      objectReference: {fileID: 380120218}
+      objectReference: {fileID: 0}
     - target: {fileID: 114055920149173610, guid: a8f35a6bc5ce5974c96d5b131336c6d2,
         type: 2}
       propertyPath: cameraEndPos
       value: 
-      objectReference: {fileID: 1361930709}
+      objectReference: {fileID: 0}
     - target: {fileID: 114830387879534678, guid: a8f35a6bc5ce5974c96d5b131336c6d2,
         type: 2}
       propertyPath: flashUI
@@ -46621,7 +46551,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4372355545839312, guid: 7580c8cbd4e1b9d45b618b5cd3c67613, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 33498534306320508, guid: 7580c8cbd4e1b9d45b618b5cd3c67613,
         type: 2}
@@ -46709,7 +46639,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 120, y: 89.99999, z: 89.99999}
 --- !u!1001 &1888295803
 Prefab:

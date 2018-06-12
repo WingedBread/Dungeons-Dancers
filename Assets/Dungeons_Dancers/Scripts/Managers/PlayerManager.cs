@@ -24,14 +24,14 @@ public class PlayerManager : MonoBehaviour
     private CollectiblesController collectiblesController;
     private InputFeedbackController inputFeedback;
 
-    private Material mat;
-
     [Header("Animator")]
     private Animator animator;
 
     [Header("Idle Return Time")]
     [SerializeField]
     private float timeIdle = 0.25f;
+
+    //private Material material;
 
     private Vector3 spawnPosition;
     private Vector3 spawnInitPosition;
@@ -69,7 +69,7 @@ public class PlayerManager : MonoBehaviour
         inputFeedback = GetComponent<InputFeedbackController>();
         collectiblesController = GetComponent<CollectiblesController>();
         animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
-        mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
+        //mat = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
 		checkpointBhv = scriptedEvents.GetComponent<CheckpointBehaviour>();
 		winBhv = scriptedEvents.GetComponent<WinBehaviour>();
 		loseBhv = scriptedEvents.GetComponent<LoseBehaviour>();
@@ -122,14 +122,15 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.levelEventsEasing4[i].GoodMove();
         }
-        mat.color = Color.green;
+        //mat.color = Color.green;
         gameManager.AddPoint();
         StartCoroutine(ReturnIdle());
+        StartCoroutine(inputFeedback.CorrectFeedbackText());
         while (inputController.GetEasingEnd() == false)
         {
             yield return null;
         }
-        inputFeedback.CorrectFeedbackBehaviour();
+        inputFeedback.CorrectFeedbackTrail();
     }
 
     public IEnumerator IncorrectInput()
@@ -159,7 +160,7 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.levelEventsEasing4[i].WrongMove();
         }
-        mat.color = Color.red;
+        //mat.color = Color.red;
         gameManager.RemovePoint();
         StartCoroutine(ReturnIdle());
         while (inputController.GetEasingEnd() == false)
@@ -172,7 +173,7 @@ public class PlayerManager : MonoBehaviour
     public IEnumerator ReturnIdle()
     {
         yield return new WaitForSeconds(timeIdle);
-        mat.color = Color.white;
+        //mat.color = Color.white;
         StopCoroutine("ReturnIdle");
     }
 
@@ -320,6 +321,7 @@ public class PlayerManager : MonoBehaviour
         {
 			if (gameManager.GetGameStatus())
 			{
+                
 				inputController.SetRotation(2);
 				animator.SetBool("onCheckpoint", true);
                 StartCoroutine(checkpointBhv.OnCheckpoint(col.gameObject));
