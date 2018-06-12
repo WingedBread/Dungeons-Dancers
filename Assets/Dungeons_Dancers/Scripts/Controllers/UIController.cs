@@ -120,6 +120,7 @@ public class UIController: MonoBehaviour {
         dungeonTimerText.text = gameManager.GetDungeonTime().ToString("F");
         pointsText.text = gameManager.GetPoints(0, 1, 0).ToString();
         pointsSlider.value = gameManager.GetPoints(0, 1, 0);
+        Update3DSatisBar();
         WinGo.SetActive(false);
         PauseGo.SetActive(false);
     }

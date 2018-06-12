@@ -48,7 +48,12 @@ public class RhythmController : MonoBehaviour
     }
     private void StartIntroRhythm()
     {
-        if(!gameManager.fmod_enabled)multiMusic.Play();
+        if (!gameManager.fmod_enabled) multiMusic.Play();
+        //else if(gameManager.fmod_enabled && fMOD_manager.restartBool) fMOD_manager.StartFMOD();
+        else
+        {
+            fMOD_manager.StartFMOD();
+        }
         Koreographer.Instance.RegisterForEvents("IntroEvent", IntroBehaviour);
     }
     private void StopIntroRhythm()
@@ -66,7 +71,7 @@ public class RhythmController : MonoBehaviour
     private void StopRhythm()
     {
         multiMusic.Stop();
-        if (gameManager.fmod_enabled) fMOD_manager.UnloadFMOD();
+        if (gameManager.fmod_enabled) fMOD_manager.StopFMOD();
         Koreographer.Instance.UnregisterForEvents("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.UnregisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
     }
