@@ -61,6 +61,13 @@ public class SatisfactionController : MonoBehaviour {
                     {
                         gameManager.levelEventsAudios[i].PerfectMove();
                     }
+                    if(gameManager.fmod_enabled)
+                    {
+                        for (int i = 0; i < gameManager.levelEventsAudios_FMOD.Count; i++)
+                        {
+                            gameManager.levelEventsAudios_FMOD[i].PerfectMove();
+                        }
+                    }
 					for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
                     {
 						gameManager.levelEventsMaterials[i].PerfectMove();
@@ -103,6 +110,14 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsAudios[i].SatisfactionLvl1();
                 gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
             }
+            if (gameManager.fmod_enabled)
+            {
+                for (int i = 0; i < gameManager.levelEventsAudios_FMOD.Count; i++)
+                {
+                    gameManager.levelEventsAudios_FMOD[i].SatisfactionLvl1();
+                    gameManager.levelEventsAudios_FMOD[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+                }
+            }
 			for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
             {
 				gameManager.levelEventsMaterials[i].SatisfactionLvl1();
@@ -136,6 +151,14 @@ public class SatisfactionController : MonoBehaviour {
             {
                 gameManager.levelEventsAudios[i].SatisfactionLvl2();
                 gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
+            }
+            if (gameManager.fmod_enabled)
+            {
+                for (int i = 0; i < gameManager.levelEventsAudios_FMOD.Count; i++)
+                {
+                    gameManager.levelEventsAudios_FMOD[i].SatisfactionLvl2();
+                    gameManager.levelEventsAudios_FMOD[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
+                }
             }
 			for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
             {
@@ -171,6 +194,14 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsAudios[i].SatisfactionLvl3();
                 gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
             }
+            if (gameManager.fmod_enabled)
+            {
+                for (int i = 0; i < gameManager.levelEventsAudios_FMOD.Count; i++)
+                {
+                    gameManager.levelEventsAudios_FMOD[i].SatisfactionLvl3();
+                    gameManager.levelEventsAudios_FMOD[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
+                }
+            }
 			for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
             {
 				gameManager.levelEventsMaterials[i].SatisfactionLvl3();
@@ -204,6 +235,14 @@ public class SatisfactionController : MonoBehaviour {
             {
                 gameManager.levelEventsAudios[i].SatisfactionClimax();
                 gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
+            }
+            if (gameManager.fmod_enabled)
+            {
+                for (int i = 0; i < gameManager.levelEventsAudios_FMOD.Count; i++)
+                {
+                    gameManager.levelEventsAudios_FMOD[i].SatisfactionClimax();
+                    gameManager.levelEventsAudios_FMOD[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
+                }
             }
 			for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
             {
@@ -251,6 +290,14 @@ public class SatisfactionController : MonoBehaviour {
                 {
                     gameManager.levelEventsAudios[i].SatisfactionZero();
                     gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.None);
+                }
+                if (gameManager.fmod_enabled)
+                {
+                    for (int i = 0; i < gameManager.levelEventsAudios_FMOD.Count; i++)
+                    {
+                        gameManager.levelEventsAudios_FMOD[i].SatisfactionZero();
+                        gameManager.levelEventsAudios_FMOD[i].SetSatisfactionState(SatisfactionStates.None);
+                    }
                 }
                 for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
                 {
@@ -300,6 +347,13 @@ public class SatisfactionController : MonoBehaviour {
                     for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
                     {
                         gameManager.levelEventsAudios[i].PerfectMove();
+                    }
+                    if (gameManager.fmod_enabled)
+                    {
+                        for (int i = 0; i < gameManager.levelEventsAudios_FMOD.Count; i++)
+                        {
+                            gameManager.levelEventsAudios_FMOD[i].PerfectMove();
+                        }
                     }
                     for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
                     {

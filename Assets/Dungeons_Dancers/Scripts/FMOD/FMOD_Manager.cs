@@ -37,9 +37,8 @@ class FMOD_Manager : MonoBehaviour
     [SerializeField]
     private StudioEventEmitter[] emitterTrap = new StudioEventEmitter[5];
     [SerializeField]
-    private StudioEventEmitter emitterSkeleton;
+    private StudioEventEmitter[] emitterSkeleton = new StudioEventEmitter[5];
 
-    //void Start()
 	void Awake()
     {
         timelineInfo = new TimelineInfo();
@@ -56,7 +55,6 @@ class FMOD_Manager : MonoBehaviour
         musicInstance.setUserData(GCHandle.ToIntPtr(timelineHandle));
         musicInstance.setCallback(beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
         musicInstance.start();
-		//musicPlayer.Play();
     }
 
     void OnDestroy()
@@ -66,7 +64,7 @@ class FMOD_Manager : MonoBehaviour
 
     public void UnloadFMOD()
     {
-        emitterSkeleton.Stop();
+        for (int w = 0; w < emitterSkeleton.Length; w++) emitterSkeleton[w].Stop();
         for(int i = 0; i < emitterTrap.Length; i++) emitterTrap[i].Stop();
         musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         musicInstance.release();
@@ -80,13 +78,13 @@ class FMOD_Manager : MonoBehaviour
 
     private void Update()
     {
-//        musicInstance.setParameterValue(satisfactionParameter, satisController.GetSatisfactionPoints(0, 1, 0));
-		musicInstance.setParameterValue(satisfactionParameter, 0);
+        musicInstance.setParameterValue(satisfactionParameter, satisController.GetSatisfactionPoints(0, 1, 0));
+		//musicInstance.setParameterValue(satisfactionParameter, 0);
     }
     private void FixedUpdate()
     {
         if ((string)timelineInfo.lastMarker == lastMarker && koreoWithFmod){
-            //musicPlayer.Play();
+            musicPlayer.Play();
             koreoWithFmod = false;
         }
     }

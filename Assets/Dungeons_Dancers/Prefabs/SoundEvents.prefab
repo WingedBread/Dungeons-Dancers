@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4455739339466646}
   - component: {fileID: 82923591796757596}
   - component: {fileID: 114393532101736268}
+  - component: {fileID: 114277051209563536}
+  - component: {fileID: 114693202949009212}
   m_Layer: 0
   m_Name: WrongMove
   m_TagString: Untagged
@@ -121,6 +123,8 @@ GameObject:
   - component: {fileID: 4452561715146998}
   - component: {fileID: 82904597097124572}
   - component: {fileID: 114966139687446766}
+  - component: {fileID: 114048921283215502}
+  - component: {fileID: 114695229957817368}
   m_Layer: 0
   m_Name: StartPlay
   m_TagString: Untagged
@@ -188,6 +192,8 @@ GameObject:
   - component: {fileID: 4125311086984026}
   - component: {fileID: 82693915744797822}
   - component: {fileID: 114426489777814542}
+  - component: {fileID: 114429965801038024}
+  - component: {fileID: 114512292635516016}
   m_Layer: 0
   m_Name: GoodMove
   m_TagString: Untagged
@@ -221,6 +227,8 @@ GameObject:
   - component: {fileID: 4347205061216668}
   - component: {fileID: 82278662584400698}
   - component: {fileID: 114560080945753164}
+  - component: {fileID: 114560461943978532}
+  - component: {fileID: 114267359799180250}
   m_Layer: 0
   m_Name: TimeOver
   m_TagString: Untagged
@@ -2178,6 +2186,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114048921283215502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1429433892153002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/UI/startPlay
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!114 &114167473298603538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2205,7 +2235,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1956775318499658}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2220,6 +2250,47 @@ MonoBehaviour:
   managerLS: 0
   managerPS: 0
   managerSS: 0
+--- !u!114 &114267359799180250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836342210888570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feaf3e7f66857a94dab911fbb09cea2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 0a000000
+  beatBhv: 
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!114 &114277051209563536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076615278147150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/UI/badMove
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!114 &114360242839496432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2247,7 +2318,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076615278147150}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2268,7 +2339,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550494453334888}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2283,13 +2354,35 @@ MonoBehaviour:
   managerLS: 0
   managerPS: 0
   managerSS: 0
+--- !u!114 &114429965801038024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550494453334888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/UI/goodMove
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!114 &114462447686822990
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1993198191606388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2304,13 +2397,32 @@ MonoBehaviour:
   managerLS: 0
   managerPS: 0
   managerSS: 0
+--- !u!114 &114512292635516016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550494453334888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feaf3e7f66857a94dab911fbb09cea2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 12000000
+  beatBhv: 
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!114 &114534868712456548
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458798374928174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2331,7 +2443,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1836342210888570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2346,13 +2458,73 @@ MonoBehaviour:
   managerLS: 0
   managerPS: 0
   managerSS: 0
+--- !u!114 &114560461943978532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836342210888570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/UI/timeOver
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &114693202949009212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076615278147150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feaf3e7f66857a94dab911fbb09cea2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 13000000
+  beatBhv: 
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!114 &114695229957817368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1429433892153002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feaf3e7f66857a94dab911fbb09cea2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 02000000
+  beatBhv: 
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!114 &114746609843859546
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095085881995166}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2394,7 +2566,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354443203575686}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2415,7 +2587,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235889764019354}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2436,7 +2608,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165822402215166}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 
@@ -2457,7 +2629,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1429433892153002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb8f7e23cb2a4625808107259cfb68f, type: 3}
   m_Name: 

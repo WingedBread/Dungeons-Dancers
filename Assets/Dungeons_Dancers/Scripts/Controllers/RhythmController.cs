@@ -27,8 +27,6 @@ public class RhythmController : MonoBehaviour
 
     [Header("FMOD")]
     [SerializeField]
-    private bool fmod_enabled = false;
-    [SerializeField]
     FMOD_Manager fMOD_manager;
 
 
@@ -44,13 +42,13 @@ public class RhythmController : MonoBehaviour
 
     private IEnumerator IntroDelayCoroutine(int time){
         yield return new WaitForSeconds(time);
-        if(fmod_enabled) fMOD_manager.koreoWithFmod = true;
+        if(gameManager.fmod_enabled) fMOD_manager.koreoWithFmod = true;
         StartIntroRhythm();
 		StopCoroutine ("IntroDelayCoroutine");
     }
     private void StartIntroRhythm()
     {
-        if(!fmod_enabled)multiMusic.Play();
+        if(!gameManager.fmod_enabled)multiMusic.Play();
         Koreographer.Instance.RegisterForEvents("IntroEvent", IntroBehaviour);
     }
     private void StopIntroRhythm()
@@ -68,7 +66,7 @@ public class RhythmController : MonoBehaviour
     private void StopRhythm()
     {
         multiMusic.Stop();
-        if (fmod_enabled) fMOD_manager.UnloadFMOD();
+        if (gameManager.fmod_enabled) fMOD_manager.UnloadFMOD();
         Koreographer.Instance.UnregisterForEvents("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.UnregisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
     }
@@ -108,6 +106,13 @@ public class RhythmController : MonoBehaviour
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
             gameManager.levelEventsAudios[i].OnBeat();
+        }
+        if(gameManager.fmod_enabled)
+        {
+            for (int i = 0; i < gameManager.levelEventsAudios_FMOD.Count; i++)
+            {
+                gameManager.levelEventsAudios_FMOD[i].OnBeat();
+            }
         }
 		for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
         {

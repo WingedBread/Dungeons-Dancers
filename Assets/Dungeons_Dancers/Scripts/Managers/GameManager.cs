@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public List<LevelEventsAudio> levelEventsAudios;
     [HideInInspector]
+    public List<LevelEventsAudio_FMOD> levelEventsAudios_FMOD;
+    [HideInInspector]
     public List<LevelEventsEasing_01> levelEventsEasing1;
     [HideInInspector]
     public List<LevelEventsEasing_02> levelEventsEasing2;
@@ -23,6 +25,9 @@ public class GameManager : MonoBehaviour
     public List<LevelEventsEasing_04> levelEventsEasing4;
 	[HideInInspector]
 	public List<LevelEventsMaterial> levelEventsMaterials;
+
+    [Header("ENABLE FMOD(?)")]
+    public bool fmod_enabled = false;
 
 	[Header("FPS Settings")]
 	[SerializeField]
@@ -74,6 +79,17 @@ public class GameManager : MonoBehaviour
             levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
             levelEventsAudios[i].IntroStart();
         }
+
+        if (fmod_enabled)
+        {
+            for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
+            {
+                if (levelEventsAudios_FMOD == null) Debug.Log("null audios");
+                levelEventsAudios_FMOD[i].SetLevelState(LevelStates.LevelStart);
+                levelEventsAudios_FMOD[i].IntroStart();
+            }
+        }
+
 		for (int i = 0; i < levelEventsMaterials.Count; i++)
         {
 			if (levelEventsMaterials == null) Debug.Log("null material");
@@ -131,6 +147,13 @@ public class GameManager : MonoBehaviour
                 {
                     levelEventsAudios[i].TimeOver();
                 }
+                if (fmod_enabled)
+                {
+                    for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
+                    {
+                        levelEventsAudios_FMOD[i].TimeOver();
+                    }
+                }
 				for (int i = 0; i < levelEventsMaterials.Count; i++)
                 {
 					levelEventsMaterials[i].TimeOver();
@@ -160,6 +183,13 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < levelEventsAudios.Count; i++)
                 {
                     levelEventsAudios[i].TimeNearOver();
+                }
+                if (fmod_enabled)
+                {
+                    for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
+                    {
+                        levelEventsAudios_FMOD[i].TimeNearOver();
+                    }
                 }
 				for (int i = 0; i < levelEventsMaterials.Count; i++)
                 {
@@ -206,6 +236,15 @@ public class GameManager : MonoBehaviour
                 levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
                 levelEventsAudios[i].IntroEnd();
                 levelEventsAudios[i].StartPlay();
+            }
+            if (fmod_enabled)
+            {
+                for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
+                {
+                    levelEventsAudios_FMOD[i].SetLevelState(LevelStates.LevelPlay);
+                    levelEventsAudios_FMOD[i].IntroEnd();
+                    levelEventsAudios_FMOD[i].StartPlay();
+                }
             }
 			for (int i = 0; i < levelEventsMaterials.Count; i++)
             {
@@ -254,6 +293,13 @@ public class GameManager : MonoBehaviour
                 {
                     levelEventsAudios[i].SetLevelState(LevelStates.LevelPaused);
                 }
+                if (fmod_enabled)
+                {
+                    for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
+                    {
+                        levelEventsAudios_FMOD[i].SetLevelState(LevelStates.LevelPaused);
+                    }
+                }
 				for (int i = 0; i < levelEventsMaterials.Count; i++)
                 {
 					levelEventsMaterials[i].SetLevelState(LevelStates.LevelPaused);
@@ -284,6 +330,13 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < levelEventsAudios.Count; i++)
                 {
                     levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
+                }
+                if (fmod_enabled)
+                {
+                    for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
+                    {
+                        levelEventsAudios_FMOD[i].SetLevelState(LevelStates.LevelPlay);
+                    }
                 }
 				for (int i = 0; i < levelEventsMaterials.Count; i++)
                 {
@@ -319,6 +372,14 @@ public class GameManager : MonoBehaviour
         {
             levelEventsAudios[i].SetLevelState(LevelStates.LevelEnd);
             levelEventsAudios[i].WinLevel();
+        }
+        if (fmod_enabled)
+        {
+            for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
+            {
+                levelEventsAudios_FMOD[i].SetLevelState(LevelStates.LevelEnd);
+                levelEventsAudios_FMOD[i].WinLevel();
+            }
         }
 		for (int i = 0; i < levelEventsMaterials.Count; i++)
         {
@@ -381,6 +442,13 @@ public class GameManager : MonoBehaviour
         {
             levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
         }
+        if (fmod_enabled)
+        {
+            for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
+            {
+                levelEventsAudios_FMOD[i].SetLevelState(LevelStates.LevelStart);
+            }
+        }
 		for (int i = 0; i < levelEventsMaterials.Count; i++)
         {
 			levelEventsMaterials[i].SetLevelState(LevelStates.LevelStart);
@@ -438,6 +506,13 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < levelEventsAudios.Count; i++)
         {
             levelEventsAudios[i].Door();
+        }
+        if (fmod_enabled)
+        {
+            for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
+            {
+                levelEventsAudios_FMOD[i].Door();
+            }
         }
 		for (int i = 0; i < levelEventsMaterials.Count; i++)
         {

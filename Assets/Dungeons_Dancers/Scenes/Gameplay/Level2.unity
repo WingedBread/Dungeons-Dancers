@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 1618176}
   - component: {fileID: 1618175}
   - component: {fileID: 1618174}
-  - component: {fileID: 1618177}
   m_Layer: 0
   m_Name: Music Player
   m_TagString: MusicPlayer
@@ -199,30 +198,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1618177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1618173}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: event:/Songs/World_01/Song_01
-  PlayEvent: 1
-  StopEvent: 0
-  CollisionTag: 
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params:
-  - Name: Satisfaction
-    Value: 0
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
 --- !u!1001 &7217895
 Prefab:
   m_ObjectHideFlags: 0
@@ -1684,6 +1659,8 @@ GameObject:
   - component: {fileID: 65392134}
   - component: {fileID: 65392136}
   - component: {fileID: 65392135}
+  - component: {fileID: 65392137}
+  - component: {fileID: 65392138}
   m_Layer: 0
   m_Name: StaticTrap (8)
   m_TagString: Trap
@@ -1740,6 +1717,43 @@ MonoBehaviour:
   easingOnDuration: 0.05
   easingOffDuration: 0.1
   colTime: 2
+--- !u!114 &65392137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65392133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/Traps/spikes
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: ActiveTrap
+    Value: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0.49999997
+  OverrideMaxDistance: 3
+--- !u!114 &65392138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65392133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1872b60b2a69a14a9db4c03535e489f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBhv: {fileID: 65392136}
+  emitter: {fileID: 65392137}
 --- !u!4 &66378507 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4527262982815244, guid: 6d4acd6cabe3b8f4ca54bdabd67a717a,
@@ -7871,7 +7885,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -10674,6 +10688,8 @@ GameObject:
   - component: {fileID: 511363256}
   - component: {fileID: 511363258}
   - component: {fileID: 511363257}
+  - component: {fileID: 511363259}
+  - component: {fileID: 511363260}
   m_Layer: 0
   m_Name: StaticTrap (11)
   m_TagString: Trap
@@ -10730,6 +10746,43 @@ MonoBehaviour:
   easingOnDuration: 0.05
   easingOffDuration: 0.1
   colTime: 2
+--- !u!114 &511363259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 511363255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/Traps/spikes
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: ActiveTrap
+    Value: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0.49999997
+  OverrideMaxDistance: 3
+--- !u!114 &511363260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 511363255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1872b60b2a69a14a9db4c03535e489f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBhv: {fileID: 511363258}
+  emitter: {fileID: 511363259}
 --- !u!1 &511648449
 GameObject:
   m_ObjectHideFlags: 0
@@ -10800,7 +10853,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1277032
+  m_Name: pb_Mesh197616
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -11376,7 +11429,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh347944
+  m_Name: pb_Mesh198816
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -12771,7 +12824,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh347996
+  m_Name: pb_Mesh198860
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -13299,7 +13352,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -14326,6 +14379,8 @@ GameObject:
   - component: {fileID: 762538047}
   - component: {fileID: 762538049}
   - component: {fileID: 762538048}
+  - component: {fileID: 762538050}
+  - component: {fileID: 762538051}
   m_Layer: 0
   m_Name: StaticTrap (12)
   m_TagString: Trap
@@ -14382,6 +14437,43 @@ MonoBehaviour:
   easingOnDuration: 0.05
   easingOffDuration: 0.1
   colTime: 2
+--- !u!114 &762538050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 762538046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/Traps/spikes
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: ActiveTrap
+    Value: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0.49999997
+  OverrideMaxDistance: 3
+--- !u!114 &762538051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 762538046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1872b60b2a69a14a9db4c03535e489f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBhv: {fileID: 762538049}
+  emitter: {fileID: 762538050}
 --- !u!1 &763527929
 GameObject:
   m_ObjectHideFlags: 0
@@ -22855,6 +22947,8 @@ GameObject:
   - component: {fileID: 907963129}
   - component: {fileID: 907963131}
   - component: {fileID: 907963130}
+  - component: {fileID: 907963132}
+  - component: {fileID: 907963133}
   m_Layer: 0
   m_Name: StaticTrap (7)
   m_TagString: Trap
@@ -22911,6 +23005,43 @@ MonoBehaviour:
   easingOnDuration: 0.05
   easingOffDuration: 0.1
   colTime: 2
+--- !u!114 &907963132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 907963128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/Traps/spikes
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: ActiveTrap
+    Value: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0.49999997
+  OverrideMaxDistance: 3
+--- !u!114 &907963133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 907963128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1872b60b2a69a14a9db4c03535e489f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBhv: {fileID: 907963131}
+  emitter: {fileID: 907963132}
 --- !u!1001 &909104152
 Prefab:
   m_ObjectHideFlags: 0
@@ -29095,7 +29226,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -32137,6 +32268,8 @@ GameObject:
   - component: {fileID: 1219257288}
   - component: {fileID: 1219257290}
   - component: {fileID: 1219257289}
+  - component: {fileID: 1219257291}
+  - component: {fileID: 1219257292}
   m_Layer: 0
   m_Name: StaticTrap (9)
   m_TagString: Trap
@@ -32193,6 +32326,43 @@ MonoBehaviour:
   easingOnDuration: 0.05
   easingOffDuration: 0.1
   colTime: 2
+--- !u!114 &1219257291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1219257287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/Traps/spikes
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: ActiveTrap
+    Value: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0.49999997
+  OverrideMaxDistance: 3
+--- !u!114 &1219257292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1219257287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1872b60b2a69a14a9db4c03535e489f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBhv: {fileID: 1219257290}
+  emitter: {fileID: 1219257291}
 --- !u!1001 &1224355591
 Prefab:
   m_ObjectHideFlags: 0
@@ -40439,7 +40609,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -41814,7 +41984,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1271684
+  m_Name: pb_Mesh198806
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -42449,6 +42619,8 @@ GameObject:
   - component: {fileID: 1699932027}
   - component: {fileID: 1699932029}
   - component: {fileID: 1699932028}
+  - component: {fileID: 1699932030}
+  - component: {fileID: 1699932031}
   m_Layer: 0
   m_Name: StaticTrap (10)
   m_TagString: Trap
@@ -42505,6 +42677,95 @@ MonoBehaviour:
   easingOnDuration: 0.05
   easingOffDuration: 0.1
   colTime: 2
+--- !u!114 &1699932030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1699932026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/Traps/spikes
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: ActiveTrap
+    Value: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0.49999997
+  OverrideMaxDistance: 3
+--- !u!114 &1699932031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1699932026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1872b60b2a69a14a9db4c03535e489f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBhv: {fileID: 1699932029}
+  emitter: {fileID: 1699932030}
+--- !u!1 &1700012198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1700012199}
+  - component: {fileID: 1700012200}
+  m_Layer: 0
+  m_Name: FMOD_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1700012199
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1700012198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8994389, y: 0.83489513, z: 3.9003525}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1700012200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1700012198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fad42acbda64553b1d68bcec74089c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  satisController: {fileID: 1913556470}
+  musicPlayer: {fileID: 1618174}
+  koreoWithFmod: 0
+  emitterTrap:
+  - {fileID: 1941560357}
+  - {fileID: 907963132}
+  - {fileID: 65392137}
+  - {fileID: 1219257291}
+  - {fileID: 1699932030}
+  - {fileID: 511363259}
+  - {fileID: 762538050}
+  emitterSkeleton: []
 --- !u!1001 &1709901806
 Prefab:
   m_ObjectHideFlags: 0
@@ -44016,7 +44277,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh348334
+  m_Name: pb_Mesh199206
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -45522,7 +45783,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1274024
+  m_Name: pb_Mesh198882
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -47870,9 +48131,30 @@ Prefab:
       propertyPath: satisBar3D.Array.data[1]
       value: 
       objectReference: {fileID: 1641706390}
+    - target: {fileID: 114905625918851408, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: fmod_enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905625918851408, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: fMOD_manager
+      value: 
+      objectReference: {fileID: 1700012200}
+    - target: {fileID: 114465538579891040, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+        type: 2}
+      propertyPath: fmod_enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1913556470 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1913556469}
+  m_Script: {fileID: 11500000, guid: cf8f3194c4b144c169d30e857d5ed58c, type: 3}
 --- !u!1001 &1913945682
 Prefab:
   m_ObjectHideFlags: 0
@@ -48603,6 +48885,8 @@ GameObject:
   - component: {fileID: 1941560354}
   - component: {fileID: 1941560356}
   - component: {fileID: 1941560355}
+  - component: {fileID: 1941560357}
+  - component: {fileID: 1941560358}
   m_Layer: 0
   m_Name: StaticTrap (6)
   m_TagString: Trap
@@ -48659,6 +48943,43 @@ MonoBehaviour:
   easingOnDuration: 0.05
   easingOffDuration: 0.1
   colTime: 2
+--- !u!114 &1941560357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1941560353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/Traps/spikes
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: ActiveTrap
+    Value: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0.49999997
+  OverrideMaxDistance: 3
+--- !u!114 &1941560358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1941560353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1872b60b2a69a14a9db4c03535e489f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapBhv: {fileID: 1941560356}
+  emitter: {fileID: 1941560357}
 --- !u!1 &1941943774
 GameObject:
   m_ObjectHideFlags: 0
@@ -50248,7 +50569,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -50574,7 +50895,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh348994
+  m_Name: pb_Mesh199958
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
