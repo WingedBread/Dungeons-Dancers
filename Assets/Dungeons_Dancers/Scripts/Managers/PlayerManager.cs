@@ -125,11 +125,12 @@ public class PlayerManager : MonoBehaviour
         //mat.color = Color.green;
         gameManager.AddPoint();
         StartCoroutine(ReturnIdle());
+        StartCoroutine(inputFeedback.CorrectFeedbackText());
         while (inputController.GetEasingEnd() == false)
         {
             yield return null;
         }
-        inputFeedback.CorrectFeedbackBehaviour();
+        inputFeedback.CorrectFeedbackTrail();
     }
 
     public IEnumerator IncorrectInput()
