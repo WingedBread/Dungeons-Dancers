@@ -19,11 +19,11 @@ public class TestFMODScript_Trap : MonoBehaviour {
             emitter.Play();
             justOnce = false;
         }
-        else
+        if(emitter.IsPlaying() == false)
         {
+            emitter.Stop();
+            //emitter.SetParameter("ActiveTrap", trapBhv.GetActiveTrap());
             justOnce = true;
-            emitter.SetParameter("ActiveTrap", trapBhv.GetActiveTrap());
-            //Stop When 0 Emitter -- Create Instance
         }
 	}
 

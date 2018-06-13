@@ -29,6 +29,9 @@ public class RhythmController : MonoBehaviour
     [SerializeField]
     FMOD_Manager fMOD_manager;
 
+    [Header("Mute Intro")]
+    [SerializeField]
+    bool muteIntro = false;
 
     [SerializeField]
     private bool debugEnable;
@@ -42,6 +45,56 @@ public class RhythmController : MonoBehaviour
 
     private IEnumerator IntroDelayCoroutine(int time){
         yield return new WaitForSeconds(time);
+
+        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+        {
+            if (gameManager.levelEventsAudios == null) Debug.Log("null audios");
+            gameManager.levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
+            gameManager.levelEventsAudios[i].IntroStart();
+        }
+
+        if (gameManager.fmod_enabled)
+        {
+            for (int i = 0; i < gameManager.levelEventsAudios_FMOD.Count; i++)
+            {
+                if (gameManager.levelEventsAudios_FMOD == null) Debug.Log("null audios");
+                gameManager.levelEventsAudios_FMOD[i].SetLevelState(LevelStates.LevelStart);
+                gameManager.levelEventsAudios_FMOD[i].IntroStart();
+            }
+        }
+
+        for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+        {
+            if (gameManager.levelEventsMaterials == null) Debug.Log("null material");
+            gameManager.levelEventsMaterials[i].SetLevelState(LevelStates.LevelStart);
+            gameManager.levelEventsMaterials[i].IntroStart();
+        }
+
+        for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+        {
+            if (gameManager.levelEventsEasing1 == null) Debug.Log("null easing");
+            gameManager.levelEventsEasing1[i].SetLevelState(LevelStates.LevelStart);
+            gameManager.levelEventsEasing1[i].IntroStart();
+        }
+        for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+        {
+            if (gameManager.levelEventsEasing2 == null) Debug.Log("null easing");
+            gameManager.levelEventsEasing2[i].SetLevelState(LevelStates.LevelStart);
+            gameManager.levelEventsEasing2[i].IntroStart();
+        }
+        for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+        {
+            if (gameManager.levelEventsEasing3 == null) Debug.Log("null easing");
+            gameManager.levelEventsEasing3[i].SetLevelState(LevelStates.LevelStart);
+            gameManager.levelEventsEasing3[i].IntroStart();
+        }
+        for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+        {
+            if (gameManager.levelEventsEasing4 == null) Debug.Log("null easing");
+            gameManager.levelEventsEasing4[i].SetLevelState(LevelStates.LevelStart);
+            gameManager.levelEventsEasing4[i].IntroStart();
+        }
+
         if(gameManager.fmod_enabled) fMOD_manager.koreoWithFmod = true;
         StartIntroRhythm();
 		StopCoroutine ("IntroDelayCoroutine");
@@ -79,7 +132,7 @@ public class RhythmController : MonoBehaviour
     void IntroBehaviour(KoreographyEvent kIntroEvent)
     {
         gameManager.SetIntroCounter(gameManager.GetIntroCounter()+1);
-        gameManager.PlayIntroClip();
+        if(!muteIntro)gameManager.PlayIntroClip();
     }
 
     void PlayerInputBehaviour(KoreographyEvent kInputEvent, int sampleTime, int sampleDelta, DeltaSlice deltaSlice)

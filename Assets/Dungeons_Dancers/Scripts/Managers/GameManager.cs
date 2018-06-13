@@ -72,56 +72,6 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
-        for (int i = 0; i < levelEventsAudios.Count; i++)
-        {
-            if (levelEventsAudios == null) Debug.Log("null audios");
-            levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
-            levelEventsAudios[i].IntroStart();
-        }
-
-        if (fmod_enabled)
-        {
-            for (int i = 0; i < levelEventsAudios_FMOD.Count; i++)
-            {
-                if (levelEventsAudios_FMOD == null) Debug.Log("null audios");
-                levelEventsAudios_FMOD[i].SetLevelState(LevelStates.LevelStart);
-                levelEventsAudios_FMOD[i].IntroStart();
-            }
-        }
-
-		for (int i = 0; i < levelEventsMaterials.Count; i++)
-        {
-			if (levelEventsMaterials == null) Debug.Log("null material");
-			levelEventsMaterials[i].SetLevelState(LevelStates.LevelStart);
-			levelEventsMaterials[i].IntroStart();
-        }
-
-        for (int i = 0; i < levelEventsEasing1.Count; i++)
-        {
-            if (levelEventsEasing1 == null) Debug.Log("null easing");
-            levelEventsEasing1[i].SetLevelState(LevelStates.LevelStart);
-            levelEventsEasing1[i].IntroStart();
-        }
-        for (int i = 0; i < levelEventsEasing2.Count; i++)
-        {
-            if (levelEventsEasing2 == null) Debug.Log("null easing");
-            levelEventsEasing2[i].SetLevelState(LevelStates.LevelStart);
-            levelEventsEasing2[i].IntroStart();
-        }
-        for (int i = 0; i < levelEventsEasing3.Count; i++)
-        {
-            if (levelEventsEasing3 == null) Debug.Log("null easing");
-            levelEventsEasing3[i].SetLevelState(LevelStates.LevelStart);
-            levelEventsEasing3[i].IntroStart();
-        }
-        for (int i = 0; i < levelEventsEasing4.Count; i++)
-        {
-            if (levelEventsEasing4 == null) Debug.Log("null easing");
-            levelEventsEasing4[i].SetLevelState(LevelStates.LevelStart);
-            levelEventsEasing4[i].IntroStart();
-        }
-
         uiController = GetComponent<UIController>();
         rhythmController = GetComponent<RhythmController>();
         auController = GetComponent<AudioController>();
