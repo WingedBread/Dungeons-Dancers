@@ -49,6 +49,10 @@ public class PlayerManager : MonoBehaviour
         {
 			gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Dancing);
         }
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Dancing);
+        }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
             gameManager.levelEventsEasing1[i].SetPlayerState(PlayerStates.Dancing);
@@ -106,6 +110,10 @@ public class PlayerManager : MonoBehaviour
         {
 			gameManager.levelEventsMaterials[i].GoodMove();
         }
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            gameManager.levelEventsColors[i].GoodMove();
+        }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
             gameManager.levelEventsEasing1[i].GoodMove();
@@ -143,6 +151,10 @@ public class PlayerManager : MonoBehaviour
 		for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
         {
 			gameManager.levelEventsMaterials[i].WrongMove();
+        }
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            gameManager.levelEventsColors[i].WrongMove();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
@@ -188,6 +200,10 @@ public class PlayerManager : MonoBehaviour
         {
 			gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Succeed);
         }
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Succeed);
+        }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
             gameManager.levelEventsEasing1[i].SetPlayerState(PlayerStates.Succeed);
@@ -228,6 +244,11 @@ public class PlayerManager : MonoBehaviour
 			gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Hit);
 			gameManager.levelEventsMaterials[i].OnHit();
         }
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Hit);
+            gameManager.levelEventsColors[i].OnHit();
+        }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
             gameManager.levelEventsEasing1[i].SetPlayerState(PlayerStates.Hit);
@@ -264,6 +285,10 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.levelEventsMaterials[i].GetSparkle();
         }
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            gameManager.levelEventsColors[i].GetSparkle();
+        }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
             gameManager.levelEventsEasing1[i].GetSparkle();
@@ -295,6 +320,10 @@ public class PlayerManager : MonoBehaviour
 		for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
         {
             gameManager.levelEventsMaterials[i].GetKey();
+        }
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            gameManager.levelEventsColors[i].GetKey();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
@@ -335,6 +364,10 @@ public class PlayerManager : MonoBehaviour
 				{
 					gameManager.levelEventsMaterials[i].OnCheckpoint();
 				}
+                for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+                {
+                    gameManager.levelEventsColors[i].OnCheckpoint();
+                }
 				for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
 				{
 					gameManager.levelEventsEasing1[i].OnCheckpoint();
@@ -410,6 +443,10 @@ public class PlayerManager : MonoBehaviour
             {
                 gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Dancing);
             }
+            for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+            {
+                gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Dancing);
+            }
             for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
             {
                 gameManager.levelEventsEasing1[i].SetPlayerState(PlayerStates.Dancing);
@@ -440,6 +477,10 @@ public class PlayerManager : MonoBehaviour
 			for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
             {
                 gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Dancing);
+            }
+            for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+            {
+                gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Dancing);
             }
             for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
             {
