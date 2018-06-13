@@ -11012,6 +11012,10 @@ Prefab:
       propertyPath: easingOffDuration
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1723523922448776, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3bd0e8e9f99b64459522da1fcc02a5d, type: 2}
   m_IsPrefabParent: 0
@@ -45963,6 +45967,59 @@ Transform:
   - {fileID: 1257005646}
   m_Father: {fileID: 1280374258}
   m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1833074829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1833074831}
+  - component: {fileID: 1833074830}
+  m_Layer: 0
+  m_Name: AmbientLightScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1833074830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1833074829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3736f59a54245d295a3c9a8133a92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 020000000d0000000e000000
+  beatBhv: 
+  endColor:
+  - {r: 0.93829894, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0.22756457, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.6938925, a: 1}
+  colorEasingDuration: 1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!4 &1833074831
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1833074829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.813508, y: 1.740922, z: 2.6178904}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1834425408
 Prefab:
