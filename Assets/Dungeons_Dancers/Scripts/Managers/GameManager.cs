@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         introController = GetComponent<IntroController>();
         dungeonTimer = initDungeonTimer;
         SetIntroCounter(0);
-        uiController.CoinsUI(0);
+        uiController.SparklesUI(0);
     }
 
     void Update()
@@ -349,7 +349,7 @@ public class GameManager : MonoBehaviour
         rhythmController.SetRhythm(false);
         uiController.WinUI();
         auController.MuteSound();
-        PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore") + playerManager.GetCoins());
+        PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore") + playerManager.GetSparkles());
         //Debug.Log("TotalScore  " + PlayerPrefs.GetInt("TotalScore"));
     }
    
@@ -404,7 +404,7 @@ public class GameManager : MonoBehaviour
         satisController.ResetSatisfaction();
         auController.UnmuteSound();
         uiController.ResetUI();
-        uiController.CoinsUI(0);
+        uiController.SparklesUI(0);
         uiController.CollectibleUI(0);
         SetIntroCounter(0);
         rhythmController.SetIntroRhythm(true);
@@ -425,9 +425,9 @@ public class GameManager : MonoBehaviour
         uiController.RemovePointUI();
     }
 
-    public void CoinBehaviour(int coins)
+    public void SparkleBehaviour(int sparkles)
     {
-        uiController.CoinsUI(coins);
+        uiController.SparklesUI(sparkles);
     }
     public void CollectibleBehaviour(int collectible)
     {

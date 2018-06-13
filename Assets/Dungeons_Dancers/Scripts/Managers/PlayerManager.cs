@@ -251,10 +251,10 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(ResetPlayer(false));
     }
 
-    public void CoinBehaviour(Collider col)
+    public void SparkleBehaviour(Collider col, int value)
     {
         collectibles.Add(col.gameObject);
-        collectiblesController.AddCoin();
+        collectiblesController.AddSparkles(value);
         col.gameObject.SetActive(false);
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
@@ -280,7 +280,7 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.levelEventsEasing4[i].GetSparkle();
         }
-        gameManager.CoinBehaviour(collectiblesController.GetCoins(gameManager.GetSatisfactionFever()));
+        gameManager.SparkleBehaviour(collectiblesController.GetSparkles(gameManager.GetSatisfactionFever()));
     }
 
     public void KeyBehaviour(Collider col)
@@ -363,8 +363,8 @@ public class PlayerManager : MonoBehaviour
         gameManager.DoorBehaviour();
     }
 #endregion
-    public int GetCoins(){
-        return collectiblesController.GetCoins(gameManager.GetSatisfactionFever());
+    public int GetSparkles(){
+        return collectiblesController.GetSparkles(gameManager.GetSatisfactionFever());
     }
 
     public void SetBlock(bool Block)

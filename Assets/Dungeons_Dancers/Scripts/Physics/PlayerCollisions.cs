@@ -13,7 +13,7 @@ public class PlayerCollisions : MonoBehaviour
     [Header("PlayerManager")]
     private PlayerManager playerManager;
 
-    private string[] tagsText = {"Exit", "Trap", "Coin", "Key", "Spawn", "Door", "Obstacle"};
+    private string[] tagsText = {"Exit", "Trap", "Sparkle", "BigSparkle", "Key", "Spawn", "Door", "Obstacle"};
 
 	private void Start()
 	{
@@ -32,20 +32,25 @@ public class PlayerCollisions : MonoBehaviour
         }
         else if (col.gameObject.tag == tagsText[2])
         {
-            playerManager.CoinBehaviour(col);
+            playerManager.SparkleBehaviour(col, 1);
         }
         else if (col.gameObject.tag == tagsText[3])
         {
-            playerManager.KeyBehaviour(col);
+            playerManager.SparkleBehaviour(col, 2);
         }
         else if (col.gameObject.tag == tagsText[4])
         {
-            playerManager.SpawnBehaviour(col);
+            playerManager.KeyBehaviour(col);
         }
         else if (col.gameObject.tag == tagsText[5])
         {
+            playerManager.SpawnBehaviour(col);
+        }
+        else if (col.gameObject.tag == tagsText[6])
+        {
             playerManager.DoorBehaviour();
         }
+
     }
 
 	#region Raycast
@@ -57,7 +62,7 @@ public class PlayerCollisions : MonoBehaviour
         if (Physics.Raycast(ray, out rayHit, rayLenght))
         {
             //Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
-            if (rayHit.collider.gameObject.tag == tagsText[6]) return true;
+            if (rayHit.collider.gameObject.tag == tagsText[7]) return true;
 
         }
         return false;
@@ -71,7 +76,7 @@ public class PlayerCollisions : MonoBehaviour
         if (Physics.Raycast(ray, out rayHit, rayLenght))
         {
             //Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
-            if (rayHit.collider.gameObject.tag == tagsText[6]) return true;
+            if (rayHit.collider.gameObject.tag == tagsText[7]) return true;
         }
         return false;
     }
@@ -84,7 +89,7 @@ public class PlayerCollisions : MonoBehaviour
         if (Physics.Raycast(ray, out rayHit, rayLenght))
         {
             //Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
-            if (rayHit.collider.gameObject.tag == tagsText[6]) return true;
+            if (rayHit.collider.gameObject.tag == tagsText[7]) return true;
         }
         return false;
     }
@@ -97,7 +102,7 @@ public class PlayerCollisions : MonoBehaviour
         if (Physics.Raycast(ray, out rayHit, rayLenght))
         {
             //Debug.Log("Collision with  " + rayHit.collider.gameObject.name);
-            if (rayHit.collider.gameObject.tag == tagsText[6]) return true;
+            if (rayHit.collider.gameObject.tag == tagsText[7]) return true;
         }
         return false;
     }

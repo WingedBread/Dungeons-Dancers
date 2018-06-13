@@ -25,9 +25,9 @@ public class UIController: MonoBehaviour {
     [Header("SatisDebug")]
     [SerializeField]
     private TextMeshProUGUI pointsText;
-    [Header("Coins")]
+    [Header("Sparkles")]
     [SerializeField]
-    private TextMeshProUGUI coinsText;
+    private TextMeshProUGUI sparklesText;
     [Header("Keys")]
     [SerializeField]
     private Image[] keysImages = new Image[2];
@@ -225,8 +225,8 @@ public class UIController: MonoBehaviour {
         }
     }
 
-    public void CoinsUI(int coins){
-        coinsText.text = coins.ToString();
+    public void SparklesUI(int sparkles){
+        sparklesText.text = sparkles.ToString();
     }
     public void CollectibleUI(int key){
         if(key == 0) for (int i = 0; i < keysImages.Length; i++ ) keysImages[i].color = Color.grey;

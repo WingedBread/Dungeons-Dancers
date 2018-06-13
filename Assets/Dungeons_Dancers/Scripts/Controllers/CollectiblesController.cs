@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CollectiblesController : MonoBehaviour {
 
-    [Header("Coins Value")]
+    [Header("Sparkles Value")]
     [SerializeField]
-    private int coinsValue = 10;
-    private int coins = 0;
+    private int sparklesValue = 10;
+    private int sparkles = 0;
     private List<int> keys = new List<int>();
 
     [Header("Drag Doors")]
@@ -16,8 +16,8 @@ public class CollectiblesController : MonoBehaviour {
     [SerializeField]
     private Material[] doorMaterial;
 
-    public void AddCoin(){
-        coins = coins + coinsValue;
+    public void AddSparkles(int sparkleMod){
+        sparkles = sparkles + (sparklesValue * sparkleMod);
     }
 
     public void AddKey(int key)
@@ -33,21 +33,21 @@ public class CollectiblesController : MonoBehaviour {
         }
     }
 
-    public void RemoveCoin(int ncoins){
-        coins = coinsValue - ncoins;
+    public void RemoveSparkles(int ncoins){
+        sparkles = sparklesValue - ncoins;
     }
 
     public int GetTotalKeys(){
         return keys.Count;
     }
 
-    public int GetCoins(bool fever){
+    public int GetSparkles(bool fever){
         if (fever)
         {
-            coins = coins + (coinsValue * 2);
-            return coins;
+            sparkles = sparkles + (sparklesValue * 2);
+            return sparkles;
         }
-        else return coins;
+        else return sparkles;
     }
 
     public void OpenDoor()
@@ -69,6 +69,6 @@ public class CollectiblesController : MonoBehaviour {
             doors[i].transform.GetComponent<MeshRenderer>().material = doorMaterial[0];
         }
         keys.Clear();
-        coins = 0;
+        sparkles = 0;
     }
 }
