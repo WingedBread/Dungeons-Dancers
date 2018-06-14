@@ -50,6 +50,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4988924102987610}
   - component: {fileID: 108974694134957174}
+  - component: {fileID: 114784041435422506}
+  - component: {fileID: 114915201109695556}
   m_Layer: 8
   m_Name: Player light
   m_TagString: Untagged
@@ -4602,7 +4604,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358448160407722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 0, z: -0.5}
+  m_LocalPosition: {x: -7.5, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4619361258338634}
@@ -6171,7 +6173,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1009596639063292}
   m_LocalRotation: {x: 0.3535534, y: -0.61237246, z: 0.3535534, w: 0.61237246}
-  m_LocalPosition: {x: 1.439, y: 2.494, z: 0.233}
+  m_LocalPosition: {x: -10, y: 2.494, z: 0.233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4619361258338634}
@@ -6394,11 +6396,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20e7e566ebde4da39e1dfde5244699f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinsValue: 10
+  sparklesValue: 10
+  bigSparklesValue: 20
   doors: []
   doorMaterial:
   - {fileID: 2100000, guid: a19c7a62f5a8ef74780b320ac0dee83b, type: 2}
   - {fileID: 0}
+--- !u!114 &114784041435422506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009596639063292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7867dd5c40740b08d39b427eb263ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 02000000
+  beatBhv: 
+  scaleEasing: 0
+  moveEasing: 1
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 1.439, y: 2.494, z: 0.233}
+  offBeatPositionVector3: {x: 1.439, y: 2.494, z: 0.233}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!114 &114790033956202444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6413,6 +6448,38 @@ MonoBehaviour:
   scriptedEvents: {fileID: 0}
   gameManager: {fileID: 0}
   timeIdle: 0.5
+--- !u!114 &114915201109695556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009596639063292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 00000000
+  beatBhv: 
+  scaleEasing: 0
+  moveEasing: 1
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: -10, y: 2.494, z: 0.233}
+  offBeatPositionVector3: {x: -10, y: 2.494, z: 0.233}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!137 &137204354008116770
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
