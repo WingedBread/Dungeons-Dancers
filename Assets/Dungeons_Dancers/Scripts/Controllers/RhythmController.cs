@@ -70,6 +70,13 @@ public class RhythmController : MonoBehaviour
             gameManager.levelEventsMaterials[i].IntroStart();
         }
 
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            if (gameManager.levelEventsColors == null) Debug.Log("null material");
+            gameManager.levelEventsColors[i].SetLevelState(LevelStates.LevelStart);
+            gameManager.levelEventsColors[i].IntroStart();
+        }
+
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
             if (gameManager.levelEventsEasing1 == null) Debug.Log("null easing");
@@ -175,6 +182,10 @@ public class RhythmController : MonoBehaviour
 		for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
         {
 			gameManager.levelEventsMaterials[i].OnBeat();
+        }
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            gameManager.levelEventsColors[i].OnBeat();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
