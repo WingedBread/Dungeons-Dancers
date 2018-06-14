@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4725948637003860}
+  - component: {fileID: 114589665646189188}
   m_Layer: 0
   m_Name: Spotlight_A_Anim1_White
   m_TagString: Untagged
@@ -81,6 +82,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4102788581530472}
+  - component: {fileID: 114980396078103820}
+  - component: {fileID: 114703130537019730}
   m_Layer: 0
   m_Name: LlumDiscoTop_Left
   m_TagString: Untagged
@@ -127,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1880586093093720}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -10, y: 9, z: 4}
+  m_LocalPosition: {x: -22, y: 9, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4725948637003860}
@@ -286,3 +289,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalScrollSpeed: 0.5
   verticalScrollSpeed: 0
+--- !u!114 &114589665646189188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1257333882999876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7867dd5c40740b08d39b427eb263ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 3
+  playerStates: 0
+  satisfactionStates: 4
+  levelEvents: 04000000
+  beatBhv: MusicBeat
+  scaleEasing: 0
+  moveEasing: 0
+  rotationEasing: 1
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 125, y: 0, z: 0}
+  offBeatRotationVector3: {x: 120, y: 0, z: 0}
+  easingOnDuration: 0.5
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!114 &114703130537019730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880586093093720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 0e000000000000000a0000000b000000
+  beatBhv: 
+  scaleEasing: 0
+  moveEasing: 1
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: -22, y: 11, z: 1}
+  offBeatPositionVector3: {x: -22, y: 11, z: 1}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.1
+  easingOffDuration: 0
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!114 &114980396078103820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880586093093720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7867dd5c40740b08d39b427eb263ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 0f000000
+  beatBhv: 
+  scaleEasing: 0
+  moveEasing: 1
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 25
+  onBeatScaleVector3: {x: 1, y: 1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: -8, y: 9, z: 4}
+  offBeatPositionVector3: {x: -8, y: 9, z: 4}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.1
+  easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
