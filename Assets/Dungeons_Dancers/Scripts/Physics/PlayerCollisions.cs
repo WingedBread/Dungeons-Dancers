@@ -32,11 +32,11 @@ public class PlayerCollisions : MonoBehaviour
         }
         else if (col.gameObject.tag == tagsText[2])
         {
-            playerManager.SparkleBehaviour(col, 1);
+            playerManager.SparkleBehaviour(col, false);
         }
         else if (col.gameObject.tag == tagsText[3])
         {
-            playerManager.SparkleBehaviour(col, 2);
+            playerManager.SparkleBehaviour(col, true);
         }
         else if (col.gameObject.tag == tagsText[4])
         {

@@ -43,7 +43,7 @@ public class SatisfactionController : MonoBehaviour {
 	
     public void AddPoint()
     {
-        PointEvents();
+        //Debug.Log("Current Points: " + points);
         if (points >= TracksPosition[4])
         {
             FeverState();
@@ -54,6 +54,7 @@ public class SatisfactionController : MonoBehaviour {
             {
                 case 0:
                     points = points + ScoreGood;
+                    PointEvents();
                     break;
                 case 1:
                     points = points + ScorePerfect;
@@ -85,15 +86,18 @@ public class SatisfactionController : MonoBehaviour {
                     {
                         gameManager.levelEventsEasing4[i].PerfectMove();
                     }
+                    PointEvents();
                     break;
                 case 2:
                     points = points + ScoreGreat;
+                    PointEvents();
                     break;
             }
             if (points >= TracksPosition[4]) 
             { 
                 points = (int)TracksPosition[4]; 
-                gameManager.ClimaxUIBehaviour(feverPoints, true); 
+                gameManager.ClimaxUIBehaviour(feverPoints, true);
+                PointEvents();
             }
         }
     }
@@ -260,17 +264,21 @@ public class SatisfactionController : MonoBehaviour {
 
     public void RemovePoint()
     {
-        PointEvents();
+        //Debug.Log("Current Points: " + points);
         if (points >= TracksPosition[4])
         {
             feverPoints--;
             gameManager.ClimaxUIBehaviour(feverPoints, true);
             FeverState();
+            PointEvents();
         }
         else
         {
             points = points - ScoreBad;
-            if (points <= TracksPosition[0]) {
+            PointEvents();
+
+            if (points <= TracksPosition[0]) 
+            {
                 for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
                 {
                     gameManager.levelEventsAudios[i].SatisfactionZero();

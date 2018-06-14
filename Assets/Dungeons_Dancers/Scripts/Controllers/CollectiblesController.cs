@@ -7,6 +7,9 @@ public class CollectiblesController : MonoBehaviour {
     [Header("Sparkles Value")]
     [SerializeField]
     private int sparklesValue = 10;
+    [Header("Big Sparkles Value")]
+    [SerializeField]
+    private int bigSparklesValue = 20;
     private int sparkles = 0;
     private List<int> keys = new List<int>();
 
@@ -16,8 +19,9 @@ public class CollectiblesController : MonoBehaviour {
     [SerializeField]
     private Material[] doorMaterial;
 
-    public void AddSparkles(int sparkleMod){
-        sparkles = sparkles + (sparklesValue * sparkleMod);
+    public void AddSparkles(bool bigSparkle){
+        if(bigSparkle) sparkles = sparkles + bigSparklesValue;
+        else sparkles = sparkles + sparklesValue;
     }
 
     public void AddKey(int key)

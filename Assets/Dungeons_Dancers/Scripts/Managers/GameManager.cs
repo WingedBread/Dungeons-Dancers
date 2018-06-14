@@ -397,6 +397,7 @@ public class GameManager : MonoBehaviour
         }
         satisController.ResetSatisfaction();
         auController.UnmuteSound();
+        auController.PointsSnapshotCheck();
         uiController.ResetUI();
         uiController.SparklesUI(0);
         uiController.CollectibleUI(0);
