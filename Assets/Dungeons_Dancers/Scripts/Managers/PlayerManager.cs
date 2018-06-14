@@ -272,10 +272,10 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(ResetPlayer(false));
     }
 
-    public void SparkleBehaviour(Collider col, int value)
+    public void SparkleBehaviour(Collider col,bool sparkleType)
     {
         collectibles.Add(col.gameObject);
-        collectiblesController.AddSparkles(value);
+        collectiblesController.AddSparkles(sparkleType);
         col.gameObject.SetActive(false);
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
