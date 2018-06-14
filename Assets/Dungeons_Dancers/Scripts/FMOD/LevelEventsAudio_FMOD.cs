@@ -64,6 +64,11 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
         EventContainerLevelStates();
         EventContainerPlayerStates();
         EventContainerSatisStates();
+
+        if (!emitter.IsPlaying())
+        {
+            emitter.Stop();
+        }
     }
 
 	void EventContainerLevelStates()
@@ -132,7 +137,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 0])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -148,7 +152,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 1])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -163,7 +166,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 2])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -178,7 +180,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 3])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -193,7 +194,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 4])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -208,7 +208,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 5])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -223,7 +222,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 6])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -238,7 +236,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 7])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -253,7 +250,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 8])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -268,7 +264,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 9])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -283,7 +278,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 10])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -298,7 +292,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 11])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -313,7 +306,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 12])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -329,7 +321,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 13])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -344,7 +335,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 14])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -359,7 +349,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 15])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -374,7 +363,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 16])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -389,7 +377,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 17])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -404,7 +391,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 18])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -419,7 +405,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 19])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -434,7 +419,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 20])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
@@ -449,7 +433,6 @@ public class LevelEventsAudio_FMOD : MonoBehaviour {
             {
                 if (activeLevelEvents[w, 21])
                 {
-                    if (!emitter.IsPlaying()) emitter.Stop();
                     emitter.Play();
                     eventPlaying = false;
                 }
