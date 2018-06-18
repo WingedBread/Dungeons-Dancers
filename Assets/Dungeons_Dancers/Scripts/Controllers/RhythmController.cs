@@ -25,13 +25,6 @@ public class RhythmController : MonoBehaviour
     private bool activePlayerBeatEvent;
     private int lastEndSample;
 
-    [Header("FMOD")]
-    [SerializeField]
-    private bool fmod_enabled = false;
-    [SerializeField]
-    FMOD_Manager fMOD_manager;
-
-
     [SerializeField]
     private bool debugEnable;
     // Use this for initialization
@@ -87,13 +80,12 @@ public class RhythmController : MonoBehaviour
             gameManager.levelEventsEasing4[i].SetLevelState(LevelStates.LevelStart);
             gameManager.levelEventsEasing4[i].IntroStart();
         }
-        if(fmod_enabled) fMOD_manager.koreoWithFmod = true;
         StartIntroRhythm();
 		StopCoroutine ("IntroDelayCoroutine");
     }
     private void StartIntroRhythm()
     {
-        if(!fmod_enabled)multiMusic.Play();
+        multiMusic.Play();
         Koreographer.Instance.RegisterForEvents("IntroEvent", IntroBehaviour);
     }
     private void StopIntroRhythm()
@@ -111,7 +103,6 @@ public class RhythmController : MonoBehaviour
     private void StopRhythm()
     {
         multiMusic.Stop();
-        if (fmod_enabled) fMOD_manager.UnloadFMOD();
         Koreographer.Instance.UnregisterForEvents("PlayerInputEvent", PlayerInputBehaviour);
         Koreographer.Instance.UnregisterForEvents("PlayerBeatEvent", PlayerBeatBehaviour);
     }
