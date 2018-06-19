@@ -16,14 +16,18 @@ public class RhythmController : MonoBehaviour
     private int introTime;
 
     [Header("Accuracy Calculation")]
-    private float duration;
-    private float segmentDuration;
-    private float segment1, segment2, segment3, segment4;
+    private double duration;
+    private double segmentDuration;
+    private double segment2, segment3, segment4, segment5;
 
     private int accuracy = 0;
     private bool activePlayerInputEvent;
     private bool activePlayerBeatEvent;
     private int lastEndSample;
+
+    private double percentPlus;
+
+    bool inputCalcOnce = true;
 
     [SerializeField]
     private bool debugEnable;
@@ -124,7 +128,11 @@ public class RhythmController : MonoBehaviour
         }
 
 
-        if(gameManager.GetPlayerInputFlag()) CalculateTiming(sampleTime, kInputEvent);
+        if(!gameManager.GetPlayerInputFlag())
+        {
+            CalculateTiming(sampleTime, kInputEvent);
+            inputCalcOnce = false;
+        } 
 
         if (sampleTime < kInputEvent.EndSample)
         {
@@ -133,6 +141,7 @@ public class RhythmController : MonoBehaviour
         else
         {
             activePlayerInputEvent = false;
+            inputCalcOnce = true;
         }
 
     }
@@ -188,18 +197,39 @@ public class RhythmController : MonoBehaviour
     void CalculateTiming(int sampleTime, KoreographyEvent kCalcEvent)
     {
         duration = kCalcEvent.EndSample - kCalcEvent.StartSample;
-        segmentDuration = duration / 3;
-        segment4 = kCalcEvent.EndSample - segmentDuration;
+        segmentDuration = duration / 5;
+        //percentPlus = (segmentDuration * 50)/100;
+
+        segment5 = kCalcEvent.EndSample - segmentDuration;
+        segment4 = segment5 - segmentDuration;
         segment3 = segment4 - segmentDuration;
         segment2 = segment3 - segmentDuration;
-        segment1 = segment2 - segmentDuration;
 
-        if (sampleTime < segment1) accuracy = 0; //Good
-        else if (sampleTime < segment2) accuracy = 2; //Great
-        else if (sampleTime < segment3) accuracy = 1; //Perfect
-        else if (sampleTime < segment4) accuracy = 2; //Great
-        else if (sampleTime < kCalcEvent.EndSample) accuracy = 0; //Good
-
+        if (sampleTime >= kCalcEvent.StartSample && sampleTime < segment2)
+        {
+            accuracy = 0; //Good
+           //Debug.Log("GOOD 1 -> PushTime: " + sampleTime + "  --Start: " + kCalcEvent.StartSample + "  --End: " + segment2); 
+        }
+        else if (sampleTime >= segment2 && sampleTime < segment3)
+        {
+            accuracy = 2; //Great
+            //Debug.Log("GREAT 1 -> PushTime: " + sampleTime + "  --Start: " + segment2 + "  --End: " + segment3); 
+        }
+        else if (sampleTime >= segment3 && sampleTime < segment4)
+        {
+            accuracy = 1; //Perfect
+            //Debug.Log("PERFECT -> PushTime: " + sampleTime + "  --Start: " + segment3 + "  --End: " + segment4); 
+        }
+        else if (sampleTime >= segment4 && sampleTime < segment5)
+        {
+            accuracy = 2; //Great
+            //Debug.Log("GREAT 2 -> PushTime: " + sampleTime + "  --Start: " + segment4 + "  --End: " + segment5); 
+        }
+        else if (sampleTime >= segment5 && sampleTime <= kCalcEvent.EndSample)
+        {
+            accuracy = 0;//Good
+            //Debug.Log("GOOD 2 -> PushTime: " + sampleTime + "  --Start: " + segment5 + "  --End: " + kCalcEvent.EndSample); 
+        }
     }
 
     public int GetAccuracy()
