@@ -14,6 +14,7 @@ public class AudioController : MonoBehaviour {
     [SerializeField]
     private AudioMixerSnapshot[] auMixSnaps;
 
+    private int pointsflag = 0;
 
     [Header("AudioClips")]
     [SerializeField]
@@ -27,21 +28,62 @@ public class AudioController : MonoBehaviour {
         auMixSnaps[1].TransitionTo(transitionTime); 
 	}
 	
+    //public void PointsSnapshotCheck()
+    //{
+    //    if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(1) && gameManager.GetPoints(0, 1, 0) > gameManager.GetSatisfactionTrackPos(0) && pointsflag != 1)
+    //    {
+    //        auMixSnaps[1].TransitionTo(transitionTime);
+    //        pointsflag = 1;
+    //    }
+    //    else if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(2) && gameManager.GetPoints(0, 1, 0) > gameManager.GetSatisfactionTrackPos(1) && pointsflag != 2)
+    //    {
+    //        auMixSnaps[2].TransitionTo(transitionTime);
+    //        pointsflag = 2;
+    //    }
+    //    else if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(3) && gameManager.GetPoints(0, 1, 0) > gameManager.GetSatisfactionTrackPos(2) && pointsflag != 3)
+    //    {
+    //        auMixSnaps[3].TransitionTo(transitionTime);
+    //        pointsflag = 3;
+    //    }
+    //    else if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(4) && gameManager.GetPoints(0, 1, 0) > gameManager.GetSatisfactionTrackPos(3) && pointsflag != 4)
+    //    {
+    //        auMixSnaps[4].TransitionTo(transitionTime);
+    //        pointsflag = 4;
+    //    }
+    //    else if (gameManager.GetPoints(0, 1, 0) >= gameManager.GetSatisfactionTrackPos(4) && pointsflag != 5)
+    //    {
+    //        auMixSnaps[5].TransitionTo(transitionTime);
+    //        pointsflag = 5;
+    //    }
+    //}
+
     public void PointsSnapshotCheck()
     {
-		/*
-        if (gameManager.GetPoints(0, 1, 0) == 0) auMixSnaps[0].TransitionTo(transitionTime);
-        else if (gameManager.GetPoints(0, 1, 0) < 15) auMixSnaps[1].TransitionTo(transitionTime);
-        else if(gameManager.GetPoints(0, 1, 0) < 30) auMixSnaps[2].TransitionTo(transitionTime);
-        else if (gameManager.GetPoints(0, 1, 0) < 45) auMixSnaps[3].TransitionTo(transitionTime);
-        else if (gameManager.GetPoints(0, 1, 0) < 60) auMixSnaps[4].TransitionTo(transitionTime);
-        */
-		// Modificació Curial
-        if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(1)) auMixSnaps[1].TransitionTo(transitionTime);		// Metronome
-        else if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(2)) auMixSnaps[2].TransitionTo(transitionTime);	// Satisf 1
-        else if(gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(3)) auMixSnaps[3].TransitionTo(transitionTime);	// Satisf 2 
-        else if(gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(4)) auMixSnaps[4].TransitionTo(transitionTime);	// Satisf 3
-        else if (gameManager.GetPoints(0, 1, 0) >= gameManager.GetSatisfactionTrackPos(4)) auMixSnaps[5].TransitionTo(transitionTime);	// Satisf 4
+        if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(1) && gameManager.GetPoints(0, 1, 0) > gameManager.GetSatisfactionTrackPos(0) && pointsflag != 1)
+        {
+            auMixSnaps[1].TransitionTo(transitionTime);
+            pointsflag = 1;
+        }
+        else if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(2) && gameManager.GetPoints(0, 1, 0) > gameManager.GetSatisfactionTrackPos(1) && pointsflag != 2)
+        {
+            auMixSnaps[2].TransitionTo(transitionTime);
+            pointsflag = 2;
+        }
+        else if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(3) && gameManager.GetPoints(0, 1, 0) > gameManager.GetSatisfactionTrackPos(2) && pointsflag != 3)
+        {
+            auMixSnaps[3].TransitionTo(transitionTime);
+            pointsflag = 3;
+        }
+        else if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(4) && gameManager.GetPoints(0, 1, 0) > gameManager.GetSatisfactionTrackPos(3) && pointsflag != 4)
+        {
+            auMixSnaps[4].TransitionTo(transitionTime);
+            pointsflag = 4;
+        }
+        else if (gameManager.GetPoints(0, 1, 0) >= gameManager.GetSatisfactionTrackPos(4) && pointsflag != 5)
+        {
+            auMixSnaps[5].TransitionTo(transitionTime);
+            pointsflag = 5;
+        }
     }
 
     public void MuteSound(){
