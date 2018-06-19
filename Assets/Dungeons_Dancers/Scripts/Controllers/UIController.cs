@@ -159,7 +159,7 @@ public class UIController: MonoBehaviour {
     {
         for(int i = 0; i< satisBar3D.Length; i++)
         {
-            satisBarHeight[i] = (gameManager.GetPoints(0, 1, 0) / initsatisHeight[i]);
+			satisBarHeight[i] = Mathf.Clamp((gameManager.GetPoints(0, 1, 0) / initsatisHeight[i]),0,initsatisHeight[i]);
             satisBar3D[i].transform.localScale = new Vector3(satisBar3D[i].transform.localScale.x, satisBarHeight[i], satisBar3D[i].transform.localScale.z);
         }
     }
