@@ -54,10 +54,12 @@ public class SatisfactionController : MonoBehaviour {
             {
                 case 0:
                     points = points + ScoreGood;
+                    PlayerPrefs.SetInt("NumGoodMoves", PlayerPrefs.GetInt("NumGoodMoves") + 1);
                     PointEvents();
                     break;
                 case 1:
                     points = points + ScorePerfect;
+                    PlayerPrefs.SetInt("NumPerfectMoves", PlayerPrefs.GetInt("NumPerfectMoves") + 1);
                     for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
                     {
                         gameManager.levelEventsAudios[i].PerfectMove();
@@ -90,6 +92,7 @@ public class SatisfactionController : MonoBehaviour {
                     break;
                 case 2:
                     points = points + ScoreGreat;
+                    PlayerPrefs.SetInt("NumGreatMoves", PlayerPrefs.GetInt("NumGreatMoves") + 1);
                     PointEvents();
                     break;
             }
@@ -275,6 +278,7 @@ public class SatisfactionController : MonoBehaviour {
         else
         {
             points = points - ScoreBad;
+            PlayerPrefs.SetInt("NumBadMoves", PlayerPrefs.GetInt("NumBadMoves") + 1);
             PointEvents();
 
             if (points <= TracksPosition[0]) 
@@ -331,9 +335,14 @@ public class SatisfactionController : MonoBehaviour {
 
         else
         {
+            PlayerPrefs.SetInt("MovesInClimax", PlayerPrefs.GetInt("MovesInClimax") + 1);
             switch (gameManager.GetRhythmAccuracy())
             {
+                case 0:
+                    PlayerPrefs.SetInt("NumGoodMoves", PlayerPrefs.GetInt("NumGoodMoves") + 1);
+                    break;
                 case 1:
+                    PlayerPrefs.SetInt("NumPerfectMoves", PlayerPrefs.GetInt("NumPerfectMoves") + 1);
                     for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
                     {
                         gameManager.levelEventsAudios[i].PerfectMove();
@@ -362,6 +371,9 @@ public class SatisfactionController : MonoBehaviour {
                     {
                         gameManager.levelEventsEasing4[i].PerfectMove();
                     }
+                    break;
+                case 2:
+                    PlayerPrefs.SetInt("NumGreatMoves", PlayerPrefs.GetInt("NumGreatMoves") + 1);
                     break;
             }
         }
