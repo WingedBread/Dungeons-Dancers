@@ -14,6 +14,8 @@ public class WinSceneScript : MonoBehaviour {
     private TextMeshProUGUI ratingText;
     [SerializeField]
     private TextMeshProUGUI ratingLetter;
+    [SerializeField]
+    private TextMeshProUGUI ratingCaption;
 
     [Header("Move Texts")]
     [SerializeField]
@@ -38,9 +40,12 @@ public class WinSceneScript : MonoBehaviour {
     [SerializeField]
     private float sparkleAnimuration = 1;
 
-    private double ratingPercentage;
+    private float ratingPercentage;
     private int movesAfterClimax;
     private int totalMoves;
+
+    private string[] ratingLetterString = { "S+", "S", "A", "B", "C", "D", "E" };
+    private string[] ratingLetterCaption = { "Dancing God", "Glorious Steps", "Fred Astaire", "Advanced", "Rookie", "Not bad", "Terrible Dancer" };
 
 	// Use this for initialization
 	void Start () {
@@ -94,11 +99,45 @@ public class WinSceneScript : MonoBehaviour {
         climaxText.text = PlayerPrefs.GetInt("MovesInClimax").ToString();
         totalMoves = PlayerPrefs.GetInt("NumGoodMoves") + PlayerPrefs.GetInt("NumGreatMoves") + PlayerPrefs.GetInt("NumPerfectMoves") + PlayerPrefs.GetInt("NumBadMoves");
         movesAfterClimax = (PlayerPrefs.GetInt("NumGoodMoves") + PlayerPrefs.GetInt("NumGreatMoves") + PlayerPrefs.GetInt("NumPerfectMoves") + PlayerPrefs.GetInt("NumBadMoves")) - PlayerPrefs.GetInt("MovesInClimax");
-        ratingPercentage = (((((PlayerPrefs.GetInt("NumGoodMoves") * 0.7f) + (PlayerPrefs.GetInt("NumGreatMoves") * 0.9f) + (PlayerPrefs.GetInt("NumPerfectMoves")) - (PlayerPrefs.GetInt("NumBadMoves") * 0.2f))/totalMoves) * 100) * 0.85f) + (((PlayerPrefs.GetInt("MovesInClimax") / movesAfterClimax) * 100) * 0.15f);
+        ratingPercentage = (((((PlayerPrefs.GetInt("NumGoodMoves") * 0.7f) + (PlayerPrefs.GetInt("NumGreatMoves") * 0.9f) + (PlayerPrefs.GetInt("NumPerfectMoves")) - (PlayerPrefs.GetInt("NumBadMoves") * 0.2f)) / totalMoves) * 100) * 0.85f) + (((PlayerPrefs.GetInt("MovesInClimax") / movesAfterClimax) * 100) * 0.15f);
         ratingText.text = ratingPercentage.ToString("0.00") + "%";
-        Debug.Log(ratingPercentage);
-        Debug.Log(movesAfterClimax);
-        Debug.Log((PlayerPrefs.GetInt("MovesInClimax")));
-        //Rating = (((NumGoodMoves * 70 %) + (NumGreatMoves * 90 %) + (NumPerfectMoves * 100 %) - (NumBadMoves * 20 %)) * 85 %) + (((MovesInClimax / MovesAfterClimax) * 100) * 15 %)
+        Debug.Log("TotalMoves " + totalMoves);
+        Debug.Log("MovesAfterClimax " +movesAfterClimax);
+
+        if(ratingPercentage >= 0 && ratingPercentage < 21)
+        {
+            ratingLetter.text = ratingLetterString[6];
+            ratingCaption.text = ratingLetterCaption[6];
+        }
+        else if (ratingPercentage >= 21 && ratingPercentage < 41)
+        {
+            ratingLetter.text = ratingLetterString[5];
+            ratingCaption.text = ratingLetterCaption[5];
+        }
+        else if (ratingPercentage >= 41 && ratingPercentage < 61)
+        {
+            ratingLetter.text = ratingLetterString[4];
+            ratingCaption.text = ratingLetterCaption[4];
+        }
+        else if (ratingPercentage >= 61 && ratingPercentage < 81)
+        {
+            ratingLetter.text = ratingLetterString[3];
+            ratingCaption.text = ratingLetterCaption[3];
+        }
+        else if (ratingPercentage >= 81 && ratingPercentage < 91)
+        {
+            ratingLetter.text = ratingLetterString[2];
+            ratingCaption.text = ratingLetterCaption[2];
+        }
+        else if (ratingPercentage >= 91 && ratingPercentage < 100)
+        {
+            ratingLetter.text = ratingLetterString[1];
+            ratingCaption.text = ratingLetterCaption[1];
+        }
+        else if (ratingPercentage >= 100)
+        {
+            ratingLetter.text = ratingLetterString[0];
+            ratingCaption.text = ratingLetterCaption[0];
+        }
     }
 }

@@ -37,6 +37,12 @@ public class MenuSceneScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         PlayerPrefs.SetInt("TotalScore", 0);
+        PlayerPrefs.SetInt("TotalScore", 0);
+        PlayerPrefs.SetInt("NumGoodMoves", 0);
+        PlayerPrefs.SetInt("NumGreatMoves", 0);
+        PlayerPrefs.SetInt("NumPerfectMoves", 0);
+        PlayerPrefs.SetInt("NumBadMoves", 0);
+        PlayerPrefs.SetInt("MovesInClimax", 0);
         splayer = GetComponent<SimpleMusicPlayer>();
         Koreographer.Instance.RegisterForEvents(eventID_text, FadeText);
         Koreographer.Instance.RegisterForEvents(eventID_spot1, FadeSpot1);
