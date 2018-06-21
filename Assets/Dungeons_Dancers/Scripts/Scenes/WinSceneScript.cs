@@ -41,7 +41,6 @@ public class WinSceneScript : MonoBehaviour {
     private float sparkleAnimuration = 1;
 
     private float ratingPercentage;
-    private int movesAfterClimax;
     private int totalMoves;
 
     private string[] ratingLetterString = { "S+", "S", "A", "B", "C", "D", "E" };
@@ -85,7 +84,7 @@ public class WinSceneScript : MonoBehaviour {
         PlayerPrefs.SetInt("NumPerfectMoves", 0);
         PlayerPrefs.SetInt("NumBadMoves", 0);
         PlayerPrefs.SetInt("MovesInClimax", 0);
-        movesAfterClimax = 0;
+        PlayerPrefs.SetInt("MovesAfterClimax", 0);
         ratingPercentage = 0;
         SceneManager.LoadScene(i);
     }
@@ -98,11 +97,10 @@ public class WinSceneScript : MonoBehaviour {
         perfectText.text = PlayerPrefs.GetInt("NumPerfectMoves").ToString();
         climaxText.text = PlayerPrefs.GetInt("MovesInClimax").ToString();
         totalMoves = PlayerPrefs.GetInt("NumGoodMoves") + PlayerPrefs.GetInt("NumGreatMoves") + PlayerPrefs.GetInt("NumPerfectMoves") + PlayerPrefs.GetInt("NumBadMoves");
-        movesAfterClimax = (PlayerPrefs.GetInt("NumGoodMoves") + PlayerPrefs.GetInt("NumGreatMoves") + PlayerPrefs.GetInt("NumPerfectMoves") + PlayerPrefs.GetInt("NumBadMoves")) - PlayerPrefs.GetInt("MovesInClimax");
-        ratingPercentage = (((((PlayerPrefs.GetInt("NumGoodMoves") * 0.7f) + (PlayerPrefs.GetInt("NumGreatMoves") * 0.9f) + (PlayerPrefs.GetInt("NumPerfectMoves")) - (PlayerPrefs.GetInt("NumBadMoves") * 0.2f)) / totalMoves) * 100) * 0.85f) + (((PlayerPrefs.GetInt("MovesInClimax") / movesAfterClimax) * 100) * 0.15f);
+        ratingPercentage = (((((PlayerPrefs.GetInt("NumGoodMoves") * 0.7f) + (PlayerPrefs.GetInt("NumGreatMoves") * 0.9f) + (PlayerPrefs.GetInt("NumPerfectMoves")) - (PlayerPrefs.GetInt("NumBadMoves") * 0.2f)) / totalMoves) * 100) * 0.85f) + (((PlayerPrefs.GetInt("MovesInClimax") / PlayerPrefs.GetInt("MovesAfterClimax")) * 100) * 0.15f);
         ratingText.text = ratingPercentage.ToString("0.00") + "%";
         Debug.Log("TotalMoves " + totalMoves);
-        Debug.Log("MovesAfterClimax " +movesAfterClimax);
+        Debug.Log("MovesAfterClimax " + PlayerPrefs.GetInt("MovesInClimax"));
 
         if(ratingPercentage >= 0 && ratingPercentage < 21)
         {

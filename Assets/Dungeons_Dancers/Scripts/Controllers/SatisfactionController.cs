@@ -31,11 +31,14 @@ public class SatisfactionController : MonoBehaviour {
 
     private int pointsflag = 0;
 
+    bool afterClimax = false;
+
 	// Use this for initialization
     void Awake()
     {
         points = initPoints;
         feverPoints = ClimaxMaxFails;
+        afterClimax = false;
     }
 	void Start () {
         gameManager = GetComponent<GameManager>();
@@ -50,6 +53,7 @@ public class SatisfactionController : MonoBehaviour {
         }
         else
         {
+            if(afterClimax) PlayerPrefs.SetInt("MovesAfterClimax", PlayerPrefs.GetInt("MovesAfterClimax") + 1);
             switch (gameManager.GetRhythmAccuracy())
             {
                 case 0:
@@ -335,6 +339,7 @@ public class SatisfactionController : MonoBehaviour {
 
         else
         {
+            afterClimax = true;
             PlayerPrefs.SetInt("MovesInClimax", PlayerPrefs.GetInt("MovesInClimax") + 1);
             switch (gameManager.GetRhythmAccuracy())
             {
@@ -382,6 +387,7 @@ public class SatisfactionController : MonoBehaviour {
     public void ResetSatisfaction(){
         points = initPoints;
         feverPoints = ClimaxMaxFails;
+        afterClimax = false;
     }
 
     public int GetSatisfactionPoints(int min, int current, int max)
