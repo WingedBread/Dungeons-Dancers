@@ -19,11 +19,36 @@ public class CheckpointBehaviour : MonoBehaviour {
 	[SerializeField]
 	private GameObject mobilePhone;
 
+    [Header("Selfie")]
+    [SerializeField]
+    private GameObject selfiePrefab;
+    [SerializeField]
+    private Sprite[] selfieSprites = new Sprite[3];
+
+    [Header("Selfie Easing")]
+    [SerializeField]
+    private float selfieTime = 2;
+    [SerializeField]
+    private Ease easingInBeatList = Ease.InExpo;
+    [SerializeField]
+    private Ease easingOutBeatList = Ease.OutElastic;
+    [SerializeField]
+    private Vector3 inBeatPositionVector3 = new Vector3(6.14f, 6, 3.15f);
+    [SerializeField]
+    private float easingInDuration = 0.5f;
+    [SerializeField]
+    private Vector3 outBeatPositionVector3 = new Vector3(-12, 6, 3.15f);
+    [SerializeField]
+    private float easingOutDuration = 1f;
+
+
 	[Header("Chekpoint Sprites:")]
 	[SerializeField]
 	private Sprite checkpointPass;
 	[SerializeField]
     private Sprite checkpointOld;
+
+    private GameObject instantiatedSelfie;
 
 	private List<GameObject> checkpoints = new List<GameObject>();
 
@@ -46,6 +71,11 @@ public class CheckpointBehaviour : MonoBehaviour {
 
     public IEnumerator OnCheckpoint(GameObject currectcheckpoint)
 	{
+        instantiatedSelfie = (GameObject)Instantiate(selfiePrefab, transform.parent);
+        instantiatedSelfie.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = selfieSprites[Random.Range(0, selfieSprites.Length)];
+
+        StartCoroutine(CheckpointSelfie());
+
 		instantiatedObj.Add((GameObject)Instantiate(emojiParticles, currectcheckpoint.transform));
 		flashUI.gameObject.SetActive(true);
         rainbowMouth.SetActive(true);
@@ -76,6 +106,13 @@ public class CheckpointBehaviour : MonoBehaviour {
         ResetCheckpoint();
 	}
 
+    IEnumerator CheckpointSelfie(){
+        Sequence g = DOTween.Sequence();
+        g.Append(instantiatedSelfie.transform.DOLocalMove(inBeatPositionVector3, easingInDuration).SetEase(easingInBeatList));
+        yield return new WaitForSeconds(selfieTime);
+        g.Append(instantiatedSelfie.transform.DOLocalMove(outBeatPositionVector3, easingOutDuration).SetEase(easingOutBeatList)).OnComplete(DestroySelfie);
+    }
+
     public void ResetCheckpoint(){
 
         for (int i = 0; i < emojiParticles.transform.childCount; i++)
@@ -95,6 +132,13 @@ public class CheckpointBehaviour : MonoBehaviour {
         flashUI.color = Color.white;
         rainbowMouth.SetActive(false);
         mobilePhone.SetActive(false);
+
         StopCoroutine("OnCheckpoint");
+    }
+
+    private void DestroySelfie()
+    {
+        Destroy(instantiatedSelfie);
+        StopCoroutine("CheckpointSelfie");
     }
 }
