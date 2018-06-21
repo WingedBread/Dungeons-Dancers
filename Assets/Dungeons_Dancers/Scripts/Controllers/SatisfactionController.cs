@@ -29,7 +29,8 @@ public class SatisfactionController : MonoBehaviour {
     private int points;
     private int feverPoints;
 
-    private int pointsflag = 0;
+    [HideInInspector]
+    public int pointsflag = 0;
 
     bool afterClimax = false;
 
@@ -46,14 +47,14 @@ public class SatisfactionController : MonoBehaviour {
 	
     public void AddPoint()
     {
-        //Debug.Log("Current Points: " + points);
+        if (afterClimax) PlayerPrefs.SetInt("MovesAfterClimax", PlayerPrefs.GetInt("MovesAfterClimax") + 1);
+
         if (points >= TracksPosition[4])
         {
             FeverState();
         }
         else
         {
-            if(afterClimax) PlayerPrefs.SetInt("MovesAfterClimax", PlayerPrefs.GetInt("MovesAfterClimax") + 1);
             switch (gameManager.GetRhythmAccuracy())
             {
                 case 0:
@@ -102,7 +103,7 @@ public class SatisfactionController : MonoBehaviour {
             }
             if (points >= TracksPosition[4]) 
             { 
-                points = (int)TracksPosition[4]; 
+                points = (int)TracksPosition[4];
                 gameManager.ClimaxUIBehaviour(feverPoints, true);
                 PointEvents();
             }
@@ -271,7 +272,9 @@ public class SatisfactionController : MonoBehaviour {
 
     public void RemovePoint()
     {
-        //Debug.Log("Current Points: " + points);
+        if (afterClimax) PlayerPrefs.SetInt("MovesAfterClimax", PlayerPrefs.GetInt("MovesAfterClimax") + 1);
+
+        PlayerPrefs.SetInt("NumBadMoves", PlayerPrefs.GetInt("NumBadMoves") + 1);
         if (points >= TracksPosition[4])
         {
             feverPoints--;
@@ -282,7 +285,6 @@ public class SatisfactionController : MonoBehaviour {
         else
         {
             points = points - ScoreBad;
-            PlayerPrefs.SetInt("NumBadMoves", PlayerPrefs.GetInt("NumBadMoves") + 1);
             PointEvents();
 
             if (points <= TracksPosition[0]) 
@@ -330,6 +332,12 @@ public class SatisfactionController : MonoBehaviour {
 
     private void FeverState()
     {
+        if (!afterClimax) 
+        {
+            PlayerPrefs.SetInt("MovesAfterClimax", PlayerPrefs.GetInt("MovesAfterClimax") + 1);
+            afterClimax = true;
+        }
+
         if (feverPoints <= 0)
         {
             points--;
@@ -339,7 +347,6 @@ public class SatisfactionController : MonoBehaviour {
 
         else
         {
-            afterClimax = true;
             PlayerPrefs.SetInt("MovesInClimax", PlayerPrefs.GetInt("MovesInClimax") + 1);
             switch (gameManager.GetRhythmAccuracy())
             {

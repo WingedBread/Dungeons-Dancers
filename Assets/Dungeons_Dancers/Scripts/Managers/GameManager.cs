@@ -397,7 +397,7 @@ public class GameManager : MonoBehaviour
         }
         satisController.ResetSatisfaction();
         auController.UnmuteSound();
-        auController.PointsSnapshotCheck();
+        auController.PointsSnapshotCheck(satisController.pointsflag);
         uiController.ResetUI();
         uiController.SparklesUI(0);
         uiController.CollectibleUI(0);
@@ -408,16 +408,16 @@ public class GameManager : MonoBehaviour
 
     public void AddPoint()
     {
-        auController.PointsSnapshotCheck();
         satisController.AddPoint();
         uiController.AddPointUI();
+        auController.PointsSnapshotCheck(satisController.pointsflag);
     }
 
     public void RemovePoint()
     {
-        auController.PointsSnapshotCheck();
         satisController.RemovePoint();
         uiController.RemovePointUI();
+        auController.PointsSnapshotCheck(satisController.pointsflag);
     }
 
     public void SparkleBehaviour(int sparkles)
