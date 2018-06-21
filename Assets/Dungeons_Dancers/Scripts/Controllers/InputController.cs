@@ -90,7 +90,7 @@ public class InputController : MonoBehaviour
     void PlayerMoveInput()
     {
         //LEFT
-        if (Input.GetButtonDown(directions[0]) && Input.GetAxisRaw(directions[0]) < 0)
+        if (Input.GetAxisRaw(directions[0]) < 0)
         {
             if (!playerCollision.LeftCollision() && inputFlag && easingBool) 
             {
@@ -110,9 +110,8 @@ public class InputController : MonoBehaviour
         }
 
         //RIGHT
-        else if (Input.GetButtonDown(directions[0]) && Input.GetAxisRaw(directions[0]) > 0)
+        else if (Input.GetAxisRaw(directions[0]) > 0)
         {
-            
             if (!playerCollision.RightCollision() && inputFlag && easingBool)
             {
                 Sequence s = DOTween.Sequence();
@@ -132,7 +131,7 @@ public class InputController : MonoBehaviour
         }
 
         //DOWN
-        else if (Input.GetButtonDown(directions[1]) && Input.GetAxisRaw(directions[1]) < 0)
+        else if (Input.GetAxisRaw(directions[1]) < 0)
         {
             
             if (!playerCollision.DownCollision() && inputFlag && easingBool)
@@ -153,7 +152,7 @@ public class InputController : MonoBehaviour
         }
 
         //UP
-        else if (Input.GetButtonDown(directions[1]) && Input.GetAxisRaw(directions[1]) > 0)
+        else if (Input.GetAxisRaw(directions[1]) > 0)
         {
             if (!playerCollision.UpCollision() && inputFlag && easingBool)
             {
