@@ -12,6 +12,26 @@ public class WinBehaviour : MonoBehaviour {
 
 	private Camera mainCamera;
 
+    [Header("WinText Prefab")]
+    [SerializeField]
+    private GameObject winTextPrefab;
+
+    [Header("WinText Easing")]
+    [SerializeField]
+    private float winTextTime = 2;
+    [SerializeField]
+    private Ease easingInList = Ease.InExpo;
+    [SerializeField]
+    private Ease easingOutList = Ease.OutElastic;
+    [SerializeField]
+    private Vector3 inPositionVector3 = new Vector3(6.14f, 6, 3.15f);
+    [SerializeField]
+    private float easingInDuration = 0.5f;
+    [SerializeField]
+    private Vector3 outPositionVector3 = new Vector3(-12, 6, 3.15f);
+    [SerializeField]
+    private float easingOutDuration = 1f;
+
 	[Header("Camera Easing")]
 	[SerializeField]
 	private Ease cameraEasing;
@@ -45,6 +65,7 @@ public class WinBehaviour : MonoBehaviour {
 	private int sceneNum = 3;
 	bool[] done = new bool[3];
 
+    private GameObject instantiatedWinText;
 	private Vector3 ogMainCameraPosition;
 
 	// Use this for initialization
@@ -57,6 +78,7 @@ public class WinBehaviour : MonoBehaviour {
 		StartCoroutine(CameraCoroutine());
 		StartCoroutine(ParticlesCoroutine(player));
 		StartCoroutine(LightsCoroutine());
+        StartCoroutine(WinTextCoroutine());
 	}
 
 	public IEnumerator CameraCoroutine()
@@ -94,5 +116,14 @@ public class WinBehaviour : MonoBehaviour {
 		done[2] = true;
 		if (done[0] && done[1] && done[2]) SceneManager.LoadScene(sceneNum);
 		StopCoroutine("LightsCoroutine");
+    }
+
+    IEnumerator WinTextCoroutine()
+    {
+        instantiatedWinText = (GameObject)Instantiate(winTextPrefab, transform.parent);
+        Sequence g = DOTween.Sequence();
+        g.Append(instantiatedWinText.transform.DOLocalMove(inPositionVector3, easingInDuration).SetEase(easingInList));
+        yield return new WaitForSeconds(winTextTime);
+        g.Append(instantiatedWinText.transform.DOLocalMove(outPositionVector3, easingOutDuration).SetEase(easingOutList));
     }
 }

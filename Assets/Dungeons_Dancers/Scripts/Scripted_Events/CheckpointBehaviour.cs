@@ -29,15 +29,15 @@ public class CheckpointBehaviour : MonoBehaviour {
     [SerializeField]
     private float selfieTime = 2;
     [SerializeField]
-    private Ease easingInBeatList = Ease.InExpo;
+    private Ease easingInList = Ease.InExpo;
     [SerializeField]
-    private Ease easingOutBeatList = Ease.OutElastic;
+    private Ease easingOutList = Ease.OutElastic;
     [SerializeField]
-    private Vector3 inBeatPositionVector3 = new Vector3(6.14f, 6, 3.15f);
+    private Vector3 inPositionVector3 = new Vector3(6.14f, 6, 3.15f);
     [SerializeField]
     private float easingInDuration = 0.5f;
     [SerializeField]
-    private Vector3 outBeatPositionVector3 = new Vector3(-12, 6, 3.15f);
+    private Vector3 outPositionVector3 = new Vector3(-12, 6, 3.15f);
     [SerializeField]
     private float easingOutDuration = 1f;
 
@@ -71,11 +71,7 @@ public class CheckpointBehaviour : MonoBehaviour {
 
     public IEnumerator OnCheckpoint(GameObject currectcheckpoint)
 	{
-        instantiatedSelfie = (GameObject)Instantiate(selfiePrefab, transform.parent);
-        instantiatedSelfie.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = selfieSprites[Random.Range(0, selfieSprites.Length)];
-
         StartCoroutine(CheckpointSelfie());
-
 		instantiatedObj.Add((GameObject)Instantiate(emojiParticles, currectcheckpoint.transform));
 		flashUI.gameObject.SetActive(true);
         rainbowMouth.SetActive(true);
@@ -106,11 +102,28 @@ public class CheckpointBehaviour : MonoBehaviour {
         ResetCheckpoint();
 	}
 
-    IEnumerator CheckpointSelfie(){
-        Sequence g = DOTween.Sequence();
-        g.Append(instantiatedSelfie.transform.DOLocalMove(inBeatPositionVector3, easingInDuration).SetEase(easingInBeatList));
-        yield return new WaitForSeconds(selfieTime);
-        g.Append(instantiatedSelfie.transform.DOLocalMove(outBeatPositionVector3, easingOutDuration).SetEase(easingOutBeatList)).OnComplete(DestroySelfie);
+    IEnumerator CheckpointSelfie()
+    {
+        if (instantiatedSelfie != null)
+        {
+            Destroy(instantiatedSelfie);
+
+            instantiatedSelfie = (GameObject)Instantiate(selfiePrefab, transform.parent);
+            instantiatedSelfie.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = selfieSprites[Random.Range(0, selfieSprites.Length)];
+            Sequence g = DOTween.Sequence();
+            g.Append(instantiatedSelfie.transform.DOLocalMove(inPositionVector3, easingInDuration).SetEase(easingInList));
+            yield return new WaitForSeconds(selfieTime);
+            g.Append(instantiatedSelfie.transform.DOLocalMove(outPositionVector3, easingOutDuration).OnComplete(DestroySelfie).SetEase(easingOutList));
+        }
+        else
+        {
+            instantiatedSelfie = (GameObject)Instantiate(selfiePrefab, transform.parent);
+            instantiatedSelfie.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = selfieSprites[Random.Range(0, selfieSprites.Length)];
+            Sequence g = DOTween.Sequence();
+            g.Append(instantiatedSelfie.transform.DOLocalMove(inPositionVector3, easingInDuration).SetEase(easingInList));
+            yield return new WaitForSeconds(selfieTime);
+            g.Append(instantiatedSelfie.transform.DOLocalMove(outPositionVector3, easingOutDuration).OnComplete(DestroySelfie).SetEase(easingOutList));
+        }
     }
 
     public void ResetCheckpoint(){
@@ -136,7 +149,7 @@ public class CheckpointBehaviour : MonoBehaviour {
         StopCoroutine("OnCheckpoint");
     }
 
-    private void DestroySelfie()
+    void DestroySelfie()
     {
         Destroy(instantiatedSelfie);
         StopCoroutine("CheckpointSelfie");
