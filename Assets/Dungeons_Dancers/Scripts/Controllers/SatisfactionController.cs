@@ -6,6 +6,10 @@ public class SatisfactionController : MonoBehaviour {
     [Header("Game Manager")]
     private GameManager gameManager;
 
+    [Header("Climax Confeti")]
+    [SerializeField]
+    private GameObject climaxConfeti;
+
 	// --- Afegit pel Curial (pot ser que acabi modificant-se pel Jesús!) --- //
 	[Header("Satisfaction Bar modificators")]
     [SerializeField]
@@ -105,6 +109,7 @@ public class SatisfactionController : MonoBehaviour {
             { 
                 points = (int)TracksPosition[4];
                 gameManager.ClimaxUIBehaviour(feverPoints, true);
+                FeverState();
                 PointEvents();
             }
         }
@@ -334,6 +339,7 @@ public class SatisfactionController : MonoBehaviour {
     {
         if (!afterClimax) 
         {
+            Instantiate(climaxConfeti, transform);
             PlayerPrefs.SetInt("MovesAfterClimax", PlayerPrefs.GetInt("MovesAfterClimax") + 1);
             afterClimax = true;
         }
