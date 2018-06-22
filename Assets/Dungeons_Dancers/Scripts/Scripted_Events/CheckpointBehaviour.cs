@@ -48,7 +48,8 @@ public class CheckpointBehaviour : MonoBehaviour {
 	[SerializeField]
     private Sprite checkpointOld;
 
-    private GameObject instantiatedSelfie;
+    [SerializeField]
+    private List<GameObject> instantiatedSelfie = new List<GameObject>();
 
 	private List<GameObject> checkpoints = new List<GameObject>();
 
@@ -104,25 +105,23 @@ public class CheckpointBehaviour : MonoBehaviour {
 
     IEnumerator CheckpointSelfie()
     {
-        if (instantiatedSelfie != null)
+        instantiatedSelfie.Add((GameObject)Instantiate(selfiePrefab, transform.parent));
+        if (instantiatedSelfie.Count > 1)
         {
-            Destroy(instantiatedSelfie);
-
-            instantiatedSelfie = (GameObject)Instantiate(selfiePrefab, transform.parent);
-            instantiatedSelfie.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = selfieSprites[Random.Range(0, selfieSprites.Length)];
+            instantiatedSelfie[instantiatedSelfie.Count - 2].SetActive(false);
+            instantiatedSelfie[instantiatedSelfie.Count - 1].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = selfieSprites[Random.Range(0, selfieSprites.Length)];
             Sequence g = DOTween.Sequence();
-            g.Append(instantiatedSelfie.transform.DOLocalMove(inPositionVector3, easingInDuration).SetEase(easingInList));
+            g.Append(instantiatedSelfie[instantiatedSelfie.Count - 1].transform.DOLocalMove(inPositionVector3, easingInDuration).SetEase(easingInList));
             yield return new WaitForSeconds(selfieTime);
-            g.Append(instantiatedSelfie.transform.DOLocalMove(outPositionVector3, easingOutDuration).OnComplete(DestroySelfie).SetEase(easingOutList));
+            g.Append(instantiatedSelfie[instantiatedSelfie.Count - 1].transform.DOLocalMove(outPositionVector3, easingOutDuration).OnComplete(DestroySelfie).SetEase(easingOutList));
         }
         else
         {
-            instantiatedSelfie = (GameObject)Instantiate(selfiePrefab, transform.parent);
-            instantiatedSelfie.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = selfieSprites[Random.Range(0, selfieSprites.Length)];
+            instantiatedSelfie[0].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = selfieSprites[Random.Range(0, selfieSprites.Length)];
             Sequence g = DOTween.Sequence();
-            g.Append(instantiatedSelfie.transform.DOLocalMove(inPositionVector3, easingInDuration).SetEase(easingInList));
+            g.Append(instantiatedSelfie[0].transform.DOLocalMove(inPositionVector3, easingInDuration).SetEase(easingInList));
             yield return new WaitForSeconds(selfieTime);
-            g.Append(instantiatedSelfie.transform.DOLocalMove(outPositionVector3, easingOutDuration).OnComplete(DestroySelfie).SetEase(easingOutList));
+            g.Append(instantiatedSelfie[0].transform.DOLocalMove(outPositionVector3, easingOutDuration).OnComplete(DestroySelfie).SetEase(easingOutList));
         }
     }
 
@@ -151,7 +150,18 @@ public class CheckpointBehaviour : MonoBehaviour {
 
     void DestroySelfie()
     {
-        Destroy(instantiatedSelfie);
+
+        if (instantiatedSelfie.Count > 1)
+        {
+            Destroy(instantiatedSelfie[instantiatedSelfie.Count - 1]);
+            instantiatedSelfie.Remove(instantiatedSelfie[instantiatedSelfie.Count - 1]);
+
+        }
+        else
+        {
+            Destroy(instantiatedSelfie[0]);
+            instantiatedSelfie.Remove(instantiatedSelfie[0]);
+        }
         StopCoroutine("CheckpointSelfie");
     }
 }
