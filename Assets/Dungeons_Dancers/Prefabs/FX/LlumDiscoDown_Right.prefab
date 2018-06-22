@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 114636350303362110}
   - component: {fileID: 114269067322220220}
   - component: {fileID: 114697660536794408}
+  - component: {fileID: 114615861367228006}
   m_Layer: 0
   m_Name: LlumDiscoDown_Right
   m_TagString: Untagged
@@ -304,6 +305,38 @@ MonoBehaviour:
   offBeatRotationVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.05
   easingOffDuration: 0.1
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!114 &114615861367228006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1499102118222304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 00000000
+  beatBhv: 
+  scaleEasing: 0
+  moveEasing: 1
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 16, y: 17, z: 0}
+  offBeatPositionVector3: {x: 16, y: 17, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0
+  easingOffDuration: 0
   managerLS: 0
   managerPS: 0
   managerSS: 0

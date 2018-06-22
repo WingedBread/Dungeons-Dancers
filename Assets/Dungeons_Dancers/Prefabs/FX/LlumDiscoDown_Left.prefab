@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 114619107170119418}
   - component: {fileID: 114654365792819250}
   - component: {fileID: 114805987901086592}
+  - component: {fileID: 114405089290395394}
   m_Layer: 0
   m_Name: LlumDiscoDown_Left
   m_TagString: Untagged
@@ -128,9 +129,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821556068559698}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -16, y: 17, z: 0}
-  m_LocalScale: {x: 1.0000005, y: 1.0000005, z: 1.0000007}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4808054727067952}
   m_Father: {fileID: 0}
@@ -275,6 +276,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1604768647223862}
   m_Mesh: {fileID: 4300000, guid: c8488b27c088cb843b43a8d880fb2c7b, type: 2}
+--- !u!114 &114405089290395394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821556068559698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ec63548764744e99ce5c8d52e28f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 00000000
+  beatBhv: 
+  scaleEasing: 0
+  moveEasing: 1
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: -16, y: 17, z: 0}
+  offBeatPositionVector3: {x: -16, y: 17, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0
+  easingOffDuration: 0
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
 --- !u!114 &114619107170119418
 MonoBehaviour:
   m_ObjectHideFlags: 1
