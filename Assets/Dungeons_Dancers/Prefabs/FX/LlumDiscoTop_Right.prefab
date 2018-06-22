@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4089352405277982}
   - component: {fileID: 33541740476483868}
   - component: {fileID: 23719846367195522}
-  - component: {fileID: 114812779023105016}
   m_Layer: 0
   m_Name: Light_Cone
   m_TagString: Untagged
@@ -72,6 +71,7 @@ GameObject:
   - component: {fileID: 4644616520522322}
   - component: {fileID: 114415425970246426}
   - component: {fileID: 114835198161925738}
+  - component: {fileID: 114975962043450264}
   m_Layer: 0
   m_Name: LlumDiscoTop_Right
   m_TagString: Untagged
@@ -268,14 +268,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1071275274729776}
-  m_Mesh: {fileID: 4300006, guid: 77bc519551e354f4caf7b22b2556d5b8, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c8488b27c088cb843b43a8d880fb2c7b, type: 2}
 --- !u!33 &33826587185805802
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037904921175950}
-  m_Mesh: {fileID: 4300004, guid: 77bc519551e354f4caf7b22b2556d5b8, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 859cc2ab2e65bcb41a6115ab6f1872b1, type: 2}
 --- !u!114 &114415425970246426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,19 +340,6 @@ MonoBehaviour:
   managerLS: 0
   managerPS: 0
   managerSS: 0
---- !u!114 &114812779023105016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071275274729776}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7452b1f973b1c24e804dcd8445839b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalScrollSpeed: 0.5
-  verticalScrollSpeed: 0
 --- !u!114 &114835198161925738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,6 +369,38 @@ MonoBehaviour:
   offBeatRotationVector3: {x: 0, y: 0, z: 0}
   easingOnDuration: 0.1
   easingOffDuration: 0
+  managerLS: 0
+  managerPS: 0
+  managerSS: 0
+--- !u!114 &114975962043450264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381475053790166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8722875875f7d478a963ab6155e2e895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStates: 0
+  playerStates: 0
+  satisfactionStates: 0
+  levelEvents: 
+  beatBhv: 
+  scaleEasing: 0
+  moveEasing: 0
+  rotationEasing: 0
+  easingOffBeatList: 1
+  easingOnBeatList: 1
+  onBeatScaleVector3: {x: 1, y: 1, z: 1}
+  offBeatScaleVector3: {x: 1, y: 1, z: 1}
+  onBeatPositionVector3: {x: 0, y: 0, z: 0}
+  offBeatPositionVector3: {x: 0, y: 0, z: 0}
+  onBeatRotationVector3: {x: 0, y: 0, z: 0}
+  offBeatRotationVector3: {x: 0, y: 0, z: 0}
+  easingOnDuration: 0.05
+  easingOffDuration: 0.1
   managerLS: 0
   managerPS: 0
   managerSS: 0

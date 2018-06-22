@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4508452777719910}
   - component: {fileID: 33146854171178736}
   - component: {fileID: 23872629523670330}
-  - component: {fileID: 114318931410753064}
   m_Layer: 0
   m_Name: Light_Cone
   m_TagString: Untagged
@@ -181,7 +180,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448714788211544}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10, y: 3, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -204,7 +203,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 684be215792b3aa4d942c842d3789d0a, type: 2}
+  - {fileID: 2100000, guid: 593fcb567e9f03a4f9ef80581b831631, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -239,7 +238,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 971b8c95418ff4b4283e6b11bc2ce9d7, type: 2}
+  - {fileID: 2100000, guid: ff24ac33c17d0ac4c82c7b0d67756830, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -265,24 +264,11 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431733194980234}
-  m_Mesh: {fileID: 4300006, guid: 77bc519551e354f4caf7b22b2556d5b8, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c8488b27c088cb843b43a8d880fb2c7b, type: 2}
 --- !u!33 &33471673612671662
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551352829841508}
-  m_Mesh: {fileID: 4300004, guid: 77bc519551e354f4caf7b22b2556d5b8, type: 3}
---- !u!114 &114318931410753064
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431733194980234}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7452b1f973b1c24e804dcd8445839b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalScrollSpeed: 0.5
-  verticalScrollSpeed: 0
+  m_Mesh: {fileID: 4300000, guid: 859cc2ab2e65bcb41a6115ab6f1872b1, type: 2}
