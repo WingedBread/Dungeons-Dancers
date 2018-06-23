@@ -340,6 +340,7 @@ public class SatisfactionController : MonoBehaviour {
         if (!afterClimax) 
         {
             Instantiate(climaxConfeti, transform);
+
             PlayerPrefs.SetInt("MovesAfterClimax", PlayerPrefs.GetInt("MovesAfterClimax") + 1);
             afterClimax = true;
         }
