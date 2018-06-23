@@ -45922,6 +45922,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 114071045473640104, guid: a8f35a6bc5ce5974c96d5b131336c6d2,
+        type: 2}
+      propertyPath: lightsParent
+      value: 
+      objectReference: {fileID: 1913945684}
+    - target: {fileID: 114071045473640104, guid: a8f35a6bc5ce5974c96d5b131336c6d2,
+        type: 2}
+      propertyPath: cameraEndPos
+      value: 
+      objectReference: {fileID: 1913945683}
     - target: {fileID: 114556035211427726, guid: a8f35a6bc5ce5974c96d5b131336c6d2,
         type: 2}
       propertyPath: flashUI
@@ -45942,16 +45952,6 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1896864767}
-    - target: {fileID: 114071045473640104, guid: a8f35a6bc5ce5974c96d5b131336c6d2,
-        type: 2}
-      propertyPath: lightsParent
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114071045473640104, guid: a8f35a6bc5ce5974c96d5b131336c6d2,
-        type: 2}
-      propertyPath: cameraEndPos
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114888753541253494, guid: a8f35a6bc5ce5974c96d5b131336c6d2,
         type: 2}
       propertyPath: loseUI
@@ -52498,6 +52498,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e62773b0a38b38f4f904f14c8feaf207, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1913945683 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4498370840140358, guid: e62773b0a38b38f4f904f14c8feaf207,
+    type: 2}
+  m_PrefabInternal: {fileID: 1913945682}
+--- !u!1 &1913945684 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1118262288163850, guid: e62773b0a38b38f4f904f14c8feaf207,
+    type: 2}
+  m_PrefabInternal: {fileID: 1913945682}
 --- !u!1 &1920154245
 GameObject:
   m_ObjectHideFlags: 0

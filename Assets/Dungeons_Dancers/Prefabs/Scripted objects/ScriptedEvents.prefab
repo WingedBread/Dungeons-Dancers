@@ -113,6 +113,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winParticles: {fileID: 1247311384876784, guid: 19b29060522e71b478875e2b2a0f7dee,
     type: 2}
+  winTextPrefab: {fileID: 1343062511064904, guid: f2297d7c0fd124936b1f2e7a903bf2cb,
+    type: 2}
+  winTextTime: 2
+  easingInList: 17
+  easingOutList: 24
+  inPositionVector3: {x: 6.14, y: 6, z: 3.15}
+  easingInDuration: 0.5
+  outPositionVector3: {x: -12, y: 6, z: 3.15}
+  easingOutDuration: 1
   cameraEasing: 18
   lightsParent: {fileID: 0}
   cameraEndPos: {fileID: 0}
@@ -122,7 +131,7 @@ MonoBehaviour:
   cameraDuration: 1
   particlesDuration: 1.5
   lightsDuration: 1
-  sceneNum: 3
+  sceneNum: 2
 --- !u!114 &114556035211427726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,8 +148,22 @@ MonoBehaviour:
   flashUI: {fileID: 0}
   rainbowMouth: {fileID: 0}
   mobilePhone: {fileID: 0}
+  selfiePrefab: {fileID: 1978872966798058, guid: 074c3c4ee3779a24780348115477b5db,
+    type: 2}
+  selfieSprites:
+  - {fileID: 21300000, guid: 8b7b24d6139b0514f9183865bac1bfd2, type: 3}
+  - {fileID: 21300000, guid: 4caa4366714c08d4e9795c222ed572a5, type: 3}
+  - {fileID: 21300000, guid: 77f08373e1eeb474c8e158b0edcb75bd, type: 3}
+  selfieTime: 1
+  easingInList: 27
+  easingOutList: 17
+  inPositionVector3: {x: 6.14, y: 6, z: 3.15}
+  easingInDuration: 0.25
+  outPositionVector3: {x: -12, y: 6, z: 3.15}
+  easingOutDuration: 0.3
   checkpointPass: {fileID: 21300000, guid: 5bf27d9a625ed45658a4f9bb0772093e, type: 3}
   checkpointOld: {fileID: 21300000, guid: b02200a422ecf4c0dba8c86c92c38d63, type: 3}
+  instantiatedSelfie: []
   duration: 0.75
   player: {fileID: 0}
 --- !u!114 &114888753541253494
