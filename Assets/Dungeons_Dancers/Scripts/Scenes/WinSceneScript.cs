@@ -43,6 +43,8 @@ public class WinSceneScript : MonoBehaviour {
     private float ratingPercentage;
     private int totalMoves;
 
+    private SceneManagement sceneManagement;
+
     private string[] ratingLetterString = { "S+", "S", "A", "B", "C", "D", "E" };
     private string[] ratingLetterCaption = { "Dancing God", "Glorious Steps", "Fred Astaire", "Advanced", "Rookie", "Not bad", "Terrible Dancer" };
 
@@ -56,6 +58,7 @@ public class WinSceneScript : MonoBehaviour {
             ogSparklePos[i] = sparkles.transform.GetChild(i).localPosition;
             sparkles.transform.GetChild(i).position = new Vector3(Random.Range(-200, 200), Random.Range(-200, 200), 0);
         }
+        sceneManagement = GameObject.FindWithTag("SceneManagement").GetComponent<SceneManagement>();
         SparkleAnim();
         RatingBehaviour();
 
@@ -76,7 +79,7 @@ public class WinSceneScript : MonoBehaviour {
             sparkles.transform.GetChild(i).DOLocalMove(ogSparklePos[i], sparkleAnimuration).SetId("TweenSparkle").SetEase(initSparkleEase);
         }
     }
-    public void SelectScene(int i)
+    public void SelectScene()
     {
         PlayerPrefs.SetInt("TotalScore", 0);
         PlayerPrefs.SetInt("NumGoodMoves", 0);
@@ -86,7 +89,9 @@ public class WinSceneScript : MonoBehaviour {
         PlayerPrefs.SetInt("MovesInClimax", 0);
         PlayerPrefs.SetInt("MovesAfterClimax", 0);
         ratingPercentage = 0;
-        SceneManager.LoadScene(i);
+
+        if (sceneManagement.GetLastSceneNumber() == SceneManager.GetActiveScene().buildIndex - 1) SceneManager.LoadScene(0);
+        else SceneManager.LoadScene(sceneManagement.GetLastSceneNumber()+1);
     }
 
     void RatingBehaviour()
