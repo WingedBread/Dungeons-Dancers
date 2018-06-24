@@ -43,7 +43,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
     {
 		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 		Koreographer.Instance.RegisterForEvents(beatBhv, BeatDetection);
-        trapParticleSys = GetComponent<ParticleSystem>();
+        if(GetComponent<ParticleSystem>() != null) trapParticleSys = GetComponent<ParticleSystem>();
         childSpikes = transform.GetChild(0).GetChild(0).gameObject;
 	}
 
@@ -58,7 +58,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
     public void ActiveTrap()
     {
         activeTrapEvent = true;
-        trapParticleSys.Play();
+        if (trapParticleSys != null) trapParticleSys.Play();
         StartCoroutine(ColliderCoroutine());
         childSpikes.transform.DOLocalMove(trapMaxHeight, easingOnDuration, false).OnComplete(DisableTrap).SetEase(easingList);
     }
