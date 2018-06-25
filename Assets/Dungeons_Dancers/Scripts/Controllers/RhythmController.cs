@@ -128,7 +128,7 @@ public class RhythmController : MonoBehaviour
         }
 
 
-        if(!gameManager.GetPlayerInputFlag())
+        if(!gameManager.GetPlayerInputFlag() && inputCalcOnce)
         {
             CalculateTiming(sampleTime, kInputEvent);
             inputCalcOnce = false;
@@ -196,10 +196,11 @@ public class RhythmController : MonoBehaviour
 
     void CalculateTiming(int sampleTime, KoreographyEvent kCalcEvent)
     {
+       
         duration = kCalcEvent.EndSample - kCalcEvent.StartSample;
         segmentDuration = duration / 5;
         //percentPlus = (segmentDuration * 50)/100;
-
+        
         segment5 = kCalcEvent.EndSample - segmentDuration;
         segment4 = segment5 - segmentDuration;
         segment3 = segment4 - segmentDuration;
@@ -230,6 +231,7 @@ public class RhythmController : MonoBehaviour
             accuracy = 0;//Good
             //Debug.Log("GOOD 2 -> PushTime: " + sampleTime + "  --Start: " + segment5 + "  --End: " + kCalcEvent.EndSample); 
         }
+        Debug.Log("Accuracy: " + accuracy);
     }
 
     public int GetAccuracy()

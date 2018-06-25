@@ -82,9 +82,10 @@ public class InputFeedbackController : MonoBehaviour {
     public IEnumerator CorrectFeedbackText()
     {
         yield return new WaitForSeconds(textAppearTime);
-
+        Debug.Log("Input Feedback Accuracy: " + gameManager.GetRhythmAccuracy());
         switch (gameManager.GetRhythmAccuracy())
         {
+            
             case 0: //Good
                 instantiatedParticlesGO.Add((GameObject)Instantiate(goodTextParticle, transform.parent.parent));
                 particlesGO = instantiatedParticlesGO[instantiatedParticlesGO.Count - 1];
