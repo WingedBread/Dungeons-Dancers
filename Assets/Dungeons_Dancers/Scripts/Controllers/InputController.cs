@@ -217,4 +217,5 @@ public class InputController : MonoBehaviour
     public bool GetEasingEnd(){
         return easingBool;
     }
+
 }

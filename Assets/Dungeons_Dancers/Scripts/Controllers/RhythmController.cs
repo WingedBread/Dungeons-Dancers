@@ -27,8 +27,6 @@ public class RhythmController : MonoBehaviour
 
     private double percentPlus;
 
-    bool inputCalcOnce = true;
-
     [SerializeField]
     private bool debugEnable;
     // Use this for initialization
@@ -128,10 +126,9 @@ public class RhythmController : MonoBehaviour
         }
 
 
-        if(!gameManager.GetPlayerInputFlag() && inputCalcOnce)
+        if(!gameManager.GetPlayerInputFlag())
         {
             CalculateTiming(sampleTime, kInputEvent);
-            inputCalcOnce = false;
         } 
 
         if (sampleTime < kInputEvent.EndSample)
@@ -141,7 +138,6 @@ public class RhythmController : MonoBehaviour
         else
         {
             activePlayerInputEvent = false;
-            inputCalcOnce = true;
         }
 
     }

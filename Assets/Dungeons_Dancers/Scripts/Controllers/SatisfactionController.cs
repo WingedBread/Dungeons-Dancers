@@ -241,7 +241,13 @@ public class SatisfactionController : MonoBehaviour {
         }
         else if (points >= TracksPosition[4] && pointsflag != 4)
         {
-            climaxConfeti.SetActive(true);
+            
+            for (int i = 0; i < climaxConfeti.transform.childCount; i++)
+            {
+                climaxConfeti.transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+                climaxConfeti.transform.GetChild(i).GetComponent<ParticleSystem>().Play();
+            } 
+
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
                 gameManager.levelEventsAudios[i].SatisfactionClimax();

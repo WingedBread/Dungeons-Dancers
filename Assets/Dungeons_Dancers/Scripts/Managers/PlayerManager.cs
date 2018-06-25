@@ -131,7 +131,6 @@ public class PlayerManager : MonoBehaviour
             gameManager.levelEventsEasing4[i].GoodMove();
         }
         //mat.color = Color.green;
-        gameManager.AddPoint();
         StartCoroutine(ReturnIdle());
         StartCoroutine(inputFeedback.CorrectFeedbackText());
         while (inputController.GetEasingEnd() == false)
@@ -139,6 +138,7 @@ public class PlayerManager : MonoBehaviour
             yield return null;
         }
         inputFeedback.CorrectFeedbackTrail();
+        gameManager.AddPoint();
     }
 
     public IEnumerator IncorrectInput()
@@ -173,13 +173,13 @@ public class PlayerManager : MonoBehaviour
             gameManager.levelEventsEasing4[i].WrongMove();
         }
         //mat.color = Color.red;
-        gameManager.RemovePoint();
         StartCoroutine(ReturnIdle());
         while (inputController.GetEasingEnd() == false)
         {
             yield return null;
         }
         inputFeedback.IncorrectFeedbackBehaviour();
+        gameManager.RemovePoint();
     }
 
     public IEnumerator ReturnIdle()
