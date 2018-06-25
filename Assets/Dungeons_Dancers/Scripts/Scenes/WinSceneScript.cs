@@ -8,6 +8,9 @@ public class WinSceneScript : MonoBehaviour {
     [Header("Score Text")]
     [SerializeField]
     private TextMeshProUGUI highscore;
+    [Header("Dungeon")]
+    [SerializeField]
+    private TextMeshProUGUI dungeonName;
 
     [Header("Rating Texts")]
     [SerializeField]
@@ -48,17 +51,20 @@ public class WinSceneScript : MonoBehaviour {
     private string[] ratingLetterString = { "S+", "S", "A", "B", "C", "D", "E" };
     private string[] ratingLetterCaption = { "Dancing God", "Glorious Steps", "Fred Astaire", "Advanced", "Rookie", "Not bad", "Terrible Dancer" };
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    private void Awake()
+    {
+        sceneManagement = GameObject.FindWithTag("SceneManagement").GetComponent<SceneManagement>();
+    }
+    void Start () {
         highscore.gameObject.SetActive(false);
         highscore.text = PlayerPrefs.GetInt("TotalScore").ToString();
-
         for (int i = 0; i < sparkles.transform.childCount; i++)
         {
             ogSparklePos[i] = sparkles.transform.GetChild(i).localPosition;
             sparkles.transform.GetChild(i).position = new Vector3(Random.Range(-200, 200), Random.Range(-200, 200), 0);
         }
-        sceneManagement = GameObject.FindWithTag("SceneManagement").GetComponent<SceneManagement>();
+        dungeonName.text = "Dungeon " + sceneManagement.GetLastSceneNumber().ToString();
         SparkleAnim();
         RatingBehaviour();
 

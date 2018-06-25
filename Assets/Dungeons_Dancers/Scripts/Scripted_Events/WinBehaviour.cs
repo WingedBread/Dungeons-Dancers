@@ -120,6 +120,7 @@ public class WinBehaviour : MonoBehaviour {
 
     IEnumerator WinTextCoroutine()
     {
+        yield return new WaitForSeconds(cameraDelayDuration);
         instantiatedWinText = (GameObject)Instantiate(winTextPrefab, transform.parent);
         Sequence g = DOTween.Sequence();
         g.Append(instantiatedWinText.transform.DOLocalMove(inPositionVector3, easingInDuration).SetEase(easingInList));
