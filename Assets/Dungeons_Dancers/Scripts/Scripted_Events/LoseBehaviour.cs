@@ -61,6 +61,12 @@ public class LoseBehaviour : MonoBehaviour {
 
     private GameObject instantiatedGO;
 
+    [Header("Colors")]
+    [SerializeField]
+    private Color loseUIFondoColor;
+    [SerializeField]
+    private Color loseUIFaceColor;
+
     private void Start()
     {
 		mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>(); // Curial add: ScreenShake
@@ -70,8 +76,8 @@ public class LoseBehaviour : MonoBehaviour {
 
     public IEnumerator OnLose(PlayerManager playerM)
 	{
-        loseUIFondo.color = new Vector4(0, 0, 0, 0);
-        loseUIFace.color = new Vector4(255, 0, 0, 0);
+        loseUIFondo.color = loseUIFondoColor;
+        loseUIFace.color = loseUIFaceColor;
         ActivateUI(false);
         player = playerM;
 		mainCamera.gameObject.transform.DOShakeRotation(ShakeDuration, ShakeRotationStrenght, ShakeVibration, Randomness, FadeOut); // Curial add: ScreenShake
