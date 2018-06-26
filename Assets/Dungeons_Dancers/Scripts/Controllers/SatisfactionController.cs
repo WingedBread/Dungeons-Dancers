@@ -51,7 +51,7 @@ public class SatisfactionController : MonoBehaviour {
 	
     public void AddPoint()
     {
-        Debug.Log("Ponts Before: " + points);
+        //Debug.Log("Ponts Before: " + points);
         if (afterClimax) PlayerPrefs.SetInt("MovesAfterClimax", PlayerPrefs.GetInt("MovesAfterClimax") + 1);
 
         if (points >= TracksPosition[4])
@@ -60,18 +60,18 @@ public class SatisfactionController : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Satisfaction Points Accuracy: " + gameManager.GetRhythmAccuracy());
+            //Debug.Log("Satisfaction Points Accuracy: " + gameManager.GetRhythmAccuracy());
             switch (gameManager.GetRhythmAccuracy())
             {
                 case 0:
                     points = points + ScoreGood;
-                    Debug.Log("Ponts After Good: " + points);
+                    //Debug.Log("Ponts After Good: " + points);
                     PlayerPrefs.SetInt("NumGoodMoves", PlayerPrefs.GetInt("NumGoodMoves") + 1);
                     PointEvents();
                     break;
                 case 1:
                     points = points + ScorePerfect;
-                    Debug.Log("Ponts After Perfect: " + points);
+                    //Debug.Log("Ponts After Perfect: " + points);
                     PlayerPrefs.SetInt("NumPerfectMoves", PlayerPrefs.GetInt("NumPerfectMoves") + 1);
                     for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
                     {
@@ -105,7 +105,7 @@ public class SatisfactionController : MonoBehaviour {
                     break;
                 case 2:
                     points = points + ScoreGreat;
-                    Debug.Log("Ponts After Great: " + points);
+                    //Debug.Log("Ponts After Great: " + points);
                     PlayerPrefs.SetInt("NumGreatMoves", PlayerPrefs.GetInt("NumGreatMoves") + 1);
                     PointEvents();
                     break;
@@ -302,7 +302,7 @@ public class SatisfactionController : MonoBehaviour {
         else
         {
             points = points - ScoreBad;
-            Debug.Log("Ponts After Bad: " + points);
+            //Debug.Log("Ponts After Bad: " + points);
             PointEvents();
 
             if (points <= TracksPosition[0]) 

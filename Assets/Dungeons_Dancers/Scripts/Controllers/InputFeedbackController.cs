@@ -82,7 +82,7 @@ public class InputFeedbackController : MonoBehaviour {
     public IEnumerator CorrectFeedbackText()
     {
         yield return new WaitForSeconds(textAppearTime);
-        Debug.Log("Input Feedback Accuracy: " + gameManager.GetRhythmAccuracy());
+        //Debug.Log("Input Feedback Accuracy: " + gameManager.GetRhythmAccuracy());
         switch (gameManager.GetRhythmAccuracy())
         {
             

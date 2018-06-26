@@ -108,8 +108,8 @@ public class WinSceneScript : MonoBehaviour {
         perfectText.text = PlayerPrefs.GetInt("NumPerfectMoves").ToString();
         climaxText.text = PlayerPrefs.GetInt("MovesInClimax").ToString();
         totalMoves = PlayerPrefs.GetInt("NumGoodMoves") + PlayerPrefs.GetInt("NumGreatMoves") + PlayerPrefs.GetInt("NumPerfectMoves") + PlayerPrefs.GetInt("NumBadMoves");
-        Debug.Log("TotalMoves " + totalMoves);
-        Debug.Log("MovesAfterClimax " + PlayerPrefs.GetInt("MovesAfterClimax"));
+        //Debug.Log("TotalMoves " + totalMoves);
+        //Debug.Log("MovesAfterClimax " + PlayerPrefs.GetInt("MovesAfterClimax"));
         ratingPercentage = (((((PlayerPrefs.GetInt("NumGoodMoves") * 0.7f) + (PlayerPrefs.GetInt("NumGreatMoves") * 0.9f) + (PlayerPrefs.GetInt("NumPerfectMoves")) - (PlayerPrefs.GetInt("NumBadMoves") * 0.2f)) / totalMoves) * 100) * 0.85f) + (((PlayerPrefs.GetInt("MovesInClimax") / PlayerPrefs.GetInt("MovesAfterClimax")) * 100) * 0.15f);
         ratingText.text = ratingPercentage.ToString("0.00") + "%";
 

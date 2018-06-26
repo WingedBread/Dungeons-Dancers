@@ -230,7 +230,7 @@ public class RhythmController : MonoBehaviour
             accuracy = 0;//Good
             //Debug.Log("GOOD 2 -> PushTime: " + sampleTime + "  --Start: " + segment5 + "  --End: " + kCalcEvent.EndSample); 
         }
-        Debug.Log("Accuracy: " + accuracy);
+        //Debug.Log("Accuracy: " + accuracy);
     }
 
     public int GetAccuracy()
