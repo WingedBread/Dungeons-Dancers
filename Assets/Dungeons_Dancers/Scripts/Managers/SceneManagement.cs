@@ -20,7 +20,6 @@ public class SceneManagement : MonoBehaviour
         if (lastSceneIndex != sceneIndex)
         {
             lastSceneIndex = sceneIndex;
-            Debug.Log("unloaded scene is : " + lastSceneIndex);
         }
     }
     public int GetLastSceneNumber()
