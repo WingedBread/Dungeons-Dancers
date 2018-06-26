@@ -160,6 +160,8 @@ public class UIController: MonoBehaviour {
         for(int i = 0; i< satisBar3D.Length; i++)
         {
 			satisBarHeight[i] = Mathf.Clamp((gameManager.GetPoints(0, 1, 0) / initsatisHeight[i]),0,initsatisHeight[i]);
+            //Por arreglar mejor
+            if (satisBarHeight[i] <= 0) satisBarHeight[i] = 0.0000001f;
             satisBar3D[i].transform.localScale = new Vector3(satisBar3D[i].transform.localScale.x, satisBarHeight[i], satisBar3D[i].transform.localScale.z);
         }
     }
