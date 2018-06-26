@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -67,6 +66,10 @@ public class LoseBehaviour : MonoBehaviour {
     [SerializeField]
     private Color loseUIFaceColor;
 
+    [Header("First Button Selected on Retry")]
+    [SerializeField]
+    private Button firstButton;
+
     private void Start()
     {
 		mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>(); // Curial add: ScreenShake
@@ -106,5 +109,6 @@ public class LoseBehaviour : MonoBehaviour {
         for (int i = 2; i < loseUI.transform.childCount; i++){
             loseUI.transform.GetChild(i).gameObject.SetActive(active);
         }
+        if(active) firstButton.Select();
     }
 }
