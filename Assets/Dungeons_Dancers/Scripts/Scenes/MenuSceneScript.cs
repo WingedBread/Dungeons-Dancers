@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 using SonicBloom.Koreo;
 using System.Collections;
 using SonicBloom.Koreo.Players;
+using TMPro;
 
 public class MenuSceneScript : MonoBehaviour {
 
     private SimpleMusicPlayer splayer;
 
     [SerializeField]
-    private Text startText;
+    private TextMeshProUGUI startText;
     [SerializeField]
     private Image logoImage;
     [SerializeField]
