@@ -62,13 +62,28 @@ public class InputFeedbackController : MonoBehaviour {
     private GameObject particlesGO;
     private GameObject childGO;
 
+    [Header("Hit Particle System Prefab")]
+    [SerializeField]
+    private GameObject playerHitParticleSystem;
+    [SerializeField]
+    private float hitTime;
+
+    private GameObject instantiatedPlayerHit;
+
 	// Use this for initialization
 	void Start () {
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
 	}
 	
 
-
+    public IEnumerator HitParticleSystem()
+    {
+        instantiatedPlayerHit =  (GameObject)Instantiate(playerHitParticleSystem, transform.parent.parent);
+        instantiatedPlayerHit.transform.position = new Vector3(transform.parent.GetChild(1).position.x, playerHitParticleSystem.transform.position.y, transform.parent.GetChild(1).position.z);
+        yield return new WaitForSeconds(hitTime);
+        Destroy(instantiatedPlayerHit);
+        StopCoroutine("HitParticleSystem");
+    }
 
     public void CorrectFeedbackTrail()
     {

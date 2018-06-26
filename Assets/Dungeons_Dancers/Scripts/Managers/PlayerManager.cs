@@ -37,12 +37,9 @@ public class PlayerManager : MonoBehaviour
     private Vector3 spawnInitPosition;
     private List<GameObject> collectibles = new List<GameObject>();
 
-    [Header("Particle System")]
+    [Header("Sparkle Particle System")]
     [SerializeField]
-    private GameObject sparkleParticleSystem;
-    [SerializeField]
-    private GameObject playerHitParticleSystem;
-
+    private GameObject[] sparkleParticleSystem = new GameObject[20];
 
 
     // Use this for initialization
@@ -242,12 +239,7 @@ public class PlayerManager : MonoBehaviour
 
     public void TrapBehaviour()
     {
-        for (int i = 0; i < playerHitParticleSystem.transform.childCount; i++)
-        {
-            playerHitParticleSystem.transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
-            playerHitParticleSystem.transform.GetChild(i).GetComponent<ParticleSystem>().Play();
-        } 
-
+        StartCoroutine(inputFeedback.HitParticleSystem());
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
             gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Hit);
@@ -288,10 +280,13 @@ public class PlayerManager : MonoBehaviour
 
     public void SparkleBehaviour(Collider col,bool sparkleType)
     {
-        for (int i = 0; i < sparkleParticleSystem.transform.childCount; i++)
+        for (int w = 0; w < sparkleParticleSystem.Length; w++)
         {
-            sparkleParticleSystem.transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
-            sparkleParticleSystem.transform.GetChild(i).GetComponent<ParticleSystem>().Play();
+            for (int i = 0; i < sparkleParticleSystem[w].transform.childCount; i++)
+            {
+                sparkleParticleSystem[w].transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+                sparkleParticleSystem[w].transform.GetChild(i).GetComponent<ParticleSystem>().Play();
+            }
         }
 
         collectibles.Add(col.gameObject);
