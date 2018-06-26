@@ -94,6 +94,7 @@ public class InputController : MonoBehaviour
         {
             if (!playerCollision.LeftCollision() && inputFlag && easingBool) 
             {
+                playerManager.CalculateRhythm();
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveX(transform.position.x - speed, easingSpeedDuration, false)).OnComplete(EasingBool).SetEase(easingSpeedList);
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration/2, false)).SetEase(easingJumpList);
@@ -114,6 +115,7 @@ public class InputController : MonoBehaviour
         {
             if (!playerCollision.RightCollision() && inputFlag && easingBool)
             {
+                playerManager.CalculateRhythm();
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveX(transform.position.x + speed, easingSpeedDuration, false)).OnComplete(EasingBool).SetEase(easingSpeedList);
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false)).SetEase(easingJumpList);
@@ -136,6 +138,7 @@ public class InputController : MonoBehaviour
             
             if (!playerCollision.DownCollision() && inputFlag && easingBool)
             {
+                playerManager.CalculateRhythm();
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveZ(transform.position.z - speed, easingSpeedDuration, false)).OnComplete(EasingBool).SetEase(easingSpeedList);
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false)).SetEase(easingJumpList);
@@ -156,6 +159,7 @@ public class InputController : MonoBehaviour
         {
             if (!playerCollision.UpCollision() && inputFlag && easingBool)
             {
+                playerManager.CalculateRhythm();
                 Sequence s = DOTween.Sequence();
                 s.Append(transform.DOMoveZ(transform.position.z + speed, easingSpeedDuration, false)).OnComplete(EasingBool).SetEase(easingSpeedList);
                 s.Insert(0, transform.GetChild(0).GetChild(0).DOLocalMoveY(transform.position.y + jump, easingSpeedDuration / 2, false)).SetEase(easingJumpList);

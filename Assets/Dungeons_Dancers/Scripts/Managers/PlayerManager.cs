@@ -502,4 +502,8 @@ public class PlayerManager : MonoBehaviour
 
         }
     }
+
+    public void CalculateRhythm(){
+        gameManager.CalculateRhythm();
+    }
 }

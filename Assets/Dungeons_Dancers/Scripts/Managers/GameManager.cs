@@ -470,7 +470,10 @@ public class GameManager : MonoBehaviour
 
         else return 0;
     }
-
+    public void CalculateRhythm()
+    {
+        rhythmController.CalculateTiming();
+    }
     public bool GetPlayerBlock()
     {
         return playerManager.GetBlock();
