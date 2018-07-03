@@ -18,23 +18,25 @@ public class StaticTrapBehaviour : MonoBehaviour {
     [SerializeField]
     private Vector3 trapMinHeight;
     [Header("Choose Easing")]
-    [SerializeField]
-    private Ease easingList;
     [Header("Easing Duration On Beat")]
     [SerializeField]
+	private Ease easingOn;
+	[SerializeField]
     private float easingOnDuration;
     [Header("Easing Duration Off Beat")]
+	[SerializeField]
+	private Ease easingOff;
     [SerializeField]
     private float easingOffDuration;
-
-	[Header("Collision Time Division")]
 	[SerializeField]
-	private float colTime = 2f;
+	private float easingOffLong = 0.46f;
 
     [Header("Particle System")]
     private ParticleSystem trapParticleSys;
 
-    private bool activeTrapEvent;
+    private bool activeTrapEvent = false;
+
+	private int beatCounter = 0;	// For debug beats with behaviour
 
     private GameObject childSpikes;
 
@@ -49,36 +51,36 @@ public class StaticTrapBehaviour : MonoBehaviour {
 
 	void BeatDetection(KoreographyEvent evt)
     {
-        if (gameManager.GetGameStatus())
-        {
-            if (!activeTrapEvent) ActiveTrap();
-        }
+		if (gameManager.GetGameStatus())
+		{
+			ActiveTrap();
+			// Debug Things
+			//Debug.Log ("Beat Bhv num: " + beatCounter + " | Trap State: " + activeTrapEvent);
+			//beatCounter++;
+		}
     }
 	
     public void ActiveTrap()
     {
-        activeTrapEvent = true;
-        if (trapParticleSys != null) trapParticleSys.Play();
-        StartCoroutine(ColliderCoroutine());
-        childSpikes.transform.DOLocalMove(trapMaxHeight, easingOnDuration, false).OnComplete(DisableTrap).SetEase(easingList);
+		if (activeTrapEvent == false) {
+			activeTrapEvent = true;
+			gameObject.GetComponent<Collider> ().enabled = true;
+			if (trapParticleSys != null)
+				trapParticleSys.Play ();
+			childSpikes.transform.DOLocalMove (trapMaxHeight, easingOnDuration, false).SetEase(easingOn);
+			// Afegir una seqüència de tancament lent
+			/*
+			Sequence SpikesUpDown = DOTween.Sequence();
+			SpikesUpDown.Append(childSpikes.transform.DOLocalMove(trapMaxHeight, easingOnDuration,false).SetEase(easingOn));
+			//SpikesUpDown.PrependInterval (0.1);
+			SpikesUpDown.Append(childSpikes.transform.DOLocalMove(trapMinHeight, easingOffLong, false).SetEase(easingOff));
+			*/
+		} else if (activeTrapEvent == true) {
+			activeTrapEvent = false;
+			gameObject.GetComponent<Collider>().enabled = false;
+			childSpikes.transform.DOLocalMove(trapMinHeight, easingOffDuration, false).SetEase(easingOff);
+		}
     }
-
-    public void DisableTrap()
-    {
-        activeTrapEvent = false;
-        childSpikes.transform.DOLocalMove(trapMinHeight, easingOffDuration, false).SetEase(easingList);
-    }   
-   
-    private IEnumerator ColliderCoroutine()
-    {
-		yield return new WaitForSeconds(easingOnDuration / colTime);
-        gameObject.GetComponent<Collider>().enabled = true;
-		yield return new WaitForSeconds(easingOffDuration / colTime);
-        gameObject.GetComponent<Collider>().enabled = false;
-        StopCoroutine("ColliderCoroutine");
-
-    }
-
 	public int GetActiveTrap()
 	{
 		if (activeTrapEvent)

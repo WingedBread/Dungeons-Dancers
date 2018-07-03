@@ -239,7 +239,8 @@ public class PlayerManager : MonoBehaviour
 
     public void TrapBehaviour()
     {
-        StartCoroutine(inputFeedback.HitParticleSystem());
+        //StartCoroutine(inputFeedback.HitParticleSystem());
+		inputFeedback.HitFeedback(); // Prova Curial
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
             gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Hit);
