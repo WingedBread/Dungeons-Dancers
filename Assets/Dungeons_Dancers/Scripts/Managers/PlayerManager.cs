@@ -281,47 +281,50 @@ public class PlayerManager : MonoBehaviour
 
     public void SparkleBehaviour(Collider col,bool sparkleType)
     {
-        for (int w = 0; w < sparkleParticleSystem.Length; w++)
+        if (sparkleParticleSystem != null)
         {
-            for (int i = 0; i < sparkleParticleSystem[w].transform.childCount; i++)
+            for (int w = 0; w < sparkleParticleSystem.Length; w++)
             {
-                sparkleParticleSystem[w].transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
-                sparkleParticleSystem[w].transform.GetChild(i).GetComponent<ParticleSystem>().Play();
+                for (int i = 0; i < sparkleParticleSystem[w].transform.childCount; i++)
+                {
+                    sparkleParticleSystem[w].transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+                    sparkleParticleSystem[w].transform.GetChild(i).GetComponent<ParticleSystem>().Play();
+                }
             }
-        }
 
-        collectibles.Add(col.gameObject);
-        collectiblesController.AddSparkles(sparkleType);
-        col.gameObject.SetActive(false);
-        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
-        {
-            gameManager.levelEventsAudios[i].GetSparkle();
+            collectibles.Add(col.gameObject);
+            collectiblesController.AddSparkles(sparkleType);
+            col.gameObject.SetActive(false);
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].GetSparkle();
+            }
+            for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+            {
+                gameManager.levelEventsMaterials[i].GetSparkle();
+            }
+            for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+            {
+                gameManager.levelEventsColors[i].GetSparkle();
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+            {
+                gameManager.levelEventsEasing1[i].GetSparkle();
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+            {
+                gameManager.levelEventsEasing2[i].GetSparkle();
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+            {
+                gameManager.levelEventsEasing3[i].GetSparkle();
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+            {
+                gameManager.levelEventsEasing4[i].GetSparkle();
+            }
+            gameManager.SparkleBehaviour(collectiblesController.GetSparkles(gameManager.GetSatisfactionFever()));
         }
-		for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
-        {
-            gameManager.levelEventsMaterials[i].GetSparkle();
-        }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
-        {
-            gameManager.levelEventsColors[i].GetSparkle();
-        }
-        for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
-        {
-            gameManager.levelEventsEasing1[i].GetSparkle();
-        }
-        for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
-        {
-            gameManager.levelEventsEasing2[i].GetSparkle();
-        }
-        for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
-        {
-            gameManager.levelEventsEasing3[i].GetSparkle();
-        }
-        for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
-        {
-            gameManager.levelEventsEasing4[i].GetSparkle();
-        }
-        gameManager.SparkleBehaviour(collectiblesController.GetSparkles(gameManager.GetSatisfactionFever()));
     }
 
     public void KeyBehaviour(Collider col)

@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviour
 
     private void Pause()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Submit"))
         {
             if (Time.timeScale > 0)
             {

@@ -56,7 +56,7 @@ public class MenuSceneScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Submit"))
         {
             splayer.Stop();
             Koreographer.Instance.UnregisterForEvents(eventID_text, FadeText);
