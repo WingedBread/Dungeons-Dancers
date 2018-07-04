@@ -33150,6 +33150,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1157852984}
+--- !u!1 &1158645217 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1439201233519262, guid: b232df0317a244d7bbd62de247f3daa8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1582636868}
+--- !u!81 &1158645218
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1158645217}
+  m_Enabled: 1
 --- !u!1 &1161243100
 GameObject:
   m_ObjectHideFlags: 0
@@ -34729,25 +34741,10 @@ Prefab:
       propertyPath: m_Name
       value: StaticTrap (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 114318875892488202, guid: d7ee86a92eabc2640b11131515b18080,
+    - target: {fileID: 82837715132083030, guid: d7ee86a92eabc2640b11131515b18080,
         type: 2}
-      propertyPath: easingOffDuration
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114318875892488202, guid: d7ee86a92eabc2640b11131515b18080,
-        type: 2}
-      propertyPath: beatBhv
-      value: Track1Event
-      objectReference: {fileID: 0}
-    - target: {fileID: 65977324483521158, guid: d7ee86a92eabc2640b11131515b18080,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65977324483521158, guid: d7ee86a92eabc2640b11131515b18080,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: MaxDistance
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7ee86a92eabc2640b11131515b18080, type: 2}
@@ -44852,7 +44849,8 @@ Prefab:
       propertyPath: field of view
       value: 40
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 81695096874888988, guid: da70f3539cacc574d8e14966e474df8a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: da70f3539cacc574d8e14966e474df8a, type: 2}
   m_IsPrefabParent: 0
 --- !u!43 &1651678960

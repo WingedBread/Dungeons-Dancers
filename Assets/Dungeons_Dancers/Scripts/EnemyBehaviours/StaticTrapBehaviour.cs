@@ -5,6 +5,7 @@ using DG.Tweening;
 using SonicBloom.Koreo;
 
 public class StaticTrapBehaviour : MonoBehaviour {
+	private AudioSource audioSource;
 
 	[Header("Choose Beat Behaviour")]
     [EventID]
@@ -28,8 +29,11 @@ public class StaticTrapBehaviour : MonoBehaviour {
 	private Ease easingOff;
     [SerializeField]
     private float easingOffDuration;
+	//[SerializeField]
+	//private float easingOffLong = 0.46f;
+	[Header("Sounds")]
 	[SerializeField]
-	private float easingOffLong = 0.46f;
+	private AudioClip ActiveSound;
 
     [Header("Particle System")]
     private ParticleSystem trapParticleSys;
@@ -47,6 +51,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
 		Koreographer.Instance.RegisterForEvents(beatBhv, BeatDetection);
         if(GetComponent<ParticleSystem>() != null) trapParticleSys = GetComponent<ParticleSystem>();
         childSpikes = transform.GetChild(0).GetChild(0).gameObject;
+		if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
 	}
 
 	void BeatDetection(KoreographyEvent evt)
@@ -59,25 +64,33 @@ public class StaticTrapBehaviour : MonoBehaviour {
 			//beatCounter++;
 		}
     }
-	
+
+	// ActiveTrap gestiona l'activació/desactivació de la trampa a cada Beat del seu comportament
     public void ActiveTrap()
     {
 		if (activeTrapEvent == false) {
 			activeTrapEvent = true;
+
+			// Activem el collider
 			gameObject.GetComponent<Collider> ().enabled = true;
+
+			// Disparem les partícules de la trampa (Mirar com fer-no a partir de la gestió de la distància)
 			if (trapParticleSys != null)
 				trapParticleSys.Play ();
+			
+			// Fem aparèixer la trampa
 			childSpikes.transform.DOLocalMove (trapMaxHeight, easingOnDuration, false).SetEase(easingOn);
-			// Afegir una seqüència de tancament lent
-			/*
-			Sequence SpikesUpDown = DOTween.Sequence();
-			SpikesUpDown.Append(childSpikes.transform.DOLocalMove(trapMaxHeight, easingOnDuration,false).SetEase(easingOn));
-			//SpikesUpDown.PrependInterval (0.1);
-			SpikesUpDown.Append(childSpikes.transform.DOLocalMove(trapMinHeight, easingOffLong, false).SetEase(easingOff));
-			*/
+
+			// Fem sonar el so de la trampa
+			audioSource.clip = ActiveSound;
+			audioSource.Play();
+
 		} else if (activeTrapEvent == true) {
 			activeTrapEvent = false;
+
+			// Desactivem el collider
 			gameObject.GetComponent<Collider>().enabled = false;
+			// Fem desaparèixer la trampa
 			childSpikes.transform.DOLocalMove(trapMinHeight, easingOffDuration, false).SetEase(easingOff);
 		}
     }
