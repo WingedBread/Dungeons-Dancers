@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 114012827352407334}
   - component: {fileID: 54800038817632464}
   - component: {fileID: 65373426875195362}
+  - component: {fileID: 82093296211926544}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Trap
@@ -1316,7 +1317,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1300567745086316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0, z: 0.5}
+  m_LocalPosition: {x: -7.5, y: 0, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4893669637918412}
@@ -1769,6 +1770,101 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!82 &82093296211926544
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1300567745086316}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 3
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.2535553
+      value: 0.5025482
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2
+      outSlope: -2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95231422315208966
 Animator:
   serializedVersion: 3
@@ -1798,12 +1894,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcc01e6b065149b99ae6c9bfcc33530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatBhv: Trap1Event
+  beatBhv: Trap3Event
   timeIdle: 0.1
   _rotationUP: {x: 45, y: 0, z: 0}
   _rotationDOWN: {x: -45, y: 180, z: 0}
   _rotationLEFT: {x: 0, y: -90, z: -45}
   _rotationRIGHT: {x: 0, y: 90, z: 45}
+  initDirection: 0
+  ActiveSound: {fileID: 8300000, guid: 0c3fc98a8565d2a46bb7bf040d7d2443, type: 3}
 --- !u!137 &137113661108006966
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
