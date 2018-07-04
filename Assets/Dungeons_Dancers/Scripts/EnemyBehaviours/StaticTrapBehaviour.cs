@@ -34,6 +34,8 @@ public class StaticTrapBehaviour : MonoBehaviour {
 	[Header("Sounds")]
 	[SerializeField]
 	private AudioClip ActiveSound;
+	[SerializeField]
+	private AudioClip DeactiveSound;
 
     [Header("Particle System")]
     private ParticleSystem trapParticleSys;
@@ -51,7 +53,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
 		Koreographer.Instance.RegisterForEvents(beatBhv, BeatDetection);
         if(GetComponent<ParticleSystem>() != null) trapParticleSys = GetComponent<ParticleSystem>();
         childSpikes = transform.GetChild(0).GetChild(0).gameObject;
-		if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>();
+		if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>(); // Tweak de seguretat. No peta si ens oblidem un audiosource
 	}
 
 	void BeatDetection(KoreographyEvent evt)
@@ -82,8 +84,10 @@ public class StaticTrapBehaviour : MonoBehaviour {
 			childSpikes.transform.DOLocalMove (trapMaxHeight, easingOnDuration, false).SetEase(easingOn);
 
 			// Fem sonar el so de la trampa
-			audioSource.clip = ActiveSound;
-			audioSource.Play();
+			if (audioSource != null) {
+				audioSource.clip = ActiveSound;
+				audioSource.Play ();
+			}
 
 		} else if (activeTrapEvent == true) {
 			activeTrapEvent = false;
@@ -92,6 +96,12 @@ public class StaticTrapBehaviour : MonoBehaviour {
 			gameObject.GetComponent<Collider>().enabled = false;
 			// Fem desaparèixer la trampa
 			childSpikes.transform.DOLocalMove(trapMinHeight, easingOffDuration, false).SetEase(easingOff);
+
+			// Fem sonar el so de la trampa
+			if (audioSource != null) {
+				audioSource.clip = DeactiveSound;
+				audioSource.Play ();
+			}
 		}
     }
 	public int GetActiveTrap()

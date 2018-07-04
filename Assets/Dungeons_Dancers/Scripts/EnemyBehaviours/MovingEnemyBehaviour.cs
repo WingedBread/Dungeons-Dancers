@@ -3,6 +3,7 @@ using UnityEngine;
 using SonicBloom.Koreo;
 
 public class MovingEnemyBehaviour : MonoBehaviour {
+	private AudioSource audioSource;
 
     private bool xAxis;
     private int direction;
@@ -42,9 +43,14 @@ public class MovingEnemyBehaviour : MonoBehaviour {
     private Quaternion rotationLEFT;
     private Quaternion rotationRIGHT;
 
+	[Header("Sounds")]
+	[SerializeField]
+	private AudioClip ActiveSound;
+
 	private void Start()
 	{
 		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+		if (this.gameObject.GetComponent<AudioSource>() != null) audioSource = GetComponent<AudioSource>(); // Tweak de seguretat. No peta si ens oblidem un audiosource
 		animator = transform.GetChild(0).GetComponent<Animator>();
 		enemyDirection = GameObject.FindGameObjectsWithTag("EnemyDirection");
 		Koreographer.Instance.RegisterForEvents(beatBhv, BeatDetection);
@@ -111,7 +117,13 @@ public class MovingEnemyBehaviour : MonoBehaviour {
     void ActiveTrap()
     {
 		activeTrapEvent = true;
-		
+
+		// Fem sonar el so de la trampa
+		if (audioSource != null) {
+			audioSource.clip = ActiveSound;
+			audioSource.Play ();
+		}
+
         if (xAxis)
         {
             this.transform.position = new Vector3(this.transform.position.x + (direction), this.transform.position.y, this.transform.position.z);
