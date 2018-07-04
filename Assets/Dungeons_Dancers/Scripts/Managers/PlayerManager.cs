@@ -37,10 +37,6 @@ public class PlayerManager : MonoBehaviour
     private Vector3 spawnInitPosition;
     private List<GameObject> collectibles = new List<GameObject>();
 
-    [Header("Sparkle Particle System")]
-    [SerializeField]
-    private GameObject[] sparkleParticleSystem = new GameObject[20];
-
 
     // Use this for initialization
     void Start()
@@ -279,52 +275,39 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(ResetPlayer(false));
     }
 
-    public void SparkleBehaviour(Collider col,bool sparkleType)
+    public void SparkleBehaviour(Collider col)
     {
-        if (sparkleParticleSystem != null)
+        collectibles.Add(col.gameObject);
+        col.gameObject.GetComponent<SparkleController>().AddSparkles();
+        for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
-            for (int w = 0; w < sparkleParticleSystem.Length; w++)
-            {
-                for (int i = 0; i < sparkleParticleSystem[w].transform.childCount; i++)
-                {
-                    sparkleParticleSystem[w].transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
-                    sparkleParticleSystem[w].transform.GetChild(i).GetComponent<ParticleSystem>().Play();
-                }
-            }
-
-            collectibles.Add(col.gameObject);
-            collectiblesController.AddSparkles(sparkleType);
-            col.gameObject.SetActive(false);
-            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
-            {
-                gameManager.levelEventsAudios[i].GetSparkle();
-            }
-            for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
-            {
-                gameManager.levelEventsMaterials[i].GetSparkle();
-            }
-            for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
-            {
-                gameManager.levelEventsColors[i].GetSparkle();
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
-            {
-                gameManager.levelEventsEasing1[i].GetSparkle();
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
-            {
-                gameManager.levelEventsEasing2[i].GetSparkle();
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
-            {
-                gameManager.levelEventsEasing3[i].GetSparkle();
-            }
-            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
-            {
-                gameManager.levelEventsEasing4[i].GetSparkle();
-            }
-            gameManager.SparkleBehaviour(collectiblesController.GetSparkles(gameManager.GetSatisfactionFever()));
+            gameManager.levelEventsAudios[i].GetSparkle();
         }
+        for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+        {
+            gameManager.levelEventsMaterials[i].GetSparkle();
+        }
+        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        {
+            gameManager.levelEventsColors[i].GetSparkle();
+        }
+        for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+        {
+            gameManager.levelEventsEasing1[i].GetSparkle();
+        }
+        for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+        {
+            gameManager.levelEventsEasing2[i].GetSparkle();
+        }
+        for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+        {
+            gameManager.levelEventsEasing3[i].GetSparkle();
+        }
+        for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+        {
+            gameManager.levelEventsEasing4[i].GetSparkle();
+        }
+        gameManager.SparkleBehaviour(SparkleController.totalSparkles);
     }
 
     public void KeyBehaviour(Collider col)
@@ -416,7 +399,7 @@ public class PlayerManager : MonoBehaviour
     }
 #endregion
     public int GetSparkles(){
-        return collectiblesController.GetSparkles(gameManager.GetSatisfactionFever());
+        return SparkleController.totalSparkles;
     }
 
     public void SetBlock(bool Block)
@@ -454,6 +437,7 @@ public class PlayerManager : MonoBehaviour
             }
             collectibles.Clear();
             collectiblesController.Reset();
+            SparkleController.totalSparkles = 0;
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
                 gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Dancing);
