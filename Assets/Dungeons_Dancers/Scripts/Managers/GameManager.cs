@@ -82,7 +82,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Pause();
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Pause();
+        }
 
         if (gameStart)
         {
@@ -223,78 +226,76 @@ public class GameManager : MonoBehaviour
 
     private void Pause()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Time.timeScale > 0 && gameStart)
         {
-            if (Time.timeScale > 0)
+            for (int i = 0; i < levelEventsAudios.Count; i++)
             {
-                for (int i = 0; i < levelEventsAudios.Count; i++)
-                {
-                    levelEventsAudios[i].SetLevelState(LevelStates.LevelPaused);
-                }
-				for (int i = 0; i < levelEventsMaterials.Count; i++)
-                {
-					levelEventsMaterials[i].SetLevelState(LevelStates.LevelPaused);
-                }
-                for (int i = 0; i < levelEventsColors.Count; i++)
-                {
-                    levelEventsColors[i].SetLevelState(LevelStates.LevelPaused);
-                }
-                for (int i = 0; i < levelEventsEasing1.Count; i++)
-                {
-                    levelEventsEasing1[i].SetLevelState(LevelStates.LevelPaused);
-                }
-                for (int i = 0; i < levelEventsEasing2.Count; i++)
-                {
-                    levelEventsEasing2[i].SetLevelState(LevelStates.LevelPaused);
-                }
-                for (int i = 0; i < levelEventsEasing3.Count; i++)
-                {
-                    levelEventsEasing3[i].SetLevelState(LevelStates.LevelPaused);
-                }
-                for (int i = 0; i < levelEventsEasing4.Count; i++)
-                {
-                    levelEventsEasing4[i].SetLevelState(LevelStates.LevelPaused);
-                }
-                Time.timeScale = 0;
-                gameStart = false;
-                auController.MuteSound();
-                uiController.PauseUI();
+                levelEventsAudios[i].SetLevelState(LevelStates.LevelPaused);
             }
-            else
+            for (int i = 0; i < levelEventsMaterials.Count; i++)
             {
-                for (int i = 0; i < levelEventsAudios.Count; i++)
-                {
-                    levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
-                }
-				for (int i = 0; i < levelEventsMaterials.Count; i++)
-                {
-					levelEventsMaterials[i].SetLevelState(LevelStates.LevelPlay);
-                }
-                for (int i = 0; i < levelEventsColors.Count; i++)
-                {
-                    levelEventsColors[i].SetLevelState(LevelStates.LevelPlay);
-                }
-                for (int i = 0; i < levelEventsEasing1.Count; i++)
-                {
-                    levelEventsEasing1[i].SetLevelState(LevelStates.LevelPlay);
-                }
-                for (int i = 0; i < levelEventsEasing2.Count; i++)
-                {
-                    levelEventsEasing2[i].SetLevelState(LevelStates.LevelPlay);
-                }
-                for (int i = 0; i < levelEventsEasing3.Count; i++)
-                {
-                    levelEventsEasing3[i].SetLevelState(LevelStates.LevelPlay);
-                }
-                for (int i = 0; i < levelEventsEasing4.Count; i++)
-                {
-                    levelEventsEasing4[i].SetLevelState(LevelStates.LevelPlay);
-                }
-                Time.timeScale = 1;
-                gameStart = true;
-                auController.UnmuteSound();
-                uiController.ResetUI();
+                levelEventsMaterials[i].SetLevelState(LevelStates.LevelPaused);
             }
+            for (int i = 0; i < levelEventsColors.Count; i++)
+            {
+                levelEventsColors[i].SetLevelState(LevelStates.LevelPaused);
+            }
+            for (int i = 0; i < levelEventsEasing1.Count; i++)
+            {
+                levelEventsEasing1[i].SetLevelState(LevelStates.LevelPaused);
+            }
+            for (int i = 0; i < levelEventsEasing2.Count; i++)
+            {
+                levelEventsEasing2[i].SetLevelState(LevelStates.LevelPaused);
+            }
+            for (int i = 0; i < levelEventsEasing3.Count; i++)
+            {
+                levelEventsEasing3[i].SetLevelState(LevelStates.LevelPaused);
+            }
+            for (int i = 0; i < levelEventsEasing4.Count; i++)
+            {
+                levelEventsEasing4[i].SetLevelState(LevelStates.LevelPaused);
+            }
+            Time.timeScale = 0;
+            gameStart = false;
+            auController.MuteSound();
+            uiController.PauseUI();
+        }
+
+        else if(Time.timeScale == 0 && !gameStart)
+        {
+            for (int i = 0; i < levelEventsAudios.Count; i++)
+            {
+                levelEventsAudios[i].SetLevelState(LevelStates.LevelPlay);
+            }
+            for (int i = 0; i < levelEventsMaterials.Count; i++)
+            {
+                levelEventsMaterials[i].SetLevelState(LevelStates.LevelPlay);
+            }
+            for (int i = 0; i < levelEventsColors.Count; i++)
+            {
+                levelEventsColors[i].SetLevelState(LevelStates.LevelPlay);
+            }
+            for (int i = 0; i < levelEventsEasing1.Count; i++)
+            {
+                levelEventsEasing1[i].SetLevelState(LevelStates.LevelPlay);
+            }
+            for (int i = 0; i < levelEventsEasing2.Count; i++)
+            {
+                levelEventsEasing2[i].SetLevelState(LevelStates.LevelPlay);
+            }
+            for (int i = 0; i < levelEventsEasing3.Count; i++)
+            {
+                levelEventsEasing3[i].SetLevelState(LevelStates.LevelPlay);
+            }
+            for (int i = 0; i < levelEventsEasing4.Count; i++)
+            {
+                levelEventsEasing4[i].SetLevelState(LevelStates.LevelPlay);
+            }
+            Time.timeScale = 1;
+            gameStart = true;
+            auController.UnmuteSound();
+            uiController.ResetUI();
         }
     }
 

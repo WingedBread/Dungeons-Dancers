@@ -23,6 +23,7 @@ public class AudioController : MonoBehaviour {
     private AudioSource audioSource;
 	// Use this for initialization
 	void Start () {
+        satLevel = 1;
         audioSource = GetComponent<AudioSource>();
         gameManager = GetComponent<GameManager>();
         auMixSnaps[1].TransitionTo(transitionTime); 
