@@ -19,7 +19,7 @@ public class SparkleController : MonoBehaviour
     public void AddSparkles()
     {
         totalSparkles = totalSparkles + sparklesValue;
-        Destroy(transform.parent.GetChild(0).gameObject);
+        transform.parent.GetChild(0).gameObject.SetActive(false);
         sparkleParticleSystem.GetComponent<ParticleSystem>().Play();
         if (sparkleParticleSystem != null)
         {
@@ -32,12 +32,19 @@ public class SparkleController : MonoBehaviour
 
     private void OnParticleSystemStopped()
     {
-        Destroy(this.transform.parent);
+        this.transform.parent.gameObject.SetActive(false);
     }
 
     public void RemoveSparkles(int ncoins)
     {
         totalSparkles = sparklesValue - ncoins;
+    }
+
+    public void Restart()
+    {
+        transform.parent.GetChild(0).gameObject.SetActive(true);
+        this.transform.parent.gameObject.SetActive(true);
+        totalSparkles = 0;
     }
 
 }

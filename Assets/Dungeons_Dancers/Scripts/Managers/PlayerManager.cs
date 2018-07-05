@@ -419,11 +419,6 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator ResetPlayer(bool dead)
     {
-        while (inputController.GetEasingEnd() == false)
-        {
-            yield return null;
-        }
-
         if (dead)
         {
             animator.SetBool("onLose", false);
@@ -433,11 +428,10 @@ public class PlayerManager : MonoBehaviour
             spawnPosition = spawnInitPosition;
             for (int i = 0; i < collectibles.Count; i++)
             {
-                collectibles[i].SetActive(true);
+                collectibles[i].GetComponent<SparkleController>().Restart();
             }
             collectibles.Clear();
             collectiblesController.Reset();
-            SparkleController.totalSparkles = 0;
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
                 gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Dancing);
@@ -469,7 +463,13 @@ public class PlayerManager : MonoBehaviour
             gameManager.GameDeadReset();
             StopCoroutine("ResetPlayer");
         }
-        else
+
+        while (inputController.GetEasingEnd() == false)
+        {
+            yield return null;
+        }
+
+        if(!dead)
         {
             transform.position = spawnPosition;
             transform.parent.GetChild(1).position = spawnPosition;
