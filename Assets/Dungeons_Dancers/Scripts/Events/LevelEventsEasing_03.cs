@@ -177,7 +177,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     #region Level Events Functions
     public void IntroStart()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -213,7 +213,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
 
     public void IntroEnd()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -249,7 +249,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void StartPlay()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -284,7 +284,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void OnBeat()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -319,7 +319,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void BeatBehaviour(KoreographyEvent kevent)
     {
-        if (eventPlaying && gameManager.GetGameStatus())
+        if (eventPlaying && gameManager.GetGameStatus() && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -354,7 +354,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void OnCheckpoint()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -389,7 +389,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void WinLevel()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -424,7 +424,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void GetSparkle()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -459,7 +459,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void GetKey()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -494,7 +494,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void TimeNearOver()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -529,7 +529,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void TimeOver()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -564,7 +564,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void SatisfactionZero()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -599,7 +599,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void SatisfactionLvl1()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -635,7 +635,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
 
     public void SatisfactionLvl2()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -670,7 +670,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void SatisfactionLvl3()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -705,7 +705,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void SatisfactionClimax()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -740,7 +740,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void OnHit()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -775,7 +775,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void PerfectMove()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -810,7 +810,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void GoodMove()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -845,7 +845,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void WrongMove()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -880,7 +880,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void OnShoot()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
@@ -915,7 +915,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
     }
     public void Door()
     {
-        if (eventPlaying)
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {

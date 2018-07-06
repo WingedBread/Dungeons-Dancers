@@ -11,6 +11,10 @@ public class InputController : MonoBehaviour
     [Header("Raycast Collisons")]
     private PlayerCollisions playerCollision;
 
+    [Header("Spam Time")]
+    [SerializeField]
+    private float detectionPercentage;
+
     [Header("Player Rotations")]
     [SerializeField]
     private Vector3 _rotationUP = new Vector3(45, 0, 0);
@@ -66,6 +70,8 @@ public class InputController : MonoBehaviour
 
     string[] directions = {"Horizontal", "Vertical"};
 
+    float detectionTimer = 0f;
+
 
 	// Use this for initialization
 	void Start () 
@@ -83,6 +89,8 @@ public class InputController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+        detectionTimer += Time.deltaTime;
+
         if (!blockPlayer) PlayerMoveInput();
         if(debugEnable) debugController.InputPlayerDebug(inputFlag);
 	}
@@ -105,8 +113,20 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (playerManager.gameManager.GetRhythmActiveInput()) StartCoroutine(playerManager.CorrectInput());
-                else StartCoroutine(playerManager.IncorrectInput());
+                if (detectionTimer > detectionPercentage)
+                {
+                    detectionTimer = 0;
+                    if (playerManager.gameManager.GetRhythmActiveInput())
+                    {
+                        StartCoroutine(playerManager.CorrectInput());
+                    }
+                    else StartCoroutine(playerManager.IncorrectInput());
+                }
+                else
+                {
+                    detectionTimer = 0;
+                    StartCoroutine(playerManager.IncorrectInput());
+                }
             }
         }
 
@@ -127,8 +147,20 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (playerManager.gameManager.GetRhythmActiveInput()) StartCoroutine(playerManager.CorrectInput());
-                else StartCoroutine(playerManager.IncorrectInput());
+                if (detectionTimer > detectionPercentage)
+                {
+                    detectionTimer = 0;
+                    if (playerManager.gameManager.GetRhythmActiveInput())
+                    {
+                        StartCoroutine(playerManager.CorrectInput());
+                    }
+                    else StartCoroutine(playerManager.IncorrectInput());
+                }
+                else
+                {
+                    detectionTimer = 0;
+                    StartCoroutine(playerManager.IncorrectInput());
+                }
             }
         }
 
@@ -149,8 +181,20 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (playerManager.gameManager.GetRhythmActiveInput()) StartCoroutine(playerManager.CorrectInput());
-                else StartCoroutine(playerManager.IncorrectInput());
+                if (detectionTimer > detectionPercentage)
+                {
+                    detectionTimer = 0;
+                    if (playerManager.gameManager.GetRhythmActiveInput())
+                    {
+                        StartCoroutine(playerManager.CorrectInput());
+                    }
+                    else StartCoroutine(playerManager.IncorrectInput());
+                }
+                else
+                {
+                    detectionTimer = 0;
+                    StartCoroutine(playerManager.IncorrectInput());
+                }
             }
         }
 
@@ -170,8 +214,20 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (playerManager.gameManager.GetRhythmActiveInput()) StartCoroutine(playerManager.CorrectInput());
-                else StartCoroutine(playerManager.IncorrectInput());
+                if (detectionTimer > detectionPercentage)
+                {
+                    detectionTimer = 0;
+                    if (playerManager.gameManager.GetRhythmActiveInput())
+                    {
+                        StartCoroutine(playerManager.CorrectInput());
+                    }
+                    else StartCoroutine(playerManager.IncorrectInput());
+                }
+                else
+                {
+                    detectionTimer = 0;
+                    StartCoroutine(playerManager.IncorrectInput());
+                }
             }
         }
         else inputFlag = true;

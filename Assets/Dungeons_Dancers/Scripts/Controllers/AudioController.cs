@@ -18,35 +18,39 @@ public class AudioController : MonoBehaviour {
     [SerializeField]
     private AudioClip introClip;
 
-    private int satLevel;
+    private int selectedSnap;
 
     private AudioSource audioSource;
+
+    /*Au Mix Snaps:
+     * 0 - Mute
+     * 1 - Metronomo
+     * 2 - Sat Lvl1
+     * 3 - Sat Lvl2
+     * 4 - Sat Lvl3
+     * 5 - Sat Climax
+     * 6 - OnlyFX
+     */
+
 	// Use this for initialization
 	void Start () {
-        satLevel = 1;
+        selectedSnap = 6;
         audioSource = GetComponent<AudioSource>();
-        gameManager = GetComponent<GameManager>();
-        auMixSnaps[1].TransitionTo(transitionTime); 
+        gameManager = GetComponent<GameManager>(); 
 	}
 
-    public void PointsSnapshotCheck(int satlevel)
+    public void PointsSnapshotCheck(int SelectedSnap)
     {
-        satLevel = satlevel;
-        auMixSnaps[satlevel].TransitionTo(transitionTime); 
+        selectedSnap = SelectedSnap;
+        auMixSnaps[SelectedSnap].TransitionTo(transitionTime); 
     }
-
-    //if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(1)) auMixSnaps[1].TransitionTo(transitionTime);        // Metronome
-    //else if (gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(2)) auMixSnaps[2].TransitionTo(transitionTime);   // Satisf 1
-    //else if(gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(3)) auMixSnaps[3].TransitionTo(transitionTime);    // Satisf 2 
-    //else if(gameManager.GetPoints(0, 1, 0) < gameManager.GetSatisfactionTrackPos(4)) auMixSnaps[4].TransitionTo(transitionTime);    // Satisf 3
-    //else if (gameManager.GetPoints(0, 1, 0) >= gameManager.GetSatisfactionTrackPos(4)) auMixSnaps[5].TransitionTo(transitionTime);  // Satisf 4
 
     public void MuteSound(){
         auMixSnaps[0].TransitionTo(0);
     }
     public void UnmuteSound()
     {
-        PointsSnapshotCheck(satLevel);
+        PointsSnapshotCheck(selectedSnap);
     }
 
     public void PlayIntro()

@@ -15,6 +15,7 @@ AudioMixerController:
   - {fileID: 245593961249538820}
   - {fileID: 245317087575189190}
   - {fileID: 245452272048410324}
+  - {fileID: 245914473917874686}
   m_StartSnapshot: {fileID: 245798015667176646}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -33,7 +34,7 @@ AudioMixerController:
     - 8f4955b143f0328408486b1c42944893
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 245317087575189190}
+  m_TargetSnapshot: {fileID: 245798015667176646}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -406,4 +407,21 @@ AudioMixerSnapshotController:
     608b6ebb9b63b43e1a20b4aaeb2585c8: -80
     aff8361eaf4974dac8f3f535d6fe8195: 9.925883
     8dd934be7f9d543a9bf61d059571016d: 0
+  m_TransitionOverrides: {}
+--- !u!245 &245914473917874686
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: OnlyFX
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: c289db6a3e111450fa4967b69b41efc3
+  m_FloatValues:
+    345496d4985444c15804d994bd0f579a: 0.23288241
+    a67ae416f149efa4795bdec24f27bb4d: 0.23288241
+    3c801339842e64781ad425d2ba773063: -0.30163807
+    608b6ebb9b63b43e1a20b4aaeb2585c8: -0.0024418721
+    aff8361eaf4974dac8f3f535d6fe8195: -0.037667945
+    6eca189e6ae3b4561ad1ec791960bf49: -80
+    8dd934be7f9d543a9bf61d059571016d: 0.27000841
   m_TransitionOverrides: {}
