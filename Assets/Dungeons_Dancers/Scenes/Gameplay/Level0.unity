@@ -325,12 +325,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 10574765}
   m_Mesh: {fileID: 4300108, guid: f9bbd212a6791c5409dc698e49e62e87, type: 3}
---- !u!114 &28086450 stripped
+--- !u!114 &28086450
 MonoBehaviour:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 114465538579891040, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
     type: 2}
-  m_PrefabInternal: {fileID: 1913556469}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648730624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a88cbf28bd2db4619af9c2aa0a7e381e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelEventsAudios: []
+  levelEventsEasing1: []
+  levelEventsEasing2: []
+  levelEventsEasing3: []
+  levelEventsEasing4: []
+  levelEventsMaterials: []
+  levelEventsColors: []
+  _allowFpsCap: 0
+  _fpsApplication: 200
+  playerManager: {fileID: 1896864767}
+  godMode: 0
+  initDungeonTimer: 45
 --- !u!43 &42946119
 Mesh:
   m_ObjectHideFlags: 0
@@ -30988,6 +31006,258 @@ Transform:
   m_PrefabParentObject: {fileID: 4079056006149438, guid: 35fab96d40ebfc146a2af112d2563f1a,
     type: 2}
   m_PrefabInternal: {fileID: 1641388517}
+--- !u!1 &1648730624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1212218855684012, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1648730631}
+  - component: {fileID: 28086450}
+  - component: {fileID: 1648730630}
+  - component: {fileID: 1648730629}
+  - component: {fileID: 1648730628}
+  - component: {fileID: 1648730627}
+  - component: {fileID: 1648730626}
+  - component: {fileID: 1648730625}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1648730625
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 82058771788694434, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648730624}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243231272576841636, guid: 3fbdfdf39ccae4f2f973f379732c21d4,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &1648730626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648730624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2167cca634348398b0100966f239e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonTimerText: {fileID: 1378685910}
+  introText: {fileID: 949870962}
+  satisBar3D:
+  - {fileID: 1069135956}
+  - {fileID: 1655478022}
+  pointsText: {fileID: 1378685914}
+  sparklesText: {fileID: 1378685912}
+  keysImages: []
+  climaxNumber: {fileID: 1378685917}
+  climaxUnlock: {fileID: 1378685916}
+  barEnd: {fileID: 207974817}
+  separatorsObj:
+  - {fileID: 439439342}
+  - {fileID: 614637440}
+  - {fileID: 553962650}
+  WinGo: {fileID: 646305788}
+  PauseGo: {fileID: 1378685918}
+  pointsSlider: {fileID: 1026718565}
+  sliderText: {fileID: 1378685915}
+  sliderAccuracyText: {fileID: 1378685913}
+  finalIntro: DANCE!
+  sliderFirst: --
+  sliderSecond: --
+  sliderThird: --
+  sliderFourth: --
+  accuracySoon: GREAT
+  accuracyPerfect: PERFECT
+  accuracyLate: GOOD
+  introTextTime: 0.2
+  sliderTextTime: 1
+  sliderAccuracyTextTime: 0.2
+--- !u!114 &1648730627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114905625918851408, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648730624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab936884a9985431d8eb7730fb57b5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugController: {fileID: 0}
+  introTime: 2
+  debugEnable: 0
+--- !u!114 &1648730628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114733501602363238, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648730624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99136e11b24ea4ffc8823c83af130436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionTime: 0
+  auMixSnaps:
+  - {fileID: 245452272048410324, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
+  - {fileID: 245798015667176646, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
+  - {fileID: 24500006, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
+  - {fileID: 245339632840268526, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
+  - {fileID: 245593961249538820, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
+  - {fileID: 245317087575189190, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
+  - {fileID: 245914473917874686, guid: 3fbdfdf39ccae4f2f973f379732c21d4, type: 2}
+  introClip: {fileID: 8300000, guid: 26e9bb1e0091b2a43a92dfde9252ba0e, type: 3}
+--- !u!114 &1648730629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648730624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8f3194c4b144c169d30e857d5ed58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climaxConfeti: {fileID: 372058859}
+  initPoints: 40
+  ScoreGood: 2
+  ScoreGreat: 5
+  ScorePerfect: 8
+  ScoreBad: 4
+  ClimaxMaxFails: 1
+  TracksPosition:
+  - 0
+  - 10
+  - 40
+  - 70
+  - 100
+  pointsflag: 0
+--- !u!114 &1648730630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114900148467647364, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648730624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10738cd196bdc4fdda0d484b1ce10f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1648730631
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648730624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1648849356
 GameObject:
   m_ObjectHideFlags: 0
@@ -35340,193 +35610,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 437076159}
   m_Script: {fileID: 11500000, guid: 7cd47f4cb0a1b484e987a095e79ef4db, type: 3}
---- !u!1001 &1913556469
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4402301263322002, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: dungeonTimerText
-      value: 
-      objectReference: {fileID: 1378685910}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: introText
-      value: 
-      objectReference: {fileID: 949870962}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: satisBar3D.Array.data[0]
-      value: 
-      objectReference: {fileID: 1069135956}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: satisBar3D.Array.data[1]
-      value: 
-      objectReference: {fileID: 1655478022}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: pointsText
-      value: 
-      objectReference: {fileID: 1378685914}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: coinsText
-      value: 
-      objectReference: {fileID: 1378685912}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: climaxNumber
-      value: 
-      objectReference: {fileID: 1378685917}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: climaxUnlock
-      value: 
-      objectReference: {fileID: 1378685916}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: barEnd
-      value: 
-      objectReference: {fileID: 207974817}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: separatorsObj.Array.data[0]
-      value: 
-      objectReference: {fileID: 439439342}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: separatorsObj.Array.data[1]
-      value: 
-      objectReference: {fileID: 614637440}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: separatorsObj.Array.data[2]
-      value: 
-      objectReference: {fileID: 553962650}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: WinGo
-      value: 
-      objectReference: {fileID: 646305788}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: PauseGo
-      value: 
-      objectReference: {fileID: 1378685918}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: pointsSlider
-      value: 
-      objectReference: {fileID: 1026718565}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: sliderText
-      value: 
-      objectReference: {fileID: 1378685915}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: sliderAccuracyText
-      value: 
-      objectReference: {fileID: 1378685913}
-    - target: {fileID: 114465538579891040, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: playerManager
-      value: 
-      objectReference: {fileID: 1896864767}
-    - target: {fileID: 114465538579891040, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: initDungeonTimer
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: initPoints
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: sparklesText
-      value: 
-      objectReference: {fileID: 1378685912}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: ScoreGood
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: ScoreGreat
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: ScorePerfect
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: ScoreBad
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114332231184415648, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: finalIntro
-      value: DANCE!
-      objectReference: {fileID: 0}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: climaxConfeti
-      value: 
-      objectReference: {fileID: 372058859}
-    - target: {fileID: 114741590115779246, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: ClimaxMaxFails
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114733501602363238, guid: 8f295fed73a5b28449e9d244fa6ca2fd,
-        type: 2}
-      propertyPath: introClip
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 8f295fed73a5b28449e9d244fa6ca2fd, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1913945682
 Prefab:
   m_ObjectHideFlags: 0

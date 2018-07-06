@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         eventController = GetComponent<EventController>();
         introController = GetComponent<IntroController>();
         dungeonTimer = initDungeonTimer;
+        auController.PointsSnapshotCheck(6);
         SetIntroCounter(0);
         uiController.SparklesUI(0);
     }
@@ -218,6 +219,7 @@ public class GameManager : MonoBehaviour
                 levelEventsEasing4[i].StartPlay();
             }
             gameStart = true;
+            auController.PointsSnapshotCheck(1);
             rhythmController.SetIntroRhythm(false);
             rhythmController.SetRhythm(true);
             satisController.PointEvents();
@@ -398,7 +400,7 @@ public class GameManager : MonoBehaviour
         }
         satisController.ResetSatisfaction();
         auController.UnmuteSound();
-        auController.PointsSnapshotCheck(1);
+        auController.PointsSnapshotCheck(6);
         uiController.ResetUI();
         uiController.SparklesUI(0);
         uiController.CollectibleUI(0);
