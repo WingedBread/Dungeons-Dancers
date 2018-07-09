@@ -473,6 +473,7 @@ public class PlayerManager : MonoBehaviour
         {
             transform.position = spawnPosition;
             transform.parent.GetChild(1).position = spawnPosition;
+            inputFeedback.RespawnFeedback();
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
                 gameManager.levelEventsAudios[i].SetPlayerState(PlayerStates.Dancing);
