@@ -35,8 +35,27 @@ public class MenuSceneScript : MonoBehaviour {
     [EventID]
     public string eventID_spot4;
 
-	// Use this for initialization
-	void Start () {
+    private int controllerConfig = 0;
+
+    [Header("LogoScreen")]
+    [SerializeField]
+    private GameObject logoScreen;
+
+    [Header("OptionsScreen")]
+    [SerializeField]
+    private GameObject optionsScreen;
+    [SerializeField]
+    private Toggle controllerToggle;
+
+    private string[] submitTexts = { "Submit", "Submit_DDR"};
+    private string[] cancelTexts = { "Cancel", "Cancel_DDR"};
+
+    [Header("Restart With Controller?")]
+    [SerializeField]
+    private bool restart_with_controller = false;
+
+    // Use this for initialization
+    void Start () {
         PlayerPrefs.SetInt("TotalScore", 0);
         PlayerPrefs.SetInt("TotalScore", 0);
         PlayerPrefs.SetInt("NumGoodMoves", 0);
@@ -45,6 +64,7 @@ public class MenuSceneScript : MonoBehaviour {
         PlayerPrefs.SetInt("NumBadMoves", 0);
         PlayerPrefs.SetInt("MovesInClimax", 0);
         PlayerPrefs.SetInt("MovesAfterClimax", 0);
+        if(restart_with_controller )PlayerPrefs.SetInt("ControllerType", 0);
         splayer = GetComponent<SimpleMusicPlayer>();
         Koreographer.Instance.RegisterForEvents(eventID_text, FadeText);
         Koreographer.Instance.RegisterForEvents(eventID_spot1, FadeSpot1);
@@ -56,7 +76,14 @@ public class MenuSceneScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetButtonDown("Submit"))
+        if (logoScreen.activeInHierarchy) LogoScreenBehaviour();
+        else OptionsScreenBehaviour();
+	}
+
+
+    void LogoScreenBehaviour()
+    {
+        if (Input.GetButtonDown(submitTexts[PlayerPrefs.GetInt("ControllerType")]))
         {
             splayer.Stop();
             Koreographer.Instance.UnregisterForEvents(eventID_text, FadeText);
@@ -66,7 +93,31 @@ public class MenuSceneScript : MonoBehaviour {
             Koreographer.Instance.UnregisterForEvents(eventID_spot4, FadeSpot4);
             StartCoroutine(LoadYourAsyncScene());
         }
-	}
+        else if (Input.GetButtonDown(cancelTexts[PlayerPrefs.GetInt("ControllerType")]))
+        {
+            logoScreen.SetActive(false);
+            optionsScreen.SetActive(true);
+        }
+    }
+
+    void OptionsScreenBehaviour()
+    {
+        if (controllerToggle.isOn)
+        {
+            PlayerPrefs.SetInt("ControllerType", 0);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ControllerType", 1);
+        }
+
+        if (Input.GetButtonDown(cancelTexts[PlayerPrefs.GetInt("ControllerType")]))
+        {
+            logoScreen.SetActive(true);
+            optionsScreen.SetActive(false);
+        }
+    }
+
 
     void FadeText(KoreographyEvent kevent)
     {
@@ -107,5 +158,10 @@ public class MenuSceneScript : MonoBehaviour {
         {
             yield return null;
         }
+    }
+
+    public void SetControllerValue(int value)
+    {
+        controllerConfig = value;
     }
 }

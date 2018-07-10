@@ -30,25 +30,25 @@ namespace UnityEngine.EventSystems
 		}
 
 		[SerializeField]
-		private string m_HorizontalAxis = "Horizontal";
-
+		private string[] m_HorizontalAxis = {"Horizontal", "Horizontal_DDR"};
+        
 		/// <summary>
 		/// Name of the vertical axis for movement (if axis events are used).
 		/// </summary>
 		[SerializeField]
-		private string m_VerticalAxis = "Vertical";
+		private string[] m_VerticalAxis = {"Vertical", "Vertical_DDR" };
 
 		/// <summary>
 		/// Name of the submit button.
 		/// </summary>
 		[SerializeField]
-		private string m_SubmitButton = "Submit";
+		private string[] m_SubmitButton = {"Submit", "Submit_DDR" };
 
 		/// <summary>
 		/// Name of the submit button.
 		/// </summary>
 		[SerializeField]
-		private string m_CancelButton = "Cancel";
+		private string[] m_CancelButton = {"Cancel", "Cancel_DDR" };
 
 		[SerializeField]
 		private float m_InputActionsPerSecond = 10;
@@ -90,8 +90,8 @@ namespace UnityEngine.EventSystems
 		/// </summary>
 		public string horizontalAxis
 		{
-			get { return m_HorizontalAxis; }
-			set { m_HorizontalAxis = value; }
+			get { return m_HorizontalAxis[PlayerPrefs.GetInt("ControllerType")]; }
+			set { m_HorizontalAxis[PlayerPrefs.GetInt("ControllerType")] = value; }
 		}
 
 		/// <summary>
@@ -99,20 +99,20 @@ namespace UnityEngine.EventSystems
 		/// </summary>
 		public string verticalAxis
 		{
-			get { return m_VerticalAxis; }
-			set { m_VerticalAxis = value; }
+			get { return m_VerticalAxis[PlayerPrefs.GetInt("ControllerType")]; }
+			set { m_VerticalAxis[PlayerPrefs.GetInt("ControllerType")] = value; }
 		}
 
 		public string submitButton
 		{
-			get { return m_SubmitButton; }
-			set { m_SubmitButton = value; }
+			get { return m_SubmitButton[PlayerPrefs.GetInt("ControllerType")]; }
+			set { m_SubmitButton[PlayerPrefs.GetInt("ControllerType")] = value; }
 		}
 
 		public string cancelButton
 		{
-			get { return m_CancelButton; }
-			set { m_CancelButton = value; }
+			get { return m_CancelButton[PlayerPrefs.GetInt("ControllerType")]; }
+			set { m_CancelButton[PlayerPrefs.GetInt("ControllerType")] = value; }
 		}
 
 		public override void UpdateModule()
@@ -135,10 +135,10 @@ namespace UnityEngine.EventSystems
 				return false;
 
 			var shouldActivate = m_ForceModuleActive;
-			Input.GetButtonDown(m_SubmitButton);
-			shouldActivate |= Input.GetButtonDown(m_CancelButton);
-			shouldActivate |= !Mathf.Approximately(Input.GetAxisRaw(m_HorizontalAxis), 0.0f);
-			shouldActivate |= !Mathf.Approximately(Input.GetAxisRaw(m_VerticalAxis), 0.0f);
+			Input.GetButtonDown(m_SubmitButton[PlayerPrefs.GetInt("ControllerType")]);
+			shouldActivate |= Input.GetButtonDown(m_CancelButton[PlayerPrefs.GetInt("ControllerType")]);
+			shouldActivate |= !Mathf.Approximately(Input.GetAxisRaw(m_HorizontalAxis[PlayerPrefs.GetInt("ControllerType")]), 0.0f);
+			shouldActivate |= !Mathf.Approximately(Input.GetAxisRaw(m_VerticalAxis[PlayerPrefs.GetInt("ControllerType")]), 0.0f);
 			shouldActivate |= (m_MousePosition - m_LastMousePosition).sqrMagnitude > 0.0f;
 			shouldActivate |= Input.GetMouseButtonDown(0);
 			return shouldActivate;
@@ -188,10 +188,10 @@ namespace UnityEngine.EventSystems
 				return false;
 
 			var data = GetBaseEventData();
-			if (Input.GetButtonDown(m_SubmitButton))
+			if (Input.GetButtonDown(m_SubmitButton[PlayerPrefs.GetInt("ControllerType")]))
 				ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, data, ExecuteEvents.submitHandler);
 
-			if (Input.GetButtonDown(m_CancelButton))
+			if (Input.GetButtonDown(m_CancelButton[PlayerPrefs.GetInt("ControllerType")]))
 				ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, data, ExecuteEvents.cancelHandler);
 			return data.used;
 		}
@@ -199,17 +199,17 @@ namespace UnityEngine.EventSystems
 		private Vector2 GetRawMoveVector()
 		{
 			Vector2 move = Vector2.zero;
-			move.x = Input.GetAxisRaw(m_HorizontalAxis);
-			move.y = Input.GetAxisRaw(m_VerticalAxis);
+			move.x = Input.GetAxisRaw(m_HorizontalAxis[PlayerPrefs.GetInt("ControllerType")]);
+			move.y = Input.GetAxisRaw(m_VerticalAxis[PlayerPrefs.GetInt("ControllerType")]);
 
-			if (Input.GetButtonDown(m_HorizontalAxis))
+			if (Input.GetButtonDown(m_HorizontalAxis[PlayerPrefs.GetInt("ControllerType")]))
 			{
 				if (move.x < 0)
 					move.x = -1f;
 				if (move.x > 0)
 					move.x = 1f;
 			}
-			if (Input.GetButtonDown(m_VerticalAxis))
+			if (Input.GetButtonDown(m_VerticalAxis[PlayerPrefs.GetInt("ControllerType")]))
 			{
 				if (move.y < 0)
 					move.y = -1f;
@@ -234,7 +234,7 @@ namespace UnityEngine.EventSystems
 			}
 
 			// If user pressed key again, always allow event
-			bool allow = Input.GetButtonDown(m_HorizontalAxis) || Input.GetButtonDown(m_VerticalAxis);
+			bool allow = Input.GetButtonDown(m_HorizontalAxis[PlayerPrefs.GetInt("ControllerType")]) || Input.GetButtonDown(m_VerticalAxis[PlayerPrefs.GetInt("ControllerType")]);
 			bool similarDir = (Vector2.Dot(movement, m_LastMoveVector) > 0);
 			if (!allow)
 			{
