@@ -68,7 +68,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private bool debugEnable = false;
 
-    string[] directions = {"Horizontal", "Vertical"};
+    string[] horizontalTexts = {"Horizontal", "Horizontal_DDR"};
+    string[] verticalTexts = {"Vertical", "Vertical_DDR" };
 
     float detectionTimer = 0f;
 
@@ -98,7 +99,7 @@ public class InputController : MonoBehaviour
     void PlayerMoveInput()
     {
         //LEFT
-        if (Input.GetAxisRaw(directions[0]) < 0)
+        if (Input.GetAxisRaw(horizontalTexts[PlayerPrefs.GetInt("ControllerType")]) < 0)
         {
             if (!playerCollision.LeftCollision() && inputFlag && easingBool) 
             {
@@ -131,7 +132,7 @@ public class InputController : MonoBehaviour
         }
 
         //RIGHT
-        else if (Input.GetAxisRaw(directions[0]) > 0)
+        else if (Input.GetAxisRaw(horizontalTexts[PlayerPrefs.GetInt("ControllerType")]) > 0)
         {
             if (!playerCollision.RightCollision() && inputFlag && easingBool)
             {
@@ -165,7 +166,7 @@ public class InputController : MonoBehaviour
         }
 
         //DOWN
-        else if (Input.GetAxisRaw(directions[1]) < 0)
+        else if (Input.GetAxisRaw(verticalTexts[PlayerPrefs.GetInt("ControllerType")]) < 0)
         {
             
             if (!playerCollision.DownCollision() && inputFlag && easingBool)
@@ -199,7 +200,7 @@ public class InputController : MonoBehaviour
         }
 
         //UP
-        else if (Input.GetAxisRaw(directions[1]) > 0)
+        else if (Input.GetAxisRaw(verticalTexts[PlayerPrefs.GetInt("ControllerType")]) > 0)
         {
             if (!playerCollision.UpCollision() && inputFlag && easingBool)
             {

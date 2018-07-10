@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
 
     bool flagTimeNearOver = true;
 
+    private string[] cancelText = { "Cancel", "Cancel_DDR" };
+
     private void Awake()
     {
 		if(_allowFpsCap) Application.targetFrameRate = _fpsApplication;
@@ -83,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown(cancelText[PlayerPrefs.GetInt("ControllerType")]))
         {
             Pause();
         }
