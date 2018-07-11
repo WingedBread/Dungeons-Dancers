@@ -13,7 +13,10 @@ public class InputController : MonoBehaviour
 
     [Header("Spam Time")]
     [SerializeField]
+    private int currentBPM = 130;
+    [SerializeField]
     private float detectionPercentage;
+    private float lenghtofBeat;
 
     [Header("Player Rotations")]
     [SerializeField]
@@ -84,7 +87,7 @@ public class InputController : MonoBehaviour
         rotationDOWN = Quaternion.Euler(_rotationDOWN.x, _rotationDOWN.y, _rotationDOWN.z);
         rotationLEFT = Quaternion.Euler(_rotationLEFT.x, _rotationLEFT.y, _rotationLEFT.z);
         rotationRIGHT = Quaternion.Euler(_rotationRIGHT.x, _rotationRIGHT.y, _rotationRIGHT.z);
-
+        lenghtofBeat = (1 / currentBPM) * 60;
 	}
 	
 	// Update is called once per frame
@@ -114,7 +117,7 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (detectionTimer > detectionPercentage)
+                if (detectionTimer > ((detectionPercentage/10)*lenghtofBeat))
                 {
                     detectionTimer = 0;
                     if (playerManager.gameManager.GetRhythmActiveInput())
@@ -148,7 +151,7 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (detectionTimer > detectionPercentage)
+                if (detectionTimer > ((detectionPercentage / 10) * lenghtofBeat))
                 {
                     detectionTimer = 0;
                     if (playerManager.gameManager.GetRhythmActiveInput())
@@ -182,7 +185,7 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (detectionTimer > detectionPercentage)
+                if (detectionTimer > ((detectionPercentage / 10) * lenghtofBeat))
                 {
                     detectionTimer = 0;
                     if (playerManager.gameManager.GetRhythmActiveInput())
@@ -215,7 +218,7 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (detectionTimer > detectionPercentage)
+                if (detectionTimer > ((detectionPercentage*0.01) * lenghtofBeat))
                 {
                     detectionTimer = 0;
                     if (playerManager.gameManager.GetRhythmActiveInput())
