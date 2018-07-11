@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     bool flagTimeNearOver = true;
 
-    private string[] cancelText = { "Cancel", "Cancel_DDR" };
+    private string[] cancelText = {"Cancel", "Cancel_DDR", "Cancel_SNES"};
 
     private void Awake()
     {

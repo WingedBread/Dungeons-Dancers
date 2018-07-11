@@ -49,8 +49,8 @@ public class MenuSceneScript : MonoBehaviour {
     [SerializeField]
     private Button firstButton;
 
-    private string[] submitTexts = { "Submit", "Submit_DDR"};
-    private string[] cancelTexts = { "Cancel", "Cancel_DDR"};
+    private string[] submitTexts = { "Submit", "Submit_DDR", "Submit_SNES"};
+    private string[] cancelTexts = { "Cancel", "Cancel_DDR", "Cancel_SNES"};
 
     [Header("Restart With Controller?")]
     [SerializeField]

@@ -30,25 +30,25 @@ namespace UnityEngine.EventSystems
 		}
 
 		[SerializeField]
-		private string[] m_HorizontalAxis = {"Horizontal", "Horizontal_DDR"};
+        private string[] m_HorizontalAxis = {"Horizontal", "Horizontal_DDR","Horizontal_SNES"};
         
 		/// <summary>
 		/// Name of the vertical axis for movement (if axis events are used).
 		/// </summary>
 		[SerializeField]
-		private string[] m_VerticalAxis = {"Vertical", "Vertical_DDR" };
+        private string[] m_VerticalAxis = {"Vertical", "Vertical_DDR", "Vertical_SNES" };
 
 		/// <summary>
 		/// Name of the submit button.
 		/// </summary>
 		[SerializeField]
-		private string[] m_SubmitButton = {"Submit", "Submit_DDR" };
+        private string[] m_SubmitButton = {"Submit", "Submit_DDR", "Submit_SNES"};
 
 		/// <summary>
 		/// Name of the submit button.
 		/// </summary>
 		[SerializeField]
-		private string[] m_CancelButton = {"Cancel", "Cancel_DDR" };
+		private string[] m_CancelButton = {"Cancel", "Cancel_DDR", "Cancel_SNES"};
 
 		[SerializeField]
 		private float m_InputActionsPerSecond = 10;

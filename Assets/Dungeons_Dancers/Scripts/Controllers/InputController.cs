@@ -68,8 +68,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private bool debugEnable = false;
 
-    string[] horizontalTexts = {"Horizontal", "Horizontal_DDR"};
-    string[] verticalTexts = {"Vertical", "Vertical_DDR" };
+    string[] horizontalTexts = {"Horizontal", "Horizontal_DDR", "Horizontal_SNES"};
+    string[] verticalTexts = {"Vertical", "Vertical_DDR", "Vertical_SNES"};
 
     float detectionTimer = 0f;
 
