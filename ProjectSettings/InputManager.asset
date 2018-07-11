@@ -7,12 +7,12 @@ InputManager:
   m_Axes:
   - serializedVersion: 3
     m_Name: Horizontal
-    descriptiveName: Horizontal Xbox
+    descriptiveName: Horizontal XboxController
     descriptiveNegativeName: 
-    negativeButton: joystick button 2
-    positiveButton: joystick button 1
-    altNegativeButton: left
-    altPositiveButton: right
+    negativeButton: left
+    positiveButton: right
+    altNegativeButton: joystick button 2
+    altPositiveButton: joystick button 1
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -23,12 +23,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Horizontal_DDR
-    descriptiveName: Horizontal DDR
+    descriptiveName: Horizontal DDR Pad
     descriptiveNegativeName: 
-    negativeButton: joystick button 0
-    positiveButton: joystick button 3
-    altNegativeButton: left
-    altPositiveButton: right
+    negativeButton: left
+    positiveButton: right
+    altNegativeButton: joystick button 3
+    altPositiveButton: joystick button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -41,26 +41,10 @@ InputManager:
     m_Name: Horizontal
     descriptiveName: Horizontal PC
     descriptiveNegativeName: 
-    negativeButton: a
-    positiveButton: d
-    altNegativeButton: left
-    altPositiveButton: right
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 1
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: Horizontal
-    descriptiveName: Horizontal Joystick/D-Pad
-    descriptiveNegativeName: 
     negativeButton: left
     positiveButton: right
-    altNegativeButton: 
-    altPositiveButton: 
+    altNegativeButton: a
+    altPositiveButton: d
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -70,13 +54,29 @@ InputManager:
     axis: 5
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Vertical
-    descriptiveName: Vertical Xbox
+    m_Name: Horizontal
+    descriptiveName: Horizontal Joystick
     descriptiveNegativeName: 
-    negativeButton: joystick button 0
-    positiveButton: joystick button 3
-    altNegativeButton: down
-    altPositiveButton: up
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Vertical
+    descriptiveName: Vertical XboxController
+    descriptiveNegativeName: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: joystick button 0
+    altPositiveButton: joystick button 3
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -87,7 +87,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Vertical_DDR
-    descriptiveName: Vertical DDR
+    descriptiveName: Horizontal DDR Pad
     descriptiveNegativeName: 
     negativeButton: down
     positiveButton: up
@@ -105,26 +105,10 @@ InputManager:
     m_Name: Vertical
     descriptiveName: Vertical PC
     descriptiveNegativeName: 
-    negativeButton: d
-    positiveButton: w
-    altNegativeButton: down
-    altPositiveButton: up
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 1
-    invert: 0
-    type: 0
-    axis: 1
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: Vertical
-    descriptiveName: Vertical Joystick/D-Pad
-    descriptiveNegativeName: 
     negativeButton: down
     positiveButton: up
-    altNegativeButton: 
-    altPositiveButton: 
+    altNegativeButton: s
+    altPositiveButton: w
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -132,6 +116,22 @@ InputManager:
     invert: 0
     type: 2
     axis: 6
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Vertical
+    descriptiveName: Vertical Joystick
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 1
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
@@ -327,28 +327,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Submit_DDR
-    descriptiveName: 
+    descriptiveName: Submit DDR
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: space
     altNegativeButton: 
     altPositiveButton: joystick button 8
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: Submit
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: enter
-    altNegativeButton: 
-    altPositiveButton: space
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
