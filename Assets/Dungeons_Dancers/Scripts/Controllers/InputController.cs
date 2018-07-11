@@ -117,7 +117,7 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (detectionTimer > ((detectionPercentage/10)*lenghtofBeat))
+                if (detectionTimer > ((detectionPercentage * 0.01)*lenghtofBeat))
                 {
                     detectionTimer = 0;
                     if (playerManager.gameManager.GetRhythmActiveInput())
@@ -151,7 +151,7 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (detectionTimer > ((detectionPercentage / 10) * lenghtofBeat))
+                if (detectionTimer > ((detectionPercentage * 0.01) * lenghtofBeat))
                 {
                     detectionTimer = 0;
                     if (playerManager.gameManager.GetRhythmActiveInput())
@@ -185,7 +185,7 @@ public class InputController : MonoBehaviour
                 inputFlag = false;
                 easingBool = false;
 
-                if (detectionTimer > ((detectionPercentage / 10) * lenghtofBeat))
+                if (detectionTimer > ((detectionPercentage * 0.01) * lenghtofBeat))
                 {
                     detectionTimer = 0;
                     if (playerManager.gameManager.GetRhythmActiveInput())
