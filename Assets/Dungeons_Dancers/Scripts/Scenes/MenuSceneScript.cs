@@ -45,10 +45,12 @@ public class MenuSceneScript : MonoBehaviour {
     [SerializeField]
     private GameObject optionsScreen;
     [SerializeField]
-    private Toggle controllerToggle;
+    private Toggle[] optionsToggles = new Toggle[3];
+    [SerializeField]
+    private Button firstButton;
 
-    private string[] submitTexts = { "Submit", "Submit_DDR"};
-    private string[] cancelTexts = { "Cancel", "Cancel_DDR"};
+    private string[] submitTexts = { "Submit", "Submit_DDR", "Submit_SNES"};
+    private string[] cancelTexts = { "Cancel", "Cancel_DDR", "Cancel_SNES"};
 
     [Header("Restart With Controller?")]
     [SerializeField]
@@ -97,20 +99,19 @@ public class MenuSceneScript : MonoBehaviour {
         {
             logoScreen.SetActive(false);
             optionsScreen.SetActive(true);
+            firstButton.Select();
         }
     }
 
     void OptionsScreenBehaviour()
     {
-        if (controllerToggle.isOn)
+        for (int i = 0; i < optionsToggles.Length; i++)
         {
-            PlayerPrefs.SetInt("ControllerType", 0);
+            if (optionsToggles[i].isOn)
+            {
+                PlayerPrefs.SetInt("ControllerType", i);
+            }
         }
-        else
-        {
-            PlayerPrefs.SetInt("ControllerType", 1);
-        }
-
         if (Input.GetButtonDown(cancelTexts[PlayerPrefs.GetInt("ControllerType")]))
         {
             logoScreen.SetActive(true);
