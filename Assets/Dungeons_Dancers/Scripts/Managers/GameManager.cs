@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioController))]
 [RequireComponent(typeof(RhythmController))]
 [RequireComponent(typeof(UIController))]
-[RequireComponent(typeof(EventController))]
 public class GameManager : MonoBehaviour
 {
     [HideInInspector]
@@ -43,7 +42,6 @@ public class GameManager : MonoBehaviour
     private RhythmController rhythmController;
     private AudioController auController;
     private SatisfactionController satisController;
-    private EventController eventController;
     private IntroController introController;
 
     [Header("God Mode (?)")]
@@ -58,7 +56,6 @@ public class GameManager : MonoBehaviour
 	private float initDungeonTimer = 60f;
     private float dungeonTimer;
 
-    private int currentLevelState = 0;
 
     bool flagTimeNearOver = true;
 
@@ -77,7 +74,6 @@ public class GameManager : MonoBehaviour
         rhythmController = GetComponent<RhythmController>();
         auController = GetComponent<AudioController>();
         satisController = GetComponent<SatisfactionController>();
-        eventController = GetComponent<EventController>();
         introController = GetComponent<IntroController>();
         dungeonTimer = initDungeonTimer;
         auController.PointsSnapshotCheck(6);

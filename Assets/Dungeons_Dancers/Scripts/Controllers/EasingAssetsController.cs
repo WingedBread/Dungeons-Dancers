@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using SonicBloom.Koreo;
 using DG.Tweening;
 
@@ -72,8 +70,8 @@ public class EasingAssetsController : MonoBehaviour {
         if (moveEasing)
         {
             Sequence s = DOTween.Sequence();
-            s.Append(transform.DOMove(onBeatScaleVector3, easingOnDuration)).SetEase(easingOnBeatList);
-            s.Append(transform.DOMove(offBeatScaleVector3, easingOffDuration)).SetEase(easingOffBeatList);
+            s.Append(transform.DOMove(onBeatPositionVector3, easingOnDuration)).SetEase(easingOnBeatList);
+            s.Append(transform.DOMove(offBeatPositionVector3, easingOffDuration)).SetEase(easingOffBeatList);
         }
     }
 }

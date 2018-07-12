@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using DG.Tweening;
 using SonicBloom.Koreo;
 
@@ -42,7 +40,7 @@ public class StaticTrapBehaviour : MonoBehaviour {
 
     private bool activeTrapEvent = false;
 
-	private int beatCounter = 0;	// For debug beats with behaviour
+	//private int beatCounter = 0;	// For debug beats with behaviour
 
     private GameObject childSpikes;
 
