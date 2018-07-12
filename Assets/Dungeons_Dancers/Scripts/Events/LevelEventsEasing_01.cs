@@ -89,6 +89,8 @@ public class LevelEventsEasing_01 : MonoBehaviour {
 
 	private void Awake()
 	{
+        DOTween.SetTweensCapacity(200, 150);
+
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         gameManager.levelEventsEasing1.Add(this);
         for (int i = 0; i < levelEvents.Length; i++){
