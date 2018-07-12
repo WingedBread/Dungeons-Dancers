@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
 
     private void Pause()
     {
-        if (Time.timeScale > 0 && gameStart)
+        if (gameStart)
         {
             for (int i = 0; i < levelEventsAudios.Count; i++)
             {
@@ -276,13 +276,12 @@ public class GameManager : MonoBehaviour
             {
                 levelEventsEasing4[i].SetLevelState(LevelStates.LevelPaused);
             }
-            Time.timeScale = 0;
             gameStart = false;
             auController.MuteSound();
             uiController.PauseUI();
         }
 
-        else if(Time.timeScale == 0 && !gameStart)
+        else if(!gameStart)
         {
             for (int i = 0; i < levelEventsAudios.Count; i++)
             {
@@ -316,7 +315,6 @@ public class GameManager : MonoBehaviour
             {
                 levelEventsEasing4[i].SetLevelState(LevelStates.LevelPlay);
             }
-            Time.timeScale = 1;
             gameStart = true;
             auController.UnmuteSound();
             uiController.ResetUI();

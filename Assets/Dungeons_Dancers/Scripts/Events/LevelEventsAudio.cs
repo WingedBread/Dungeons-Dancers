@@ -172,7 +172,7 @@ public class LevelEventsAudio : MonoBehaviour {
     }
     public void OnBeat()
     {
-        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
+        if (eventPlaying && gameManager.GetGameStatus() &&(this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
