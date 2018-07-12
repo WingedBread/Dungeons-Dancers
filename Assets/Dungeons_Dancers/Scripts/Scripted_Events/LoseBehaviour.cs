@@ -70,6 +70,8 @@ public class LoseBehaviour : MonoBehaviour {
     [SerializeField]
     private Button firstButton;
 
+    private Transform ogCameraTransform;
+
     private void Start()
     {
 		mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>(); // Curial add: ScreenShake
@@ -83,6 +85,7 @@ public class LoseBehaviour : MonoBehaviour {
         loseUIFace.color = loseUIFaceColor;
         ActivateUI(false);
         player = playerM;
+        ogCameraTransform = mainCamera.gameObject.transform;
 		mainCamera.gameObject.transform.DOShakeRotation(ShakeDuration, ShakeRotationStrenght, ShakeVibration, Randomness, FadeOut); // Curial add: ScreenShake
 
         yield return new WaitForSeconds(delayDuration);
@@ -102,6 +105,7 @@ public class LoseBehaviour : MonoBehaviour {
     public void Restart(){
         
         StartCoroutine(player.ResetPlayer(true));
+        mainCamera.gameObject.transform.rotation = ogCameraTransform.rotation;
         Destroy(instantiatedGO);
     }
 

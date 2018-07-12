@@ -50,9 +50,13 @@ public class PlayerManager : MonoBehaviour
         {
 			gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Dancing);
         }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Dancing);
+            gameManager.levelEventsAmbientColors[i].SetPlayerState(PlayerStates.Dancing);
+        }
+        for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+        {
+            gameManager.levelEventsLightsColors[i].SetPlayerState(PlayerStates.Dancing);
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
@@ -111,9 +115,13 @@ public class PlayerManager : MonoBehaviour
         {
 			gameManager.levelEventsMaterials[i].GoodMove();
         }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            gameManager.levelEventsColors[i].GoodMove();
+            gameManager.levelEventsAmbientColors[i].GoodMove();
+        }
+        for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+        {
+            gameManager.levelEventsLightsColors[i].GoodMove();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
@@ -153,9 +161,13 @@ public class PlayerManager : MonoBehaviour
         {
 			gameManager.levelEventsMaterials[i].WrongMove();
         }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            gameManager.levelEventsColors[i].WrongMove();
+            gameManager.levelEventsAmbientColors[i].WrongMove();
+        }
+        for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+        {
+            gameManager.levelEventsLightsColors[i].WrongMove();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
@@ -201,9 +213,13 @@ public class PlayerManager : MonoBehaviour
         {
 			gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Succeed);
         }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Succeed);
+            gameManager.levelEventsAmbientColors[i].SetPlayerState(PlayerStates.Succeed);
+        }
+        for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+        {
+            gameManager.levelEventsLightsColors[i].SetPlayerState(PlayerStates.Succeed);
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
@@ -247,10 +263,15 @@ public class PlayerManager : MonoBehaviour
 			gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Hit);
 			gameManager.levelEventsMaterials[i].OnHit();
         }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Hit);
-            gameManager.levelEventsColors[i].OnHit();
+            gameManager.levelEventsAmbientColors[i].SetPlayerState(PlayerStates.Hit);
+            gameManager.levelEventsAmbientColors[i].OnHit();
+        }
+        for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+        {
+            gameManager.levelEventsLightsColors[i].SetPlayerState(PlayerStates.Hit);
+            gameManager.levelEventsLightsColors[i].OnHit();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
@@ -287,9 +308,13 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.levelEventsMaterials[i].GetSparkle();
         }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            gameManager.levelEventsColors[i].GetSparkle();
+            gameManager.levelEventsAmbientColors[i].GetSparkle();
+        }
+        for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+        {
+            gameManager.levelEventsLightsColors[i].GetSparkle();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
@@ -323,9 +348,13 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.levelEventsMaterials[i].GetKey();
         }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            gameManager.levelEventsColors[i].GetKey();
+            gameManager.levelEventsAmbientColors[i].GetKey();
+        }
+        for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+        {
+            gameManager.levelEventsLightsColors[i].GetKey();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
@@ -366,9 +395,13 @@ public class PlayerManager : MonoBehaviour
 				{
 					gameManager.levelEventsMaterials[i].OnCheckpoint();
 				}
-                for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+                for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
                 {
-                    gameManager.levelEventsColors[i].OnCheckpoint();
+                    gameManager.levelEventsAmbientColors[i].OnCheckpoint();
+                }
+                for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+                {
+                    gameManager.levelEventsLightsColors[i].OnCheckpoint();
                 }
 				for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
 				{
@@ -440,9 +473,13 @@ public class PlayerManager : MonoBehaviour
             {
                 gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Dancing);
             }
-            for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+            for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
             {
-                gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Dancing);
+                gameManager.levelEventsAmbientColors[i].SetPlayerState(PlayerStates.Dancing);
+            }
+            for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+            {
+                gameManager.levelEventsLightsColors[i].SetPlayerState(PlayerStates.Dancing);
             }
             for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
             {
@@ -482,9 +519,13 @@ public class PlayerManager : MonoBehaviour
             {
                 gameManager.levelEventsMaterials[i].SetPlayerState(PlayerStates.Dancing);
             }
-            for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+            for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
             {
-                gameManager.levelEventsColors[i].SetPlayerState(PlayerStates.Dancing);
+                gameManager.levelEventsAmbientColors[i].SetPlayerState(PlayerStates.Dancing);
+            }
+            for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+            {
+                gameManager.levelEventsLightsColors[i].SetPlayerState(PlayerStates.Dancing);
             }
             for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
             {

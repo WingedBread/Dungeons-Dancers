@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 
 public class AudioController : MonoBehaviour {
     
-    [Header("Game Manager")]
-    private GameManager gameManager;
     [Header("Choose Transition between Snapshots")]
     [SerializeField]
     private float transitionTime;
@@ -36,7 +32,6 @@ public class AudioController : MonoBehaviour {
 	void Start () {
         selectedSnap = 6;
         audioSource = GetComponent<AudioSource>();
-        gameManager = GetComponent<GameManager>(); 
 	}
 
     public void PointsSnapshotCheck(int SelectedSnap)

@@ -35,8 +35,6 @@ public class MenuSceneScript : MonoBehaviour {
     [EventID]
     public string eventID_spot4;
 
-    private int controllerConfig = 0;
-
     [Header("LogoScreen")]
     [SerializeField]
     private GameObject logoScreen;
@@ -159,10 +157,5 @@ public class MenuSceneScript : MonoBehaviour {
         {
             yield return null;
         }
-    }
-
-    public void SetControllerValue(int value)
-    {
-        controllerConfig = value;
     }
 }

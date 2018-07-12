@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
-using UnityEngine.UI;
 
 public class WinBehaviour : MonoBehaviour {
 
@@ -66,7 +65,6 @@ public class WinBehaviour : MonoBehaviour {
 	bool[] done = new bool[3];
 
     private GameObject instantiatedWinText;
-	private Vector3 ogMainCameraPosition;
 
 	// Use this for initialization
 	void Start () {
@@ -84,7 +82,6 @@ public class WinBehaviour : MonoBehaviour {
 	public IEnumerator CameraCoroutine()
 	{
 		done[0] = false;
-		ogMainCameraPosition = mainCamera.gameObject.transform.position;
 		yield return new WaitForSeconds(cameraDelayDuration);
 		mainCamera.gameObject.transform.DOMove(cameraEndPos.position, cameraDuration).SetEase(cameraEasing);
 		yield return new WaitForSeconds(cameraDuration);

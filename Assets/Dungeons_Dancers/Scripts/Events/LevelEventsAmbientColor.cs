@@ -2,7 +2,7 @@
 using SonicBloom.Koreo;
 using DG.Tweening;
 
-public class LevelEventsColor : MonoBehaviour
+public class LevelEventsAmbientColor : MonoBehaviour
 {
     private AudioSource audioSource;
     private GameManager gameManager;
@@ -48,7 +48,7 @@ public class LevelEventsColor : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        gameManager.levelEventsColors.Add(this);
+        gameManager.levelEventsAmbientColors.Add(this);
         for (int i = 0; i < levelEvents.Length; i++)
         {
             for (int w = 0; w < 21; w++)
