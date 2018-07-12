@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
 	[HideInInspector]
 	public List<LevelEventsMaterial> levelEventsMaterials;
     [HideInInspector]
-    public List<LevelEventsColor> levelEventsColors;
+    public List<LevelEventsAmbientColor> levelEventsAmbientColors;
+    [HideInInspector]
+    public List<LevelEventsLightsColor> levelEventsLightsColors;
 
 	[Header("FPS Settings")]
 	[SerializeField]
@@ -104,9 +106,13 @@ public class GameManager : MonoBehaviour
                 {
 					levelEventsMaterials[i].TimeOver();
                 }
-                for (int i = 0; i < levelEventsColors.Count; i++)
+                for (int i = 0; i < levelEventsAmbientColors.Count; i++)
                 {
-                    levelEventsColors[i].TimeOver();
+                    levelEventsAmbientColors[i].TimeOver();
+                }
+                for (int i = 0; i < levelEventsLightsColors.Count; i++)
+                {
+                    levelEventsLightsColors[i].TimeOver();
                 }
                 for (int i = 0; i < levelEventsEasing1.Count; i++)
                 {
@@ -138,9 +144,13 @@ public class GameManager : MonoBehaviour
                 {
 					levelEventsMaterials[i].TimeNearOver();
                 }
-                for (int i = 0; i < levelEventsColors.Count; i++)
+                for (int i = 0; i < levelEventsAmbientColors.Count; i++)
                 {
-                    levelEventsColors[i].TimeNearOver();
+                    levelEventsAmbientColors[i].TimeNearOver();
+                }
+                for (int i = 0; i < levelEventsLightsColors.Count; i++)
+                {
+                    levelEventsLightsColors[i].TimeNearOver();
                 }
                 for (int i = 0; i < levelEventsEasing1.Count; i++)
                 {
@@ -190,11 +200,17 @@ public class GameManager : MonoBehaviour
 				levelEventsMaterials[i].IntroEnd();
 				levelEventsMaterials[i].StartPlay();
             }
-            for (int i = 0; i < levelEventsColors.Count; i++)
+            for (int i = 0; i < levelEventsAmbientColors.Count; i++)
             {
-                levelEventsColors[i].SetLevelState(LevelStates.LevelPlay);
-                levelEventsColors[i].IntroEnd();
-                levelEventsColors[i].StartPlay();
+                levelEventsAmbientColors[i].SetLevelState(LevelStates.LevelPlay);
+                levelEventsAmbientColors[i].IntroEnd();
+                levelEventsAmbientColors[i].StartPlay();
+            }
+            for (int i = 0; i < levelEventsLightsColors.Count; i++)
+            {
+                levelEventsLightsColors[i].SetLevelState(LevelStates.LevelPlay);
+                levelEventsLightsColors[i].IntroEnd();
+                levelEventsLightsColors[i].StartPlay();
             }
             for (int i = 0; i < levelEventsEasing1.Count; i++)
             {
@@ -240,9 +256,13 @@ public class GameManager : MonoBehaviour
             {
                 levelEventsMaterials[i].SetLevelState(LevelStates.LevelPaused);
             }
-            for (int i = 0; i < levelEventsColors.Count; i++)
+            for (int i = 0; i < levelEventsAmbientColors.Count; i++)
             {
-                levelEventsColors[i].SetLevelState(LevelStates.LevelPaused);
+                levelEventsAmbientColors[i].SetLevelState(LevelStates.LevelPaused);
+            }
+            for (int i = 0; i < levelEventsLightsColors.Count; i++)
+            {
+                levelEventsLightsColors[i].SetLevelState(LevelStates.LevelPaused);
             }
             for (int i = 0; i < levelEventsEasing1.Count; i++)
             {
@@ -276,9 +296,13 @@ public class GameManager : MonoBehaviour
             {
                 levelEventsMaterials[i].SetLevelState(LevelStates.LevelPlay);
             }
-            for (int i = 0; i < levelEventsColors.Count; i++)
+            for (int i = 0; i < levelEventsAmbientColors.Count; i++)
             {
-                levelEventsColors[i].SetLevelState(LevelStates.LevelPlay);
+                levelEventsAmbientColors[i].SetLevelState(LevelStates.LevelPlay);
+            }
+            for (int i = 0; i < levelEventsLightsColors.Count; i++)
+            {
+                levelEventsLightsColors[i].SetLevelState(LevelStates.LevelPlay);
             }
             for (int i = 0; i < levelEventsEasing1.Count; i++)
             {
@@ -315,10 +339,15 @@ public class GameManager : MonoBehaviour
 			levelEventsMaterials[i].SetLevelState(LevelStates.LevelEnd);
 			levelEventsMaterials[i].WinLevel();
         }
-        for (int i = 0; i < levelEventsColors.Count; i++)
+        for (int i = 0; i < levelEventsAmbientColors.Count; i++)
         {
-            levelEventsColors[i].SetLevelState(LevelStates.LevelEnd);
-            levelEventsColors[i].WinLevel();
+            levelEventsAmbientColors[i].SetLevelState(LevelStates.LevelEnd);
+            levelEventsAmbientColors[i].WinLevel();
+        }
+        for (int i = 0; i < levelEventsLightsColors.Count; i++)
+        {
+            levelEventsLightsColors[i].SetLevelState(LevelStates.LevelEnd);
+            levelEventsLightsColors[i].WinLevel();
         }
         for (int i = 0; i < levelEventsEasing1.Count; i++)
         {
@@ -380,9 +409,13 @@ public class GameManager : MonoBehaviour
         {
 			levelEventsMaterials[i].SetLevelState(LevelStates.LevelStart);
         }
-        for (int i = 0; i < levelEventsColors.Count; i++)
+        for (int i = 0; i < levelEventsAmbientColors.Count; i++)
         {
-            levelEventsColors[i].SetLevelState(LevelStates.LevelStart);
+            levelEventsAmbientColors[i].SetLevelState(LevelStates.LevelStart);
+        }
+        for (int i = 0; i < levelEventsLightsColors.Count; i++)
+        {
+            levelEventsLightsColors[i].SetLevelState(LevelStates.LevelStart);
         }
         for (int i = 0; i < levelEventsEasing1.Count; i++)
         {
@@ -443,9 +476,13 @@ public class GameManager : MonoBehaviour
         {
 			levelEventsMaterials[i].Door();
         }
-        for (int i = 0; i < levelEventsColors.Count; i++)
+        for (int i = 0; i < levelEventsAmbientColors.Count; i++)
         {
-            levelEventsColors[i].Door();
+            levelEventsAmbientColors[i].Door();
+        }
+        for (int i = 0; i < levelEventsLightsColors.Count; i++)
+        {
+            levelEventsLightsColors[i].Door();
         }
         for (int i = 0; i < levelEventsEasing1.Count; i++)
         {

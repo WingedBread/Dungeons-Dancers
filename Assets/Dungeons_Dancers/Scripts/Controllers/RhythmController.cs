@@ -71,13 +71,18 @@ public class RhythmController : MonoBehaviour
             gameManager.levelEventsMaterials[i].SetLevelState(LevelStates.LevelStart);
             gameManager.levelEventsMaterials[i].IntroStart();
         }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            if (gameManager.levelEventsColors == null) Debug.Log("null material");
-            gameManager.levelEventsColors[i].SetLevelState(LevelStates.LevelStart);
-            gameManager.levelEventsColors[i].IntroStart();
+            if (gameManager.levelEventsAmbientColors == null) Debug.Log("null material");
+            gameManager.levelEventsAmbientColors[i].SetLevelState(LevelStates.LevelStart);
+            gameManager.levelEventsAmbientColors[i].IntroStart();
         }
-
+        for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+        {
+            if (gameManager.levelEventsLightsColors == null) Debug.Log("null material");
+            gameManager.levelEventsLightsColors[i].SetLevelState(LevelStates.LevelStart);
+            gameManager.levelEventsLightsColors[i].IntroStart();
+        }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
             if (gameManager.levelEventsEasing1 == null) Debug.Log("null easing");
@@ -169,9 +174,13 @@ public class RhythmController : MonoBehaviour
         {
 			gameManager.levelEventsMaterials[i].OnBeat();
         }
-        for (int i = 0; i < gameManager.levelEventsColors.Count; i++)
+        for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            gameManager.levelEventsColors[i].OnBeat();
+            gameManager.levelEventsAmbientColors[i].OnBeat();
+        }
+        for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+        {
+            gameManager.levelEventsLightsColors[i].OnBeat();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
