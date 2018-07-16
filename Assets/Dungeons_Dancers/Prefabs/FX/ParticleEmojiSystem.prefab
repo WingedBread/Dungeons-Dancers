@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4292767626570228}
   - component: {fileID: 198893809145018624}
   - component: {fileID: 199629547067185258}
+  - component: {fileID: 114625537085571212}
   m_Layer: 8
   m_Name: Particle System (6)
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4151209891817138}
   - component: {fileID: 198307200586782076}
   - component: {fileID: 199969936236467880}
+  - component: {fileID: 114061075487645496}
   m_Layer: 8
   m_Name: Particle System (3)
   m_TagString: Untagged
@@ -70,6 +72,7 @@ GameObject:
   - component: {fileID: 4648219918198220}
   - component: {fileID: 198236983182427308}
   - component: {fileID: 199471209890820844}
+  - component: {fileID: 114645637163044130}
   m_Layer: 8
   m_Name: Particle System (2)
   m_TagString: Untagged
@@ -87,6 +90,7 @@ GameObject:
   - component: {fileID: 4632263756512102}
   - component: {fileID: 198753052870874880}
   - component: {fileID: 199788936951985050}
+  - component: {fileID: 114969728873123356}
   m_Layer: 8
   m_Name: Particle System (5)
   m_TagString: Untagged
@@ -104,6 +108,7 @@ GameObject:
   - component: {fileID: 4213421055496762}
   - component: {fileID: 198047181131226764}
   - component: {fileID: 199717408408356846}
+  - component: {fileID: 114533288855414268}
   m_Layer: 8
   m_Name: Particle System (1)
   m_TagString: Untagged
@@ -121,6 +126,7 @@ GameObject:
   - component: {fileID: 4120007498071330}
   - component: {fileID: 198768800541625076}
   - component: {fileID: 199972038976406290}
+  - component: {fileID: 114220437820804036}
   m_Layer: 8
   m_Name: Particle System (4)
   m_TagString: Untagged
@@ -225,6 +231,78 @@ Transform:
   m_Father: {fileID: 4545185654114176}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114061075487645496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1183853535644124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1787dfd5b9b2d458154c8d78247657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
+--- !u!114 &114220437820804036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1601965115228050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1787dfd5b9b2d458154c8d78247657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
+--- !u!114 &114533288855414268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494239252380838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1787dfd5b9b2d458154c8d78247657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
+--- !u!114 &114625537085571212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048190403183550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1787dfd5b9b2d458154c8d78247657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
+--- !u!114 &114645637163044130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1242754249592102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1787dfd5b9b2d458154c8d78247657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
+--- !u!114 &114969728873123356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406331296417450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1787dfd5b9b2d458154c8d78247657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
 --- !u!198 &198047181131226764
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -234,7 +312,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 2
   simulationSpeed: 3
-  stopAction: 2
+  stopAction: 0
   looping: 0
   prewarm: 0
   playOnAwake: 1
@@ -4792,7 +4870,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 2
   simulationSpeed: 3
-  stopAction: 2
+  stopAction: 0
   looping: 0
   prewarm: 0
   playOnAwake: 1
@@ -13899,7 +13977,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 2
   simulationSpeed: 3
-  stopAction: 2
+  stopAction: 0
   looping: 0
   prewarm: 0
   playOnAwake: 1
@@ -23006,7 +23084,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 2
   simulationSpeed: 3
-  stopAction: 2
+  stopAction: 0
   looping: 0
   prewarm: 0
   playOnAwake: 1

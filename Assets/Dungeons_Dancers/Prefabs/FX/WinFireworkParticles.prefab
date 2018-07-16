@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4122685762708932}
   - component: {fileID: 198855126066710482}
   - component: {fileID: 199935897356092216}
-  - component: {fileID: 114731893653000442}
   - component: {fileID: 114528526930376556}
+  - component: {fileID: 114251321118807318}
   m_Layer: 0
   m_Name: WinTornadoParticle
   m_TagString: Untagged
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4782282035096714}
   - component: {fileID: 198405478074982118}
   - component: {fileID: 199773197783368204}
-  - component: {fileID: 114756874033953806}
+  - component: {fileID: 114365579877547438}
   m_Layer: 0
   m_Name: WinFireworkParticles
   m_TagString: Untagged
@@ -75,6 +75,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114251321118807318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1122938766329938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1787dfd5b9b2d458154c8d78247657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
+--- !u!114 &114365579877547438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247311384876784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1787dfd5b9b2d458154c8d78247657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
 --- !u!114 &114528526930376556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,30 +112,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotation: {x: 0, y: 200, z: 0}
   space: 0
---- !u!114 &114731893653000442
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1122938766329938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyDeactivate: 0
---- !u!114 &114756874033953806
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1247311384876784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyDeactivate: 0
 --- !u!198 &198405478074982118
 ParticleSystem:
   m_ObjectHideFlags: 1
