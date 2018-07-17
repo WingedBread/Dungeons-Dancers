@@ -20,18 +20,18 @@ public class GameManager : MonoBehaviour
     public List<LevelEventsEasing_03> levelEventsEasing3;
     [HideInInspector]
     public List<LevelEventsEasing_04> levelEventsEasing4;
-	[HideInInspector]
-	public List<LevelEventsMaterial> levelEventsMaterials;
+    [HideInInspector]
+    public List<LevelEventsMaterial> levelEventsMaterials;
     [HideInInspector]
     public List<LevelEventsAmbientColor> levelEventsAmbientColors;
     [HideInInspector]
     public List<LevelEventsLightsColor> levelEventsLightsColors;
 
-	[Header("FPS Settings")]
-	[SerializeField]
-	private bool _allowFpsCap = false;
-	[SerializeField]
-	private int _fpsApplication = 0;
+    [Header("FPS Settings")]
+    [SerializeField]
+    private bool _allowFpsCap = false;
+    [SerializeField]
+    private int _fpsApplication = 0;
 
     [Header("Player Manager")]
     [SerializeField]
@@ -53,18 +53,28 @@ public class GameManager : MonoBehaviour
     [Header("Time Section")]
     [Header("Dungeon Timer in Seconds")]
     [SerializeField]
-	private float initDungeonTimer = 60f;
+    private float initDungeonTimer = 60f;
     private float dungeonTimer;
 
 
     bool flagTimeNearOver = true;
 
-    private string[] cancelText = {"Cancel", "Cancel_DDR", "Cancel_SNES"};
+    private string[] cancelText = new string[2];
 
     private void Awake()
     {
-		if(_allowFpsCap) Application.targetFrameRate = _fpsApplication;
+        if(_allowFpsCap) Application.targetFrameRate = _fpsApplication;
         //DontDestroyOnLoad(this.gameObject);
+
+        #if UNITY_STANDALONE_WIN
+            cancelText[0] = "Cancel_WIN";
+            cancelText[1] = "Cancel_DDR_WIN";
+            cancelText[2] = "Cancel_SNES_WIN";
+        #elif UNITY_STANDALONE_OSX
+            cancelText[0] = "Cancel_MACOS";
+            cancelText[1] = "Cancel_DDR_MACOS";
+            cancelText[2] = "Cancel_SNES_MACOS";
+        #endif
     }
 
     // Use this for initialization
@@ -384,13 +394,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator WaitForKeyDown(KeyCode keyCode)
-    {
-        while (!Input.GetKeyDown(keyCode))
-            yield return null;
-        StopCoroutine("WaitForKeyDown");
-    }
-
     public void GameDeadReset()
     {
         dungeonTimer = initDungeonTimer;
@@ -496,7 +499,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #region Getters & Setters
+#region Getters & Setters
     public int GetPoints(int min, int current, int max)
     {
         if (satisController == null) satisController = GetComponent<SatisfactionController>();
@@ -586,5 +589,5 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(i);
     }
 
-    #endregion
+#endregion
 }

@@ -70,14 +70,31 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private bool debugEnable = false;
 
-    string[] horizontalTexts = {"Horizontal", "Horizontal_DDR", "Horizontal_SNES"};
-    string[] verticalTexts = {"Vertical", "Vertical_DDR", "Vertical_SNES"};
+    string[] horizontalTexts = new string[2];
+    string[] verticalTexts = new string[2];
 
     float detectionTimer = 0f;
 
-
-	// Use this for initialization
-	void Start () 
+    private void Awake()
+    {
+        #if UNITY_STANDALONE_WIN
+            horizontalTexts[0] = "Horizontal_WIN";
+            horizontalTexts[1] = "Horizontal_DDR_WIN";
+            horizontalTexts[2] = "Horizontal_SNES_WIN";
+            verticalTexts[0] = "Vertical_WIN";
+            verticalTexts[1] = "Vertical_DDR_WIN";
+            verticalTexts[2] = "Vertical_SNES_WIN";
+        #elif UNITY_STANDALONE_OSX
+            horizontalTexts[0] = "Horizontal_MACOS";
+            horizontalTexts[1] = "Horizontal_DDR_MACOS";
+            horizontalTexts[2] = "Horizontal_SNES_MACOS";
+            verticalTexts[0] = "Vertical_MACOS";
+            verticalTexts[1] = "Vertical_DDR_MACOS";
+            verticalTexts[2] = "Vertical_SNES_MACOS";
+        #endif
+    }
+    // Use this for initialization
+    void Start () 
     {
         playerManager = GetComponent<PlayerManager>();
         playerCollision = transform.parent.GetChild(1).GetComponent<PlayerCollisions>();

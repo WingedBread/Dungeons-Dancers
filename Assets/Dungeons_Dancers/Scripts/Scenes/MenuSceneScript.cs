@@ -47,13 +47,32 @@ public class MenuSceneScript : MonoBehaviour {
     [SerializeField]
     private Button firstButton;
 
-    private string[] submitTexts = { "Submit", "Submit_DDR", "Submit_SNES"};
-    private string[] cancelTexts = { "Cancel", "Cancel_DDR", "Cancel_SNES"};
+    private string[] submitTexts = new string[2];
+    private string[] cancelTexts = new string[2];
 
     [Header("Restart With Controller?")]
     [SerializeField]
     private bool restart_with_controller = false;
 
+
+    private void Awake()
+    {
+        #if UNITY_STANDALONE_WIN
+            submitTexts[0] = "Submit_WIN";
+            submitTexts[1] = "Submit_DDR_WIN";
+            submitTexts[2] = "Submit_SNES_WIN";
+            cancelTexts[0] = "Cancel_WIN";
+            cancelTexts[1] = "Cancel_DDR_WIN";
+            cancelTexts[2] = "Cancel_SNES_WIN";
+        #elif UNITY_STANDALONE_OSX
+            submitTexts[0] = "Submit_MACOS";
+            submitTexts[1] = "Submit_DDR_MACOS";
+            submitTexts[2] = "Submit_SNES_MACOS";
+            cancelTexts[0] = "Cancel_MACOS";
+            cancelTexts[1] = "Cancel_DDR_MACOS";
+            cancelTexts[2] = "Cancel_SNES_MACOS";
+        #endif
+    }
     // Use this for initialization
     void Start () {
         PlayerPrefs.SetInt("TotalScore", 0);

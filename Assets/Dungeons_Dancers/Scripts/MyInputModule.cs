@@ -144,7 +144,37 @@ namespace UnityEngine.EventSystems
 			return shouldActivate;
 		}
 
-		public override void ActivateModule()
+        protected override void Awake()
+        {
+            #if UNITY_STANDALONE_WIN
+                m_HorizontalAxis[0] = "Horizontal_WIN";
+                m_HorizontalAxis[1] = "Horizontal_DDR_WIN";
+                m_HorizontalAxis[2] = "Horizontal_SNES_WIN";
+                m_VerticalAxis[0] = "Vertical_WIN";
+                m_VerticalAxis[1] = "Vertical_DDR_WIN";
+                m_VerticalAxis[2] = "Vertical_SNES_WIN";
+                m_SubmitButton[0] = "Submit_WIN";
+                m_SubmitButton[1] = "Submit_DDR_WIN";
+                m_SubmitButton[2] = "Submit_SNES_WIN";
+                m_CancelButton[0] = "Cancel_WIN";
+                m_CancelButton[1] = "Cancel_DDR_WIN";
+                m_CancelButton[2] = "Cancel_SNES_WIN";
+            #elif UNITY_STANDALONE_OSX
+                m_HorizontalAxis[0] = "Horizontal_MACOS";
+                m_HorizontalAxis[1] = "Horizontal_DDR_MACOS";
+                m_HorizontalAxis[2] = "Horizontal_SNES_MACOS";
+                m_VerticalAxis[0] = "Vertical_MACOS";
+                m_VerticalAxis[1] = "Vertical_DDR_MACOS";
+                m_VerticalAxis[2] = "Vertical_SNES_MACOS";
+                m_SubmitButton[0] = "Submit_MACOS";
+                m_SubmitButton[1] = "Submit_DDR_MACOS";
+                m_SubmitButton[2] = "Submit_SNES_MACOS";
+                m_CancelButton[0] = "Cancel_MACOS";
+                m_CancelButton[1] = "Cancel_DDR_MACOS";
+                m_CancelButton[2] = "Cancel_SNES_MACOS";
+            #endif
+        }
+        public override void ActivateModule()
 		{
 			base.ActivateModule();
 			m_MousePosition = Input.mousePosition;
