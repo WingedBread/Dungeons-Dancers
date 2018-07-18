@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     bool flagTimeNearOver = true;
 
-    private string[] cancelText = new string[2];
+    private string[] cancelText = new string[3];
 
     private void Awake()
     {
@@ -68,12 +68,12 @@ public class GameManager : MonoBehaviour
 
         #if UNITY_STANDALONE_WIN
             cancelText[0] = "Cancel_WIN";
-            cancelText[1] = "Cancel_DDR_WIN";
-            cancelText[2] = "Cancel_SNES_WIN";
+            cancelText[1] = "Cancel_DDR";
+            cancelText[2] = "Cancel_SNES";
         #elif UNITY_STANDALONE_OSX
             cancelText[0] = "Cancel_MACOS";
-            cancelText[1] = "Cancel_DDR_MACOS";
-            cancelText[2] = "Cancel_SNES_MACOS";
+            cancelText[1] = "Cancel_DDR";
+            cancelText[2] = "Cancel_SNES";
         #endif
     }
 

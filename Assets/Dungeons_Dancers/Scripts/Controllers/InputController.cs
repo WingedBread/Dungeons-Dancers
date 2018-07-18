@@ -70,8 +70,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private bool debugEnable = false;
 
-    string[] horizontalTexts = new string[2];
-    string[] verticalTexts = new string[2];
+    string[] horizontalTexts = new string[3];
+    string[] verticalTexts = new string[3];
 
     float detectionTimer = 0f;
 
@@ -79,18 +79,18 @@ public class InputController : MonoBehaviour
     {
         #if UNITY_STANDALONE_WIN
             horizontalTexts[0] = "Horizontal_WIN";
-            horizontalTexts[1] = "Horizontal_DDR_WIN";
-            horizontalTexts[2] = "Horizontal_SNES_WIN";
+            horizontalTexts[1] = "Horizontal_DDR";
+            horizontalTexts[2] = "Horizontal_SNES";
             verticalTexts[0] = "Vertical_WIN";
-            verticalTexts[1] = "Vertical_DDR_WIN";
-            verticalTexts[2] = "Vertical_SNES_WIN";
+            verticalTexts[1] = "Vertical_DDR";
+            verticalTexts[2] = "Vertical_SNES";
         #elif UNITY_STANDALONE_OSX
             horizontalTexts[0] = "Horizontal_MACOS";
-            horizontalTexts[1] = "Horizontal_DDR_MACOS";
-            horizontalTexts[2] = "Horizontal_SNES_MACOS";
+            horizontalTexts[1] = "Horizontal_DDR";
+            horizontalTexts[2] = "Horizontal_SNES";
             verticalTexts[0] = "Vertical_MACOS";
-            verticalTexts[1] = "Vertical_DDR_MACOS";
-            verticalTexts[2] = "Vertical_SNES_MACOS";
+            verticalTexts[1] = "Vertical_DDR";
+            verticalTexts[2] = "Vertical_SNES";
         #endif
     }
     // Use this for initialization

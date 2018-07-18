@@ -47,8 +47,8 @@ public class MenuSceneScript : MonoBehaviour {
     [SerializeField]
     private Button firstButton;
 
-    private string[] submitTexts = new string[2];
-    private string[] cancelTexts = new string[2];
+    private string[] submitTexts = new string[3];
+    private string[] cancelTexts = new string[3];
 
     [Header("Restart With Controller?")]
     [SerializeField]
@@ -59,18 +59,18 @@ public class MenuSceneScript : MonoBehaviour {
     {
         #if UNITY_STANDALONE_WIN
             submitTexts[0] = "Submit_WIN";
-            submitTexts[1] = "Submit_DDR_WIN";
-            submitTexts[2] = "Submit_SNES_WIN";
+            submitTexts[1] = "Submit_DDR";
+            submitTexts[2] = "Submit_SNES";
             cancelTexts[0] = "Cancel_WIN";
-            cancelTexts[1] = "Cancel_DDR_WIN";
-            cancelTexts[2] = "Cancel_SNES_WIN";
+            cancelTexts[1] = "Cancel_DDR";
+            cancelTexts[2] = "Cancel_SNES";
         #elif UNITY_STANDALONE_OSX
             submitTexts[0] = "Submit_MACOS";
-            submitTexts[1] = "Submit_DDR_MACOS";
-            submitTexts[2] = "Submit_SNES_MACOS";
+            submitTexts[1] = "Submit_DDR";
+            submitTexts[2] = "Submit_SNES";
             cancelTexts[0] = "Cancel_MACOS";
-            cancelTexts[1] = "Cancel_DDR_MACOS";
-            cancelTexts[2] = "Cancel_SNES_MACOS";
+            cancelTexts[1] = "Cancel_DDR";
+            cancelTexts[2] = "Cancel_SNES";
         #endif
     }
     // Use this for initialization

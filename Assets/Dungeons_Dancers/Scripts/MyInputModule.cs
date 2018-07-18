@@ -29,26 +29,26 @@ namespace UnityEngine.EventSystems
 			get { return InputMode.Mouse; }
 		}
 
-		[SerializeField]
-        private string[] m_HorizontalAxis = {"Horizontal", "Horizontal_DDR","Horizontal_SNES"};
+        [SerializeField]
+        private string[] m_HorizontalAxis = new string[4];
         
 		/// <summary>
 		/// Name of the vertical axis for movement (if axis events are used).
 		/// </summary>
 		[SerializeField]
-        private string[] m_VerticalAxis = {"Vertical", "Vertical_DDR", "Vertical_SNES" };
+        private string[] m_VerticalAxis = new string[4];
+
+		/// <summary>
+		/// Name of the submit button.
+		/// </summary>
+        [SerializeField]
+        private string[] m_SubmitButton =  new string[4];
 
 		/// <summary>
 		/// Name of the submit button.
 		/// </summary>
 		[SerializeField]
-        private string[] m_SubmitButton = {"Submit", "Submit_DDR", "Submit_SNES"};
-
-		/// <summary>
-		/// Name of the submit button.
-		/// </summary>
-		[SerializeField]
-		private string[] m_CancelButton = {"Cancel", "Cancel_DDR", "Cancel_SNES"};
+        private string[] m_CancelButton =  new string[4];
 
 		[SerializeField]
 		private float m_InputActionsPerSecond = 10;
@@ -148,30 +148,30 @@ namespace UnityEngine.EventSystems
         {
             #if UNITY_STANDALONE_WIN
                 m_HorizontalAxis[0] = "Horizontal_WIN";
-                m_HorizontalAxis[1] = "Horizontal_DDR_WIN";
-                m_HorizontalAxis[2] = "Horizontal_SNES_WIN";
-                m_VerticalAxis[0] = "Vertical_WIN";
-                m_VerticalAxis[1] = "Vertical_DDR_WIN";
-                m_VerticalAxis[2] = "Vertical_SNES_WIN";
-                m_SubmitButton[0] = "Submit_WIN";
-                m_SubmitButton[1] = "Submit_DDR_WIN";
-                m_SubmitButton[2] = "Submit_SNES_WIN";
+                m_HorizontalAxis[1] = "Horizontal_DDR";
+                m_HorizontalAxis[2] = "Horizontal_SNES";
+                m_VerticalAxis[0] = "Vertical";
+                m_VerticalAxis[1] = "Vertical_DDR";
+                m_VerticalAxis[2] = "Vertical_SNES";
+                m_SubmitButton[0] = "Submit";
+                m_SubmitButton[1] = "Submit_DDR";
+                m_SubmitButton[2] = "Submit_SNES";
                 m_CancelButton[0] = "Cancel_WIN";
-                m_CancelButton[1] = "Cancel_DDR_WIN";
-                m_CancelButton[2] = "Cancel_SNES_WIN";
+                m_CancelButton[1] = "Cancel_DDR";
+                m_CancelButton[2] = "Cancel_SNES";
             #elif UNITY_STANDALONE_OSX
-                m_HorizontalAxis[0] = "Horizontal_MACOS";
-                m_HorizontalAxis[1] = "Horizontal_DDR_MACOS";
-                m_HorizontalAxis[2] = "Horizontal_SNES_MACOS";
-                m_VerticalAxis[0] = "Vertical_MACOS";
-                m_VerticalAxis[1] = "Vertical_DDR_MACOS";
-                m_VerticalAxis[2] = "Vertical_SNES_MACOS";
-                m_SubmitButton[0] = "Submit_MACOS";
-                m_SubmitButton[1] = "Submit_DDR_MACOS";
-                m_SubmitButton[2] = "Submit_SNES_MACOS";
-                m_CancelButton[0] = "Cancel_MACOS";
-                m_CancelButton[1] = "Cancel_DDR_MACOS";
-                m_CancelButton[2] = "Cancel_SNES_MACOS";
+                m_HorizontalAxis[3] = "Horizontal_MACOS";
+                m_HorizontalAxis[1] = "Horizontal_DDR";
+                m_HorizontalAxis[2] = "Horizontal_SNES";
+                m_VerticalAxis[3] = "Vertical_MACOS";
+                m_VerticalAxis[1] = "Vertical_DDR";
+                m_VerticalAxis[2] = "Vertical_SNES";
+                m_SubmitButton[3] = "Submit_MACOS";
+                m_SubmitButton[1] = "Submit_DDR";
+                m_SubmitButton[2] = "Submit_SNES";
+                m_CancelButton[3] = "Cancel_MACOS";
+                m_CancelButton[1] = "Cancel_DDR";
+                m_CancelButton[2] = "Cancel_SNES";
             #endif
         }
         public override void ActivateModule()
