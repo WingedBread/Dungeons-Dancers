@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 233943773}
   - component: {fileID: 233943772}
   - component: {fileID: 233943771}
+  - component: {fileID: 233943776}
   - component: {fileID: 233943775}
   m_Layer: 0
   m_Name: Main Camera
@@ -673,7 +674,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 0af021b738e03db47bed705375fe2f4f, type: 2}
+  profile: {fileID: 0}
+--- !u!114 &233943776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 233943770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af845cdef34f42689c7b82b1a8297a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avaiablePostProcessings:
+  - {fileID: 11400000, guid: 344d61cfcad0943098e5a642f35d1841, type: 2}
+  - {fileID: 11400000, guid: 344d61cfcad0943098e5a642f35d1841, type: 2}
+  - {fileID: 11400000, guid: 344d61cfcad0943098e5a642f35d1841, type: 2}
+  - {fileID: 11400000, guid: 344d61cfcad0943098e5a642f35d1841, type: 2}
+  - {fileID: 11400000, guid: a2bbedac919ea433da0e8b7b0fc0217b, type: 2}
+  - {fileID: 11400000, guid: a2bbedac919ea433da0e8b7b0fc0217b, type: 2}
+  - {fileID: 11400000, guid: a2bbedac919ea433da0e8b7b0fc0217b, type: 2}
 --- !u!1 &272770444
 GameObject:
   m_ObjectHideFlags: 0
