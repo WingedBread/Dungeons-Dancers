@@ -40824,7 +40824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climaxConfeti: {fileID: 372058859}
-  initPoints: 10
+  initPoints: 40
   ScoreGood: 2
   ScoreGreat: 5
   ScorePerfect: 8
@@ -48064,9 +48064,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1927699863130962, guid: 6312a0c4ac70add41a90c54fa38b340c, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114777336249909756, guid: 6312a0c4ac70add41a90c54fa38b340c,
+        type: 2}
+      propertyPath: auClip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 25fc787210516944cb0bea6abce91c91, type: 3}
+    - target: {fileID: 114777336249909756, guid: 6312a0c4ac70add41a90c54fa38b340c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6312a0c4ac70add41a90c54fa38b340c, type: 2}
