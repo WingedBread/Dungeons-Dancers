@@ -131,7 +131,51 @@ public class SatisfactionController : MonoBehaviour {
 
     public void PointEvents()
     {
-        if (points < TracksPosition[2]  && points > TracksPosition[0] && pointsflag != 1) 
+        if (points < TracksPosition[1] && points > TracksPosition[0] && pointsflag != 1)
+        {
+            for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+            {
+                gameManager.levelEventsAudios[i].SatisfactionLvl1();
+                gameManager.levelEventsAudios[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+            {
+                gameManager.levelEventsMaterials[i].SatisfactionLvl1();
+                gameManager.levelEventsMaterials[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
+            {
+                gameManager.levelEventsAmbientColors[i].SatisfactionLvl1();
+                gameManager.levelEventsAmbientColors[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+            {
+                gameManager.levelEventsLightsColors[i].SatisfactionLvl1();
+                gameManager.levelEventsLightsColors[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+            {
+                gameManager.levelEventsEasing1[i].SatisfactionLvl1();
+                gameManager.levelEventsEasing1[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+            {
+                gameManager.levelEventsEasing2[i].SatisfactionLvl1();
+                gameManager.levelEventsEasing2[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+            {
+                gameManager.levelEventsEasing3[i].SatisfactionLvl1();
+                gameManager.levelEventsEasing3[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+            {
+                gameManager.levelEventsEasing4[i].SatisfactionLvl1();
+                gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
+            }
+            pointsflag = 1;
+        }
+        else if (points < TracksPosition[2]  && points > TracksPosition[1] && pointsflag != 2) 
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -173,9 +217,9 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsEasing4[i].SatisfactionLvl1();
                 gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl1);
             }
-            pointsflag = 1;
+            pointsflag = 2;
         }
-        else if (points < TracksPosition[3] && points > TracksPosition[2] && pointsflag != 2)
+        else if (points < TracksPosition[3] && points > TracksPosition[2] && pointsflag != 3)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -217,9 +261,9 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsEasing4[i].SatisfactionLvl2();
                 gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl2);
             }
-            pointsflag = 2;
+            pointsflag = 3;
         }
-        else if (points < TracksPosition[4] && points > TracksPosition[3] &&pointsflag != 3)
+        else if (points < TracksPosition[4] && points > TracksPosition[3] &&pointsflag != 4)
         {
             for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
             {
@@ -261,11 +305,10 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsEasing4[i].SatisfactionLvl3();
                 gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.SatisfactionLvl3);
             }
-            pointsflag = 3;
+            pointsflag = 4;
         }
-        else if (points >= TracksPosition[4] && pointsflag != 4)
+        else if (points >= TracksPosition[4] && pointsflag != 5)
         {
-            
             for (int i = 0; i < climaxConfeti.transform.childCount; i++)
             {
                 climaxConfeti.transform.GetChild(i).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
@@ -312,7 +355,7 @@ public class SatisfactionController : MonoBehaviour {
                 gameManager.levelEventsEasing4[i].SatisfactionClimax();
                 gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.SatisfactionClimax);
             }
-            pointsflag = 4;
+            pointsflag = 5;
         }
     } 
 
