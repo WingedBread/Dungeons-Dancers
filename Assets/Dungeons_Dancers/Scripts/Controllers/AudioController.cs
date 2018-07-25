@@ -37,7 +37,7 @@ public class AudioController : MonoBehaviour {
     public void PointsSnapshotCheck(int SelectedSnap)
     {
         selectedSnap = SelectedSnap;
-        auMixSnaps[SelectedSnap].TransitionTo(transitionTime); 
+        auMixSnaps[SelectedSnap].TransitionTo(transitionTime);
     }
 
     public void MuteSound(){
