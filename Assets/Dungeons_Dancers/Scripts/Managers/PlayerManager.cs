@@ -139,6 +139,44 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.levelEventsEasing4[i].GoodMove();
         }
+
+        switch(gameManager.GetRhythmAccuracy())
+        {
+            case 1:
+                for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+                {
+                    gameManager.levelEventsAudios[i].PerfectMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+                {
+                    gameManager.levelEventsMaterials[i].PerfectMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
+                {
+                    gameManager.levelEventsAmbientColors[i].PerfectMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+                {
+                    gameManager.levelEventsLightsColors[i].PerfectMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+                {
+                    gameManager.levelEventsEasing1[i].PerfectMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+                {
+                    gameManager.levelEventsEasing2[i].PerfectMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+                {
+                    gameManager.levelEventsEasing3[i].PerfectMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+                {
+                    gameManager.levelEventsEasing4[i].PerfectMove();
+                }
+                break;
+        }
         //mat.color = Color.green;
         StartCoroutine(ReturnIdle());
         StartCoroutine(inputFeedback.CorrectFeedbackText());
