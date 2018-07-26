@@ -37,6 +37,8 @@ public class SatisfactionController : MonoBehaviour {
 
     bool afterClimax = false;
 
+    bool justDieOnce = true;
+
     // Use this for initialization
     void Awake()
     {
@@ -346,7 +348,7 @@ public class SatisfactionController : MonoBehaviour {
             //Debug.Log("Ponts After Bad: " + points);
             PointEvents();
 
-            if (points <= TracksPosition[0]) 
+            if (points <= TracksPosition[0] && justDieOnce) 
             {
                 for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
                 {
@@ -389,6 +391,7 @@ public class SatisfactionController : MonoBehaviour {
                     gameManager.levelEventsEasing4[i].SetSatisfactionState(SatisfactionStates.None);
                 }
                 gameManager.Dead();
+                justDieOnce = false;
                 points = (int)TracksPosition[0];
             }
         }
@@ -426,6 +429,7 @@ public class SatisfactionController : MonoBehaviour {
         points = initPoints;
         feverPoints = ClimaxMaxFails;
         afterClimax = false;
+        justDieOnce = true;
     }
 
     public int GetSatisfactionPoints(int min, int current, int max)
