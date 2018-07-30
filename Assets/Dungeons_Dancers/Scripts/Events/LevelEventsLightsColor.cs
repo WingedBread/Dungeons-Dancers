@@ -41,7 +41,7 @@ public class LevelEventsLightsColor : MonoBehaviour
 
     bool eventPlaying = false;
 
-    public bool[,] activeLevelEvents = new bool[21, 21];
+    public bool[,] activeLevelEvents = new bool[23, 23];
 
     private Light _light;
 
@@ -51,7 +51,7 @@ public class LevelEventsLightsColor : MonoBehaviour
         gameManager.levelEventsLightsColors.Add(this);
         for (int i = 0; i < levelEvents.Length; i++)
         {
-            for (int w = 0; w < 21; w++)
+            for (int w = 0; w < 23; w++)
             {
                 activeLevelEvents[i, w] = false;
             }
@@ -378,7 +378,7 @@ public class LevelEventsLightsColor : MonoBehaviour
             }
         }
     }
-    public void PerfectMove()
+    public void GoodMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
@@ -392,7 +392,7 @@ public class LevelEventsLightsColor : MonoBehaviour
             }
         }
     }
-    public void GoodMove()
+    public void GreatMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
@@ -406,7 +406,7 @@ public class LevelEventsLightsColor : MonoBehaviour
             }
         }
     }
-    public void WrongMove()
+    public void PerfectMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
@@ -420,7 +420,7 @@ public class LevelEventsLightsColor : MonoBehaviour
             }
         }
     }
-    public void OnShoot()
+    public void CorrectMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
@@ -434,13 +434,41 @@ public class LevelEventsLightsColor : MonoBehaviour
             }
         }
     }
-    public void Door()
+    public void WrongMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
                 if (activeLevelEvents[w, 21])
+                {
+                    _light.DOColor(endColor[w], colorEasingDuration);
+                    eventPlaying = false;
+                }
+            }
+        }
+    }
+    public void OnShoot()
+    {
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
+        {
+            for (int w = 0; w < levelEvents.Length; w++)
+            {
+                if (activeLevelEvents[w, 22])
+                {
+                    _light.DOColor(endColor[w], colorEasingDuration);
+                    eventPlaying = false;
+                }
+            }
+        }
+    }
+    public void Door()
+    {
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
+        {
+            for (int w = 0; w < levelEvents.Length; w++)
+            {
+                if (activeLevelEvents[w, 23])
                 {
                     _light.DOColor(endColor[w], colorEasingDuration);
                     eventPlaying = false;

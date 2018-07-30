@@ -37,7 +37,6 @@ public class PlayerManager : MonoBehaviour
     private Vector3 spawnInitPosition;
     private List<GameObject> collectibles = new List<GameObject>();
 
-
     // Use this for initialization
     void Start()
     {
@@ -109,39 +108,73 @@ public class PlayerManager : MonoBehaviour
         checkpointBhv.ResetCheckpoint();
         for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
         {
-            gameManager.levelEventsAudios[i].GoodMove();
+            gameManager.levelEventsAudios[i].CorrectMove();
         }
 		for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
         {
-			gameManager.levelEventsMaterials[i].GoodMove();
+            gameManager.levelEventsMaterials[i].CorrectMove();
         }
         for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
         {
-            gameManager.levelEventsAmbientColors[i].GoodMove();
+            gameManager.levelEventsAmbientColors[i].CorrectMove();
         }
         for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
         {
-            gameManager.levelEventsLightsColors[i].GoodMove();
+            gameManager.levelEventsLightsColors[i].CorrectMove();
         }
         for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
         {
-            gameManager.levelEventsEasing1[i].GoodMove();
+            gameManager.levelEventsEasing1[i].CorrectMove();
         }
         for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
         {
-            gameManager.levelEventsEasing2[i].GoodMove();
+            gameManager.levelEventsEasing2[i].CorrectMove();
         }
         for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
         {
-            gameManager.levelEventsEasing3[i].GoodMove();
+            gameManager.levelEventsEasing3[i].CorrectMove();
         }
         for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
         {
-            gameManager.levelEventsEasing4[i].GoodMove();
+            gameManager.levelEventsEasing4[i].CorrectMove();
         }
 
         switch(gameManager.GetRhythmAccuracy())
         {
+            case 0:
+                for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+                {
+                    gameManager.levelEventsAudios[i].GoodMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+                {
+                    gameManager.levelEventsMaterials[i].GoodMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
+                {
+                    gameManager.levelEventsAmbientColors[i].GoodMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+                {
+                    gameManager.levelEventsLightsColors[i].GoodMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+                {
+                    gameManager.levelEventsEasing1[i].GoodMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+                {
+                    gameManager.levelEventsEasing2[i].GoodMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+                {
+                    gameManager.levelEventsEasing3[i].GoodMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+                {
+                    gameManager.levelEventsEasing4[i].GoodMove();
+                }
+                break;
             case 1:
                 for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
                 {
@@ -174,6 +207,40 @@ public class PlayerManager : MonoBehaviour
                 for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
                 {
                     gameManager.levelEventsEasing4[i].PerfectMove();
+                }
+                break;
+            case 2:
+                for (int i = 0; i < gameManager.levelEventsAudios.Count; i++)
+                {
+                    gameManager.levelEventsAudios[i].GreatMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsMaterials.Count; i++)
+                {
+                    gameManager.levelEventsMaterials[i].GreatMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsAmbientColors.Count; i++)
+                {
+                    gameManager.levelEventsAmbientColors[i].GreatMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsLightsColors.Count; i++)
+                {
+                    gameManager.levelEventsLightsColors[i].GreatMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing1.Count; i++)
+                {
+                    gameManager.levelEventsEasing1[i].GreatMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing2.Count; i++)
+                {
+                    gameManager.levelEventsEasing2[i].GreatMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing3.Count; i++)
+                {
+                    gameManager.levelEventsEasing3[i].GreatMove();
+                }
+                for (int i = 0; i < gameManager.levelEventsEasing4.Count; i++)
+                {
+                    gameManager.levelEventsEasing4[i].GreatMove();
                 }
                 break;
         }
