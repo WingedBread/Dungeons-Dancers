@@ -27,7 +27,7 @@ public enum SatisfactionStates
 public enum LevelEvents
 {
     IntroStart, IntroEnd, StartPlay, OnBeat, BeatBehaviour, OnCheckpoint, WinLevel, GetSparkle, GetKey, TimeNearOver,
-    TimeOver, SatisfactionZero, SatisfactionLvl1, SatisfactionLvl2, SatisfactionLvl3, SatisfactionClimax, OnHit, PerfectMove, GoodMove, WrongMove, OnShoot, Door
+    TimeOver, SatisfactionZero, SatisfactionLvl1, SatisfactionLvl2, SatisfactionLvl3, SatisfactionClimax, OnHit, GoodMove, GreatMove, PerfectMove, CorrectMove, WrongMove, OnShoot, Door
 }
 
 public enum PlayerStates

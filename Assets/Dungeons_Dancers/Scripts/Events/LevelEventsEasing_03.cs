@@ -85,14 +85,14 @@ public class LevelEventsEasing_03 : MonoBehaviour {
 
     bool eventPlaying = false;
 
-    public bool[,] activeLevelEvents = new bool [21,21];
+    public bool[,] activeLevelEvents = new bool [23,23];
 
 	private void Awake()
 	{
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         gameManager.levelEventsEasing3.Add(this);
         for (int i = 0; i < levelEvents.Length; i++){
-            for (int w = 0; w < 21; w++)
+            for (int w = 0; w < 23; w++)
             {
                 activeLevelEvents[i,w] = false;
             }
@@ -773,7 +773,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
             }
         }
     }
-    public void PerfectMove()
+    public void GoodMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
@@ -808,7 +808,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
             }
         }
     }
-    public void GoodMove()
+    public void GreatMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
@@ -843,7 +843,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
             }
         }
     }
-    public void WrongMove()
+    public void PerfectMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
@@ -878,7 +878,7 @@ public class LevelEventsEasing_03 : MonoBehaviour {
             }
         }
     }
-    public void OnShoot()
+    public void CorrectMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
@@ -913,13 +913,83 @@ public class LevelEventsEasing_03 : MonoBehaviour {
             }
         }
     }
-    public void Door()
+    public void WrongMove()
     {
         if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
         {
             for (int w = 0; w < levelEvents.Length; w++)
             {
                 if (activeLevelEvents[w, 21])
+                {
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
+                        eventPlaying = false;
+                    }
+                }
+            }
+        }
+    }
+    public void OnShoot()
+    {
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
+        {
+            for (int w = 0; w < levelEvents.Length; w++)
+            {
+                if (activeLevelEvents[w, 22])
+                {
+                    if (scaleEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOScale(onBeatScaleVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOScale(offBeatScaleVector3, easingOffDuration).SetEase(easingOffBeatList));
+                        eventPlaying = false;
+                    }
+
+                    if (moveEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DOLocalMove(onBeatPositionVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DOLocalMove(offBeatPositionVector3, easingOffDuration).SetEase(easingOffBeatList));
+                        eventPlaying = false;
+                    }
+
+                    if (rotationEasing)
+                    {
+                        Sequence s = DOTween.Sequence();
+                        s.Append(transform.DORotate(onBeatRotationVector3, easingOnDuration).SetEase(easingOnBeatList));
+                        s.Append(transform.DORotate(offBeatRotationVector3, easingOffDuration).SetEase(easingOffBeatList));
+                        eventPlaying = false;
+                    }
+                }
+            }
+        }
+    }
+    public void Door()
+    {
+        if (eventPlaying && (this.gameObject != null || this.gameObject.activeInHierarchy == true))
+        {
+            for (int w = 0; w < levelEvents.Length; w++)
+            {
+                if (activeLevelEvents[w, 23])
                 {
                     if (scaleEasing)
                     {
