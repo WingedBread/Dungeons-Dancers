@@ -378,7 +378,6 @@ public class GameManager : MonoBehaviour
         uiController.WinUI();
         auController.MuteSound();
         PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore") + playerManager.GetSparkles());
-        //Debug.Log("TotalScore  " + PlayerPrefs.GetInt("TotalScore"));
     }
    
 

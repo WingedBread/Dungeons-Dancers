@@ -342,6 +342,7 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.levelEventsEasing4[i].SetPlayerState(PlayerStates.Succeed);
         }
+
 		animator.SetBool("onWin", true);
 		inputController.SetRotation(2);
         gameManager.Win();
