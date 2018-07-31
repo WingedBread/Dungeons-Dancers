@@ -336,6 +336,7 @@ public class GameManager : MonoBehaviour
         {
             levelEventsAudios[i].SetLevelState(LevelStates.LevelEnd);
             levelEventsAudios[i].WinLevel();
+            levelEventsAudios[i].Reset();
         }
 		for (int i = 0; i < levelEventsMaterials.Count; i++)
         {
@@ -400,6 +401,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < levelEventsAudios.Count; i++)
         {
             levelEventsAudios[i].SetLevelState(LevelStates.LevelStart);
+            levelEventsAudios[i].Reset();
         }
 		for (int i = 0; i < levelEventsMaterials.Count; i++)
         {

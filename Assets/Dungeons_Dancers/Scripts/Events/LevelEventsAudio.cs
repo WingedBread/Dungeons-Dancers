@@ -525,4 +525,9 @@ public class LevelEventsAudio : MonoBehaviour {
             activeLevelEvents[w,(int)levelEvents[w]] = true;
         }
     }
+
+    public void Reset()
+    {
+        perfectCombo = 0;
+    }
 }
