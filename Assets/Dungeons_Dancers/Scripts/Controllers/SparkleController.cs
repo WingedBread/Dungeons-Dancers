@@ -45,6 +45,7 @@ public class SparkleController : MonoBehaviour
         transform.parent.GetChild(0).gameObject.SetActive(true);
         this.transform.parent.gameObject.SetActive(true);
         totalSparkles = 0;
+        PlayerPrefs.SetInt("TotalScore", totalSparkles);
     }
 
 }
