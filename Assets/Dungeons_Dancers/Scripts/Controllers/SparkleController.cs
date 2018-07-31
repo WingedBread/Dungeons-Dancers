@@ -14,6 +14,7 @@ public class SparkleController : MonoBehaviour
     private void Start()
     {
         sparkleParticleSystem = transform.parent.GetChild(1).gameObject;
+        totalSparkles = 0;
     }
 
     public void AddSparkles()

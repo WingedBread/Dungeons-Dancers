@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
         auController.PointsSnapshotCheck(6);
         SetIntroCounter(0);
         uiController.SparklesUI(0);
+        PlayerPrefs.SetInt("TotalScore", 0);
     }
 
     void Update()
@@ -377,7 +378,7 @@ public class GameManager : MonoBehaviour
         rhythmController.SetRhythm(false);
         uiController.WinUI();
         auController.MuteSound();
-        PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore") + playerManager.GetSparkles());
+        PlayerPrefs.SetInt("TotalScore", playerManager.GetSparkles());
     }
    
 
