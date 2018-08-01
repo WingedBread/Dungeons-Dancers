@@ -150,10 +150,10 @@ namespace UnityEngine.EventSystems
                 m_HorizontalAxis[0] = "Horizontal_WIN";
                 m_HorizontalAxis[1] = "Horizontal_DDR";
                 m_HorizontalAxis[2] = "Horizontal_SNES";
-                m_VerticalAxis[0] = "Vertical";
+                m_VerticalAxis[0] = "Vertical_WIN";
                 m_VerticalAxis[1] = "Vertical_DDR";
                 m_VerticalAxis[2] = "Vertical_SNES";
-                m_SubmitButton[0] = "Submit";
+                m_SubmitButton[0] = "Submit_WIN";
                 m_SubmitButton[1] = "Submit_DDR";
                 m_SubmitButton[2] = "Submit_SNES";
                 m_CancelButton[0] = "Cancel_WIN";
